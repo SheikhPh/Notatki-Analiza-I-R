@@ -1,0 +1,19 @@
+\babel@toc {polish}{}\relax 
+\contentsline {section}{\numberline {1}Wstęp}{1}{}%
+\contentsline {subsection}{\numberline {1.1}Relacje}{1}{}%
+\contentsline {subsection}{\numberline {1.2}Liczby rzeczywiste}{3}{}%
+\contentsline {section}{\numberline {2}Ciagi rzeczywiste}{5}{}%
+\contentsline {subsection}{\numberline {2.1}Pojęcie ciągu i ogólne rezulataty}{5}{}%
+\contentsline {paragraph}{}{7}{}%
+\contentsline {subsection}{\numberline {2.2}$\limsup $ i $\liminf $}{8}{}%
+\contentsline {paragraph}{}{8}{}%
+\contentsline {section}{\numberline {3}Szeregi liczbowe}{11}{}%
+\contentsline {subsection}{\numberline {3.1}Szeregi o wyrazach dodatnich}{11}{}%
+\contentsline {subsection}{\numberline {3.2}Szeregi o wyrazach dowolnych}{14}{}%
+\contentsline {paragraph}{Przykład - szeregi naprzemienne.}{15}{}%
+\contentsline {paragraph}{Grupowanie składników}{17}{}%
+\contentsline {section}{\numberline {4}Przestrzenie metryczne}{19}{}%
+\contentsline {paragraph}{}{19}{}%
+\contentsline {paragraph}{}{20}{}%
+\contentsline {paragraph}{Przykłady}{20}{}%
+\contentsline {paragraph}{}{21}{}%
