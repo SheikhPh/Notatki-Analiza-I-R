@@ -17,3 +17,8 @@
 \contentsline {paragraph}{}{20}{}%
 \contentsline {paragraph}{Przykłady}{20}{}%
 \contentsline {paragraph}{}{21}{}%
+\contentsline {paragraph}{Przykład}{21}{}%
+\contentsline {paragraph}{}{22}{}%
+\contentsline {paragraph}{}{22}{}%
+\contentsline {paragraph}{$\DOTSB \tmspace +\thickmuskip {.2777em}\DOTSB \Relbar \joinrel \Rightarrow \tmspace +\thickmuskip {.2777em}$}{25}{}%
+\contentsline {paragraph}{$\DOTSB \tmspace +\thickmuskip {.2777em}\DOTSB \Leftarrow \joinrel \Relbar \tmspace +\thickmuskip {.2777em}$}{25}{}%

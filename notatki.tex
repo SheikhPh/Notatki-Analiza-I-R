@@ -84,11 +84,17 @@
 \newcommand{\eps}{\varepsilon}
 \newcommand{\ifff}{\Leftrightarrow}
 \newcommand{\imp}{\Rightarrow}
+\newcommand{\Tau}{\mathcal{T}}
+\newcommand{\Fau}{\mathcal{F}}
+\newcommand{\subotw}{\underset{\clap{\scriptsize otw.}}{\subseteq}}
+\newcommand{\subdomk}{\underset{\clap{\scriptsize domk.}}{\subseteq}}
 
 \newcommand{\ilorazowy}[1]{#1/\!{_R}}
 \newcommand{\ciag}[1]{(#1_{n})_{n \in \N}}
 \newcommand{\gras}[2]{\lim_{#1 \to \oo} #2_{#1}}
 \newcommand{\lgras}[2]{\mathlarger{\lim}_{#1 \to \oo} #2_{#1}}
+\newcommand{\ball}[2]{\text{Ball}(#1, \, #2)}
+\newcommand{\dball}[2]{\overline{\text{Ball}}(#1, \, #2)}
 \newcommand*{\fakebreak}{\par\vspace{\textheight minus \textheight}\pagebreak}
 
 
@@ -662,13 +668,13 @@ Notatki do Analizy I R \\
             więc:
             \[ \sum_{n=1}^{\oo} a_n = \sup{\biggl\{ \sum_{n \in F} a_n \, \bigg| \, F \in 2^{\N}\biggr\}}  = \sup{\biggl\{ \sum_{n \in \sigma(F)} a_{n} \, \bigg| \, F \subset \N, \, |F| < \oo\biggr\}} = \sum_{n=1}^{\oo} a_{\sigma(n)}\]
             \item 
-            $\bold{a)}$ Jeśli $\exists_j: \, S_j = \oo$, to:
+            \textbf{a)} Jeśli $\exists_j: \, S_j = \oo$, to:
             \[\sum_{i=1}^{\oo} S_i = \oo\]
             i:
             \[\sum_{n=1}^{\oo} a_n \geqslant \sum_{n \in A_j} a_n = \oo.\]
             Stąd:
             \[\sum_{i=1}^{\oo} S_i = \oo = \sum_{n=1}^{\oo} a_n\]
-            $\bold{b)}$ Niech $\forall_{i}: \, S_i < \oo$. Ustalmy $\varepsilon > 0$ i weźmy dowolny: 
+            \textbf{b)} Niech $\forall_{i}: \, S_i < \oo$. Ustalmy $\varepsilon > 0$ i weźmy dowolny: 
             \[K \subset \N, \quad |K| < \oo.\]
             Przypomnijmy:
             \[\sum_{i=1}^{\oo}S_i = \sup_{\substack{K \subset \N, \\ |K| < \oo}} \, \sum_{j \in K} S_j.\]
@@ -845,7 +851,10 @@ Notatki do Analizy I R \\
             \item \[\forall_{x, y, z \in X}: d(x,z) \leqslant d(x, y) + d(y, z).\]
         \end{enumerate}
     \end{defr}
-    \paragraph{} O metryce myśleć można, jako o funkcji zwracającej "odległość" między dwoma elementami w zbiorze $X$. Podane aksjomaty zapewniają, że nasza metryka spełniać będzie "zdroworozsądkowe" własności odległości. \textbf{1.} nakłada warunek symetryczności na metrykę - odległość z $x$ do $y$ musi być równa odległości z $y$ do $x$. \textbf{2.} normalizuje metrykę, mówiąc, że punkt jest odległy o 0 od samego siebie i \textbf{tylko} od samego siebie. \textbf{3.} to tak zwana \textbf{nierówność trójkąta} - dodając na drodze między dwoma punktami trzeci punkt nie można odległości skrócić.
+    \paragraph{} O metryce myśleć można, jako o funkcji zwracającej "odległość" między dwoma elementami w zbiorze $X$. Podane aksjomaty zapewniają, że nasza metryka spełniać będzie "zdroworozsądkowe" własności odległości. 
+    \textbf{1.} nakłada warunek symetryczności na metrykę - odległość z $x$ do $y$ musi być równa odległości z $y$ do $x$. \textbf{2.} normalizuje metrykę, mówiąc, że punkt jest odległy o 0 od samego siebie i \textbf{tylko} od samego siebie. 
+    \textbf{3.} to tak zwana \textbf{nierówność trójkąta} - dodając na drodze między dwoma punktami trzeci punkt nie można odległości skrócić.
+    
     \begin{defr}{Przestrzeń metryczna}
         Parę $(X, d)$ - gdzie $X$ to niepusty zbiór, a $d: X \times X \to [0; +\oo [$ to metryka - nazywamy \textbf{przestrzenią metryczną}.
     \end{defr}
@@ -893,6 +902,185 @@ Notatki do Analizy I R \\
     \paragraph{} Oczywiście jeśli $x_n \to g$ i $x_n \to g'$, to $g = g'$ - co wynika z faktu, że jedynym elementem odległym o 0 od $g$ jest $g$. Ponadto jeśli $x_n \to g$ to każdy podciąg $(x_{n_k})_{k \in \N}$ także dąży do $g$: $x_{n_k} \xrightarrow{k \to \oo} g$.
 
 
+    \begin{defr}{Równoważność metryk}
+        Niech $d$ i $\delta$ będą metrykami na $X$. Powiemy, że $d$ i $\delta$ są równoważne, jeśli:
+        \begin{equation}
+            \exists_{C_1, C_2 \in \R}: \forall_{x, y \in X}: C_1 d(x, y) \leqslant \delta (x, y) \leqslant C_2 d(x, y).
+        \end{equation}
+        Łatwo widać, że jest to relacja symetryczna, przechodnia i zwrotna.
+
+     \end{defr}
+
+     \paragraph{Przykład} Metryk $d_p$ i $d_\oo$ na $\R^\nu$ są równoważne, albowiem:
+     \begin{equation}
+        d_oo(x, y) = \max_{i} |x_i - y_i| \leqslant d_p(x, y) = \Big(\sum_{n=1}^\nu |x_n - y_n| ^p\Big)^{\frac{1}{p}}.
+     \end{equation}
+     Ponadto:
+     \begin{equation}
+        d_p(x, y) ^p \leqslant \nu d_\oo(x, y)^p \implies d_p(x, y) \leqslant \nu^\frac{1}{p} d_\oo(x, y)
+     \end{equation}
+     Wystarczy więc wziąć $C_1 = 1$ i $C_2 = \nu ^\frac{1}{p}$.
+
+     \begin{obs}{Fakt}
+        Jeśli $d$ i $\delta$ są równoważne, to $x_n \to g$ w $(X, d)$ $\iff$ $x_n \to g$ w $(X, \delta)$.
+     \end{obs}
+
+     \begin{defr}{Warunek Cauchy'ego}
+        Powiemy, że ciąg $\ciag{x}$ spełnia \textbf{warunek Cauchy'ego} (i.e. że jest \textbf{ciągiem Cauchy'ego}), jeśli:
+        \begin{equation}
+            \forall_{\eps > 0} \exists_{N_\eps \in \N} \forall (m,n \geqslant N_\eps): d(x_m, x_n) \leqslant \eps.
+        \end{equation}
+     \end{defr}
+
+     \begin{defr}{Przestrzeń zupełna}
+        Powiemy, że przestrzeń $(X,d)$ jest \textbf{zupełna} jeśli każdy ciąg Cauchy'ego w tej przestrzeni jest zbieżny.
+     \end{defr}
+
+     \paragraph{} Zauważmy, że $()\R, d_2)$ (czyli liczby rzeczywiste ze standardową metryką Euklidesową) to przestrzeń zupełna, co udowodniliśmy. $(\Q, d_2)$ nie jest przestrzenią zupełną (gdyż np. ciąg kolejnych przybliżeń dziesiętnych $\sqrt[]{2}$ spełnia warunek Cauchy'ego, jednak nie ma w $\Q$ granicy).\
+
+     \begin{defr}{Kule}
+        Niech $(X, d)$ - p-ń metryczna. Wtedy \textbf{kulą (otwartą)} o środku $x_0 \in X$ i promieniu $r \in \R_+$ nazwiemy zbiór:
+        \begin{equation}
+            \ball{x_0}{r} = \{ x\in X \, | \, d(x, x_0) < r\}.
+        \end{equation}
+     \end{defr}
+
+     \begin{defr}{Punkty wewnętrzne}
+        Niech $(X, d)$ - p-ń metryczna, $A \subseteq X$ i $a \in A$. Powiemy, że $a$ jest \textbf{punktem wewnętrznym} $A$, jeśli:
+        \begin{equation}
+            \exists_{r>0}: \ball{a}{r} \subseteq A.
+        \end{equation}
+     \end{defr}
+
+     \paragraph{} Widzimy więc, że jeśli $a$ jest punktem wewnętrznym $A$, to znajduje się w $A$ razem z pewną kulą wokół siebie - można potocznie sobie więc wyobrazić, że $a$ nie może być na "brzegu" $A$.
+
+     \begin{defr}{Zbiór otwarty}
+        Powiemy, że $A$ jest \textbf{otwarty} (w ustalonej p-ń metrycznej $(X,d)$ ), jeśli każdy jego punkt jest punktem wewnętrznym:
+        \begin{equation}
+            \forall_{a \in A} \exists_{r>0}: \ball{a}{r} \subseteq A.
+        \end{equation}
+        \\
+        Dla ustalonej przestrzenii metrycznej zdefiniujemy $\Tau$ jako rodzinę wszystkich zbiorów otwartych w tej przestrzenii. Wprowadzimy też zapis:
+        \begin{equation}
+            U \subotw X,
+        \end{equation}
+        jeśli $U$ jest otwartym podzbiorem $X$ (i.e. jeśli $U \in \Tau$).
+     \end{defr}
+
+
+     \begin{twier}{Właności $\Tau$}
+        \begin{enumerate}
+            \item $\emptyset \in \Tau$ oraz $X \in \Tau$.
+            \item $U, V \in \Tau \implies U \cap V \in \Tau$. Inaczej mówiąc (rozszerzywszy łątwo twierdzenie za pomocą indukcji), skończony iloczyn zbiorów otwartych jest otwarty.
+            \item $\{U_i\}_{i \in I}$ - rodzina zbiorów otwartych. Wtedy \begin{equation}
+                \bigcup_{i \in I} U_i \in \Tau.
+            \end{equation} Zauważmy, że nie zakładamy, że jest to skończona (ani nawet przeliczalna) rodzina.
+
+        \end{enumerate}
+     \end{twier}
+
+     \begin{dow}{Dowód}
+        \begin{enumerate}
+            \item Prawdziwym jest zdanie, że dla każego elementu należącego do $\emptyset$ jest on punktem wewnętrzym. Ponadto: \begin{equation}
+                \forall_{x \in X,\, r > 0} \ball{x}{r} \subseteq X,
+            \end{equation}
+            co wynika za samej definicji Ball.
+
+            \item Skoro $U, V$ są otwarte, to dla każdego $x \in U \cap V$ istnieją $r_1$ i $r_2$ takie, że:\begin{equation*}
+                \ball{x}{r_1} \in U, \quad \ball{x}{r_2} \in V.
+            \end{equation*} Wtedy jednak: \begin{equation*}
+                \ball{x}{\min\{r_1, r_2\}} \in U, \quad \ball{x}{\min\{r_1, r_2\}} \in V.
+            \end{equation*} Wystarczy więc wziąć $r = \min\{r_1, r_2\}$
+
+            \item Dla każdego $x \in \bigcup_{i \in I} U_i$ mamy $i \in I$ takie, że $x \in U_i$. Wtedy jednak istnieje takie $r$, że $\ball{x}{r} \in U_i$, przeto $\ball{x}{r} \in \bigcup_{i \in I} U_i$.
+
+        \end{enumerate}
+
+     \end{dow}
+
+     \begin{twier}{Stwierdzenie}
+        Kula otwarta jest otwarta.
+     \end{twier}
+
+     \begin{dow}{dowód}
+        Istotnie, jeśli niech $y \in \ball{x}{r}$. Wtedy $d(x, y) < r$. Zauważmy, że $\ball{y}{r - d(x, y)} \subseteq \ball{x}{r}$, bowiem jeśli $z \in \ball{y}{r - d(x, y)}$, to $d(z, y) < r - d(x, y)$, zatem: \begin{equation*}
+            d(z, x) < d(z, y) + d(y, z) < r,
+        \end{equation*} czyli $z \in \ball{x}{r}$.
+     \end{dow}
+
+
+
+     \begin{defr}{Punkt skupienia}
+        Niech $(X, d)$ - p-ń metryczna i $A \subseteq X$, wtedy punkt $x \in X$ nazwiemy \textbf{punktem skupienia} $A$, jeśli: \begin{equation}
+            \forall_{r>0}: \ball{x}{r} \cap A \neq \emptyset.
+        \end{equation}
+     \end{defr}
+
+     \begin{defr}{Zbiór domknięty}
+        Zbiór $A$ nazwiemy \textbf{domkniętym} jeśli zawiera wszystkie swoje punkty skupienia. To znaczy: \begin{equation}
+            \forall_{x \in X} [\forall_{r>0}: \ball{x}{r} \cap A \neq \emptyset \implies x \in A]. 
+        \end{equation}
+        \\
+        Podobnie jak $\Tau$, zdefiniujemy $\Fau$ jako rodzinę wszystkich zbiorów domkniętych w danej przestrzenii. Będziemy również pisać:
+        \begin{equation}
+            U \subdomk X,
+        \end{equation}
+        jeśli $U$ jest domkniętym podzbiorem $X$.
+    \end{defr}
+
+    \begin{defr}{Kula domknięta}
+        \textbf{Kulą domkniętą} o środku $x_0 \in X$ i promieniu $r \in \R_+$ nazwiemy zbiór: \begin{equation}
+            \dball{x}{r} = \{ x\in X \, | \, d(x, x_0) \leqslant r\}.
+        \end{equation}
+    \end{defr}
+
+    \begin{twier}{Stwierdzenie}
+        Kula domknięta jest domknięta.
+     \end{twier}
+
+     \begin{dow}{Dowód}
+        Niech $y \notin \dball{x}{r}$. Wtedy $d(y, x) > r$. Weźmy $R = d(y, x) - r > 0$. Wtedy $\ball{y}{R} \cap \dball{x}{r} = \emptyset$. Albowiem, jeśli $z \in \ball{y}{R}$, to $d(z, y) <  d(y, x) - r $, zatem $d(x, z) \geqslant d(x, y) - d(z, y)  > r$, czyli $z \notin \dball{x}{r}$.
+     \end{dow}
+
+     \begin{twier}{Dopełnienie zbioru otwartego jest domknięte}
+        Niech $A \subseteq X$. $A$ jest otwarty wtedy i tylko wtedy, gdy $X \ A$ jest domknięty.
+     \end{twier}
+
+     \begin{dow}{Dowód}
+        Mamy następujący ciąg równoważności:
+        \begin{equation}
+            (X \backslash A) \text{ - domknięty} \iff
+        \end{equation}
+        \begin{equation}
+            \forall_{y \notin (X \backslash A)} \exists_{r > 0}: \ball{y}{r} \cap (X \backslash A) =  \emptyset \iff
+        \end{equation}
+        \begin{equation}
+            \forall_{y \in A} \exists_{r > 0}: \ball{y}{r} \subseteq X \backslash (X \backslash A) = A \iff
+        \end{equation}
+        \begin{equation}
+            A \text{ - otwarty} 
+        \end{equation}
+     \end{dow}
+
+     Zauważmy, że istnieją zbiory jednocześnie domknięte i otwarte. Na przykład w każdej przestrzenii metrycznej są to $\emptyset$ oraz cała przestrzeń. W $\R$ są to jedynie takie zbiory. Za to w przestrzenii dyskretnej, wszystkie zbiory mają te własność.
+
+
+     \begin{twier}{Stwierdzenie}
+        Zbiór $A$ jest otwarty wtedy i tylko wtedy, gdy $A$ jest sumą kul.
+     \end{twier}
+     \begin{dow}{Dowód} 
+        \paragraph{$\implies$} Możemy wybrać sumę rodziny generowanej w tej sposób, że każdemu elementowi przypisujemy kulę mu odpowiadającą, która należy do $A$: \begin{equation}
+                \forall_{y \in A} \exists_{r(y) >0}: \ball{y}{r(y)} \subseteq A.
+            \end{equation} Zatem: \begin{equation}
+                A = \bigcup_{y \in A} \{ y \} \subseteq \bigcup_{y \in A} \ball{y}{r(y)}
+            \end{equation} oraz: \begin{equation}
+                \bigcup_{y \in A} \ball{y}{r(y)} \subseteq A,
+            \end{equation} więc:\begin{equation}
+                A = \bigcup_{y \in A} \ball{y}{r(y)}
+            \end{equation}
+ 
+        \paragraph{$\impliedby$} W drugą stronę sprawa jest jasna - suma każdej rodziny kul (i.e. zbiorów otwarty) będzie otwarta.
+     \end{dow}
 
 
 \section*{Koniec}
