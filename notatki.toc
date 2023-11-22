@@ -22,3 +22,9 @@
 \contentsline {paragraph}{}{22}{}%
 \contentsline {paragraph}{$\DOTSB \tmspace +\thickmuskip {.2777em}\DOTSB \Relbar \joinrel \Rightarrow \tmspace +\thickmuskip {.2777em}$}{25}{}%
 \contentsline {paragraph}{$\DOTSB \tmspace +\thickmuskip {.2777em}\DOTSB \Leftarrow \joinrel \Relbar \tmspace +\thickmuskip {.2777em}$}{25}{}%
+\contentsline {paragraph}{}{25}{}%
+\contentsline {paragraph}{}{25}{}%
+\contentsline {paragraph}{$\supseteq $}{26}{}%
+\contentsline {paragraph}{$\subseteq $}{26}{}%
+\contentsline {paragraph}{$\DOTSB \tmspace +\thickmuskip {.2777em}\DOTSB \Leftarrow \joinrel \Relbar \tmspace +\thickmuskip {.2777em}$}{27}{}%
+\contentsline {paragraph}{$implies$}{27}{}%

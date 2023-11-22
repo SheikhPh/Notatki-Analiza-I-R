@@ -86,8 +86,10 @@
 \newcommand{\imp}{\Rightarrow}
 \newcommand{\Tau}{\mathcal{T}}
 \newcommand{\Fau}{\mathcal{F}}
+\newcommand{\Nau}{\mathcal{N}}
 \newcommand{\subotw}{\underset{\clap{\scriptsize otw.}}{\subseteq}}
 \newcommand{\subdomk}{\underset{\clap{\scriptsize domk.}}{\subseteq}}
+\newcommand{\dg}{^{\circ}}
 
 \newcommand{\ilorazowy}[1]{#1/\!{_R}}
 \newcommand{\ciag}[1]{(#1_{n})_{n \in \N}}
@@ -1082,6 +1084,115 @@ Notatki do Analizy I R \\
         \paragraph{$\impliedby$} W drugą stronę sprawa jest jasna - suma każdej rodziny kul (i.e. zbiorów otwarty) będzie otwarta.
      \end{dow}
 
+    \begin{obs}{Fakty na temat $\Fau$}
+        \begin{enumerate}
+            \item $\emptyset, X \in \Fau.$
+            \item $\Fau = \{ X \backslash A \, \big| \, A \in \Tau \}.$
+            \item $A, B \in \Fau \implies A \cup B \in \Fau.$ Inaczej mówiąc - skończony iloczyn zbiorów domkniętych jest domknięty.
+            \item $\{V_i\}_{i \in I}$ - rodzina zbiorów domkniętych. Wtedy \begin{equation}
+                \bigcap_{i \in I} V_i \in \Tau.
+            \end{equation}
+        \end{enumerate}
+    \end{obs}
+    \paragraph{} Fakty te są oczywistą konsekwencją własności $\Tau$ i prawa, które mówi, że dopełnienie zbioru otwartego jest domknięte. 
+    \paragraph{} Spójrzmy jeszcze na przykład, pokazujący, że w 3. właność ta zachodzi tylko dla sum skończonych: \begin{equation*}
+        ]0, 1[ = \bigcup_{i=1}^{\oo} [\frac{1}{n}, 1-\frac{1}{n}]. 
+    \end{equation*}
+
+    \begin{defr}{Wnętrze i domknięcie}
+        Niech $B \subseteq X$.\\
+        \textbf{Wnętrznem} zbioru $B$, oznaczanym $B \dg$, nazywamy zbiór wszyskich punktów wewnętrznych $B$.\\
+        \textbf{Domknięciem} zbioru $B$, oznaczanym $\overline{B}$, nazywamy zbiór punktów skupienia $B$. \\
+        Innymi słowy: \begin{equation}
+            x \in B \deg \iff \exists_r: \ball{x}{r} \subseteq B.
+        \end{equation} \begin{equation}
+            x \in \overline{B} \iff \forall_r: \ball{x}{r} \cap B \neq \emptyset.
+        \end{equation}
+    \end{defr}
+
+    \begin{obs}{Obserwacja}
+        \begin{equation}
+            B \dg \subseteq B \subseteq \overline{B}
+        \end{equation}
+    \end{obs}
+
+    \begin{obs}{Obserwacja}
+        \begin{itemize}
+            \item $B$ - otwarty $\iff$ $B \dg = B.$ 
+            \item $B$ - domknięty $\iff$ $\overline{B} = B.$ 
+        \end{itemize}
+    \end{obs}
+
+    \begin{twier}{Stwierdzenie}
+        \begin{equation}
+            X \backslash \overline{B} = (X \backslash B) \dg
+        \end{equation} lub \begin{equation}
+            \overline{B} = X \backslash (X \backslash B) \dg.
+        \end{equation}
+    \end{twier}
+
+    \begin{dow}{Dowód}
+        $x \in X \backslash \overline{B} \iff x$ nie jest punktem skupienia $B \iff \exists_r \ball{x}{r} \cap B = \emptyset \iff \exists_r \ball{x}{r} \cap B \subseteq X \backslash B \iff x \in (X \backslash B) \dg$. 
+    \end{dow}
+
+
+    Powiemy teraz o bardzo ważnym twierdzeniu pozwalającym utożsamić punkty skupienia z granicami ciągów ze zbioru.
+    \begin{twier}{Twierdzenie}
+        Niech $B \subseteq X$. Wtedy domknięcie $B$ to zbiór granic ciągów z $B$, tj.: \begin{equation}
+            \overline{B} = \{ \lim_{n\to \oo} x_n \,  \big| \, \ciag{x} \wedge \forall_n x_n \in B \}. 
+        \end{equation}
+    \end{twier}
+
+    \begin{dow}{Dowód}
+        \paragraph{$\supseteq$} Dla każdego $x \in \overline{B}$ zdefiniujmy ciąg $\ciag{x}$ następująco - niech $x_n$ to dowolny element należący do $\ball{x}{\frac{1}{n}} \cap B$ (jest to zbiór zawsze niepusty na mocy tego, że $x$ jest punktem skupienia $B$). Oczywiście $ x_n \to x$, gdyż $d(x_n, x) < \frac{1}{n} \to 0$.
+        \paragraph{$\subseteq$} Odwrotnie, jeśli $x_n \to x$ i $\forall_n : x_n \in B$, to: \begin{equation}
+            \forall_{\eps > 0} \exists_{N_\eps} \forall_{n \geqslant N_\eps}: B \ni x_n \in \ball{x}{\eps} \implies \forall{\eps >0} \ball{x}{\eps} \cap B \neq \emptyset,
+        \end{equation} skąd mamy $x \in \overline{B}$.
+    \end{dow}
+
+    \begin{defr}{Ograniczoność}
+        Powiemy, że $B \subseteq X$ jest \textbf{ograniczony}, jeśli: \begin{equation}
+            \exists_{x \in X, r >0}: B \subseteq \ball{x}{r}.
+        \end{equation}
+    \end{defr}
+
+    \begin{defr}{Gęstość}
+        Powiemy, że $A \subseteq X$ jest \textbf{gęsty} w $B \subseteq X$, jeśli: \begin{equation}
+            B \subseteq \overline{A}.
+        \end{equation}
+        Uwaga! Mówiąc po prostu, że zbiór jest gęsty, mamy na myśli, że jest gęsty w $X$.
+    \end{defr}
+    \paragraph*{Przykład} $\Q$ jest gęsty w $\R$.
+
+    \begin{defr}{Otoczenie}
+        $A \subseteq X$ jest otoczeniem punktu $x \in X$, jeśli: \begin{equation}
+            \exists_{U \subotw X}: x \in U \subseteq A.
+        \end{equation} Waruneke ten jest równoważny temu, żę $x \in A \dg$. \\
+        Dla danego punktu rodzinę wszyskich jego otoczeń oznaczać będziemy $\Nau (x)$: \begin{equation}
+            \Nau (x) = \{ A \in \mathcal{P}(X) = 2^X \, \big| \, x \in A\dg \}. 
+        \end{equation}
+    \end{defr}
+
+    \begin{twier}{Twierdzenie}
+        Niech $\ciag{x}$ będzie ciągiem elementów $X$. Wtedy:\begin{equation}
+            \lim_{n \to \oo} x_n = x \iff \forall_{A \in \Nau(x)} \exists_{N_A \in \N} \forall_{n \geqslant N_A}: x_n \in A.
+        \end{equation}
+    \end{twier}
+
+    \begin{dow}{Dowód}
+        \paragraph{$\impliedby$} Weźmy $A_\eps  \ball{x}{\eps}$. Wtedy:\begin{equation}
+            \forall_{\eps >0} \exists_{N_\eps} \forall_{n \geqslant N_\eps}: x_n \in \ball{x}{\eps} \implies d(x_n, x) < \eps.
+        \end{equation}
+        \paragraph{$implies$} $x_n$ zbiega do $x$, zatem: \begin{equation*}
+            \forall_{\eps >0} \exists_{N_\eps} \forall_{n \geqslant N_\eps}: d(x_n, x) < \eps.
+        \end{equation*} Mamy też: \begin{equation*}
+            A \in \Nau(x) \implies \exists_\eps: \ball{x}{\eps} \subseteq A.
+        \end{equation*} Wystarczy więc wziąć $N_A = N_\eps$. Wtedy będzie: \begin{equation}
+            \forall_{\eps >0} \exists_{N_\eps} \forall_{n \geqslant N_\eps}: (d(x_n, x) < \eps \wedge \ball{x}{\eps} \subseteq A) \implies x_n \in A.
+        \end{equation}
+    \end{dow}
+
+    \paragraph*{} Twierdzenie to mówi nie mniej, nie więcej niż to, że jeśli ciąg zbiega do jakiegoś punktu, to w każdym otoczeniu tego punktu znajdą się prawie wszystkie wyrazy tego ciągu.
 
 \section*{Koniec}
 \tableofcontents
