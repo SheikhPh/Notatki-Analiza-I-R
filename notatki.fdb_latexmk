@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1701212407 "c:/Users/fbaci/Documents/Notatki Analiza/Notatki-ANALiza/notatki.tex" "notatki.pdf" "notatki" 1701212413 0
-  "c:/Users/fbaci/Documents/Notatki Analiza/Notatki-ANALiza/notatki.tex" 1701212406 68323 ec90d43bfe0d9080a3f97ee810cc4526 ""
+["pdflatex"] 1701301676 "c:/Users/fbaci/Documents/Notatki Analiza/Notatki-ANALiza/notatki.tex" "notatki.pdf" "notatki" 1701301682 0
+  "c:/Users/fbaci/Documents/Notatki Analiza/Notatki-ANALiza/notatki.tex" 1701301674 71085 fd315cb058a38ac2227bbc76834595d2 ""
   "c:/texlive/2023/texmf-dist/fonts/enc/dvips/base/8r.enc" 1680560375 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "c:/texlive/2023/texmf-dist/fonts/enc/dvips/kpfonts/kpfonts-expert.enc" 1680563875 2639 b7bbeb66c016cde6fdcad9263fe54a4a ""
   "c:/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map" 1680561504 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -26,6 +26,7 @@
   "c:/texlive/2023/texmf-dist/fonts/type1/public/kpfonts/jkpbne.pfb" 1680563876 18279 7aad9c053b21deb6ce3ea35c2cdb90d0 ""
   "c:/texlive/2023/texmf-dist/fonts/type1/public/kpfonts/jkpex.pfb" 1680563876 26063 1691ba566b0401a2658e6574f5f241e5 ""
   "c:/texlive/2023/texmf-dist/fonts/type1/public/kpfonts/jkpmi.pfb" 1680563876 29813 d05f8d6ea0d8afa920af22dddafc33f2 ""
+  "c:/texlive/2023/texmf-dist/fonts/type1/public/kpfonts/jkpmia.pfb" 1680563876 30461 69b749e6d9e6ecbcbda833c4699db58d ""
   "c:/texlive/2023/texmf-dist/fonts/type1/public/kpfonts/jkpmn8a.pfb" 1680563876 35294 e88bb6b7bdd82f594dee041ddea9423c ""
   "c:/texlive/2023/texmf-dist/fonts/type1/public/kpfonts/jkpmne.pfb" 1680563876 18013 a3754f8df0b4dd3a76b5353fabb31650 ""
   "c:/texlive/2023/texmf-dist/fonts/type1/public/kpfonts/jkpsy.pfb" 1680563876 25860 1e4d17fc7bf1d0b47e9b47e6099f1971 ""
@@ -173,9 +174,9 @@
   "c:/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1680573324 4662201 6a1520b5c5c935088be65b26dee0a7ec ""
   "c:/texlive/2023/texmf-var/web2c/pdftex/pdflatex.fmt" 1680573588 7885541 d5c4c3b8e0341597f7cd8c9a7b255c3d ""
   "c:/texlive/2023/texmf.cnf" 1680573298 713 e69b156964470283e0530f5060668171 ""
-  "notatki.aux" 1701212413 3956 bc620cc494767e163dca1edb0b332a2e "pdflatex"
-  "notatki.tex" 1701212406 68323 ec90d43bfe0d9080a3f97ee810cc4526 ""
-  "notatki.toc" 1701212413 2447 0e0dc0cb6b9adea1707a1c237f07834b "pdflatex"
+  "notatki.aux" 1701301682 5097 bf0bb09dcd5d23ec7744014e10ad0534 "pdflatex"
+  "notatki.tex" 1701301674 71085 fd315cb058a38ac2227bbc76834595d2 ""
+  "notatki.toc" 1701301682 3330 e3697000766f694da1fbd291c749a47d "pdflatex"
   (generated)
   "notatki.aux"
   "notatki.log"

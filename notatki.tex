@@ -137,1095 +137,1176 @@ Notatki do Analizy I R \\
 
 %%pierwszy wyklad - 3 X 2023
 \section{Wstęp}
-    \subsection{Relacje}
-    \begin{defr}{Relacja}
-        Relacją $R$ ze zbioru $A$ do zbioru $B$ nazywamy podzbiór iloczynu kartezjańskiego tych dwu zbiorów:
-        \begin{equation}
-            R \subseteq A \times B.
-        \end{equation}
-        Jeśli $(x, y) \in R$ to piszemy $xRy$.
-    \end{defr}
+\subsection{Relacje}
+\begin{defr}{Relacja}
+    Relacją $R$ ze zbioru $A$ do zbioru $B$ nazywamy podzbiór iloczynu kartezjańskiego tych dwu zbiorów:
+    \begin{equation}
+        R \subseteq A \times B.
+    \end{equation}
+    Jeśli $(x, y) \in R$ to piszemy $xRy$.
+\end{defr}
 
-    \paragraph*{Przykłady relacji:}
+\paragraph*{Przykłady relacji:}
+\begin{itemize}
+    \item Relacja równości $R \subseteq A \times A$, zdefioniowana:
+          \begin{equation}
+              R = \{(a, a) | a \in A\}.
+          \end{equation}
+    \item Na zbiorze $\N$ mamy relację wewnętrzną (tj. będącą podzbiorem $\N ^2$):
+          \begin{equation}
+              R = \{(n, m) | n \leqslant m\}.
+          \end{equation}
+\end{itemize}
+
+\begin{defr}{Relacja równoważności}
+    Relacją równoważności nazywamy relację $R \subseteq A \times A$, spełniającą następujące aksjomaty:
+    \begin{enumerate}
+        \item Zwrotność:
+              \begin{equation}
+                  \forall_{x \in A}: xRx.
+              \end{equation}
+        \item Symetryczność:
+              \begin{equation}
+                  \forall_{x, y \in A}: xRy \implies yRx.
+              \end{equation}
+        \item Przechodniość:
+              \begin{equation}
+                  \forall_{x, y, z\in A}: xRy \land yRz \implies xRz.
+              \end{equation}
+    \end{enumerate}
+\end{defr}
+
+Przykładem relacji równoważności jest relacja $R_f$ zadana przez funkcję $f: A \to B$:
+\begin{equation}
+    x R_f y \iff f(x) = f(y).
+\end{equation}
+
+\begin{defr}{Częściowy porządek}
+    Częściowym porządkiem na zbiorze $A$ nazywamy relację $R \subseteq A^2$ (którą oznaczamy $\leqslant$ i piszemy $x \leqslant y$ zamiast $ x R y$), jeśli ma następujące cechy:
+    \begin{enumerate}
+        \item Zwrotność:
+              \begin{equation}
+                  \forall_{x \in A}: x \leqslant x.
+              \end{equation}
+        \item Antysymetryczność:
+              \begin{equation}
+                  \forall_{x, y \in A}: x \leqslant y \land y \leqslant x \implies x = y.
+              \end{equation}
+        \item Przechodniość:
+              \begin{equation}
+                  \forall_{x, y, z\in A}: xRy \land yRz \implies xRz.
+              \end{equation}
+    \end{enumerate}
+    Zbiór parę $(A, \leqslant)$ nazywamy zbiorem częsciowo uporządkowanym.
+\end{defr}
+
+Na przykład relacja wewnętrzna na zbiorze $\N ^2$ zdefiniowana następująco:
+\[ (a, b) \leqslant (a', b') \iff a \leqslant a' \land b \leqslant b', \]
+zadaje częsciowy porządek nad $\N ^2$.
+
+\begin{defr}{Porządek liniowy}
+    Porządek częściowy $\leqslant$ nad $A$ nazywamy \textbf{liniowym}, jeśli:
+    \begin{equation}
+        \forall_{x, y \in A}: \quad x \leqslant y \lor x \leqslant y.
+    \end{equation}
+    Zbiór z określonym porządkiem liniowym nazywamy \textbf{uporządkowanym liniowo}.
+    Jeśli $x \leqslant y \land x \neq y$ to piszemy $x < y$.
+\end{defr}
+
+Zauważmy, że porządek częściowy - jak sama nazwa wskazuje - niekoniecznie określa relację większości między każdymi dwoma elementami zbioru na którym jest określony. Tę własność ma dopiero porządek liniowy.
+
+\begin{defr}{Ograniczenia}
+    Podzbiór $X \subseteq A$ zbioru uporządkowanego liniowo $(A, \leqslant)$ nazywamy \textbf{ograniczonym z góry}, jeśli:
+    \begin{equation}
+        \exists_{u \in A} \forall_{x \in X} : x \leqslant B.
+    \end{equation}
+    Podobnie definiujemy \textbf{ograniczenie z dołu}:
+    \begin{equation}
+        \exists_{l \in A} \forall_{x \in X}: l \leqslant x.
+    \end{equation}
+    Elementy $u$ i $l$ nazywamy odpowiednio \textbf{ograniczeniem górnym} i \textbf{ograniczeniem dolnym}.
+\end{defr}
+
+\begin{defr}{Kresy górne i dolne}
+    \textbf{Kresem górnym} podzbioru $X \subseteq A$ uporządkowanego $(A, \leqslant)$ nazwiemy najmniejsze jego ograniczenie górne, to znaczy taką liczbę $b \in A$, że:
     \begin{itemize}
-        \item Relacja równości $R \subseteq A \times A$, zdefioniowana:
-            \begin{equation}
-                R = \{(a, a) | a \in A\}.
-            \end{equation}
-        \item Na zbiorze $\N$ mamy relację wewnętrzną (tj. będącą podzbiorem $\N ^2$):
-            \begin{equation}
-                R = \{(n, m) | n \leqslant m\}.
-            \end{equation}
+        \item $b$ jest ograniczeniem górnym $X$,
+        \item jeśli $l$ jest ograniczeniem górnym $X$, to $b \leqslant l$.
     \end{itemize}
+    Podobnie - jako największe ograniczenie dolne - definiujemy \textbf{kres dolny}.
+    Kres górny zbioru $X$ oznaczamy $\sup{X}$, a kres dolny $\inf{X}$
+\end{defr}
+Zauważmy, że w ogólności zbiór nie musi mieć kresu górnego lub dolnego, a jeśli go ma to kres nie musi być elementem tegoż zbioru.
 
-    \begin{defr}{Relacja równoważności}
-        Relacją równoważności nazywamy relację $R \subseteq A \times A$, spełniającą następujące aksjomaty:
-        \begin{enumerate}
-            \item Zwrotność:
-                \begin{equation}
-                    \forall_{x \in A}: xRx.
-                \end{equation}
-            \item Symetryczność:
-                \begin{equation}
-                    \forall_{x, y \in A}: xRy \implies yRx.
-                \end{equation}
-            \item Przechodniość:
-                \begin{equation}
-                    \forall_{x, y, z\in A}: xRy \land yRz \implies xRz.
-                \end{equation}    
-        \end{enumerate}
-    \end{defr}
+\subsection{Liczby rzeczywiste}
+\begin{defr}{$\R$}
+    \textbf{Liczbami rzeczywistymi} nazywamy zbiór $\R$ z określonymi działaniami dodawania $+$ i mnożenia $\cdot$, wyróżnionymi, różnymi elementami $0$ i $1$ i określoną relacją porządku liniowego $\leqslant$ - w skrócie $(\R, +, \cdot, 0, 1, \leqslant)$ - taki że:
+    \begin{enumerate}
+        \item $\R$ jest ciałem, tzn. spełnia:
+              \begin{enumerate}
+                  \item Zamkniętość dodawania i mnożenia:
+                        \begin{equation}
+                            \forall_{a, b \in \R}: a+b \in R \land a \cdot b \in \R;
+                        \end{equation}
 
-    Przykładem relacji równoważności jest relacja $R_f$ zadana przez funkcję $f: A \to B$:
-        \begin{equation}
-            x R_f y \iff f(x) = f(y).
-        \end{equation}
+                  \item $0$ jest elementem neutralnym dodawania:
+                        \begin{equation}
+                            \forall_{a \in \R}: a + 0 = a;
+                        \end{equation}
 
-    \begin{defr}{Częściowy porządek}
-        Częściowym porządkiem na zbiorze $A$ nazywamy relację $R \subseteq A^2$ (którą oznaczamy $\leqslant$ i piszemy $x \leqslant y$ zamiast $ x R y$), jeśli ma następujące cechy:
-        \begin{enumerate}
-            \item Zwrotność:
-            \begin{equation}
-                \forall_{x \in A}: x \leqslant x.
-            \end{equation}
-            \item Antysymetryczność:
-                \begin{equation}
-                    \forall_{x, y \in A}: x \leqslant y \land y \leqslant x \implies x = y.
-                \end{equation}
-            \item Przechodniość:
-                \begin{equation}
-                    \forall_{x, y, z\in A}: xRy \land yRz \implies xRz.
-                \end{equation}   
-        \end{enumerate}
-        Zbiór parę $(A, \leqslant)$ nazywamy zbiorem częsciowo uporządkowanym.
-    \end{defr}
+                  \item Istnieją elementy odwrotne względem dodwania:
+                        \begin{equation}
+                            \forall_{a \in \R} \exists_{-a \in R}: a + (-a) = 0;
+                        \end{equation}
 
-    Na przykład relacja wewnętrzna na zbiorze $\N ^2$ zdefiniowana następująco:
-    \[ (a, b) \leqslant (a', b') \iff a \leqslant a' \land b \leqslant b', \]
-    zadaje częsciowy porządek nad $\N ^2$.
+                  \item Dodawanie jest łączne:
+                        \begin{equation}
+                            \forall_{a, b, c \in \R}: (a + b) + c = a + (b + c);
+                        \end{equation}
 
-    \begin{defr}{Porządek liniowy}
-        Porządek częściowy $\leqslant$ nad $A$ nazywamy \textbf{liniowym}, jeśli:
-        \begin{equation}
-            \forall_{x, y \in A}: \quad x \leqslant y \lor x \leqslant y.
-        \end{equation}
-        Zbiór z określonym porządkiem liniowym nazywamy \textbf{uporządkowanym liniowo}.
-        Jeśli $x \leqslant y \land x \neq y$ to piszemy $x < y$.
-    \end{defr}
+                  \item Dodawanie jest przemienne:
+                        \begin{equation}
+                            \forall_{a, b \in \R}: a + b = b + a;
+                        \end{equation}
 
-    Zauważmy, że porządek częściowy - jak sama nazwa wskazuje - niekoniecznie określa relację większości między każdymi dwoma elementami zbioru na którym jest określony. Tę własność ma dopiero porządek liniowy.
+                  \item $1$ jest elementem neutralnym mnożenia:
+                        \begin{equation}
+                            \forall_{a \in \R}: a \cdot 1 = a;
+                        \end{equation}
 
-    \begin{defr}{Ograniczenia}
-        Podzbiór $X \subseteq A$ zbioru uporządkowanego liniowo $(A, \leqslant)$ nazywamy \textbf{ograniczonym z góry}, jeśli:
-        \begin{equation}
-            \exists_{u \in A} \forall_{x \in X} : x \leqslant B.
-        \end{equation}
-        Podobnie definiujemy \textbf{ograniczenie z dołu}:
-        \begin{equation}
-            \exists_{l \in A} \forall_{x \in X}: l \leqslant x.
-        \end{equation}
-        Elementy $u$ i $l$ nazywamy odpowiednio \textbf{ograniczeniem górnym} i \textbf{ograniczeniem dolnym}.
-    \end{defr}
+                  \item Mnożenie jest łączne:
+                        \begin{equation}
+                            \forall_{a, b, c \in \R}: (a \cdot b) \cdot c = a \cdot (b \cdot c);
+                        \end{equation}
 
-    \begin{defr}{Kresy górne i dolne}
-        \textbf{Kresem górnym} podzbioru $X \subseteq A$ uporządkowanego $(A, \leqslant)$ nazwiemy najmniejsze jego ograniczenie górne, to znaczy taką liczbę $b \in A$, że:
-        \begin{itemize}
-            \item $b$ jest ograniczeniem górnym $X$,
-            \item jeśli $l$ jest ograniczeniem górnym $X$, to $b \leqslant l$.
-        \end{itemize}
-        Podobnie - jako największe ograniczenie dolne - definiujemy \textbf{kres dolny}.
-        Kres górny zbioru $X$ oznaczamy $\sup{X}$, a kres dolny $\inf{X}$
-    \end{defr}
-    Zauważmy, że w ogólności zbiór nie musi mieć kresu górnego lub dolnego, a jeśli go ma to kres nie musi być elementem tegoż zbioru.
+                  \item Mnożenie jest przemienne:
+                        \begin{equation}
+                            \forall_{a, b \in \R}: a \cdot b = b \cdot a;
+                        \end{equation}
 
-    \subsection{Liczby rzeczywiste}
-    \begin{defr}{$\R$}
-        \textbf{Liczbami rzeczywistymi} nazywamy zbiór $\R$ z określonymi działaniami dodawania $+$ i mnożenia $\cdot$, wyróżnionymi, różnymi elementami $0$ i $1$ i określoną relacją porządku liniowego $\leqslant$ - w skrócie $(\R, +, \cdot, 0, 1, \leqslant)$ - taki że:
-        \begin{enumerate}
-            \item $\R$ jest ciałem, tzn. spełnia:
-            \begin{enumerate}
-                \item Zamkniętość dodawania i mnożenia:
-                    \begin{equation}
-                        \forall_{a, b \in \R}: a+b \in R \land a \cdot b \in \R;
-                    \end{equation}
-                
-                \item $0$ jest elementem neutralnym dodawania:
-                    \begin{equation}
-                        \forall_{a \in \R}: a + 0 = a;
-                    \end{equation}
-                
-                \item Istnieją elementy odwrotne względem dodwania:
-                    \begin{equation}
-                        \forall_{a \in \R} \exists_{-a \in R}: a + (-a) = 0;
-                    \end{equation}
-                
-                \item Dodawanie jest łączne:
-                    \begin{equation}
-                        \forall_{a, b, c \in \R}: (a + b) + c = a + (b + c);
-                    \end{equation}
-                
-                \item Dodawanie jest przemienne:
-                    \begin{equation}
-                        \forall_{a, b \in \R}: a + b = b + a;
-                    \end{equation}
-                
-                \item $1$ jest elementem neutralnym mnożenia:
-                    \begin{equation}
-                        \forall_{a \in \R}: a \cdot 1 = a;
-                    \end{equation}
-                
-                \item Mnożenie jest łączne:
-                    \begin{equation}
-                        \forall_{a, b, c \in \R}: (a \cdot b) \cdot c = a \cdot (b \cdot c);
-                    \end{equation}
-                
-                \item Mnożenie jest przemienne:
-                    \begin{equation}
-                        \forall_{a, b \in \R}: a \cdot b = b \cdot a;
-                    \end{equation}
-                
-                \item Istnieją elementy przeciwne względem mnożenia (z wyjątkiem $0$):
-                \begin{equation}
-                    \forall_{a \in \R \backslash \{0\}} \exists_{a^{-1}\in R}: a \cdot a^{-1} = 1;
-                \end{equation}
+                  \item Istnieją elementy przeciwne względem mnożenia (z wyjątkiem $0$):
+                        \begin{equation}
+                            \forall_{a \in \R \backslash \{0\}} \exists_{a^{-1}\in R}: a \cdot a^{-1} = 1;
+                        \end{equation}
 
-                \item Dodawanie jest rozdzielne względem mnożenia:
-                \begin{equation}
-                    \forall_{a, b, c \in \R}: a \cdot (b + c) = a \cdot b + a \cdot c.
-                \end{equation}
-                
-            \end{enumerate}
-            \item Porządek liniowy $\leqslant$ spełnia:
-            \begin{enumerate}
-                \item Możliwość dodawania "stronami":
-                \begin{equation}
-                    \forall_{a, b, t \in R}: a \leqslant b \implies a + t \leqslant b + t;
-                \end{equation}
-                
-                \item Mnożenie dodatnich zachowuje dodatniość
-                \begin{equation}
-                    \forall_{a, b\in R}: 0 < a \land 0< b \implies 0 < a \cdot b.
-                \end{equation}
+                  \item Dodawanie jest rozdzielne względem mnożenia:
+                        \begin{equation}
+                            \forall_{a, b, c \in \R}: a \cdot (b + c) = a \cdot b + a \cdot c.
+                        \end{equation}
 
-            \end{enumerate}
-            \item $\R$ jest zwarty, tj. każdy niepusty zbiór ograniczony z góry ma kres górny w $\R$.
-        \end{enumerate}
-    \end{defr}
-    
-    Można podać konstrukcję ciała o podanych własnościach (np. kontrukcja Dedekina, kontrukcja Riemana) i dowieść, że z dokładnością do izomorfizmu istnieje tylko jedno takie ciało.
-    
-    \begin{twier}{Własność Archimedesa}
-        \begin{equation}
-            \forall_{x > 0, y \in \R} \exists_{n \in \N}: nx > y. 
-        \end{equation}
-    \end{twier}
+              \end{enumerate}
+        \item Porządek liniowy $\leqslant$ spełnia:
+              \begin{enumerate}
+                  \item Możliwość dodawania "stronami":
+                        \begin{equation}
+                            \forall_{a, b, t \in R}: a \leqslant b \implies a + t \leqslant b + t;
+                        \end{equation}
+
+                  \item Mnożenie dodatnich zachowuje dodatniość
+                        \begin{equation}
+                            \forall_{a, b\in R}: 0 < a \land 0< b \implies 0 < a \cdot b.
+                        \end{equation}
+
+              \end{enumerate}
+        \item $\R$ jest zwarty, tj. każdy niepusty zbiór ograniczony z góry ma kres górny w $\R$.
+    \end{enumerate}
+\end{defr}
+
+Można podać konstrukcję ciała o podanych własnościach (np. kontrukcja Dedekina, kontrukcja Riemana) i dowieść, że z dokładnością do izomorfizmu istnieje tylko jedno takie ciało.
+
+\begin{twier}{Własność Archimedesa}
+    \begin{equation}
+        \forall_{x > 0, y \in \R} \exists_{n \in \N}: nx > y.
+    \end{equation}
+\end{twier}
 
 
-    \begin{dow}{Dowód}
-        Twiedzenia dowiedziemy nie wprost:\\
-        Niech $X = {nx | n \in \N}$ i załóżmy, że X jest ograniczony z góry przez $y$. Zatem posiada supremum: $\alpha = \sup X$. Wiemy, że $\alpha - x < \alpha$, więc nie może to być ograniczenie górne. Zatem:
-        \[ \exists_{n_0 \in \N}: n_0 x > \alpha - x. \]
-        Ale wtedy:
-        \[ X \ni (n_0 + 1) x > \alpha = \sup X. \]
-        Sprzeczność! Istotnie więc, zbiór ${nx | n \in \N}$ nie może być ograniczony przez żadną liczbę, co dowodzi tezy.
-    \end{dow}
+\begin{dow}{Dowód}
+    Twiedzenia dowiedziemy nie wprost:\\
+    Niech $X = {nx | n \in \N}$ i załóżmy, że X jest ograniczony z góry przez $y$. Zatem posiada supremum: $\alpha = \sup X$. Wiemy, że $\alpha - x < \alpha$, więc nie może to być ograniczenie górne. Zatem:
+    \[ \exists_{n_0 \in \N}: n_0 x > \alpha - x. \]
+    Ale wtedy:
+    \[ X \ni (n_0 + 1) x > \alpha = \sup X. \]
+    Sprzeczność! Istotnie więc, zbiór ${nx | n \in \N}$ nie może być ograniczony przez żadną liczbę, co dowodzi tezy.
+\end{dow}
 
-    \begin{twier}{Gęstość $\Q$ w $\R$}
-        \begin{equation}
-            \forall_{x, y \in \R, \, x < y} \exists_{r \in \Q}: x < r < y.
-        \end{equation}
-    \end{twier}
-    \begin{dow}{Dowód}
-        Skoro $y - x > 0$, to $\exists{n \in \N}: n(y - x) > 1$. Ponadto, skoro $1 > 0$, to $\exists_{m_1, m_2 \in \N}: m_1 > n x \land m_2 > -nx$. Zatem $-m_2 < nx < m_1$, tzn. $nx$ leży pomiędzy dwiema liczami całkowitymi. Istnieje więc takie $m \in \Z$, takie że:
-        \[ m-1 \leqslant nx < m. \]
-        Stąd już prosto:
-        \[nx < m \leqslant nx +1 < ny,\]
-        \[x < \frac{m}{n} < y.\]
-    \end{dow}
+\begin{twier}{Gęstość $\Q$ w $\R$}
+    \begin{equation}
+        \forall_{x, y \in \R, \, x < y} \exists_{r \in \Q}: x < r < y.
+    \end{equation}
+\end{twier}
+\begin{dow}{Dowód}
+    Skoro $y - x > 0$, to $\exists{n \in \N}: n(y - x) > 1$. Ponadto, skoro $1 > 0$, to $\exists_{m_1, m_2 \in \N}: m_1 > n x \land m_2 > -nx$. Zatem $-m_2 < nx < m_1$, tzn. $nx$ leży pomiędzy dwiema liczami całkowitymi. Istnieje więc takie $m \in \Z$, takie że:
+    \[ m-1 \leqslant nx < m. \]
+    Stąd już prosto:
+    \[nx < m \leqslant nx +1 < ny,\]
+    \[x < \frac{m}{n} < y.\]
+\end{dow}
 
-    \paragraph*{} Na koniec krótka notka - zbiór $\overline{\R} = \R \cup \{+\oo, -\oo\}$, to jest liczby rzeczywiste z dołączonymi symbolami (nie liczbami!) plus i minus nieskończoności, nazywami \textbf{rozszerzonymi liczbami rzeczywistymi}.
+\paragraph*{} Na koniec krótka notka - zbiór $\overline{\R} = \R \cup \{+\oo, -\oo\}$, to jest liczby rzeczywiste z dołączonymi symbolami (nie liczbami!) plus i minus nieskończoności, nazywami \textbf{rozszerzonymi liczbami rzeczywistymi}.
 
 
 \section{Ciagi rzeczywiste}
-    \subsection{Pojęcie ciągu i ogólne rezulataty}
-    \begin{defr}{Ciąg}
-        \textbf{Ciagiem} elementów z zbioru $X$ nazywamy funkcję:
-        \begin{equation}
-            a: \N \to X
-        \end{equation}
-        i zamiast $a(n)$ piszemy $a_n$. Cały ciąg oznaczamy $(a_n)_{n \in \N}$. My w szczególności zajmować się będziemy ciągami rzeczywistymi i zespolonymi.
-    \end{defr}    
-    W sekcji tej, o ile nie powiedziano inaczej, zakładamy, że wszystkie ciągi są rzeczywiste.
-    \begin{defr}{ZBIEŻNOŚĆ CIĄGU}
-        Ciąg rzeczywisty $\ciag{a}$ nazywamy zbieżnym do granicy $g$, jeśli:
-        \begin{equation}
-            \forall_{\eps > 0} \exists_{N_{\eps} \in \N} \forall_{n \geqslant N}: |a_n - g| \leqslant \eps.
-        \end{equation}
-        Piszemy wtedy: $\lim_{n \to \oo} a_n = g$ lub $a_n \xrightarrow{n \to \oo} g$.
-    \end{defr}
-
-    Ciąg $\ciag{a}$ nazywamy \textbf{ograniczonym}, jeśli:
+\subsection{Pojęcie ciągu i ogólne rezulataty}
+\begin{defr}{Ciąg}
+    \textbf{Ciagiem} elementów z zbioru $X$ nazywamy funkcję:
     \begin{equation}
-        \exists_{C} \forall_{n \in \N}: |a_n| \leqslant C.
+        a: \N \to X
+    \end{equation}
+    i zamiast $a(n)$ piszemy $a_n$. Cały ciąg oznaczamy $(a_n)_{n \in \N}$. My w szczególności zajmować się będziemy ciągami rzeczywistymi i zespolonymi.
+\end{defr}
+W sekcji tej, o ile nie powiedziano inaczej, zakładamy, że wszystkie ciągi są rzeczywiste.
+\begin{defr}{ZBIEŻNOŚĆ CIĄGU}
+    Ciąg rzeczywisty $\ciag{a}$ nazywamy zbieżnym do granicy $g$, jeśli:
+    \begin{equation}
+        \forall_{\eps > 0} \exists_{N_{\eps} \in \N} \forall_{n \geqslant N}: |a_n - g| \leqslant \eps.
+    \end{equation}
+    Piszemy wtedy: $\lim_{n \to \oo} a_n = g$ lub $a_n \xrightarrow{n \to \oo} g$.
+\end{defr}
+
+Ciąg $\ciag{a}$ nazywamy \textbf{ograniczonym}, jeśli:
+\begin{equation}
+    \exists_{C} \forall_{n \in \N}: |a_n| \leqslant C.
+\end{equation}
+
+\begin{obs}{Obserwacja}
+    Każdy ciąg zbieżny jest ograniczony.
+\end{obs}.
+
+\begin{twier}{Arytmetyka granic}
+    Niech $\ciag{a}$ i $\ciag{b}$ będą ciągami rzeczywistymi, takimi, że $\lgras{n}{a} = a$ i $\lgras{n}{b} = b$. Wtedy:
+    \begin{enumerate}
+        \item \begin{equation}
+                  \gras{n}{a + b} = a + b
+              \end{equation}
+        \item \begin{equation}
+                  \gras{n}{a \cdot b} = a \cdot b
+              \end{equation}
+        \item \begin{equation}
+                  \gras{n}{|a|} = |a|
+              \end{equation}
+        \item Jeśli $b_n \neq 0$ DDD $n$ (dla dostatecznie dużych $n$) i $b \neq 0$:
+              \begin{equation}
+                  \lim_{n \to \oo} \frac{a_n}{b_n} = \frac{a}{b}
+              \end{equation}
+
+    \end{enumerate}
+\end{twier}
+
+\begin{dow}{Dowód}
+    W dowodach wszystkich tych twierdzeń chcemy dla dowolnego $\eps$ skonstruować takie $N$, że dla wszystkich $n \geqslant N$  różnica między wyrazami ciągu po lewej a granicą po prawej stronie jest mniejsza od $\eps$. Pamiętamy tutaj, że:
+    \begin{equation}
+        \forall_{\eps > 0} \exists_{M_{\eps} \in \N} \forall{n \geqslant M_{\eps}}: |a_n - a| \leqslant \eps,
+    \end{equation}
+    \begin{equation}
+        \forall_{\eps > 0} \exists_{K_{\eps} \in \N} \forall{n \geqslant K_{\eps}}: |b_n - b| \leqslant \eps,
     \end{equation}
 
-    \begin{obs}{Obserwacja}
-        Każdy ciąg zbieżny jest ograniczony.
-    \end{obs}.
+    \begin{enumerate}
+        \item Mamy: \begin{equation}
+                  |a_n + b_n - a - b| \leqslant |a_n - a| + |b_n - b|,
+              \end{equation}
+              więc dla $n \geqslant N = \max\{M_{\frac{\eps}{2}},\, K_{\frac{\eps}{2}}\}$: \begin{equation}
+                  |a_n + b_n - a - b| \leqslant |a_n - a| + |b_n - b| \leqslant \frac{\eps}{2} + \frac{\eps}{2}  = \eps.
+              \end{equation}
 
-    \begin{twier}{Arytmetyka granic}
-        Niech $\ciag{a}$ i $\ciag{b}$ będą ciągami rzeczywistymi, takimi, że $\lgras{n}{a} = a$ i $\lgras{n}{b} = b$. Wtedy:
-        \begin{enumerate}
-            \item \begin{equation}
-                \gras{n}{a + b} = a + b
-            \end{equation} 
-            \item \begin{equation}
-                \gras{n}{a \cdot b} = a \cdot b
-            \end{equation} 
-            \item \begin{equation}
-                \gras{n}{|a|} = |a|
-            \end{equation} 
-            \item Jeśli $b_n \neq 0$ DDD $n$ (dla dostatecznie dużych $n$) i $b \neq 0$:
-            \begin{equation}
-                \lim_{n \to \oo} \frac{a_n}{b_n} = \frac{a}{b}
-            \end{equation} 
-            
-        \end{enumerate}
-    \end{twier}
-
-    \begin{dow}{Dowód}
-        W dowodach wszystkich tych twierdzeń chcemy dla dowolnego $\eps$ skonstruować takie $N$, że dla wszystkich $n \geqslant N$  różnica między wyrazami ciągu po lewej a granicą po prawej stronie jest mniejsza od $\eps$. Pamiętamy tutaj, że:
-        \begin{equation}
-            \forall_{\eps > 0} \exists_{M_{\eps} \in \N} \forall{n \geqslant M_{\eps}}: |a_n - a| \leqslant \eps,
-        \end{equation}
-        \begin{equation}
-            \forall_{\eps > 0} \exists_{K_{\eps} \in \N} \forall{n \geqslant K_{\eps}}: |b_n - b| \leqslant \eps,
-        \end{equation}
-
-        \begin{enumerate}
-            \item Mamy: \begin{equation}
-                |a_n + b_n - a - b| \leqslant |a_n - a| + |b_n - b|,
-            \end{equation}
-            więc dla $n \geqslant N = \max\{M_{\frac{\eps}{2}},\, K_{\frac{\eps}{2}}\}$: \begin{equation}
-                |a_n + b_n - a - b| \leqslant |a_n - a| + |b_n - b| \leqslant \frac{\eps}{2} + \frac{\eps}{2}  = \eps.
-            \end{equation}
-
-            \item \begin{equation}
-                | a_n b_n - ab| = |a_n b_n - a_n b + a_n b - ab| \leqslant |a_n| |b_n - b| + |b| |a_n -a|.
-            \end{equation}
-            Ale $\ciag{a}$ jest ograniczony, więc $a_n \leqslant C$ i mamy: \begin{equation}
-                | a_n b_n - ab|  \leqslant |a_n| |b_n - b| + b |a_n -a| \leqslant (|C| +1) |b_n - b| + (|b| +1) |a_n -a|.
-            \end{equation}
-            Zatem dla $n \geqslant \max\{M_{\frac{\eps}{2|b+1|}}, \, K_{\frac{\eps}{2(|C| +1 )}} \}$: \begin{equation}
-                | a_n b_n - ab| \leqslant (|C| +1) \frac{\eps}{2(|C| +1 )} + (|b| +1) \frac{\eps}{2|b+1|} = \eps.
-            \end{equation}
-            Dodaliśmy tutaj $1$ do $|C|$ i $|b|$, żeby uniknąć ewentualnego dzielenia przez $0$.
+        \item \begin{equation}
+                  | a_n b_n - ab| = |a_n b_n - a_n b + a_n b - ab| \leqslant |a_n| |b_n - b| + |b| |a_n -a|.
+              \end{equation}
+              Ale $\ciag{a}$ jest ograniczony, więc $a_n \leqslant C$ i mamy: \begin{equation}
+                  | a_n b_n - ab|  \leqslant |a_n| |b_n - b| + b |a_n -a| \leqslant (|C| +1) |b_n - b| + (|b| +1) |a_n -a|.
+              \end{equation}
+              Zatem dla $n \geqslant \max\{M_{\frac{\eps}{2|b+1|}}, \, K_{\frac{\eps}{2(|C| +1 )}} \}$: \begin{equation}
+                  | a_n b_n - ab| \leqslant (|C| +1) \frac{\eps}{2(|C| +1 )} + (|b| +1) \frac{\eps}{2|b+1|} = \eps.
+              \end{equation}
+              Dodaliśmy tutaj $1$ do $|C|$ i $|b|$, żeby uniknąć ewentualnego dzielenia przez $0$.
 
 
-            \item Jeśli $a > 0$, to ciąg od pewnego miejsca musi być dodatni: $|a_n| = a_n$ dla $n > M_{|a|}$, więc dla $n > N = \max\{M_{|x|}, \, M_{\eps}\}$:
-            \[ ||a_n| - |a|| = |a_n - a| < \eps. \]
-            Podobnie, jeśli $a < 0$, to ciąg od pewnego miejsca jest ujemny i $|a_n| = -a_n$ dla $n > M_{|a|}$, więc dla $n > N = \max\{M_{|x|}, \, M_{\eps}\}$:
-            \[ ||a_n| - a| = |-a_n - |a|| = |a_n -a| < \eps. \]
-            Dla $a = 0$, mamy prosto:
-            \[ |a_n| < \eps \implies ||a_n|| < \eps. \]
+        \item Jeśli $a > 0$, to ciąg od pewnego miejsca musi być dodatni: $|a_n| = a_n$ dla $n > M_{|a|}$, więc dla $n > N = \max\{M_{|x|}, \, M_{\eps}\}$:
+              \[ ||a_n| - |a|| = |a_n - a| < \eps. \]
+              Podobnie, jeśli $a < 0$, to ciąg od pewnego miejsca jest ujemny i $|a_n| = -a_n$ dla $n > M_{|a|}$, więc dla $n > N = \max\{M_{|x|}, \, M_{\eps}\}$:
+              \[ ||a_n| - a| = |-a_n - |a|| = |a_n -a| < \eps. \]
+              Dla $a = 0$, mamy prosto:
+              \[ |a_n| < \eps \implies ||a_n|| < \eps. \]
 
-            \item Zakładamy, że $b_n \neq 0$ DDD $n$, więc istnieje takie $K_0$, że dla $n \geqslant K_0$ $b_n \neq 0$. Wtedy: \begin{equation}
-                \Big| \frac{a_n}{b_n} - \frac{a}{b} \Big| = \Big| \frac{a_n b - a b_n}{b_n b} \Big| = \Big| \frac{a_n b - ab + ab - a b_n}{b_n b} \Big| = \Big| \frac{b(a_n - a) + a(b -b_n)}{b_n b} \Big|
-            \end{equation} \begin{equation}
-                \Big| \frac{a_n}{b_n} - \frac{a}{b} \Big| \leqslant \Big| \frac{a_n - a}{b_n} \Big| + \Big| \frac{a}{b_n b} \Big| \Big| b_n - b \Big| \leqslant \Big| \frac{a_n - a}{b_n} \Big| + (\Big| \frac{a}{b_n b} \Big| +1) \Big| b_n - b \Big|
-            \end{equation}
-            Zauważmy, że dla $n \geqslant K_{|\frac{b}{2}|}$ mamy $|b_n - b| \leqslant |\frac{b}{2}|$, więc $\frac{1}{2}|b| \leqslant |b_n|$, przez co: \begin{equation}
-                \Big| \frac{a_n}{b_n} - \frac{a}{b} \Big| \leqslant \Big| \frac{a_n - a}{b_n} \Big| + (\Big| \frac{a}{b_n b} \Big| +1) \Big| b_n - b \Big| \leqslant \Big| \frac{2}{b} \Big| \Big|a_n - a\Big| + (\Big| \frac{2 a}{b} \Big| +1) \Big| b_n - b \Big|
-            \end{equation}
+        \item Zakładamy, że $b_n \neq 0$ DDD $n$, więc istnieje takie $K_0$, że dla $n \geqslant K_0$ $b_n \neq 0$. Wtedy: \begin{equation}
+                  \Big| \frac{a_n}{b_n} - \frac{a}{b} \Big| = \Big| \frac{a_n b - a b_n}{b_n b} \Big| = \Big| \frac{a_n b - ab + ab - a b_n}{b_n b} \Big| = \Big| \frac{b(a_n - a) + a(b -b_n)}{b_n b} \Big|
+              \end{equation} \begin{equation}
+                  \Big| \frac{a_n}{b_n} - \frac{a}{b} \Big| \leqslant \Big| \frac{a_n - a}{b_n} \Big| + \Big| \frac{a}{b_n b} \Big| \Big| b_n - b \Big| \leqslant \Big| \frac{a_n - a}{b_n} \Big| + (\Big| \frac{a}{b_n b} \Big| +1) \Big| b_n - b \Big|
+              \end{equation}
+              Zauważmy, że dla $n \geqslant K_{|\frac{b}{2}|}$ mamy $|b_n - b| \leqslant |\frac{b}{2}|$, więc $\frac{1}{2}|b| \leqslant |b_n|$, przez co: \begin{equation}
+                  \Big| \frac{a_n}{b_n} - \frac{a}{b} \Big| \leqslant \Big| \frac{a_n - a}{b_n} \Big| + (\Big| \frac{a}{b_n b} \Big| +1) \Big| b_n - b \Big| \leqslant \Big| \frac{2}{b} \Big| \Big|a_n - a\Big| + (\Big| \frac{2 a}{b} \Big| +1) \Big| b_n - b \Big|
+              \end{equation}
 
-            Ostatecznie dla $n > \max\{K_0, K_{|\frac{b}{2}|}, K_{\frac{\eps}{2 (| \frac{2 a}{b} | +1)}}, M_{\frac{\eps}{4|b|}} \}:$ \begin{equation}
-                \Big| \frac{a_n}{b_n} - \frac{a}{b} \Big| \leqslant \Big| \frac{2}{b} \Big| \frac{\eps}{4|b|} + (\Big| \frac{2 a}{b} \Big| +1) \frac{\eps}{2 (| \frac{2 a}{b} | +1)}  = \eps.
-            \end{equation}
-
-
-        \end{enumerate}
-    \end{dow}
-
-    \paragraph{} Powiemy teraz o mocnym twierdzeniu, pozwalającym stwierdzić, czy ciąg ma granicę, bez jej wyznaczania.
-    \begin{twier}{Twierdzenie o ciągu monotonicznym i ograniczonym}
-        Każdzy ciąg monotoniczny i ograniczony jest zbieżny. \begin{itemize}
-            \item Jeśli ciąg jest niemalejący, to jest on zbieżny do supremum zbioru wyrazów ciągu.
-            \item Jeśli ciąg jest nierosnący, to jest on zbieżny do infimum zbioru wyrazów ciągu.
-        
-        \end{itemize}
-        Uwaga - dla ciągu $\ciag{a}$ supremum jego wyrazów - tj. $\sup \{ a_n \, | \, n \in \N \}$ - oznaczamy $\mathlarger{\sup}_{n \in \N} \, a_n$. Analogicznie piszemy $\mathlarger{\inf}_{n \in \N} \, a_n$ dla infimum jego wyrazów.
-    \end{twier}
-
-    \begin{dow}{Dowód}
-        Załóżmy, że $\ciag{a}$ jest niemalejący. Zbiór $\{ a_n \, | \, n \in \N \}$ jest ograniczony, zatem posiada supremum. Oznaczmy je $g$. Zatem dla każdego $\eps > 0$ liczba $g - \eps$ nie jest ograniczeniem górnym: \begin{equation}
-            \exists_m: g - \eps \leqslant a_m \leqslant g.
-        \end{equation}
-        Ale wtedy, z racji monotoniczności $\ciag{a}$: \begin{equation}
-            \forall_{n \geqslant m}: g - \eps \leqslant a_m \leqslant a_n \leqslant g \leqslant g + \eps.
-        \end{equation}
-        Czyli:  \begin{equation}
-            \forall_{n \geqslant m}: |a_n - g| \leqslant \eps,
-        \end{equation}
-        co chcieliśmy pokazać. Dla $\ciag{a}$ nierosnącego dowód jest zupełnie analogiczny (można też rozważać zbieżność niemalejącego ciągu $\ciag{-a}$).
-
-    \end{dow}
+              Ostatecznie dla $n > \max\{K_0, K_{|\frac{b}{2}|}, K_{\frac{\eps}{2 (| \frac{2 a}{b} | +1)}}, M_{\frac{\eps}{4|b|}} \}:$ \begin{equation}
+                  \Big| \frac{a_n}{b_n} - \frac{a}{b} \Big| \leqslant \Big| \frac{2}{b} \Big| \frac{\eps}{4|b|} + (\Big| \frac{2 a}{b} \Big| +1) \frac{\eps}{2 (| \frac{2 a}{b} | +1)}  = \eps.
+              \end{equation}
 
 
-    \begin{twier}{Twiedzenie  o trzech ciągach}
-        Niech $\ciag{a}$ i $\ciag{c}$ będą dwoma ciągami zbieżnymi do wspólnej granicy $g$. Wtedy, jeśli dla ciągu $\ciag{b}$ istnieje takie $N$, że: \begin{equation}
-            \forall_{n \geqslant N}: a_n \leqslant b_n \leqslant c_n,
-        \end{equation}
-        to $\lgras{n}{b} = g$. 
-    \end{twier}
+    \end{enumerate}
+\end{dow}
 
-    \begin{dow}{Dowód}
-        Dowód jest bardzo krótki. Dla dowolnego $\eps$ bierzemy takie $M_{\eps}$, że $\forall_{n \geqslant M_{\eps}}: |a_n - g| \leqslant \eps $ i takie $K_{\eps}$, że: $\forall_{n \geqslant K_{\eps}}: |c_n - g| \leqslant \eps $. Wtedy dla $n \geqslant \max\{N, M_\eps, K_\eps \}$: \begin{equation}
-            g - \eps \leqslant a_n \leqslant b_n \leqslant c_n \leqslant g - \eps,
-        \end{equation}
-        więc $|b_n - g| \leqslant \eps$.
-    \end{dow}
+\paragraph{} Powiemy teraz o mocnym twierdzeniu, pozwalającym stwierdzić, czy ciąg ma granicę, bez jej wyznaczania.
+\begin{twier}{Twierdzenie o ciągu monotonicznym i ograniczonym}
+    Każdzy ciąg monotoniczny i ograniczony jest zbieżny. \begin{itemize}
+        \item Jeśli ciąg jest niemalejący, to jest on zbieżny do supremum zbioru wyrazów ciągu.
+        \item Jeśli ciąg jest nierosnący, to jest on zbieżny do infimum zbioru wyrazów ciągu.
+
+    \end{itemize}
+    Uwaga - dla ciągu $\ciag{a}$ supremum jego wyrazów - tj. $\sup \{ a_n \, | \, n \in \N \}$ - oznaczamy $\mathlarger{\sup}_{n \in \N} \, a_n$. Analogicznie piszemy $\mathlarger{\inf}_{n \in \N} \, a_n$ dla infimum jego wyrazów.
+\end{twier}
+
+\begin{dow}{Dowód}
+    Załóżmy, że $\ciag{a}$ jest niemalejący. Zbiór $\{ a_n \, | \, n \in \N \}$ jest ograniczony, zatem posiada supremum. Oznaczmy je $g$. Zatem dla każdego $\eps > 0$ liczba $g - \eps$ nie jest ograniczeniem górnym: \begin{equation}
+        \exists_m: g - \eps \leqslant a_m \leqslant g.
+    \end{equation}
+    Ale wtedy, z racji monotoniczności $\ciag{a}$: \begin{equation}
+        \forall_{n \geqslant m}: g - \eps \leqslant a_m \leqslant a_n \leqslant g \leqslant g + \eps.
+    \end{equation}
+    Czyli:  \begin{equation}
+        \forall_{n \geqslant m}: |a_n - g| \leqslant \eps,
+    \end{equation}
+    co chcieliśmy pokazać. Dla $\ciag{a}$ nierosnącego dowód jest zupełnie analogiczny (można też rozważać zbieżność niemalejącego ciągu $\ciag{-a}$).
+
+\end{dow}
+
+
+\begin{twier}{Twiedzenie  o trzech ciągach}
+    Niech $\ciag{a}$ i $\ciag{c}$ będą dwoma ciągami zbieżnymi do wspólnej granicy $g$. Wtedy, jeśli dla ciągu $\ciag{b}$ istnieje takie $N$, że: \begin{equation}
+        \forall_{n \geqslant N}: a_n \leqslant b_n \leqslant c_n,
+    \end{equation}
+    to $\lgras{n}{b} = g$.
+\end{twier}
+
+\begin{dow}{Dowód}
+    Dowód jest bardzo krótki. Dla dowolnego $\eps$ bierzemy takie $M_{\eps}$, że $\forall_{n \geqslant M_{\eps}}: |a_n - g| \leqslant \eps $ i takie $K_{\eps}$, że: $\forall_{n \geqslant K_{\eps}}: |c_n - g| \leqslant \eps $. Wtedy dla $n \geqslant \max\{N, M_\eps, K_\eps \}$: \begin{equation}
+        g - \eps \leqslant a_n \leqslant b_n \leqslant c_n \leqslant g - \eps,
+    \end{equation}
+    więc $|b_n - g| \leqslant \eps$.
+\end{dow}
 
 
 
-    \begin{defr}{Rozbieżność do $\pm \oo$}
-        Powiemy, że ciąg $\ciag{a}$ jest rozbieżny do $+\oo$, jeśli: \begin{equation}
-            \forall_C \exists_{N_C \in \N} \forall_{n \geqslant N_C}: a_n \geqslant C.
-        \end{equation} 
-        Analogicznie, powiemy, że ciąg $\ciag{a}$ jest rozbieżny do $-\oo$, jeśli: \begin{equation}
-            \forall_C \exists_{N_C \in \N} \forall_{n \geqslant N_C}: a_n \leqslant C.
-        \end{equation}
-        Mówimy też o "zbieżności" do $\pm \oo$, tj. zbieżności w zbiorze $\overline{\R}$
-    \end{defr}
+\begin{defr}{Rozbieżność do $\pm \oo$}
+    Powiemy, że ciąg $\ciag{a}$ jest rozbieżny do $+\oo$, jeśli: \begin{equation}
+        \forall_C \exists_{N_C \in \N} \forall_{n \geqslant N_C}: a_n \geqslant C.
+    \end{equation}
+    Analogicznie, powiemy, że ciąg $\ciag{a}$ jest rozbieżny do $-\oo$, jeśli: \begin{equation}
+        \forall_C \exists_{N_C \in \N} \forall_{n \geqslant N_C}: a_n \leqslant C.
+    \end{equation}
+    Mówimy też o "zbieżności" do $\pm \oo$, tj. zbieżności w zbiorze $\overline{\R}$
+\end{defr}
 
-    \begin{obs}{Obserwacja}
-        Ciąg monotoniczny, nieograniczony jest rozbieżny do $\pm \oo$.
-    \end{obs}
+\begin{obs}{Obserwacja}
+    Ciąg monotoniczny, nieograniczony jest rozbieżny do $\pm \oo$.
+\end{obs}
 
-    \begin{defr}{Podciąg}
-        Podciągiem ciagu $\ciag{a}$ nazywamy ciąg $(a_{n_k})_{k \in \N}$, gdzie $n \ni k \mapsto n_k \in \N$ jest funkcją ściśle rosnącą.
-    \end{defr}
+\begin{defr}{Podciąg}
+    Podciągiem ciagu $\ciag{a}$ nazywamy ciąg $(a_{n_k})_{k \in \N}$, gdzie $n \ni k \mapsto n_k \in \N$ jest funkcją ściśle rosnącą.
+\end{defr}
 
 
-    \begin{obs}{Obserwacja}
-        Jeśli $a_n \to g$, to każdy podciąg $a_{n_k} \to g$
-    \end{obs}
+\begin{obs}{Obserwacja}
+    Jeśli $a_n \to g$, to każdy podciąg $a_{n_k} \to g$
+\end{obs}
 
 
 
 
 
-    \subsection{$\limsup$ i $\liminf$}
-    %%%%10 X 2023%%%
+\subsection{$\limsup$ i $\liminf$}
+%%%%10 X 2023%%%
 
 
 
-    \paragraph{}
-    Załóżmy, że mamy dany ciąg liczb rzeczywistych $\ciag{a}$. Zdefiniujmy wtedy następujące dwa ciągi: $\ciag{\alpha}$ oraz $\ciag{\beta}$, takie że: \begin{equation}
-        \alpha_n = \inf \{ a_k\, |\, k \geqslant n \}
+\paragraph{}
+Załóżmy, że mamy dany ciąg liczb rzeczywistych $\ciag{a}$. Zdefiniujmy wtedy następujące dwa ciągi: $\ciag{\alpha}$ oraz $\ciag{\beta}$, takie że: \begin{equation}
+    \alpha_n = \inf \{ a_k\, |\, k \geqslant n \}
+\end{equation} \begin{equation}
+    \beta_n = \sup \{ a_k \, | \, k \geqslant n \}
+\end{equation}
+Wtedy, $\ciag{\alpha}$ jest ciągiem niemalejącym, co wynika z faktu, że:
+\[ \inf \{ a_k\, |\, k \geqslant n + 1 \} \, \subseteq \, \inf \{ a_k\, |\, k \geqslant n \} \]
+Podobnież, $\ciag{\beta}$ jest ciągiem nierosnącym. Z tego wynika więc, że są to ciągi zbieżne w $\overline{\R}$.
+Mamy więc: \begin{equation}
+    \lim_{n \to \infty} \alpha_n = \sup \alpha_n,
+\end{equation}
+gdyż $\ciag{\alpha}$ to ciąg nierosnący oraz podobnie: \begin{equation}
+    \lim_{n \to \infty} \beta = \inf \beta.
+\end{equation}
+
+\begin{defr}{Granice górne i dolne ciągu}
+    Wielkość: \begin{equation}
+        \lim_{n \to \oo} \inf \{ a_k\, |\, k \geqslant n \} = \gras{n}{\alpha} = \sup{\alpha_n}
+    \end{equation} nazywamy $\textbf{granicą dolną}$ ciągu $\ciag{a}$ i oznaczamy $\mathlarger{\liminf}_{n \to \oo} a_n$. Podobnie, wielkość: \begin{equation}
+        \lim_{n \to \oo} \sup \{ a_k\, |\, k \geqslant n \} = \gras{n}{\beta} = \inf{\beta_n}
+    \end{equation} nazywamy $\textbf{granicą górną}$ ciągu i oznaczamy $\mathlarger{\limsup}_{n \to \oo} a_n$.
+\end{defr}
+
+
+\begin{twier}{Twierdzenie o punktach skupienia ciągu}
+    Niech $L$ będzie zbiorem punktów skupienia zbioru $\{a_n \, | \, n \in \N\}$, tzn. takich liczb, dla których istnieje podciąg ciągu $(\ciag{a}$ zbieżny do tej liczby: \begin{equation}
+        L = \{ x \in \overline{\R} \,\, | \,\, \exists_{\text{podciąg} \, (a_{n_k})_{k \in \N}} : \, \lim_{k \to \infty} a_{n_k} = x \}.
+    \end{equation}
+    Wtedy:
+    \begin{enumerate}
+        \item \begin{equation}
+                  L \neq \emptyset
+              \end{equation}
+        \item \begin{equation}
+                  \liminf{a_n} \in L  \quad \land \quad \limsup{a_n} \in L
+              \end{equation}
+        \item \begin{equation}
+                  \liminf{a_n} = \inf{L} \quad \land \quad \limsup{a_n} = \sup{L}
+              \end{equation}
+    \end{enumerate}
+\end{twier}
+
+\begin{dow}{Dowód}
+    TODO
+\end{dow}
+
+Nietrudnym wnioskiem z tego twierdzenia jest następujące:
+\begin{twier}{Kryterium zbieżności}
+    Ciąg $\ciag{a}$ jest zbieżny do $a \in \Rbar$ wtedy i tylko wtedy, gdy: \begin{equation}
+        \liminf a_n = \limsup a_n.
+    \end{equation}
+\end{twier}
+
+\begin{dow}{Dowód}
+    \paragraph*{$\implies$} Jeśli $\gras{n}{a} = a$, to także każdy podciąg $\ciag{a}$ dąży do $a$, więc $L = \{ a \}$. Ale $\liminf a_n \in L$ i $\limsup a_n \in L$, więc: \begin{equation}
+        \liminf a_n = a = \limsup a_n.
+    \end{equation}
+    \paragraph*{$\impliedby$} Oczywiście zachodzi nierówność: \begin{equation}
+        \alpha_n \leqslant a_n \leqslant \beta_n.
+    \end{equation}
+    Skoro mamy: \begin{equation}
+        \gras{n}{\alpha} = \liminf a_n = \limsup a_n = \gras{n}{\beta},
+    \end{equation}
+    więc z twierdzenia o trzech ciągach mamy: \begin{equation}
+        \gras{n}{a} = \liminf a_n = \limsup a_n.
+    \end{equation}
+\end{dow}
+
+\begin{twier}{Warunek Cauchy'ego}
+    Niech $\ciag{a}$ będzie ciągiem rzeczywistym. Wtedy następujące warunki są rónoważne:
+    \begin{enumerate}
+        \item \begin{equation}
+                  \gras{n}{a} = a \in \R
+              \end{equation}
+        \item \begin{equation}
+                  \forall_{\eps >0} \exists_{M_\eps} \forall_{n, m \geqslant M_\eps} |a_n - a_m| \leqslant \eps.
+              \end{equation}
+              Jeśli ciąg spełnia ten warunek, mówimy, że spełnia warunek Cauchy'ego.
+    \end{enumerate}
+\end{twier}
+
+Sprawdzając warunek Cauchy'ego, możemy dowodzić zbieżności ciągu do granicy rzeczywistej bez wyznaczania tej granicy.
+
+\begin{dow}{Dowód}
+    \paragraph*{1. $\implies$ 2.} Skoro $\ciag{a}$ zbieżny do $a \in R$, to dla dowolnego $\eps >0$ istnieje takie $N_{\frac{\eps}{2}}$, że: \begin{equation}
+        \forall_{n, m \geqslant N_{\frac{\eps}{2}}}: \,|a_n - a| \leqslant \frac{\eps}{2} \,\, \land\,\, |a_m - a| \leqslant \frac{\eps}{2},
+    \end{equation}
+    ale wtedy: \begin{equation}
+        |a_n - a_m| \leqslant \frac{\eps}{2} + \frac{\eps}{2} = \eps.
+    \end{equation}
+
+    \paragraph*{2. $\implies$ 1.} Zauważmy, że $\ciag{a}$ jest ciągiem ograniczonym. Istotnie, weźmy $\eps = 1$: \begin{equation}
+        \exists_{M_1} \forall_{n \geqslant M_1}: |a_n - a_{M_1}| \leqslant 1,
+    \end{equation} więc: \begin{equation}
+        \min \{ a_{M_1} -1; a_k \, \big| \, k < M_1 \} \leqslant a_n \leqslant \max \{ a_{M_1} +1; a_k \, \big| \, k < M_1 \}.
+    \end{equation}
+    Weźmy teraz dowolny $\eps > 0$. Z ograniczoności $\ciag{a}$ wynika: $\alpha = \liminf a_n \in \R$ i $\beta = \limsup a_n \in \R$. Oznacza to, że: \begin{equation}
+        \forall_{\eps > 0} \exists_{A_\eps} \forall_{n \geqslant A_\eps}: |\alpha_n - \alpha| \leqslant \eps,
     \end{equation} \begin{equation}
-        \beta_n = \sup \{ a_k \, | \, k \geqslant n \} 
+        \forall_{\eps > 0} \exists_{B_\eps} \forall_{n \geqslant B_\eps}: |\beta_n - \beta| \leqslant \eps,
     \end{equation}
-    Wtedy, $\ciag{\alpha}$ jest ciągiem niemalejącym, co wynika z faktu, że:
-    \[ \inf \{ a_k\, |\, k \geqslant n + 1 \} \, \subseteq \, \inf \{ a_k\, |\, k \geqslant n \} \]
-    Podobnież, $\ciag{\beta}$ jest ciągiem nierosnącym. Z tego wynika więc, że są to ciągi zbieżne w $\overline{\R}$.
-    Mamy więc: \begin{equation}
-        \lim_{n \to \infty} \alpha_n = \sup \alpha_n,
+    Zauważmy, że: \begin{equation}
+        |\alpha - \beta| \leqslant |\alpha - \alpha_n| + |\beta - \beta_n| + |\alpha_n - \beta_N|.
     \end{equation}
-    gdyż $\ciag{\alpha}$ to ciąg nierosnący oraz podobnie: \begin{equation}
-        \lim_{n \to \infty} \beta = \inf \beta.
-    \end{equation}
-    
-    \begin{defr}{Granice górne i dolne ciągu}
-        Wielkość: \begin{equation}
-            \lim_{n \to \oo} \inf \{ a_k\, |\, k \geqslant n \} = \gras{n}{\alpha} = \sup{\alpha_n}
-        \end{equation} nazywamy $\textbf{granicą dolną}$ ciągu $\ciag{a}$ i oznaczamy $\mathlarger{\liminf}_{n \to \oo} a_n$. Podobnie, wielkość: \begin{equation}
-            \lim_{n \to \oo} \sup \{ a_k\, |\, k \geqslant n \} = \gras{n}{\beta} = \inf{\beta_n}
-        \end{equation} nazywamy $\textbf{granicą górną}$ ciągu i oznaczamy $\mathlarger{\limsup}_{n \to \oo} a_n$.
-    \end{defr}
-
-
-    \begin{twier}{Twierdzenie o punktach skupienia ciągu}
-        Niech $L$ będzie zbiorem punktów skupienia zbioru $\{a_n \, | \, n \in \N\}$, tzn. takich liczb, dla których istnieje podciąg ciągu $(\ciag{a}$ zbieżny do tej liczby: \begin{equation}
-            L = \{ x \in \overline{\R} \,\, | \,\, \exists_{\text{podciąg} \, (a_{n_k})_{k \in \N}} : \, \lim_{k \to \infty} a_{n_k} = x \}.
-        \end{equation}
-        Wtedy:
-        \begin{enumerate}
-            \item \begin{equation}
-                L \neq \emptyset
-            \end{equation}
-            \item \begin{equation}
-                \liminf{a_n} \in L  \quad \land \quad \limsup{a_n} \in L
-            \end{equation}
-            \item \begin{equation}
-                \liminf{a_n} = \inf{L} \quad \land \quad \limsup{a_n} = \sup{L}
-            \end{equation}
-        \end{enumerate}
-    \end{twier}
-
-    \begin{dow}{Dowód}
-        TODO
-    \end{dow}
-
-    Nietrudnym wnioskiem z tego twierdzenia jest następujące:
-    \begin{twier}{Kryterium zbieżności}
-        Ciąg $\ciag{a}$ jest zbieżny do $a \in \Rbar$ wtedy i tylko wtedy, gdy: \begin{equation}
-            \liminf a_n = \limsup a_n.
-        \end{equation}
-    \end{twier}
-
-    \begin{dow}{Dowód}
-        \paragraph*{$\implies$} Jeśli $\gras{n}{a} = a$, to także każdy podciąg $\ciag{a}$ dąży do $a$, więc $L = \{ a \}$. Ale $\liminf a_n \in L$ i $\limsup a_n \in L$, więc: \begin{equation}
-            \liminf a_n = a = \limsup a_n.
-        \end{equation}
-        \paragraph*{$\impliedby$} Oczywiście zachodzi nierówność: \begin{equation}
-            \alpha_n \leqslant a_n \leqslant \beta_n.
-        \end{equation}
-        Skoro mamy: \begin{equation}
-            \gras{n}{\alpha} = \liminf a_n = \limsup a_n = \gras{n}{\beta},
-        \end{equation}
-        więc z twierdzenia o trzech ciągach mamy: \begin{equation}
-            \gras{n}{a} = \liminf a_n = \limsup a_n.
-        \end{equation}
-    \end{dow}
-
-    \begin{twier}{Warunek Cauchy'ego}
-        Niech $\ciag{a}$ będzie ciągiem rzeczywistym. Wtedy następujące warunki są rónoważne:
-        \begin{enumerate}
-            \item \begin{equation}
-                \gras{n}{a} = a \in \R
-            \end{equation}
-            \item \begin{equation}
-                \forall_{\eps >0} \exists_{M_\eps} \forall_{n, m \geqslant M_\eps} |a_n - a_m| \leqslant \eps.
-            \end{equation}
-            Jeśli ciąg spełnia ten warunek, mówimy, że spełnia warunek Cauchy'ego.
-        \end{enumerate}
-    \end{twier}
-
-    Sprawdzając warunek Cauchy'ego, możemy dowodzić zbieżności ciągu do granicy rzeczywistej bez wyznaczania tej granicy.
-
-    \begin{dow}{Dowód}
-        \paragraph*{1. $\implies$ 2.} Skoro $\ciag{a}$ zbieżny do $a \in R$, to dla dowolnego $\eps >0$ istnieje takie $N_{\frac{\eps}{2}}$, że: \begin{equation}
-            \forall_{n, m \geqslant N_{\frac{\eps}{2}}}: \,|a_n - a| \leqslant \frac{\eps}{2} \,\, \land\,\, |a_m - a| \leqslant \frac{\eps}{2},
-        \end{equation}
-        ale wtedy: \begin{equation}
-            |a_n - a_m| \leqslant \frac{\eps}{2} + \frac{\eps}{2} = \eps.
-        \end{equation}
-        
-        \paragraph*{2. $\implies$ 1.} Zauważmy, że $\ciag{a}$ jest ciągiem ograniczonym. Istotnie, weźmy $\eps = 1$: \begin{equation}
-            \exists_{M_1} \forall_{n \geqslant M_1}: |a_n - a_{M_1}| \leqslant 1,
-        \end{equation} więc: \begin{equation}
-            \min \{ a_{M_1} -1; a_k \, \big| \, k < M_1 \} \leqslant a_n \leqslant \max \{ a_{M_1} +1; a_k \, \big| \, k < M_1 \}.
-        \end{equation}
-        Weźmy teraz dowolny $\eps > 0$. Z ograniczoności $\ciag{a}$ wynika: $\alpha = \liminf a_n \in \R$ i $\beta = \limsup a_n \in \R$. Oznacza to, że: \begin{equation}
-            \forall_{\eps > 0} \exists_{A_\eps} \forall_{n \geqslant A_\eps}: |\alpha_n - \alpha| \leqslant \eps,
-        \end{equation} \begin{equation}
-            \forall_{\eps > 0} \exists_{B_\eps} \forall_{n \geqslant B_\eps}: |\beta_n - \beta| \leqslant \eps,
-        \end{equation}
-        Zauważmy, że: \begin{equation}
-            |\alpha - \beta| \leqslant |\alpha - \alpha_n| + |\beta - \beta_n| + |\alpha_n - \beta_N|.
-        \end{equation}
-        Dwa pierwsze czynniki po prawej potrafimy ograniczyć, zbadajmy więc ostatni wyraz: \begin{equation} \begin{split}
-            |\alpha_n - \beta_N| \leqslant |\alpha_n - a_n| + |\beta_n - a_n| & = |\inf\{a_n, a_{n+1}, ...\} - a_n| + |\sup\{a_n, a_{n+1}, ...\} - a_n| \\ 
+    Dwa pierwsze czynniki po prawej potrafimy ograniczyć, zbadajmy więc ostatni wyraz: \begin{equation} \begin{split}
+            |\alpha_n - \beta_N| \leqslant |\alpha_n - a_n| + |\beta_n - a_n| & = |\inf\{a_n, a_{n+1}, ...\} - a_n| + |\sup\{a_n, a_{n+1}, ...\} - a_n| \\
             & = \inf\{ |a_m - a_n| \, \big| \, m \geqslant n \} + \sup\{ |a_m - a_n| \, \big| \, m \geqslant n \}.
         \end{split} \end{equation}
-        Możemy teraz skorzystać z warunku Cauchy'ego i znaleźć takie $M_{\frac{\eps}{6}}$, że: \begin{equation}
-            \forall_{m \geqslant n \geqslant M_{\frac{\eps}{6}}}: |a_m - a_n| \leqslant \frac{\eps}{6}.
-        \end{equation} Zatem dla $n \geqslant M_{\frac{\eps}{6}}$:\begin{equation}
-            \inf\{ |a_m - a_n| \, \big| \, m \geqslant n \} \leqslant \frac{\eps}{6}
-        \end{equation} \begin{equation}
-            \sup\{ |a_m - a_n| \, \big| \, m \geqslant n \} \leqslant \frac{\eps}{6}
-        \end{equation}
-        Ostecznie otrzymujemy dla $n \geqslant \max \{A_{\frac{\eps}{3}}, \, B_{\frac{\eps}{3}}, \, M_{\frac{\eps}{6}}\}$: \begin{equation}
-            |\alpha - \beta| \leqslant |\alpha - \alpha_n| + |\beta - \beta_n| +  |\alpha_n - a_n| + |\beta_n - a_n| \leqslant \frac{\eps}{3} + \frac{\eps}{3} + \frac{\eps}{6} + \frac{\eps}{6} = \eps.
-        \end{equation}
-        Pokazaliśmy, że różnica $|\liminf a_n - \limsup a_n|$ jest mniejsza od dowolnej liczby dodatniej, zatem musi być równa $0$. Oznacza to, że $\liminf a_n = \limsup a_n \in \R$, a więc - co udowodniliśmy już wcześniej - ciąg jest zbieżny do rzeczywiśtej granicy.
-    \end{dow}
+    Możemy teraz skorzystać z warunku Cauchy'ego i znaleźć takie $M_{\frac{\eps}{6}}$, że: \begin{equation}
+        \forall_{m \geqslant n \geqslant M_{\frac{\eps}{6}}}: |a_m - a_n| \leqslant \frac{\eps}{6}.
+    \end{equation} Zatem dla $n \geqslant M_{\frac{\eps}{6}}$:\begin{equation}
+        \inf\{ |a_m - a_n| \, \big| \, m \geqslant n \} \leqslant \frac{\eps}{6}
+    \end{equation} \begin{equation}
+        \sup\{ |a_m - a_n| \, \big| \, m \geqslant n \} \leqslant \frac{\eps}{6}
+    \end{equation}
+    Ostecznie otrzymujemy dla $n \geqslant \max \{A_{\frac{\eps}{3}}, \, B_{\frac{\eps}{3}}, \, M_{\frac{\eps}{6}}\}$: \begin{equation}
+        |\alpha - \beta| \leqslant |\alpha - \alpha_n| + |\beta - \beta_n| +  |\alpha_n - a_n| + |\beta_n - a_n| \leqslant \frac{\eps}{3} + \frac{\eps}{3} + \frac{\eps}{6} + \frac{\eps}{6} = \eps.
+    \end{equation}
+    Pokazaliśmy, że różnica $|\liminf a_n - \limsup a_n|$ jest mniejsza od dowolnej liczby dodatniej, zatem musi być równa $0$. Oznacza to, że $\liminf a_n = \limsup a_n \in \R$, a więc - co udowodniliśmy już wcześniej - ciąg jest zbieżny do rzeczywiśtej granicy.
+\end{dow}
 
 
 
 \section{Szeregi liczbowe}
-    \subsection{Szeregi o wyrazach dodatnich}
-    %%%17 X 2023%%%
+\subsection{Szeregi o wyrazach dodatnich}
+%%%17 X 2023%%%
 
-    Załóżmy, że $\sum_{n=1}^{\infty} a_n$ jest szeregiem o wyrazach dodatnich ($a_n > 0$). Ostatnio zauważyliśmy, że:
-    \[\sum\limits_{n=1}^{\infty} a_n = \sup_{\substack{F \subset \N \\ |F| < +\infty}} \sum_{n \in F} a_n.\]
-    Wynikają z tego następujące:
-    \begin{twier}{Wnioski}
-        \begin{enumerate}
-            \item \[\sum_{n = 1}^{\infty} a_n < + \infty \quad \iff \quad \exists_{C>0} \forall_{F \subset \N ,\, |F| < +\oo}  \sum_{n \in F} a_n \leqslant C\]
-            (Zbiór wszystkich sum elementów o indeksach pochodzących ze SKOŃCZONEGO podzbioru $\N$ jest ograniczony)
-            \item Jeśli $\sigma : \N \rightarrow \N$ jest bijekcją (permutacją indeksów), to:
-            \[\sum_{n=1}^{\oo} a_{\sigma(n)} = \sum_{n=1}^{\oo} a_{n}.\]
-            Oznacza to, że zmiana kolejności sumowania nie wpływa na wynik.
-            \item Jeśli:
-            \[\N = \bigsqcup_{\substack{i=1}}^{\oo} A_i \quad (\text{jest to suma rozłączna, tj. } A_i \cap A_j = \emptyset \text{ dla } i \neq j)\]
-            i:
-            \[S_i = \sum_{n \in A_i} a_n,\]
-            to:
-            \[\sum_{i=0}^{\oo}S_i  = \sum_{n=1}^{\oo}a_n.  \]
-            Jest to grupowania (łączności i przemienności) dla szeregu.
-        \end{enumerate}
-    \end{twier}
-    \begin{dow}{Dowód wniosków}
-        \begin{enumerate}
-            \item Ograniczoność sum po prawej jest oczywiście równoważne istnieniu skończonego ich supremum, co równe jest sumie po lewej.
-            \item $\sigma$ zachowuje klasę skończonych podzbiorów i wyznacza bijekcję:
-            \[\sigma: 2^{\N} \rightarrow 2^{\N}\]
-            \[\sigma(F) = \{ \sigma(n)\,|\, n \in F \},\]
-            która zachowuje moc zbioru $F$ i przeprowadza zbiory skończone na skończone. Zatem:
-            \[\biggl\{ \sum_{n \in F} a_n \, \bigg| \, F \subset \N, \, |F| < \oo\biggr\} = \biggl\{ \sum_{n \in \sigma(F)} a_{n} \, \bigg| \, F \subset \N, \, |F| < \oo\biggr\}, \]
-            więc:
-            \[ \sum_{n=1}^{\oo} a_n = \sup{\biggl\{ \sum_{n \in F} a_n \, \bigg| \, F \in 2^{\N}\biggr\}}  = \sup{\biggl\{ \sum_{n \in \sigma(F)} a_{n} \, \bigg| \, F \subset \N, \, |F| < \oo\biggr\}} = \sum_{n=1}^{\oo} a_{\sigma(n)}\]
-            \item 
-            \textbf{a)} Jeśli $\exists_j: \, S_j = \oo$, to:
-            \[\sum_{i=1}^{\oo} S_i = \oo\]
-            i:
-            \[\sum_{n=1}^{\oo} a_n \geqslant \sum_{n \in A_j} a_n = \oo.\]
-            Stąd:
-            \[\sum_{i=1}^{\oo} S_i = \oo = \sum_{n=1}^{\oo} a_n\]
-            \textbf{b)} Niech $\forall_{i}: \, S_i < \oo$. Ustalmy $\varepsilon > 0$ i weźmy dowolny: 
-            \[K \subset \N, \quad |K| < \oo.\]
-            Przypomnijmy:
-            \[\sum_{i=1}^{\oo}S_i = \sup_{\substack{K \subset \N, \\ |K| < \oo}} \, \sum_{j \in K} S_j.\]
-            Niech $K = \{ i_1, i_2,\, ...\,, i_l \}$ i wybierzmy:
-            \[C_1 \subseteq A_{i_1}, \, C_2 \subseteq A_{i_2}, \, ...\, , \, C_l \subseteq A_{i_l}, \]
-            takie, że:
-            \[\forall_j: \quad \sum_{n \in C_j} a_n \,  \geqslant \, S_{i_j} - \frac{\varepsilon}{l},\]
-            co jest możliwe, gdyż $S_{i_j}$ jest supremum sum po skończonych podzbiorach. Jeśli $A_{i_j}$ jest skończony, możemy przyjąć $C_j = A_{i_j}$. \\
-            Wtedy:
-            \[\sum_{i \in K} S_i = S_{i_1} + S_{i_2} + \, ... \, + S_{i_l} \leqslant \left( \sum_{n\in C_1} a_n + \frac{\varepsilon}{l} \right) + \left( \sum_{n\in C_l} a_n + \frac{\varepsilon}{l} \right) + \, ... \, \left( \sum_{n\in C_l} a_n + \frac{\varepsilon}{l} \right) = \varepsilon + \sum_{n \in \bigcup_{j=1}^l C_j} a_n.\]
-            NB: $\bigcup_{j=1}^l C_j$ jest zbiorem skończonym, więc:
-            \[\sum_{i \in K} S_i \leqslant \varepsilon + \sup_{\substack{F\subset \N \\ |F| <  +\oo}} \sum_{n \in F} a_n = \varepsilon + \sum_{n=1}^{\oo} a_n.\]
-            Rozumowanie to przeprowadziliśmy dla dowolnego $K$ i $\varepsilon$, więc:
-            \[\sum_{i=1}^{\oo} S_i = \sup_{\substack{K \subset \N \\ |K| < \oo}} \sum_{i \in K} S_i \leqslant \sum_{n=1}^{\oo} a_n.\]
-            W drugą stronę, weźmy $F \subset \N$, $|F| < \oo$ i niech:
-            \[K = \{ i \in \N \, |\, A_i \cap F \neq \emptyset \},\]
-            wtedy $|K| < \oo$, bo $F$ jest skończony, a $A_j$ są rozłączne. Wtedy mamy:
-            \[\sum_{n\in F} a_n = \sum_{i\in K} \sum_{n \in A_i \cap F} a_n \leqslant \sum_{i \in K} \sum_{n \in A_i} a_n = \sum_{i \in K} S_i.\]
-            Z tego:
-            \[\sum_{n \in F} a_n \leqslant \sum_{i \in K} S_i \leqslant \sup_{\substack{K \subset \N \\ |K| < \oo}} \sum_{i \in K} S_i = \sum_{i =1}^{\oo} S_i, \]
-            co zachodzi dla dowolnego $F$ skończonego. Zatem:
-            \[\sup_{\substack{F \subset \N \\ |F| < \oo}}\sum_{n \in F} a_n = \sum_{n=1}^{\oo}a_n \leqslant \sum_{i =1}^{\oo} S_i.\]
-            Porównując dwie otrzymane nierówności, otrzymujemy tezę.
-        \end{enumerate}
-    \end{dow}
+Załóżmy, że $\sum_{n=1}^{\infty} a_n$ jest szeregiem o wyrazach dodatnich ($a_n > 0$). Ostatnio zauważyliśmy, że:
+\[\sum\limits_{n=1}^{\infty} a_n = \sup_{\substack{F \subset \N \\ |F| < +\infty}} \sum_{n \in F} a_n.\]
+Wynikają z tego następujące:
+\begin{twier}{Wnioski}
+    \begin{enumerate}
+        \item \[\sum_{n = 1}^{\infty} a_n < + \infty \quad \iff \quad \exists_{C>0} \forall_{F \subset \N ,\, |F| < +\oo}  \sum_{n \in F} a_n \leqslant C\]
+              (Zbiór wszystkich sum elementów o indeksach pochodzących ze SKOŃCZONEGO podzbioru $\N$ jest ograniczony)
+        \item Jeśli $\sigma : \N \rightarrow \N$ jest bijekcją (permutacją indeksów), to:
+              \[\sum_{n=1}^{\oo} a_{\sigma(n)} = \sum_{n=1}^{\oo} a_{n}.\]
+              Oznacza to, że zmiana kolejności sumowania nie wpływa na wynik.
+        \item Jeśli:
+              \[\N = \bigsqcup_{\substack{i=1}}^{\oo} A_i \quad (\text{jest to suma rozłączna, tj. } A_i \cap A_j = \emptyset \text{ dla } i \neq j)\]
+              i:
+              \[S_i = \sum_{n \in A_i} a_n,\]
+              to:
+              \[\sum_{i=0}^{\oo}S_i  = \sum_{n=1}^{\oo}a_n.  \]
+              Jest to grupowania (łączności i przemienności) dla szeregu.
+    \end{enumerate}
+\end{twier}
+\begin{dow}{Dowód wniosków}
+    \begin{enumerate}
+        \item Ograniczoność sum po prawej jest oczywiście równoważne istnieniu skończonego ich supremum, co równe jest sumie po lewej.
+        \item $\sigma$ zachowuje klasę skończonych podzbiorów i wyznacza bijekcję:
+              \[\sigma: 2^{\N} \rightarrow 2^{\N}\]
+              \[\sigma(F) = \{ \sigma(n)\,|\, n \in F \},\]
+              która zachowuje moc zbioru $F$ i przeprowadza zbiory skończone na skończone. Zatem:
+              \[\biggl\{ \sum_{n \in F} a_n \, \bigg| \, F \subset \N, \, |F| < \oo\biggr\} = \biggl\{ \sum_{n \in \sigma(F)} a_{n} \, \bigg| \, F \subset \N, \, |F| < \oo\biggr\}, \]
+              więc:
+              \[ \sum_{n=1}^{\oo} a_n = \sup{\biggl\{ \sum_{n \in F} a_n \, \bigg| \, F \in 2^{\N}\biggr\}}  = \sup{\biggl\{ \sum_{n \in \sigma(F)} a_{n} \, \bigg| \, F \subset \N, \, |F| < \oo\biggr\}} = \sum_{n=1}^{\oo} a_{\sigma(n)}\]
+        \item
+              \textbf{a)} Jeśli $\exists_j: \, S_j = \oo$, to:
+              \[\sum_{i=1}^{\oo} S_i = \oo\]
+              i:
+              \[\sum_{n=1}^{\oo} a_n \geqslant \sum_{n \in A_j} a_n = \oo.\]
+              Stąd:
+              \[\sum_{i=1}^{\oo} S_i = \oo = \sum_{n=1}^{\oo} a_n\]
+              \textbf{b)} Niech $\forall_{i}: \, S_i < \oo$. Ustalmy $\varepsilon > 0$ i weźmy dowolny:
+              \[K \subset \N, \quad |K| < \oo.\]
+              Przypomnijmy:
+              \[\sum_{i=1}^{\oo}S_i = \sup_{\substack{K \subset \N, \\ |K| < \oo}} \, \sum_{j \in K} S_j.\]
+              Niech $K = \{ i_1, i_2,\, ...\,, i_l \}$ i wybierzmy:
+              \[C_1 \subseteq A_{i_1}, \, C_2 \subseteq A_{i_2}, \, ...\, , \, C_l \subseteq A_{i_l}, \]
+              takie, że:
+              \[\forall_j: \quad \sum_{n \in C_j} a_n \,  \geqslant \, S_{i_j} - \frac{\varepsilon}{l},\]
+              co jest możliwe, gdyż $S_{i_j}$ jest supremum sum po skończonych podzbiorach. Jeśli $A_{i_j}$ jest skończony, możemy przyjąć $C_j = A_{i_j}$. \\
+              Wtedy:
+              \[\sum_{i \in K} S_i = S_{i_1} + S_{i_2} + \, ... \, + S_{i_l} \leqslant \left( \sum_{n\in C_1} a_n + \frac{\varepsilon}{l} \right) + \left( \sum_{n\in C_l} a_n + \frac{\varepsilon}{l} \right) + \, ... \, \left( \sum_{n\in C_l} a_n + \frac{\varepsilon}{l} \right) = \varepsilon + \sum_{n \in \bigcup_{j=1}^l C_j} a_n.\]
+              NB: $\bigcup_{j=1}^l C_j$ jest zbiorem skończonym, więc:
+              \[\sum_{i \in K} S_i \leqslant \varepsilon + \sup_{\substack{F\subset \N \\ |F| <  +\oo}} \sum_{n \in F} a_n = \varepsilon + \sum_{n=1}^{\oo} a_n.\]
+              Rozumowanie to przeprowadziliśmy dla dowolnego $K$ i $\varepsilon$, więc:
+              \[\sum_{i=1}^{\oo} S_i = \sup_{\substack{K \subset \N \\ |K| < \oo}} \sum_{i \in K} S_i \leqslant \sum_{n=1}^{\oo} a_n.\]
+              W drugą stronę, weźmy $F \subset \N$, $|F| < \oo$ i niech:
+              \[K = \{ i \in \N \, |\, A_i \cap F \neq \emptyset \},\]
+              wtedy $|K| < \oo$, bo $F$ jest skończony, a $A_j$ są rozłączne. Wtedy mamy:
+              \[\sum_{n\in F} a_n = \sum_{i\in K} \sum_{n \in A_i \cap F} a_n \leqslant \sum_{i \in K} \sum_{n \in A_i} a_n = \sum_{i \in K} S_i.\]
+              Z tego:
+              \[\sum_{n \in F} a_n \leqslant \sum_{i \in K} S_i \leqslant \sup_{\substack{K \subset \N \\ |K| < \oo}} \sum_{i \in K} S_i = \sum_{i =1}^{\oo} S_i, \]
+              co zachodzi dla dowolnego $F$ skończonego. Zatem:
+              \[\sup_{\substack{F \subset \N \\ |F| < \oo}}\sum_{n \in F} a_n = \sum_{n=1}^{\oo}a_n \leqslant \sum_{i =1}^{\oo} S_i.\]
+              Porównując dwie otrzymane nierówności, otrzymujemy tezę.
+    \end{enumerate}
+\end{dow}
 
-    \subsection{Szeregi o wyrazach dowolnych}
-        W tej podsekcji rozważamy szeregi o dowolnych wyrazach zespolonych:
-        \[\sum_{n=1}^{\oo} z_n, \quad z_n \in \C.\]
-        \begin{twier}{Kryterium zbieżności bezwzględnej}
-            Jeśli następujący szereg jest zbieżny:
-            \[\sum_{n=1}^{\oo} |z_n| < + \oo\] to i:
-            \[\sum_{n=1}^{\oo} z_n\] 
-            jest zbieżny.
-            
-        \end{twier}
-        \begin{dow}{Dowód}
-        Korzystamy z warunku Cauchy'ego dla szeregu modułów:
-        \[\forall_{\varepsilon}\exists_{N_{\varepsilon}}\forall_{n > m\geqslant N_{\varepsilon}}:\, |\sum_{k=m+1}^{n} |z_k|| \leqslant \varepsilon,\]
-        ale:
-        \[|\sum_{k=m+1}^{n} z_k| \leqslant |\sum_{k=m+1}^{n} |z_k||,\]
-        więc:
-        \[\forall_{\varepsilon}\exists_{M_{\varepsilon} = N_{\varepsilon}}\forall_{n > m\geqslant M_{\varepsilon}}:\, |\sum_{k=m+1}^{n} z_k| \leqslant \varepsilon.\]
-        To dowodzi, że warunek Cauchy'ego zachodzi dla $\sum_{n=1}^{\oo}z_n$, zatem jest to szereg zbieżny.
-        \end{dow}
-    \begin{defr}{Zbieżność bezwzględna}
-        \begin{itemize}
-            \item Szereg $\mathlarger{\sum}_{n=1}^{\oo} z_n$ nazywamy zbieżnym bezwzględnie, jeśli szereg $\mathlarger{\sum}_{n=1}^{\oo} |z_n|$ jest zbieżny. \\
-            \item Jeśli szereg $\mathlarger{\sum}_{n=1}^{\oo} z_n$ jest zbieżny, ale $\mathlarger{\sum}_{n=1}^{\oo} |z_n|$ już nie, to szereg nazywamy zbieżnym warunkowo.
-        \end{itemize}
-    \end{defr}
+\subsection{Szeregi o wyrazach dowolnych}
+W tej podsekcji rozważamy szeregi o dowolnych wyrazach zespolonych:
+\[\sum_{n=1}^{\oo} z_n, \quad z_n \in \C.\]
+\begin{twier}{Kryterium zbieżności bezwzględnej}
+    Jeśli następujący szereg jest zbieżny:
+    \[\sum_{n=1}^{\oo} |z_n| < + \oo\] to i:
+    \[\sum_{n=1}^{\oo} z_n\]
+    jest zbieżny.
 
-    Dla szeregów o wyrazach dowolnych obowiązują inne kryteria zbieżności niż dla szeregów o wyrazach dodatnich. Jednym z nich, jest:
-    \begin{twier}{Kryterium Dirichleta}
-        Załóżmy, że:
-        \begin{itemize}
-            \item Mamy ciągi: 
-            \[(a_n)_{n\in \N}, \quad a_n \in \C \]
-            \[(b_n)_{n\in \N}, \quad b_n \in \R, \quad b_n \geqslant 0\]
-            \item $b_n$ zbiega monotonicznie do 0.
-            \item Ciąg sum częściowych wyrazów $(a_n)$ jest ograniczony:
-            \[\exists_{C \in \R} \forall_{N \in \N}: \big| \sum_{n=1}^{N} a_n \big| \leqslant C.\]
-        \end{itemize}
-        Wtedy szereg $\mathlarger{\sum}_{n=1}^{\oo} a_n b_n$ jest zbieżny.
-    \end{twier}
-    \paragraph{Przykład - szeregi naprzemienne.} Weźmy szereg postaci:
-    \[\sum_{n=1}^{\oo} (-1)^n b_n,\]
-    gdzie $b_n \searrow 0$ (dąży monotonicznie z góry do 0). Szereg taki nazywamy szeregiem naprzemiennym. Z kryterium Dirichleta wynika, że każdy szereg takiej postaci jest zbieżny (co nazywa się czasem kryterium Leibnitza). W szczególności:
-    \[\sum_{n=1}^{\oo} \frac{(-1)^n}{n} = \ln 2.\]
-    \begin{dow}{Dowód kryterium Dirichleta}
-        Niech $\sum_{n=1}^{N} a_n = z_N$. Zauważmy, że $(z_N)$ jest ciągiem ograniczonym. Zapiszmy sumy częściowe docelowego szerego:
-        \[\sum_{n=1}^{N} a_n b_n = a_1 b_1 + a_2 b_2 + \, ... \, + a_N b_N = z_1 b_1 + (z_2 - z_1) b_2 + \, ... \, +  (z_N - z_{N-1}) b_N = \]
-        \[ = z_1 (b_1 - b_2) + z_2 (b_2 - b_3) + \, ... \, + z_{N-1} (b_{N-1} - b_N) + z_N b_N.\]
-        Zauważmy, że wyraz $z_N b_N$ jest zbieżny do 0 (jako iloczyn czynnika ograniczonego i czynnika dążącego do 0).
-        Zajmijmy się więc otrzymaną sumą. Zauważmy, że zachodzi:
-        \[\sum_{n=1}^{\oo} | z_n (b_n - b_{n+1} )| = \sum_{n=1}^{\oo} | z_n| | (b_n - b_{n+1} )| \leqslant  C \sum_{n=1}^{\oo} | (b_n - b_{n+1} )| =\]
-        \[= C \lim_{N\to \oo} (b_1 - b_{N+1}) = C b_1 < + \oo\]
-        Zatem szereg $\mathlarger{\sum}_{n=1}^{\oo} z_n ( b_n - b_{n+1})$ jest zbieżny bezwzględnie, a więc i zbieżny.
-        Z tego i z równości:
-        \[\sum_{n=1}^{\oo} a_n b_n = \sum_{n=1}^{\oo} z_n ( b_n - b_{n+1}) + \lim _{n \to \oo} z_n b_n, \]
-        Wynika, że szereg $\mathlarger{\sum}_{n=1}^{\oo} a_n b_n$ musi być zbieżny.  
-    \end{dow}
-    Kolejnym kryterium zbieżności dla szeregów o wyrazach dowolnych jest prosto wynikające z kryterium Dirichleta tzw.:
-    \begin{twier}{Kryterium Abela}
-        Jeśli:
-        \begin{itemize}
-            \item mamy ciągi: 
-            \[(a_n)_{n\in \N}, \quad a_n \in \C \]
-            \[(b_n)_{n\in \N}, \quad b_n \in \R\]
-            \item $b_n$ jest monotoniczny i ograniczony,
-            \item $\mathlarger{\sum}_{n=1}^{\oo} a_n$ jest zbieżny.
-        \end{itemize}
-        Wtedy szereg $\mathlarger{\sum}_{n=1}^{\oo} a_n b_n$ jest zbieżny.
-    \end{twier}
-    \begin{dow}{Dowód}
-        Oczywiście $b = \lim _{n \to \oo} b_n$ istnieje. Wtedy:
-        \[\sum_{n=1}^{N} a_n b_n =  \sum_{n=1}^{N} a_n (b_n - b) + b \sum_{n=1}^{N} a_n.\]
-        Szereg $b \sum_{n=1}^{\oo} a_n$ jest oczywiście zbieżny na mocy założenia. Za to $\sum_{n=1}^{\oo} a_n (b_n - b)$ jest zbieżne na mocy kryterium Dirichleta, zauważmy bowiem, że:
-        \[\sum_{n=1}^{N} a_n (b_n - b) = \text{sign}(b_n - b) \sum_{n=1}^{N} a_n |b_n - b|,\]
-        ale $|b_n - b| \searrow 0$ na mocy założenia, a sumy częściowe $|\sum_{n=1}^{N} a_n|$ muszą być ograniczone, gdyż są zbieżne. Warunki kryterium Dirichleta są więc spełnione. Ostatecznie:
-        \[\sum_{n=1}^{\oo} a_n b_n = \lim_{N \to \oo} \sum_{n=1}^{N} a_n b_n =  \sum_{n=1}^{\oo} a_n (b_n - b) + b \sum_{n=1}^{\oo} a_n.\]
-        Wszystkie składniki po prawej są zbieżne, zatem szereg $\mathlarger{\sum}_{n=1}^{\oo} a_n b_n$ także musi być zbieżny.
-    \end{dow}
-    \paragraph{Grupowanie składników} Zajmijmy się teraz kwestią grupowania składników w szeregach o wyrazach dowolnych i kiedy taka operacja nie zmienia wartości szeregu. Prowadźmy jednak trochę notacji.
-    \begin{defr}{Rozbicie na wyrazy dodatnie}
-        Dla szeregu $\mathlarger{\sum}_{n=1}^{\oo} z_n$ definiujemy następujące ciągi:
-        \begin{itemize}
-            \item \[a_n = \text{Re}(z_n)\]
-            \item \[b_n = \text{Im}(z_n)\]
-            \item \[a_n^+ = \max\{0, a_n\}\]
-            \item \[a_n^- = -\min\{0, a_n\}\]
-            \item \[b_n^+ = \max\{0, b_n\}\]
-            \item \[b_n^- = -\min\{0, b_n\}\]
-        \end{itemize}
-        Jasnym jest, że:
-        \[z_n = a_n^+ - a_n^- + i b_n^+ - i b_n^-\]
-        oraz:
-        \[0 \leqslant a_n^+, \,a_n^-, \, b_n^+,\, b_n^- \leqslant |z_n|. \]
-    \end{defr}
-    Z ostatniej nierówności wynika (kryterium porównawcze), że jeśli szereg $\mathlarger{\sum}_{n=1}^{\oo} |z_n|$ jest zbieżny, to i szeregi $\mathlarger{\sum}_{n=1}^{\oo} a_n^{\pm}$, $\mathlarger{\sum}_{n=1}^{\oo} b_n^{\pm}$ muszą być zbieżne.
-    Wtedy:
-    \[\sum_{n=1}^{\oo} z_n = \sum_{n=1}^{\oo} a_n^+ - \sum_{n=1}^{\oo} a_n^- + i\sum_{n=1}^{\oo} b_n^+ -i\sum_{n=1}^{\oo}b_n^-,\]
-    jako że:
-    \[\sum_{n=1}^{N} z_n = \sum_{n=1}^{N} a_n^+ - \sum_{n=1}^{N} a_n^- + i\sum_{n=1}^{N} b_n^+ -i\sum_{n=1}^{N}b_n^-,\]
-    Z tego wynika następujący wniosek:
-    \begin{twier}{Grupowanie szeregów zbieżnych bezwzględnie}
-        Niech szereg $\mathlarger{\sum}_{n=1}^{\oo} z_n$ będzie zbieżny bezwzględnie. Wtedy:
-        \begin{enumerate}
-            \item Jeśli $\sigma : \N \rightarrow \N$ jest bijekcją (permutacją indeksów), to:
-            \[\sum_{n=1}^{\oo} z_{\sigma(n)} = \sum_{n=1}^{\oo} z_{n}.\]
-            Oznacza to, że zmiana kolejności sumowania nie wpływa na wynik.
-            \item Jeśli:
-            \[\N = \bigsqcup_{\substack{j=1}}^{\oo} A_j\]
-            i:
-            \[S_j = \sum_{n \in A_j} z_n,\]
-            to $\mathlarger{\sum}_{j=1}^{\oo} S_j$ jest zbieżny bezwzględnie i:
-            \[\sum_{j=0}^{\oo}S_j  = \sum_{n=1}^{\oo} z_n.  \]
-        \end{enumerate}
-        Są to prawa grupowania dla szeregów o wyrazach dowolnych, analogiczne do tych, które zachodzą dla szeregów o wyrazach dodatnich.
-    \end{twier}
-    \begin{dow}{Dowód}
-        \begin{enumerate}
-            \item Mamy następujące równości:
-            \[\sum_{n=1}^{\oo} z_{\sigma(n)} =  \sum_{n=1}^{\oo} a_{\sigma(n)}^+ - \sum_{n=1}^{\oo} a_{\sigma(n)}^- + i\sum_{n=1}^{\oo} b_{\sigma(n)}^+ -i\sum_{n=1}^{\oo}b_{\sigma(n)}^- =\]
-            \[= \sum_{n=1}^{\oo} a_n^+ - \sum_{n=1}^{\oo} a_n^- + i\sum_{n=1}^{\oo} b_n^+ -i\sum_{n=1}^{\oo}b_n^- = \sum_{n=1}^{\oo} z_n\]
-            W 2 równości korzystamy z analogicznego prawa dla zbieżnych szeregów dodatnich.
-            Oczywiście, jako że $\mathlarger{\sum}_{n=1}^{\oo} z_n$ jest zbieżny bezwzględnie, to mamy:
-            \[\sum_{n=1}^{\oo} |z_n| = \sum_{n=1}^{\oo} |z_{\sigma(n)}|,\]
-            więc permutacja szeregu zbieżnego bezwzględnie jest także zbieżna bezwzględnie.
+\end{twier}
+\begin{dow}{Dowód}
+    Korzystamy z warunku Cauchy'ego dla szeregu modułów:
+    \[\forall_{\varepsilon}\exists_{N_{\varepsilon}}\forall_{n > m\geqslant N_{\varepsilon}}:\, |\sum_{k=m+1}^{n} |z_k|| \leqslant \varepsilon,\]
+    ale:
+    \[|\sum_{k=m+1}^{n} z_k| \leqslant |\sum_{k=m+1}^{n} |z_k||,\]
+    więc:
+    \[\forall_{\varepsilon}\exists_{M_{\varepsilon} = N_{\varepsilon}}\forall_{n > m\geqslant M_{\varepsilon}}:\, |\sum_{k=m+1}^{n} z_k| \leqslant \varepsilon.\]
+    To dowodzi, że warunek Cauchy'ego zachodzi dla $\sum_{n=1}^{\oo}z_n$, zatem jest to szereg zbieżny.
+\end{dow}
+\begin{defr}{Zbieżność bezwzględna}
+    \begin{itemize}
+        \item Szereg $\mathlarger{\sum}_{n=1}^{\oo} z_n$ nazywamy zbieżnym bezwzględnie, jeśli szereg $\mathlarger{\sum}_{n=1}^{\oo} |z_n|$ jest zbieżny. \\
+        \item Jeśli szereg $\mathlarger{\sum}_{n=1}^{\oo} z_n$ jest zbieżny, ale $\mathlarger{\sum}_{n=1}^{\oo} |z_n|$ już nie, to szereg nazywamy zbieżnym warunkowo.
+    \end{itemize}
+\end{defr}
 
-            \item Mamy:
-            \[\sum_{j=1}^{\oo} |S_j| = \sum_j^{\oo} \Big| \sum_{n \in A_j} z_n \Big| \leqslant \sum_{j=1}^{\oo} \sum_{n \in A_j} |z_n| =\sum_{n=1}^{\oo} |z_n| < + \oo. \]
-            Widzimy więc, że $\mathlarger{\sum}_{j=1}^{\oo} S_j$ jest także zbieżny bezwzględnie.
-            Jako że $\mathlarger{\sum}_{n=1}^{\oo} z_n$ jest zbieżny bezwzględnie, więc tym bardziej jego podszeregi muszą być zbieżne bezwzględnie. Możemy więc zapisać:
-            \[\sum_{j=1}^{N} S_j = \sum_j^{N} \sum_{n \in A_j} z_n = \sum_{j=1}^N \Big(\sum_{n \in A_j} a_n^+ - \sum_{n \in A_j} a_n^- + i\sum_{n \in A_j} b_n^+ -i\sum_{n \in A_j} b_n^- \Big) =\]
-            \[\sum_{j=1}^N\sum_{n \in A_j} a_n^+ - \sum_{j=1}^N\sum_{n \in A_j} a_n^- + i\sum_{j=1}^N\sum_{n \in A_j} b_n^+ -i\sum_{j=1}^N\sum_{n \in A_j} b_n^-.\]
-            Każdy z szeregów po prawej stronie jest szeregiem zbieżnym o wyrazach dodatnich. Biorąc granicę $N \to \oo$ otrzymamy więc:
-            \[\sum_{j=1}^{\oo} S_j = \sum_{j=1}^\oo\sum_{n \in A_j} a_n^+ - \sum_{j=1}^\oo\sum_{n \in A_j} a_n^- + i\sum_{j=1}^\oo\sum_{n \in A_j} b_n^+ -i\sum_{j=1}^\oo\sum_{n \in A_j} b_n^- = \sum_{n=1}^\oo z_n,\]
-            co wynika z odpowiednich twierdzeń dla szeregów dodatnich.
-            \end{enumerate}
-    \end{dow}
+Dla szeregów o wyrazach dowolnych obowiązują inne kryteria zbieżności niż dla szeregów o wyrazach dodatnich. Jednym z nich, jest:
+\begin{twier}{Kryterium Dirichleta}
+    Załóżmy, że:
+    \begin{itemize}
+        \item Mamy ciągi:
+              \[(a_n)_{n\in \N}, \quad a_n \in \C \]
+              \[(b_n)_{n\in \N}, \quad b_n \in \R, \quad b_n \geqslant 0\]
+        \item $b_n$ zbiega monotonicznie do 0.
+        \item Ciąg sum częściowych wyrazów $(a_n)$ jest ograniczony:
+              \[\exists_{C \in \R} \forall_{N \in \N}: \big| \sum_{n=1}^{N} a_n \big| \leqslant C.\]
+    \end{itemize}
+    Wtedy szereg $\mathlarger{\sum}_{n=1}^{\oo} a_n b_n$ jest zbieżny.
+\end{twier}
+\paragraph{Przykład - szeregi naprzemienne.} Weźmy szereg postaci:
+\[\sum_{n=1}^{\oo} (-1)^n b_n,\]
+gdzie $b_n \searrow 0$ (dąży monotonicznie z góry do 0). Szereg taki nazywamy szeregiem naprzemiennym. Z kryterium Dirichleta wynika, że każdy szereg takiej postaci jest zbieżny (co nazywa się czasem kryterium Leibnitza). W szczególności:
+\[\sum_{n=1}^{\oo} \frac{(-1)^n}{n} = \ln 2.\]
+\begin{dow}{Dowód kryterium Dirichleta}
+    Niech $\sum_{n=1}^{N} a_n = z_N$. Zauważmy, że $(z_N)$ jest ciągiem ograniczonym. Zapiszmy sumy częściowe docelowego szerego:
+    \[\sum_{n=1}^{N} a_n b_n = a_1 b_1 + a_2 b_2 + \, ... \, + a_N b_N = z_1 b_1 + (z_2 - z_1) b_2 + \, ... \, +  (z_N - z_{N-1}) b_N = \]
+    \[ = z_1 (b_1 - b_2) + z_2 (b_2 - b_3) + \, ... \, + z_{N-1} (b_{N-1} - b_N) + z_N b_N.\]
+    Zauważmy, że wyraz $z_N b_N$ jest zbieżny do 0 (jako iloczyn czynnika ograniczonego i czynnika dążącego do 0).
+    Zajmijmy się więc otrzymaną sumą. Zauważmy, że zachodzi:
+    \[\sum_{n=1}^{\oo} | z_n (b_n - b_{n+1} )| = \sum_{n=1}^{\oo} | z_n| | (b_n - b_{n+1} )| \leqslant  C \sum_{n=1}^{\oo} | (b_n - b_{n+1} )| =\]
+    \[= C \lim_{N\to \oo} (b_1 - b_{N+1}) = C b_1 < + \oo\]
+    Zatem szereg $\mathlarger{\sum}_{n=1}^{\oo} z_n ( b_n - b_{n+1})$ jest zbieżny bezwzględnie, a więc i zbieżny.
+    Z tego i z równości:
+    \[\sum_{n=1}^{\oo} a_n b_n = \sum_{n=1}^{\oo} z_n ( b_n - b_{n+1}) + \lim _{n \to \oo} z_n b_n, \]
+    Wynika, że szereg $\mathlarger{\sum}_{n=1}^{\oo} a_n b_n$ musi być zbieżny.
+\end{dow}
+Kolejnym kryterium zbieżności dla szeregów o wyrazach dowolnych jest prosto wynikające z kryterium Dirichleta tzw.:
+\begin{twier}{Kryterium Abela}
+    Jeśli:
+    \begin{itemize}
+        \item mamy ciągi:
+              \[(a_n)_{n\in \N}, \quad a_n \in \C \]
+              \[(b_n)_{n\in \N}, \quad b_n \in \R\]
+        \item $b_n$ jest monotoniczny i ograniczony,
+        \item $\mathlarger{\sum}_{n=1}^{\oo} a_n$ jest zbieżny.
+    \end{itemize}
+    Wtedy szereg $\mathlarger{\sum}_{n=1}^{\oo} a_n b_n$ jest zbieżny.
+\end{twier}
+\begin{dow}{Dowód}
+    Oczywiście $b = \lim _{n \to \oo} b_n$ istnieje. Wtedy:
+    \[\sum_{n=1}^{N} a_n b_n =  \sum_{n=1}^{N} a_n (b_n - b) + b \sum_{n=1}^{N} a_n.\]
+    Szereg $b \sum_{n=1}^{\oo} a_n$ jest oczywiście zbieżny na mocy założenia. Za to $\sum_{n=1}^{\oo} a_n (b_n - b)$ jest zbieżne na mocy kryterium Dirichleta, zauważmy bowiem, że:
+    \[\sum_{n=1}^{N} a_n (b_n - b) = \text{sign}(b_n - b) \sum_{n=1}^{N} a_n |b_n - b|,\]
+    ale $|b_n - b| \searrow 0$ na mocy założenia, a sumy częściowe $|\sum_{n=1}^{N} a_n|$ muszą być ograniczone, gdyż są zbieżne. Warunki kryterium Dirichleta są więc spełnione. Ostatecznie:
+    \[\sum_{n=1}^{\oo} a_n b_n = \lim_{N \to \oo} \sum_{n=1}^{N} a_n b_n =  \sum_{n=1}^{\oo} a_n (b_n - b) + b \sum_{n=1}^{\oo} a_n.\]
+    Wszystkie składniki po prawej są zbieżne, zatem szereg $\mathlarger{\sum}_{n=1}^{\oo} a_n b_n$ także musi być zbieżny.
+\end{dow}
+\paragraph{Grupowanie składników} Zajmijmy się teraz kwestią grupowania składników w szeregach o wyrazach dowolnych i kiedy taka operacja nie zmienia wartości szeregu. Prowadźmy jednak trochę notacji.
+\begin{defr}{Rozbicie na wyrazy dodatnie}
+    Dla szeregu $\mathlarger{\sum}_{n=1}^{\oo} z_n$ definiujemy następujące ciągi:
+    \begin{itemize}
+        \item \[a_n = \text{Re}(z_n)\]
+        \item \[b_n = \text{Im}(z_n)\]
+        \item \[a_n^+ = \max\{0, a_n\}\]
+        \item \[a_n^- = -\min\{0, a_n\}\]
+        \item \[b_n^+ = \max\{0, b_n\}\]
+        \item \[b_n^- = -\min\{0, b_n\}\]
+    \end{itemize}
+    Jasnym jest, że:
+    \[z_n = a_n^+ - a_n^- + i b_n^+ - i b_n^-\]
+    oraz:
+    \[0 \leqslant a_n^+, \,a_n^-, \, b_n^+,\, b_n^- \leqslant |z_n|. \]
+\end{defr}
+Z ostatniej nierówności wynika (kryterium porównawcze), że jeśli szereg $\mathlarger{\sum}_{n=1}^{\oo} |z_n|$ jest zbieżny, to i szeregi $\mathlarger{\sum}_{n=1}^{\oo} a_n^{\pm}$, $\mathlarger{\sum}_{n=1}^{\oo} b_n^{\pm}$ muszą być zbieżne.
+Wtedy:
+\[\sum_{n=1}^{\oo} z_n = \sum_{n=1}^{\oo} a_n^+ - \sum_{n=1}^{\oo} a_n^- + i\sum_{n=1}^{\oo} b_n^+ -i\sum_{n=1}^{\oo}b_n^-,\]
+jako że:
+\[\sum_{n=1}^{N} z_n = \sum_{n=1}^{N} a_n^+ - \sum_{n=1}^{N} a_n^- + i\sum_{n=1}^{N} b_n^+ -i\sum_{n=1}^{N}b_n^-,\]
+Z tego wynika następujący wniosek:
+\begin{twier}{Grupowanie szeregów zbieżnych bezwzględnie}
+    Niech szereg $\mathlarger{\sum}_{n=1}^{\oo} z_n$ będzie zbieżny bezwzględnie. Wtedy:
+    \begin{enumerate}
+        \item Jeśli $\sigma : \N \rightarrow \N$ jest bijekcją (permutacją indeksów), to:
+              \[\sum_{n=1}^{\oo} z_{\sigma(n)} = \sum_{n=1}^{\oo} z_{n}.\]
+              Oznacza to, że zmiana kolejności sumowania nie wpływa na wynik.
+        \item Jeśli:
+              \[\N = \bigsqcup_{\substack{j=1}}^{\oo} A_j\]
+              i:
+              \[S_j = \sum_{n \in A_j} z_n,\]
+              to $\mathlarger{\sum}_{j=1}^{\oo} S_j$ jest zbieżny bezwzględnie i:
+              \[\sum_{j=0}^{\oo}S_j  = \sum_{n=1}^{\oo} z_n.  \]
+    \end{enumerate}
+    Są to prawa grupowania dla szeregów o wyrazach dowolnych, analogiczne do tych, które zachodzą dla szeregów o wyrazach dodatnich.
+\end{twier}
+\begin{dow}{Dowód}
+    \begin{enumerate}
+        \item Mamy następujące równości:
+              \[\sum_{n=1}^{\oo} z_{\sigma(n)} =  \sum_{n=1}^{\oo} a_{\sigma(n)}^+ - \sum_{n=1}^{\oo} a_{\sigma(n)}^- + i\sum_{n=1}^{\oo} b_{\sigma(n)}^+ -i\sum_{n=1}^{\oo}b_{\sigma(n)}^- =\]
+              \[= \sum_{n=1}^{\oo} a_n^+ - \sum_{n=1}^{\oo} a_n^- + i\sum_{n=1}^{\oo} b_n^+ -i\sum_{n=1}^{\oo}b_n^- = \sum_{n=1}^{\oo} z_n\]
+              W 2 równości korzystamy z analogicznego prawa dla zbieżnych szeregów dodatnich.
+              Oczywiście, jako że $\mathlarger{\sum}_{n=1}^{\oo} z_n$ jest zbieżny bezwzględnie, to mamy:
+              \[\sum_{n=1}^{\oo} |z_n| = \sum_{n=1}^{\oo} |z_{\sigma(n)}|,\]
+              więc permutacja szeregu zbieżnego bezwzględnie jest także zbieżna bezwzględnie.
+
+        \item Mamy:
+              \[\sum_{j=1}^{\oo} |S_j| = \sum_j^{\oo} \Big| \sum_{n \in A_j} z_n \Big| \leqslant \sum_{j=1}^{\oo} \sum_{n \in A_j} |z_n| =\sum_{n=1}^{\oo} |z_n| < + \oo. \]
+              Widzimy więc, że $\mathlarger{\sum}_{j=1}^{\oo} S_j$ jest także zbieżny bezwzględnie.
+              Jako że $\mathlarger{\sum}_{n=1}^{\oo} z_n$ jest zbieżny bezwzględnie, więc tym bardziej jego podszeregi muszą być zbieżne bezwzględnie. Możemy więc zapisać:
+              \[\sum_{j=1}^{N} S_j = \sum_j^{N} \sum_{n \in A_j} z_n = \sum_{j=1}^N \Big(\sum_{n \in A_j} a_n^+ - \sum_{n \in A_j} a_n^- + i\sum_{n \in A_j} b_n^+ -i\sum_{n \in A_j} b_n^- \Big) =\]
+              \[\sum_{j=1}^N\sum_{n \in A_j} a_n^+ - \sum_{j=1}^N\sum_{n \in A_j} a_n^- + i\sum_{j=1}^N\sum_{n \in A_j} b_n^+ -i\sum_{j=1}^N\sum_{n \in A_j} b_n^-.\]
+              Każdy z szeregów po prawej stronie jest szeregiem zbieżnym o wyrazach dodatnich. Biorąc granicę $N \to \oo$ otrzymamy więc:
+              \[\sum_{j=1}^{\oo} S_j = \sum_{j=1}^\oo\sum_{n \in A_j} a_n^+ - \sum_{j=1}^\oo\sum_{n \in A_j} a_n^- + i\sum_{j=1}^\oo\sum_{n \in A_j} b_n^+ -i\sum_{j=1}^\oo\sum_{n \in A_j} b_n^- = \sum_{n=1}^\oo z_n,\]
+              co wynika z odpowiednich twierdzeń dla szeregów dodatnich.
+    \end{enumerate}
+\end{dow}
 
 \section{Przestrzenie metryczne}
 \subsection{Podstawowe definicje. Otwartość i domkniętość}
-    \paragraph{} Zmienimy teraz temat, odchodząc od analizy zbieżności w liczbach zespolonych i rozpoczniemy rozważania o temacie znacznie bardziej ogólnym, mianowicie o przestrzeniach z metrykami, będących uogólnieniem znanego pojęcia odległości w $\C$.
-    \begin{defr}{Metryka}
-            
-        Ustalmy $X$ będące dowolnym niepustym zbiorem. Funkcję:
-        \[d: X \times X \to [0; +\oo [\]
-        nazywamy \textbf{metryką}, jeśli spełnia następujące aksjomaty:
-        \begin{enumerate}
-            
-            \item \[\forall_{x, y \in X}: d(x,y) = d(y,x),\]
-            \item \[\forall_{x, y \in X}: d(x,y) = 0 \iff x = y,\]
-            \item \[\forall_{x, y, z \in X}: d(x,z) \leqslant d(x, y) + d(y, z).\]
-        \end{enumerate}
-    \end{defr}
-    \paragraph{} O metryce myśleć można, jako o funkcji zwracającej "odległość" między dwoma elementami w zbiorze $X$. Podane aksjomaty zapewniają, że nasza metryka spełniać będzie "zdroworozsądkowe" własności odległości. 
-    \textbf{1.} nakłada warunek symetryczności na metrykę - odległość z $x$ do $y$ musi być równa odległości z $y$ do $x$. \textbf{2.} normalizuje metrykę, mówiąc, że punkt jest odległy o 0 od samego siebie i \textbf{tylko} od samego siebie. 
-    \textbf{3.} to tak zwana \textbf{nierówność trójkąta} - dodając na drodze między dwoma punktami trzeci punkt nie można odległości skrócić.
-    
-    \begin{defr}{Przestrzeń metryczna}
-        Parę $(X, d)$ - gdzie $X$ to niepusty zbiór, a $d: X \times X \to [0; +\oo [$ to metryka - nazywamy \textbf{przestrzenią metryczną}.
-    \end{defr}
-    \paragraph{Przykłady} Pokażemy parę przykładów przestrzeni metrycznych, aby dać pojęcie, jak mogą one wyglądać.
+\paragraph{} Zmienimy teraz temat, odchodząc od analizy zbieżności w liczbach zespolonych i rozpoczniemy rozważania o temacie znacznie bardziej ogólnym, mianowicie o przestrzeniach z metrykami, będących uogólnieniem znanego pojęcia odległości w $\C$.
+\begin{defr}{Metryka}
+
+    Ustalmy $X$ będące dowolnym niepustym zbiorem. Funkcję:
+    \[d: X \times X \to [0; +\oo [\]
+    nazywamy \textbf{metryką}, jeśli spełnia następujące aksjomaty:
+    \begin{enumerate}
+
+        \item \[\forall_{x, y \in X}: d(x,y) = d(y,x),\]
+        \item \[\forall_{x, y \in X}: d(x,y) = 0 \iff x = y,\]
+        \item \[\forall_{x, y, z \in X}: d(x,z) \leqslant d(x, y) + d(y, z).\]
+    \end{enumerate}
+\end{defr}
+\paragraph{} O metryce myśleć można, jako o funkcji zwracającej "odległość" między dwoma elementami w zbiorze $X$. Podane aksjomaty zapewniają, że nasza metryka spełniać będzie "zdroworozsądkowe" własności odległości.
+\textbf{1.} nakłada warunek symetryczności na metrykę - odległość z $x$ do $y$ musi być równa odległości z $y$ do $x$. \textbf{2.} normalizuje metrykę, mówiąc, że punkt jest odległy o 0 od samego siebie i \textbf{tylko} od samego siebie.
+\textbf{3.} to tak zwana \textbf{nierówność trójkąta} - dodając na drodze między dwoma punktami trzeci punkt nie można odległości skrócić.
+
+\begin{defr}{Przestrzeń metryczna}
+    Parę $(X, d)$ - gdzie $X$ to niepusty zbiór, a $d: X \times X \to [0; +\oo [$ to metryka - nazywamy \textbf{przestrzenią metryczną}.
+\end{defr}
+\paragraph{Przykłady} Pokażemy parę przykładów przestrzeni metrycznych, aby dać pojęcie, jak mogą one wyglądać.
+\begin{itemize}
+    \item $X = \R$ $d(x, y) = |x - y|$ - jest to odległość między dwiema liczbami rzeczywistymi, z której korzystaliśmy np. przy definicji granicy ciągu.
+    \item $X = \R^\nu$, gdzie $\nu \in \N$ jest wymiarem przestrzeni,
+          \[d_p(x, y) = \Big(\sum_{n=1}^\nu |x_n - y_n| ^p\Big)^{\frac{1}{p}}.\]
+          Podstawiając za $p$ różne wartości możemy otrzymać wiele alternatywnych metryk. \\
+          Np. dla $p = 1$ otrzymujemy tzw. \textbf{metrykę Manhattanu}:
+          \[ d_1(x, y) = \sum_{n=1}^\nu |x_n - y_n|.\]
+          Nazwa pochodzi od tego, że jest to odległość jaką trzeba pokonać między dwoma punktami, mogąc przemieszczać się tylko równolegle do osi współrzędnych - tak jak na Manhattanie, gdzie ulice są do się prostopadłe. \\
+          Dla $p = 2$ otrzymujemy znaną \textbf{odległość Euklidesową}:
+          \[d_2(x, y) = \sqrt{\sum_{n=1}^\nu (x_n - y_n) ^2}.\]
+    \item $X = \R^\nu$,
+          \[d_\oo (x, y) = \max_{1 \leqslant n \leqslant \nu}{|x_n - y_n|}.\]
+          Jest to tak zwana \textbf{metryka maximum}. Indeks $\oo$ wziął się z faktu, że o $d_\oo$ myśleć można o jako o granicy $d_p$ dla $p \to \oo$, mamy bowiem:
+          \[\lim_{p \to \oo} \Big( \sum_{n=1}^{\nu} a_n^p \Big)^{\frac{1}{p}} = \max_{1 \leqslant n \leqslant \nu}{a_n}.\]
+    \item Dla dowolnego zbioru $X$ definiujemy \textbf{metrykę dyskretną}:
+          \begin{equation}
+              d(x, y) = \delta_{x, y} = \begin{cases}
+                  1 & x = y    \\
+                  0 & x \neq y \\
+              \end{cases}.
+          \end{equation}
+    \item Niech $X$ będzie zbiorem funkcji klasy $C^0$ (tj, funkcji ciągłych) z $[0; 1]$ na $\C$. Wtedy za odległość między dwiema funkcjami przyjąć możemy:
+          \begin{equation}
+              d(f, g) = \sup_{x \in [0; 1]} {|f(x) - g(x)|}.
+          \end{equation}
+    \item Dla $X$ takiego samego jak w poprzednim punkcie można określić także:
+          \begin{equation}
+              d_p(f, g) = \Big( \int_{0}^{1} |f(x) - g(x)|^p \Big)^{\frac{1}{p}}.
+          \end{equation}
+\end{itemize}
+\begin{defr}{Zbieżność w przestrzeni metrycznej}
+    Niech $(X, d)$ będzie przestrzenią metryczną i niech $(x_n)_{n \in \N}$ będzie ciągiem elementów z $X$. Powiemy, że $(x_n)_{n \in \N}$ jest zbieżny do $g \in X$, jeśli:
+    \begin{equation}
+        \forall_{\varepsilon > 0} \exists_{N_\varepsilon \in \N}\forall_{n \geqslant N_\epsilon}: d(x_n, g) < \varepsilon,
+    \end{equation}
+    co możemy alternatywnie zapisać, jako:
+    \begin{equation}
+        \lim_{n \to \oo} d(x_n, g) = 0.
+    \end{equation}
+\end{defr}
+\paragraph{} Oczywiście jeśli $x_n \to g$ i $x_n \to g'$, to $g = g'$ - co wynika z faktu, że jedynym elementem odległym o 0 od $g$ jest $g$. Ponadto jeśli $x_n \to g$ to każdy podciąg $(x_{n_k})_{k \in \N}$ także dąży do $g$: $x_{n_k} \xrightarrow{k \to \oo} g$.
+
+
+\begin{defr}{Równoważność metryk}
+    Niech $d$ i $\delta$ będą metrykami na $X$. Powiemy, że $d$ i $\delta$ są równoważne, jeśli:
+    \begin{equation}
+        \exists_{C_1, C_2 \in \R}: \forall_{x, y \in X}: C_1 d(x, y) \leqslant \delta (x, y) \leqslant C_2 d(x, y).
+    \end{equation}
+    Łatwo widać, że jest to relacja symetryczna, przechodnia i zwrotna.
+
+\end{defr}
+
+\paragraph{Przykład} Metryk $d_p$ i $d_\oo$ na $\R^\nu$ są równoważne, albowiem:
+\begin{equation}
+    d_oo(x, y) = \max_{i} |x_i - y_i| \leqslant d_p(x, y) = \Big(\sum_{n=1}^\nu |x_n - y_n| ^p\Big)^{\frac{1}{p}}.
+\end{equation}
+Ponadto:
+\begin{equation}
+    d_p(x, y) ^p \leqslant \nu d_\oo(x, y)^p \implies d_p(x, y) \leqslant \nu^\frac{1}{p} d_\oo(x, y)
+\end{equation}
+Wystarczy więc wziąć $C_1 = 1$ i $C_2 = \nu ^\frac{1}{p}$.
+
+\begin{obs}{Fakt}
+    Jeśli $d$ i $\delta$ są równoważne, to $x_n \to g$ w $(X, d)$ $\iff$ $x_n \to g$ w $(X, \delta)$.
+\end{obs}
+
+\begin{defr}{Warunek Cauchy'ego}
+    Powiemy, że ciąg $\ciag{x}$ spełnia \textbf{warunek Cauchy'ego} (i.e. że jest \textbf{ciągiem Cauchy'ego}), jeśli:
+    \begin{equation}
+        \forall_{\eps > 0} \exists_{N_\eps \in \N} \forall (m,n \geqslant N_\eps): d(x_m, x_n) \leqslant \eps.
+    \end{equation}
+\end{defr}
+
+\begin{defr}{Przestrzeń zupełna}
+    Powiemy, że przestrzeń $(X,d)$ jest \textbf{zupełna} jeśli każdy ciąg Cauchy'ego w tej przestrzeni jest zbieżny.
+\end{defr}
+
+\paragraph{} Zauważmy, że $()\R, d_2)$ (czyli liczby rzeczywiste ze standardową metryką Euklidesową) to przestrzeń zupełna, co udowodniliśmy. $(\Q, d_2)$ nie jest przestrzenią zupełną (gdyż np. ciąg kolejnych przybliżeń dziesiętnych $\sqrt[]{2}$ spełnia warunek Cauchy'ego, jednak nie ma w $\Q$ granicy).\
+
+\begin{defr}{Kule}
+    Niech $(X, d)$ - p-ń metryczna. Wtedy \textbf{kulą (otwartą)} o środku $x_0 \in X$ i promieniu $r \in \R_+$ nazwiemy zbiór:
+    \begin{equation}
+        \ball{x_0}{r} = \{ x\in X \, | \, d(x, x_0) < r\}.
+    \end{equation}
+\end{defr}
+
+\begin{defr}{Punkty wewnętrzne}
+    Niech $(X, d)$ - p-ń metryczna, $A \subseteq X$ i $a \in A$. Powiemy, że $a$ jest \textbf{punktem wewnętrznym} $A$, jeśli:
+    \begin{equation}
+        \exists_{r>0}: \ball{a}{r} \subseteq A.
+    \end{equation}
+\end{defr}
+
+\paragraph{} Widzimy więc, że jeśli $a$ jest punktem wewnętrznym $A$, to znajduje się w $A$ razem z pewną kulą wokół siebie - można potocznie sobie więc wyobrazić, że $a$ nie może być na "brzegu" $A$.
+
+\begin{defr}{Zbiór otwarty}
+    Powiemy, że $A$ jest \textbf{otwarty} (w ustalonej p-ń metrycznej $(X,d)$ ), jeśli każdy jego punkt jest punktem wewnętrznym:
+    \begin{equation}
+        \forall_{a \in A} \exists_{r>0}: \ball{a}{r} \subseteq A.
+    \end{equation}
+    \\
+    Dla ustalonej przestrzenii metrycznej zdefiniujemy $\Tau$ jako rodzinę wszystkich zbiorów otwartych w tej przestrzenii. Wprowadzimy też zapis:
+    \begin{equation}
+        U \subotw X,
+    \end{equation}
+    jeśli $U$ jest otwartym podzbiorem $X$ (i.e. jeśli $U \in \Tau$).
+\end{defr}
+
+
+\begin{twier}{Właności $\Tau$}
+    \begin{enumerate}
+        \item $\emptyset \in \Tau$ oraz $X \in \Tau$.
+        \item $U, V \in \Tau \implies U \cap V \in \Tau$. Inaczej mówiąc (rozszerzywszy łątwo twierdzenie za pomocą indukcji), skończony iloczyn zbiorów otwartych jest otwarty.
+        \item $\{U_i\}_{i \in I}$ - rodzina zbiorów otwartych. Wtedy \begin{equation}
+                  \bigcup_{i \in I} U_i \in \Tau.
+              \end{equation} Zauważmy, że nie zakładamy, że jest to skończona (ani nawet przeliczalna) rodzina.
+
+    \end{enumerate}
+\end{twier}
+
+\begin{dow}{Dowód}
+    \begin{enumerate}
+        \item Prawdziwym jest zdanie, że dla każego elementu należącego do $\emptyset$ jest on punktem wewnętrzym. Ponadto: \begin{equation}
+                  \forall_{x \in X,\, r > 0} \ball{x}{r} \subseteq X,
+              \end{equation}
+              co wynika za samej definicji Ball.
+
+        \item Skoro $U, V$ są otwarte, to dla każdego $x \in U \cap V$ istnieją $r_1$ i $r_2$ takie, że:\begin{equation*}
+                  \ball{x}{r_1} \in U, \quad \ball{x}{r_2} \in V.
+              \end{equation*} Wtedy jednak: \begin{equation*}
+                  \ball{x}{\min\{r_1, r_2\}} \in U, \quad \ball{x}{\min\{r_1, r_2\}} \in V.
+              \end{equation*} Wystarczy więc wziąć $r = \min\{r_1, r_2\}$
+
+        \item Dla każdego $x \in \bigcup_{i \in I} U_i$ mamy $i \in I$ takie, że $x \in U_i$. Wtedy jednak istnieje takie $r$, że $\ball{x}{r} \in U_i$, przeto $\ball{x}{r} \in \bigcup_{i \in I} U_i$.
+
+    \end{enumerate}
+
+\end{dow}
+
+\begin{twier}{Stwierdzenie}
+    Kula otwarta jest otwarta.
+\end{twier}
+
+\begin{dow}{dowód}
+    Istotnie, jeśli niech $y \in \ball{x}{r}$. Wtedy $d(x, y) < r$. Zauważmy, że $\ball{y}{r - d(x, y)} \subseteq \ball{x}{r}$, bowiem jeśli $z \in \ball{y}{r - d(x, y)}$, to $d(z, y) < r - d(x, y)$, zatem: \begin{equation*}
+        d(z, x) < d(z, y) + d(y, z) < r,
+    \end{equation*} czyli $z \in \ball{x}{r}$.
+\end{dow}
+
+
+
+\begin{defr}{Punkt skupienia}
+    Niech $(X, d)$ - p-ń metryczna i $A \subseteq X$, wtedy punkt $x \in X$ nazwiemy \textbf{punktem skupienia} $A$, jeśli: \begin{equation}
+        \forall_{r>0}: \ball{x}{r} \cap A \neq \emptyset.
+    \end{equation}
+\end{defr}
+
+\begin{defr}{Zbiór domknięty}
+    Zbiór $A$ nazwiemy \textbf{domkniętym} jeśli zawiera wszystkie swoje punkty skupienia. To znaczy: \begin{equation}
+        \forall_{x \in X} [\forall_{r>0}: \ball{x}{r} \cap A \neq \emptyset \implies x \in A].
+    \end{equation}
+    \\
+    Podobnie jak $\Tau$, zdefiniujemy $\Fau$ jako rodzinę wszystkich zbiorów domkniętych w danej przestrzenii. Będziemy również pisać:
+    \begin{equation}
+        U \subdomk X,
+    \end{equation}
+    jeśli $U$ jest domkniętym podzbiorem $X$.
+\end{defr}
+
+\begin{defr}{Kula domknięta}
+    \textbf{Kulą domkniętą} o środku $x_0 \in X$ i promieniu $r \in \R_+$ nazwiemy zbiór: \begin{equation}
+        \dball{x}{r} = \{ x\in X \, | \, d(x, x_0) \leqslant r\}.
+    \end{equation}
+\end{defr}
+
+\begin{twier}{Stwierdzenie}
+    Kula domknięta jest domknięta.
+\end{twier}
+
+\begin{dow}{Dowód}
+    Niech $y \notin \dball{x}{r}$. Wtedy $d(y, x) > r$. Weźmy $R = d(y, x) - r > 0$. Wtedy $\ball{y}{R} \cap \dball{x}{r} = \emptyset$. Albowiem, jeśli $z \in \ball{y}{R}$, to $d(z, y) <  d(y, x) - r $, zatem $d(x, z) \geqslant d(x, y) - d(z, y)  > r$, czyli $z \notin \dball{x}{r}$.
+\end{dow}
+
+\begin{twier}{Dopełnienie zbioru otwartego jest domknięte}
+    Niech $A \subseteq X$. $A$ jest otwarty wtedy i tylko wtedy, gdy $X \ A$ jest domknięty.
+\end{twier}
+
+\begin{dow}{Dowód}
+    Mamy następujący ciąg równoważności:
+    \begin{equation}
+        (X \backslash A) \text{ - domknięty} \iff
+    \end{equation}
+    \begin{equation}
+        \forall_{y \notin (X \backslash A)} \exists_{r > 0}: \ball{y}{r} \cap (X \backslash A) =  \emptyset \iff
+    \end{equation}
+    \begin{equation}
+        \forall_{y \in A} \exists_{r > 0}: \ball{y}{r} \subseteq X \backslash (X \backslash A) = A \iff
+    \end{equation}
+    \begin{equation}
+        A \text{ - otwarty}
+    \end{equation}
+\end{dow}
+
+Zauważmy, że istnieją zbiory jednocześnie domknięte i otwarte. Na przykład w każdej przestrzenii metrycznej są to $\emptyset$ oraz cała przestrzeń. W $\R$ są to jedynie takie zbiory. Za to w przestrzenii dyskretnej, wszystkie zbiory mają te własność.
+
+
+\begin{twier}{Stwierdzenie}
+    Zbiór $A$ jest otwarty wtedy i tylko wtedy, gdy $A$ jest sumą kul.
+\end{twier}
+\begin{dow}{Dowód}
+    \paragraph{$\implies$} Możemy wybrać sumę rodziny generowanej w tej sposób, że każdemu elementowi przypisujemy kulę mu odpowiadającą, która należy do $A$: \begin{equation}
+        \forall_{y \in A} \exists_{r(y) >0}: \ball{y}{r(y)} \subseteq A.
+    \end{equation} Zatem: \begin{equation}
+        A = \bigcup_{y \in A} \{ y \} \subseteq \bigcup_{y \in A} \ball{y}{r(y)}
+    \end{equation} oraz: \begin{equation}
+        \bigcup_{y \in A} \ball{y}{r(y)} \subseteq A,
+    \end{equation} więc:\begin{equation}
+        A = \bigcup_{y \in A} \ball{y}{r(y)}
+    \end{equation}
+
+    \paragraph{$\impliedby$} W drugą stronę sprawa jest jasna - suma każdej rodziny kul (i.e. zbiorów otwarty) będzie otwarta.
+\end{dow}
+
+\begin{obs}{Fakty na temat $\Fau$}
+    \begin{enumerate}
+        \item $\emptyset, X \in \Fau.$
+        \item $\Fau = \{ X \backslash A \, \big| \, A \in \Tau \}.$
+        \item $A, B \in \Fau \implies A \cup B \in \Fau.$ Inaczej mówiąc - skończony iloczyn zbiorów domkniętych jest domknięty.
+        \item $\{V_i\}_{i \in I}$ - rodzina zbiorów domkniętych. Wtedy \begin{equation}
+                  \bigcap_{i \in I} V_i \in \Tau.
+              \end{equation}
+    \end{enumerate}
+\end{obs}
+\paragraph{} Fakty te są oczywistą konsekwencją własności $\Tau$ i prawa, które mówi, że dopełnienie zbioru otwartego jest domknięte.
+\paragraph{} Spójrzmy jeszcze na przykład, pokazujący, że w 3. właność ta zachodzi tylko dla sum skończonych: \begin{equation*}
+    ]0, 1[ = \bigcup_{i=1}^{\oo} [\frac{1}{n}, 1-\frac{1}{n}].
+\end{equation*}
+
+\begin{defr}{Wnętrze i domknięcie}
+    Niech $B \subseteq X$.\\
+    \textbf{Wnętrznem} zbioru $B$, oznaczanym $B \dg$, nazywamy zbiór wszyskich punktów wewnętrznych $B$.\\
+    \textbf{Domknięciem} zbioru $B$, oznaczanym $\overline{B}$, nazywamy zbiór punktów skupienia $B$. \\
+    Innymi słowy: \begin{equation}
+        x \in B \deg \iff \exists_r: \ball{x}{r} \subseteq B.
+    \end{equation} \begin{equation}
+        x \in \overline{B} \iff \forall_r: \ball{x}{r} \cap B \neq \emptyset.
+    \end{equation}
+\end{defr}
+
+\begin{obs}{Obserwacja}
+    \begin{equation}
+        B \dg \subseteq B \subseteq \overline{B}
+    \end{equation}
+\end{obs}
+
+\begin{obs}{Obserwacja}
     \begin{itemize}
-        \item $X = \R$ $d(x, y) = |x - y|$ - jest to odległość między dwiema liczbami rzeczywistymi, z której korzystaliśmy np. przy definicji granicy ciągu.
-        \item $X = \R^\nu$, gdzie $\nu \in \N$ jest wymiarem przestrzeni, 
-        \[d_p(x, y) = \Big(\sum_{n=1}^\nu |x_n - y_n| ^p\Big)^{\frac{1}{p}}.\]
-        Podstawiając za $p$ różne wartości możemy otrzymać wiele alternatywnych metryk. \\
-        Np. dla $p = 1$ otrzymujemy tzw. \textbf{metrykę Manhattanu}:
-        \[ d_1(x, y) = \sum_{n=1}^\nu |x_n - y_n|.\]
-        Nazwa pochodzi od tego, że jest to odległość jaką trzeba pokonać między dwoma punktami, mogąc przemieszczać się tylko równolegle do osi współrzędnych - tak jak na Manhattanie, gdzie ulice są do się prostopadłe. \\
-        Dla $p = 2$ otrzymujemy znaną \textbf{odległość Euklidesową}:
-        \[d_2(x, y) = \sqrt{\sum_{n=1}^\nu (x_n - y_n) ^2}.\]
-        \item $X = \R^\nu$,
-        \[d_\oo (x, y) = \max_{1 \leqslant n \leqslant \nu}{|x_n - y_n|}.\]
-        Jest to tak zwana \textbf{metryka maximum}. Indeks $\oo$ wziął się z faktu, że o $d_\oo$ myśleć można o jako o granicy $d_p$ dla $p \to \oo$, mamy bowiem:
-        \[\lim_{p \to \oo} \Big( \sum_{n=1}^{\nu} a_n^p \Big)^{\frac{1}{p}} = \max_{1 \leqslant n \leqslant \nu}{a_n}.\]
-        \item Dla dowolnego zbioru $X$ definiujemy \textbf{metrykę dyskretną}:
-        \begin{equation}
-            d(x, y) = \delta_{x, y} = \begin{cases} 
-                1 & x = y\\
-                0 & x \neq y \\
-            \end{cases}.
-        \end{equation}
-        \item Niech $X$ będzie zbiorem funkcji klasy $C^0$ (tj, funkcji ciągłych) z $[0; 1]$ na $\C$. Wtedy za odległość między dwiema funkcjami przyjąć możemy:
-        \begin{equation}
-            d(f, g) = \sup_{x \in [0; 1]} {|f(x) - g(x)|}.
-        \end{equation}
-        \item Dla $X$ takiego samego jak w poprzednim punkcie można określić także:
-        \begin{equation}
-            d_p(f, g) = \Big( \int_{0}^{1} |f(x) - g(x)|^p \Big)^{\frac{1}{p}}.
-        \end{equation}
+        \item $B$ - otwarty $\iff$ $B \dg = B.$
+        \item $B$ - domknięty $\iff$ $\overline{B} = B.$
     \end{itemize}
-    \begin{defr}{Zbieżność w przestrzeni metrycznej}
-        Niech $(X, d)$ będzie przestrzenią metryczną i niech $(x_n)_{n \in \N}$ będzie ciągiem elementów z $X$. Powiemy, że $(x_n)_{n \in \N}$ jest zbieżny do $g \in X$, jeśli:
-        \begin{equation}
-            \forall_{\varepsilon > 0} \exists_{N_\varepsilon \in \N}\forall_{n \geqslant N_\epsilon}: d(x_n, g) < \varepsilon,
-        \end{equation}
-        co możemy alternatywnie zapisać, jako:
-        \begin{equation}
-            \lim_{n \to \oo} d(x_n, g) = 0.
-        \end{equation}
-    \end{defr}
-    \paragraph{} Oczywiście jeśli $x_n \to g$ i $x_n \to g'$, to $g = g'$ - co wynika z faktu, że jedynym elementem odległym o 0 od $g$ jest $g$. Ponadto jeśli $x_n \to g$ to każdy podciąg $(x_{n_k})_{k \in \N}$ także dąży do $g$: $x_{n_k} \xrightarrow{k \to \oo} g$.
+\end{obs}
+
+\begin{twier}{Stwierdzenie}
+    \begin{equation}
+        X \backslash \overline{B} = (X \backslash B) \dg
+    \end{equation} lub \begin{equation}
+        \overline{B} = X \backslash (X \backslash B) \dg.
+    \end{equation}
+\end{twier}
+
+\begin{dow}{Dowód}
+    $x \in X \backslash \overline{B} \iff x$ nie jest punktem skupienia $B \iff \exists_r \ball{x}{r} \cap B = \emptyset \iff \exists_r \ball{x}{r} \cap B \subseteq X \backslash B \iff x \in (X \backslash B) \dg$.
+\end{dow}
 
 
-    \begin{defr}{Równoważność metryk}
-        Niech $d$ i $\delta$ będą metrykami na $X$. Powiemy, że $d$ i $\delta$ są równoważne, jeśli:
-        \begin{equation}
-            \exists_{C_1, C_2 \in \R}: \forall_{x, y \in X}: C_1 d(x, y) \leqslant \delta (x, y) \leqslant C_2 d(x, y).
-        \end{equation}
-        Łatwo widać, że jest to relacja symetryczna, przechodnia i zwrotna.
+Powiemy teraz o bardzo ważnym twierdzeniu pozwalającym utożsamić punkty skupienia z granicami ciągów ze zbioru.
+\begin{twier}{Twierdzenie}
+    Niech $B \subseteq X$. Wtedy domknięcie $B$ to zbiór granic ciągów z $B$, tj.: \begin{equation}
+        \overline{B} = \{ \lim_{n\to \oo} x_n \,  \big| \, \ciag{x} \wedge \forall_n x_n \in B \}.
+    \end{equation}
+\end{twier}
 
-     \end{defr}
+\begin{dow}{Dowód}
+    \paragraph{$\supseteq$} Dla każdego $x \in \overline{B}$ zdefiniujmy ciąg $\ciag{x}$ następująco - niech $x_n$ to dowolny element należący do $\ball{x}{\frac{1}{n}} \cap B$ (jest to zbiór zawsze niepusty na mocy tego, że $x$ jest punktem skupienia $B$). Oczywiście $ x_n \to x$, gdyż $d(x_n, x) < \frac{1}{n} \to 0$.
+    \paragraph{$\subseteq$} Odwrotnie, jeśli $x_n \to x$ i $\forall_n : x_n \in B$, to: \begin{equation}
+        \forall_{\eps > 0} \exists_{N_\eps} \forall_{n \geqslant N_\eps}: B \ni x_n \in \ball{x}{\eps} \implies \forall{\eps >0} \ball{x}{\eps} \cap B \neq \emptyset,
+    \end{equation} skąd mamy $x \in \overline{B}$.
+\end{dow}
 
-     \paragraph{Przykład} Metryk $d_p$ i $d_\oo$ na $\R^\nu$ są równoważne, albowiem:
-     \begin{equation}
-        d_oo(x, y) = \max_{i} |x_i - y_i| \leqslant d_p(x, y) = \Big(\sum_{n=1}^\nu |x_n - y_n| ^p\Big)^{\frac{1}{p}}.
-     \end{equation}
-     Ponadto:
-     \begin{equation}
-        d_p(x, y) ^p \leqslant \nu d_\oo(x, y)^p \implies d_p(x, y) \leqslant \nu^\frac{1}{p} d_\oo(x, y)
-     \end{equation}
-     Wystarczy więc wziąć $C_1 = 1$ i $C_2 = \nu ^\frac{1}{p}$.
+\begin{defr}{Ograniczoność}
+    Powiemy, że $B \subseteq X$ jest \textbf{ograniczony}, jeśli: \begin{equation}
+        \exists_{x \in X, r >0}: B \subseteq \ball{x}{r}.
+    \end{equation}
+\end{defr}
 
-     \begin{obs}{Fakt}
-        Jeśli $d$ i $\delta$ są równoważne, to $x_n \to g$ w $(X, d)$ $\iff$ $x_n \to g$ w $(X, \delta)$.
-     \end{obs}
+\begin{defr}{Gęstość}
+    Powiemy, że $A \subseteq X$ jest \textbf{gęsty} w $B \subseteq X$, jeśli: \begin{equation}
+        B \subseteq \overline{A}.
+    \end{equation}
+    Uwaga! Mówiąc po prostu, że zbiór jest gęsty, mamy na myśli, że jest gęsty w $X$.
+\end{defr}
+\paragraph*{Przykład} $\Q$ jest gęsty w $\R$.
 
-     \begin{defr}{Warunek Cauchy'ego}
-        Powiemy, że ciąg $\ciag{x}$ spełnia \textbf{warunek Cauchy'ego} (i.e. że jest \textbf{ciągiem Cauchy'ego}), jeśli:
-        \begin{equation}
-            \forall_{\eps > 0} \exists_{N_\eps \in \N} \forall (m,n \geqslant N_\eps): d(x_m, x_n) \leqslant \eps.
-        \end{equation}
-     \end{defr}
+\begin{defr}{Otoczenie}
+    $A \subseteq X$ jest otoczeniem punktu $x \in X$, jeśli: \begin{equation}
+        \exists_{U \subotw X}: x \in U \subseteq A.
+    \end{equation} Waruneke ten jest równoważny temu, żę $x \in A \dg$. \\
+    Dla danego punktu rodzinę wszyskich jego otoczeń oznaczać będziemy $\Nau (x)$: \begin{equation}
+        \Nau (x) = \{ A \in \mathcal{P}(X) = 2^X \, \big| \, x \in A\dg \}.
+    \end{equation}
+\end{defr}
 
-     \begin{defr}{Przestrzeń zupełna}
-        Powiemy, że przestrzeń $(X,d)$ jest \textbf{zupełna} jeśli każdy ciąg Cauchy'ego w tej przestrzeni jest zbieżny.
-     \end{defr}
+\begin{twier}{Twierdzenie}
+    Niech $\ciag{x}$ będzie ciągiem elementów $X$. Wtedy:\begin{equation}
+        \lim_{n \to \oo} x_n = x \iff \forall_{A \in \Nau(x)} \exists_{N_A \in \N} \forall_{n \geqslant N_A}: x_n \in A.
+    \end{equation}
+\end{twier}
 
-     \paragraph{} Zauważmy, że $()\R, d_2)$ (czyli liczby rzeczywiste ze standardową metryką Euklidesową) to przestrzeń zupełna, co udowodniliśmy. $(\Q, d_2)$ nie jest przestrzenią zupełną (gdyż np. ciąg kolejnych przybliżeń dziesiętnych $\sqrt[]{2}$ spełnia warunek Cauchy'ego, jednak nie ma w $\Q$ granicy).\
+\begin{dow}{Dowód}
+    \paragraph{$\impliedby$} Weźmy $A_\eps  \ball{x}{\eps}$. Wtedy:\begin{equation}
+        \forall_{\eps >0} \exists_{N_\eps} \forall_{n \geqslant N_\eps}: x_n \in \ball{x}{\eps} \implies d(x_n, x) < \eps.
+    \end{equation}
+    \paragraph{$implies$} $x_n$ zbiega do $x$, zatem: \begin{equation*}
+        \forall_{\eps >0} \exists_{N_\eps} \forall_{n \geqslant N_\eps}: d(x_n, x) < \eps.
+    \end{equation*} Mamy też: \begin{equation*}
+        A \in \Nau(x) \implies \exists_\eps: \ball{x}{\eps} \subseteq A.
+    \end{equation*} Wystarczy więc wziąć $N_A = N_\eps$. Wtedy będzie: \begin{equation}
+        \forall_{\eps >0} \exists_{N_\eps} \forall_{n \geqslant N_\eps}: (d(x_n, x) < \eps \wedge \ball{x}{\eps} \subseteq A) \implies x_n \in A.
+    \end{equation}
+\end{dow}
 
-     \begin{defr}{Kule}
-        Niech $(X, d)$ - p-ń metryczna. Wtedy \textbf{kulą (otwartą)} o środku $x_0 \in X$ i promieniu $r \in \R_+$ nazwiemy zbiór:
-        \begin{equation}
-            \ball{x_0}{r} = \{ x\in X \, | \, d(x, x_0) < r\}.
-        \end{equation}
-     \end{defr}
+\paragraph*{} Twierdzenie to mówi nie mniej, nie więcej niż to, że jeśli ciąg zbiega do jakiegoś punktu, to w każdym otoczeniu tego punktu znajdą się prawie wszystkie wyrazy tego ciągu.
 
-     \begin{defr}{Punkty wewnętrzne}
-        Niech $(X, d)$ - p-ń metryczna, $A \subseteq X$ i $a \in A$. Powiemy, że $a$ jest \textbf{punktem wewnętrznym} $A$, jeśli:
-        \begin{equation}
-            \exists_{r>0}: \ball{a}{r} \subseteq A.
-        \end{equation}
-     \end{defr}
+\begin{twier}{Twierdzenie}
+    Niech $(X, d)$ - p-ń. metryczna, niech $Y \subseteq X$ i niech $d_y = d | _{Y \times Y}$ będzie obcięciem $d$ do $Y$. Wtedy:
+    \begin{enumerate}
+        \item $A \subseteq Y$ jest otwarty w $(Y, d_y)$ $\iff$ $\exists_{U \subotw X}: A = Y \cap U$.
+        \item $A \subseteq Y$ jest domknięty w $(Y, d_y)$ $\iff$ $\exists_{F \subdomk X}: A = Y \cap F$.
+    \end{enumerate}
+\end{twier}
+Twierdzenie to daje nam pojęcie o tym, jak wyglądają zbiory otwarte i domknięte w jakimś zawężeniu metryki - mianowicie są to zawężenia odpowiednich zbiorów otwartych i domkniętych.
 
-     \paragraph{} Widzimy więc, że jeśli $a$ jest punktem wewnętrznym $A$, to znajduje się w $A$ razem z pewną kulą wokół siebie - można potocznie sobie więc wyobrazić, że $a$ nie może być na "brzegu" $A$.
-
-     \begin{defr}{Zbiór otwarty}
-        Powiemy, że $A$ jest \textbf{otwarty} (w ustalonej p-ń metrycznej $(X,d)$ ), jeśli każdy jego punkt jest punktem wewnętrznym:
-        \begin{equation}
-            \forall_{a \in A} \exists_{r>0}: \ball{a}{r} \subseteq A.
-        \end{equation}
-        \\
-        Dla ustalonej przestrzenii metrycznej zdefiniujemy $\Tau$ jako rodzinę wszystkich zbiorów otwartych w tej przestrzenii. Wprowadzimy też zapis:
-        \begin{equation}
-            U \subotw X,
-        \end{equation}
-        jeśli $U$ jest otwartym podzbiorem $X$ (i.e. jeśli $U \in \Tau$).
-     \end{defr}
-
-
-     \begin{twier}{Właności $\Tau$}
-        \begin{enumerate}
-            \item $\emptyset \in \Tau$ oraz $X \in \Tau$.
-            \item $U, V \in \Tau \implies U \cap V \in \Tau$. Inaczej mówiąc (rozszerzywszy łątwo twierdzenie za pomocą indukcji), skończony iloczyn zbiorów otwartych jest otwarty.
-            \item $\{U_i\}_{i \in I}$ - rodzina zbiorów otwartych. Wtedy \begin{equation}
-                \bigcup_{i \in I} U_i \in \Tau.
-            \end{equation} Zauważmy, że nie zakładamy, że jest to skończona (ani nawet przeliczalna) rodzina.
-
-        \end{enumerate}
-     \end{twier}
-
-     \begin{dow}{Dowód}
-        \begin{enumerate}
-            \item Prawdziwym jest zdanie, że dla każego elementu należącego do $\emptyset$ jest on punktem wewnętrzym. Ponadto: \begin{equation}
-                \forall_{x \in X,\, r > 0} \ball{x}{r} \subseteq X,
-            \end{equation}
-            co wynika za samej definicji Ball.
-
-            \item Skoro $U, V$ są otwarte, to dla każdego $x \in U \cap V$ istnieją $r_1$ i $r_2$ takie, że:\begin{equation*}
-                \ball{x}{r_1} \in U, \quad \ball{x}{r_2} \in V.
-            \end{equation*} Wtedy jednak: \begin{equation*}
-                \ball{x}{\min\{r_1, r_2\}} \in U, \quad \ball{x}{\min\{r_1, r_2\}} \in V.
-            \end{equation*} Wystarczy więc wziąć $r = \min\{r_1, r_2\}$
-
-            \item Dla każdego $x \in \bigcup_{i \in I} U_i$ mamy $i \in I$ takie, że $x \in U_i$. Wtedy jednak istnieje takie $r$, że $\ball{x}{r} \in U_i$, przeto $\ball{x}{r} \in \bigcup_{i \in I} U_i$.
-
-        \end{enumerate}
-
-     \end{dow}
-
-     \begin{twier}{Stwierdzenie}
-        Kula otwarta jest otwarta.
-     \end{twier}
-
-     \begin{dow}{dowód}
-        Istotnie, jeśli niech $y \in \ball{x}{r}$. Wtedy $d(x, y) < r$. Zauważmy, że $\ball{y}{r - d(x, y)} \subseteq \ball{x}{r}$, bowiem jeśli $z \in \ball{y}{r - d(x, y)}$, to $d(z, y) < r - d(x, y)$, zatem: \begin{equation*}
-            d(z, x) < d(z, y) + d(y, z) < r,
-        \end{equation*} czyli $z \in \ball{x}{r}$.
-     \end{dow}
-
-
-
-     \begin{defr}{Punkt skupienia}
-        Niech $(X, d)$ - p-ń metryczna i $A \subseteq X$, wtedy punkt $x \in X$ nazwiemy \textbf{punktem skupienia} $A$, jeśli: \begin{equation}
-            \forall_{r>0}: \ball{x}{r} \cap A \neq \emptyset.
-        \end{equation}
-     \end{defr}
-
-     \begin{defr}{Zbiór domknięty}
-        Zbiór $A$ nazwiemy \textbf{domkniętym} jeśli zawiera wszystkie swoje punkty skupienia. To znaczy: \begin{equation}
-            \forall_{x \in X} [\forall_{r>0}: \ball{x}{r} \cap A \neq \emptyset \implies x \in A]. 
-        \end{equation}
-        \\
-        Podobnie jak $\Tau$, zdefiniujemy $\Fau$ jako rodzinę wszystkich zbiorów domkniętych w danej przestrzenii. Będziemy również pisać:
-        \begin{equation}
-            U \subdomk X,
-        \end{equation}
-        jeśli $U$ jest domkniętym podzbiorem $X$.
-    \end{defr}
-
-    \begin{defr}{Kula domknięta}
-        \textbf{Kulą domkniętą} o środku $x_0 \in X$ i promieniu $r \in \R_+$ nazwiemy zbiór: \begin{equation}
-            \dball{x}{r} = \{ x\in X \, | \, d(x, x_0) \leqslant r\}.
-        \end{equation}
-    \end{defr}
-
-    \begin{twier}{Stwierdzenie}
-        Kula domknięta jest domknięta.
-     \end{twier}
-
-     \begin{dow}{Dowód}
-        Niech $y \notin \dball{x}{r}$. Wtedy $d(y, x) > r$. Weźmy $R = d(y, x) - r > 0$. Wtedy $\ball{y}{R} \cap \dball{x}{r} = \emptyset$. Albowiem, jeśli $z \in \ball{y}{R}$, to $d(z, y) <  d(y, x) - r $, zatem $d(x, z) \geqslant d(x, y) - d(z, y)  > r$, czyli $z \notin \dball{x}{r}$.
-     \end{dow}
-
-     \begin{twier}{Dopełnienie zbioru otwartego jest domknięte}
-        Niech $A \subseteq X$. $A$ jest otwarty wtedy i tylko wtedy, gdy $X \ A$ jest domknięty.
-     \end{twier}
-
-     \begin{dow}{Dowód}
-        Mamy następujący ciąg równoważności:
-        \begin{equation}
-            (X \backslash A) \text{ - domknięty} \iff
-        \end{equation}
-        \begin{equation}
-            \forall_{y \notin (X \backslash A)} \exists_{r > 0}: \ball{y}{r} \cap (X \backslash A) =  \emptyset \iff
-        \end{equation}
-        \begin{equation}
-            \forall_{y \in A} \exists_{r > 0}: \ball{y}{r} \subseteq X \backslash (X \backslash A) = A \iff
-        \end{equation}
-        \begin{equation}
-            A \text{ - otwarty} 
-        \end{equation}
-     \end{dow}
-
-     Zauważmy, że istnieją zbiory jednocześnie domknięte i otwarte. Na przykład w każdej przestrzenii metrycznej są to $\emptyset$ oraz cała przestrzeń. W $\R$ są to jedynie takie zbiory. Za to w przestrzenii dyskretnej, wszystkie zbiory mają te własność.
-
-
-     \begin{twier}{Stwierdzenie}
-        Zbiór $A$ jest otwarty wtedy i tylko wtedy, gdy $A$ jest sumą kul.
-     \end{twier}
-     \begin{dow}{Dowód} 
-        \paragraph{$\implies$} Możemy wybrać sumę rodziny generowanej w tej sposób, że każdemu elementowi przypisujemy kulę mu odpowiadającą, która należy do $A$: \begin{equation}
-                \forall_{y \in A} \exists_{r(y) >0}: \ball{y}{r(y)} \subseteq A.
-            \end{equation} Zatem: \begin{equation}
-                A = \bigcup_{y \in A} \{ y \} \subseteq \bigcup_{y \in A} \ball{y}{r(y)}
-            \end{equation} oraz: \begin{equation}
-                \bigcup_{y \in A} \ball{y}{r(y)} \subseteq A,
-            \end{equation} więc:\begin{equation}
-                A = \bigcup_{y \in A} \ball{y}{r(y)}
-            \end{equation}
- 
-        \paragraph{$\impliedby$} W drugą stronę sprawa jest jasna - suma każdej rodziny kul (i.e. zbiorów otwarty) będzie otwarta.
-     \end{dow}
-
-    \begin{obs}{Fakty na temat $\Fau$}
-        \begin{enumerate}
-            \item $\emptyset, X \in \Fau.$
-            \item $\Fau = \{ X \backslash A \, \big| \, A \in \Tau \}.$
-            \item $A, B \in \Fau \implies A \cup B \in \Fau.$ Inaczej mówiąc - skończony iloczyn zbiorów domkniętych jest domknięty.
-            \item $\{V_i\}_{i \in I}$ - rodzina zbiorów domkniętych. Wtedy \begin{equation}
-                \bigcap_{i \in I} V_i \in \Tau.
-            \end{equation}
-        \end{enumerate}
-    \end{obs}
-    \paragraph{} Fakty te są oczywistą konsekwencją własności $\Tau$ i prawa, które mówi, że dopełnienie zbioru otwartego jest domknięte. 
-    \paragraph{} Spójrzmy jeszcze na przykład, pokazujący, że w 3. właność ta zachodzi tylko dla sum skończonych: \begin{equation*}
-        ]0, 1[ = \bigcup_{i=1}^{\oo} [\frac{1}{n}, 1-\frac{1}{n}]. 
-    \end{equation*}
-
-    \begin{defr}{Wnętrze i domknięcie}
-        Niech $B \subseteq X$.\\
-        \textbf{Wnętrznem} zbioru $B$, oznaczanym $B \dg$, nazywamy zbiór wszyskich punktów wewnętrznych $B$.\\
-        \textbf{Domknięciem} zbioru $B$, oznaczanym $\overline{B}$, nazywamy zbiór punktów skupienia $B$. \\
-        Innymi słowy: \begin{equation}
-            x \in B \deg \iff \exists_r: \ball{x}{r} \subseteq B.
-        \end{equation} \begin{equation}
-            x \in \overline{B} \iff \forall_r: \ball{x}{r} \cap B \neq \emptyset.
-        \end{equation}
-    \end{defr}
-
-    \begin{obs}{Obserwacja}
-        \begin{equation}
-            B \dg \subseteq B \subseteq \overline{B}
-        \end{equation}
-    \end{obs}
-
-    \begin{obs}{Obserwacja}
-        \begin{itemize}
-            \item $B$ - otwarty $\iff$ $B \dg = B.$ 
-            \item $B$ - domknięty $\iff$ $\overline{B} = B.$ 
-        \end{itemize}
-    \end{obs}
-
-    \begin{twier}{Stwierdzenie}
-        \begin{equation}
-            X \backslash \overline{B} = (X \backslash B) \dg
-        \end{equation} lub \begin{equation}
-            \overline{B} = X \backslash (X \backslash B) \dg.
-        \end{equation}
-    \end{twier}
-
-    \begin{dow}{Dowód}
-        $x \in X \backslash \overline{B} \iff x$ nie jest punktem skupienia $B \iff \exists_r \ball{x}{r} \cap B = \emptyset \iff \exists_r \ball{x}{r} \cap B \subseteq X \backslash B \iff x \in (X \backslash B) \dg$. 
-    \end{dow}
-
-
-    Powiemy teraz o bardzo ważnym twierdzeniu pozwalającym utożsamić punkty skupienia z granicami ciągów ze zbioru.
-    \begin{twier}{Twierdzenie}
-        Niech $B \subseteq X$. Wtedy domknięcie $B$ to zbiór granic ciągów z $B$, tj.: \begin{equation}
-            \overline{B} = \{ \lim_{n\to \oo} x_n \,  \big| \, \ciag{x} \wedge \forall_n x_n \in B \}. 
-        \end{equation}
-    \end{twier}
-
-    \begin{dow}{Dowód}
-        \paragraph{$\supseteq$} Dla każdego $x \in \overline{B}$ zdefiniujmy ciąg $\ciag{x}$ następująco - niech $x_n$ to dowolny element należący do $\ball{x}{\frac{1}{n}} \cap B$ (jest to zbiór zawsze niepusty na mocy tego, że $x$ jest punktem skupienia $B$). Oczywiście $ x_n \to x$, gdyż $d(x_n, x) < \frac{1}{n} \to 0$.
-        \paragraph{$\subseteq$} Odwrotnie, jeśli $x_n \to x$ i $\forall_n : x_n \in B$, to: \begin{equation}
-            \forall_{\eps > 0} \exists_{N_\eps} \forall_{n \geqslant N_\eps}: B \ni x_n \in \ball{x}{\eps} \implies \forall{\eps >0} \ball{x}{\eps} \cap B \neq \emptyset,
-        \end{equation} skąd mamy $x \in \overline{B}$.
-    \end{dow}
-
-    \begin{defr}{Ograniczoność}
-        Powiemy, że $B \subseteq X$ jest \textbf{ograniczony}, jeśli: \begin{equation}
-            \exists_{x \in X, r >0}: B \subseteq \ball{x}{r}.
-        \end{equation}
-    \end{defr}
-
-    \begin{defr}{Gęstość}
-        Powiemy, że $A \subseteq X$ jest \textbf{gęsty} w $B \subseteq X$, jeśli: \begin{equation}
-            B \subseteq \overline{A}.
-        \end{equation}
-        Uwaga! Mówiąc po prostu, że zbiór jest gęsty, mamy na myśli, że jest gęsty w $X$.
-    \end{defr}
-    \paragraph*{Przykład} $\Q$ jest gęsty w $\R$.
-
-    \begin{defr}{Otoczenie}
-        $A \subseteq X$ jest otoczeniem punktu $x \in X$, jeśli: \begin{equation}
-            \exists_{U \subotw X}: x \in U \subseteq A.
-        \end{equation} Waruneke ten jest równoważny temu, żę $x \in A \dg$. \\
-        Dla danego punktu rodzinę wszyskich jego otoczeń oznaczać będziemy $\Nau (x)$: \begin{equation}
-            \Nau (x) = \{ A \in \mathcal{P}(X) = 2^X \, \big| \, x \in A\dg \}. 
-        \end{equation}
-    \end{defr}
-
-    \begin{twier}{Twierdzenie}
-        Niech $\ciag{x}$ będzie ciągiem elementów $X$. Wtedy:\begin{equation}
-            \lim_{n \to \oo} x_n = x \iff \forall_{A \in \Nau(x)} \exists_{N_A \in \N} \forall_{n \geqslant N_A}: x_n \in A.
-        \end{equation}
-    \end{twier}
-
-    \begin{dow}{Dowód}
-        \paragraph{$\impliedby$} Weźmy $A_\eps  \ball{x}{\eps}$. Wtedy:\begin{equation}
-            \forall_{\eps >0} \exists_{N_\eps} \forall_{n \geqslant N_\eps}: x_n \in \ball{x}{\eps} \implies d(x_n, x) < \eps.
-        \end{equation}
-        \paragraph{$implies$} $x_n$ zbiega do $x$, zatem: \begin{equation*}
-            \forall_{\eps >0} \exists_{N_\eps} \forall_{n \geqslant N_\eps}: d(x_n, x) < \eps.
-        \end{equation*} Mamy też: \begin{equation*}
-            A \in \Nau(x) \implies \exists_\eps: \ball{x}{\eps} \subseteq A.
-        \end{equation*} Wystarczy więc wziąć $N_A = N_\eps$. Wtedy będzie: \begin{equation}
-            \forall_{\eps >0} \exists_{N_\eps} \forall_{n \geqslant N_\eps}: (d(x_n, x) < \eps \wedge \ball{x}{\eps} \subseteq A) \implies x_n \in A.
-        \end{equation}
-    \end{dow}
-
-    \paragraph*{} Twierdzenie to mówi nie mniej, nie więcej niż to, że jeśli ciąg zbiega do jakiegoś punktu, to w każdym otoczeniu tego punktu znajdą się prawie wszystkie wyrazy tego ciągu.
-
-    \begin{twier}{Twierdzenie}
-        Niech $(X, d)$ - p-ń. metryczna, niech $Y \subseteq X$ i niech $d_y = d | _{Y \times Y}$ będzie obcięciem $d$ do $Y$. Wtedy:
-        \begin{enumerate}
-            \item $A \subseteq Y$ jest otwarty w $(Y, d_y)$ $\iff$ $\exists_{U \subotw X}: A = Y \cap U$.
-            \item $A \subseteq Y$ jest domknięty w $(Y, d_y)$ $\iff$ $\exists_{F \subdomk X}: A = Y \cap F$.
-        \end{enumerate}
-    \end{twier}
-    Twierdzenie to daje nam pojęcie o tym, jak wyglądają zbiory otwarte i domknięte w jakimś zawężeniu metryki - mianowicie są to zawężenia odpowiednich zbiorów otwartych i domkniętych.
-
-    \begin{dow}{Dowód}
-        Zaczniemy od dowodu 2.
-        \paragraph{$\implies$} Niech $A$ domknięty w $Y$ i niech $F$ będzie domknięciem $A$ w $X$ (więc $F$ musi być domknięty w $X$). Wtedy: \begin{equation*}
-            F = \{ \lim_{n \to \oo} a_n \in X \, \big| \, a_n \in A \},
-        \end{equation*} za to:\begin{equation*}
-            A = \{ \lim_{n \to \oo} a_n \in Y \, \big| \, a_n \in A \},
-        \end{equation*}gdyż $A$ jest domknięty w $Y$. Widzimy z tych definicji łatwo, że $A = F \cap Y$.
-        \paragraph{$\impliedby$} W drugą stronę, niech $A = Y \cap F$ i $F$ będzie domknięty w $X$. Niech $\ciag{a}$ będzie ciągiem w $A$ (więc i w $F$), zbiegającym do $g$. Wtedy $g \in F$. Zatem jeśli $g \in Y$, to $g \in A$, z konstrukcji $A$. Pokazaliśmy więc, że każdy ciąg z $A$ zbieżny w $Y$ ma granicę w samym $A$, zatem $A$ jest domknięty.
-        \paragraph{$2. \implies 1.$} Pokażemy teraz, jak z 2. wynika 1. Mamy bowiem ciąg następujących równoważności: \\
-        $A \subseteq Y$ jest otwarty w $Y$ $\iff$ $Y \backslash A$ jest domknięty w $Y$ $\iff$ $\exists_{F \subdomk X}: Y \backslash A = Y \cap F$ $\iff$ $ \exists_{F \subdomk X}: A = Y \cap (X \backslash F)$ $\iff$ $\exists_{U \subotw X}: A = Y \cap U$.\\
-        Przedostatnia równoważność, wynika z faktu, że jeśli $Y \backslash A = Y \cap F$, to $A = Y \backslash (Y \cap F) = Y \backslash F =Y \cap (X \backslash F)$ (pamiętamy, że $Y\subseteq X)$.
-        Ostatnia równoważność jest konsekwencją tego, że dopełnienie zbioru domkniętego jest otwarte.
-    \end{dow}
+\begin{dow}{Dowód}
+    Zaczniemy od dowodu 2.
+    \paragraph{$\implies$} Niech $A$ domknięty w $Y$ i niech $F$ będzie domknięciem $A$ w $X$ (więc $F$ musi być domknięty w $X$). Wtedy: \begin{equation*}
+        F = \{ \lim_{n \to \oo} a_n \in X \, \big| \, a_n \in A \},
+    \end{equation*} za to:\begin{equation*}
+        A = \{ \lim_{n \to \oo} a_n \in Y \, \big| \, a_n \in A \},
+    \end{equation*}gdyż $A$ jest domknięty w $Y$. Widzimy z tych definicji łatwo, że $A = F \cap Y$.
+    \paragraph{$\impliedby$} W drugą stronę, niech $A = Y \cap F$ i $F$ będzie domknięty w $X$. Niech $\ciag{a}$ będzie ciągiem w $A$ (więc i w $F$), zbiegającym do $g$. Wtedy $g \in F$. Zatem jeśli $g \in Y$, to $g \in A$, z konstrukcji $A$. Pokazaliśmy więc, że każdy ciąg z $A$ zbieżny w $Y$ ma granicę w samym $A$, zatem $A$ jest domknięty.
+    \paragraph{$2. \implies 1.$} Pokażemy teraz, jak z 2. wynika 1. Mamy bowiem ciąg następujących równoważności: \\
+    $A \subseteq Y$ jest otwarty w $Y$ $\iff$ $Y \backslash A$ jest domknięty w $Y$ $\iff$ $\exists_{F \subdomk X}: Y \backslash A = Y \cap F$ $\iff$ $ \exists_{F \subdomk X}: A = Y \cap (X \backslash F)$ $\iff$ $\exists_{U \subotw X}: A = Y \cap U$.\\
+    Przedostatnia równoważność, wynika z faktu, że jeśli $Y \backslash A = Y \cap F$, to $A = Y \backslash (Y \cap F) = Y \backslash F =Y \cap (X \backslash F)$ (pamiętamy, że $Y\subseteq X)$.
+    Ostatnia równoważność jest konsekwencją tego, że dopełnienie zbioru domkniętego jest otwarte.
+\end{dow}
 
 \subsection{Przekształcenia ciągłe}
+
+Zaczniemy rozważać teraz przekształcenia (i.e. funkcje) pomiędzy przestrzeniami metrycznymi i wyróżnimy wśród nich szczgólnie ważną klasę funkcji ciągłych.
+
+\begin{twier}{Warunki ciągłośći}
+    Niech $(X, d)$ i $(Y, \delta)$ będą przestrzeniami metrycznymi, a $\Phi : X \to Y$ przekształceniem między nimi. Ustalmy też $x_0 \in X$. Wtedy następujące warunki są równoważne:
+    \begin{enumerate}
+        \item \begin{equation}
+                  \forall_{\eps > 0} \exists_{\lambda_\eps >0} \forall_{x \in X}: d(x, x_0) < \lambda_\eps \implies \delta(\Phi(x), \Phi(x_0)) < \eps.
+              \end{equation}
+        \item \begin{equation}
+                  \forall_{U \in \Nau(\Phi(x_0))} \exists_{V \in \Nau(x_0)}: \Phi(V) \subseteq U.
+              \end{equation}
+        \item \begin{equation}
+                  \forall_{U \in \Nau(\Phi(x_0))}: \Phi^{-1}(U) \in \Nau(x_0).
+              \end{equation} (Przypominamy, że $\Phi^{-1}(U)$ to w przeciwobraz $U$).
+        \item Jeśli $x_n \to x_0$ w $(X, d)$, to $\Phi(x_n) \to \Phi(x_0)$ w $(Y, \delta)$.
+    \end{enumerate}
+\end{twier}
+
+\begin{dow}{Dowód}
+    \paragraph{$1. \implies 2.$}
+    Dla dowolnego $U \in \Nau(\Phi(x_0))$ istnieje $\eps > 0$: \begin{equation*}
+        \ball{\Phi(x_0)}{\eps} \subseteq U.
+    \end{equation*} Z 1. weźmy więc $\lambda_\eps$ spełniające podaną implikację i $V = \ball{x_0}{\lambda_\eps}$. Wtedy: \begin{equation*}
+        \Phi( x \in V) \in \ball{\Phi(x_0)}{\eps},
+    \end{equation*} zatem: \begin{equation*}
+        \Phi(V) \subseteq \ball{\Phi(x_0)}{\eps} \subseteq U.
+    \end{equation*}
+
+    \paragraph{$2. \implies 3.$}
+    Weźmy dowolne $U \in \Nau(\Phi(x_0))$. Wtedy: \begin{equation*}
+        \exists_{V \in \Nau(x_0)}: \Phi(V) \subseteq U,
+    \end{equation*} i.e. $V \subseteq \Phi^{-1}(U)$. Ale skoro $V \in \Nau(x_0)$, to tym bardziej $\Phi^{-1}(U) \in \Nau(x_0)$, jako rozszerzenie $V$.
+
+    \paragraph{$3. \implies 4.$}
+    Weźmy ciąg $\ciag{x}$ zbieżny do $x_0$. Niech $U \in \Nau(\Phi(x_0))$, skąd $\Phi^{-1}(U) \in \Nau(x_0)$. Zatem: \begin{equation*}
+        \exists_{N_U} \forall_{n \geqslant N_U}: x_n \in \Phi^{-1}(U),
+    \end{equation*} z twierdzenia udowodnionego wcześniej. %NR%
+    Ergo: \begin{equation*}
+        \forall_{U \in \Nau(\Phi(x_0))} \exists_{N_U} \forall_{n \geqslant N_U}: \Phi(x_n) \in U.
+    \end{equation*} Zatem, z tego samego twierdzenia: \begin{equation*}
+        \Phi(x_n) \to \Phi(x_0).
+    \end{equation*}
+
+    \paragraph{$4. \implies 1.$} Dowodzimy nie wprost, że $\neg 1. \implies \neg 4.$. Zaprzeczeniem $1.$ jest: \begin{equation*}
+        \exists_{\eps > 0} \forall_\lambda \exists_{x_\lambda \in X}: d(x_\lambda, x_0) < \lambda \wedge \delta( \Phi(x_\lambda, x_0)) \geqslant \eps.
+    \end{equation*} Weźmy $\lambda_n = \frac{1}{n}$ i na tej podstawie skonstruujmy ciąg $x_n$ odpowiadjących $x_\lambda$ w powyższym stwierdzeniu dla odpowiednich $\lambda$. Wtedy musi być, że $x_n \to x_0$, gdyż $d(x_n, x_0) < \frac{1}{n}$, ale $\Phi(x_n) \nrightarrow \Phi(x_0)$, gdyż $\delta( \Phi(x_n), \Phi(x_0)) \geqslant \eps \, \forall_n$. Zatem zachodzi $\neg 4.$.
+
+\end{dow}
+
+
+    \begin{defr}{Odwzorowanie ciągłe}
+        Odwzorowanie spełniające warunki 1. - 4. poprzedniego twierdzenia dla punktu $x_0 \in X$ nazywamy \textbf{ciągłym} w $x_0$ (w p-ń. $(X, d)$). Jeśli odwzorowanie jest ciągłe w każdym punkcie przestrzenii, nazywamy je po prostu ciągłym.
+    \end{defr}
+        Czasami, mając na myśli warunek 1., mówimy o tzw. zbieżności według Cauchy'ego, zaś o warunku 4. mówimy, jako zbieżności według Heinego.
+
+    \begin{twier}{Złożenie odwzorowań ciągłych jest ciągłe}
+        Jeśli $\Phi: X \to Y$ jest ciągłe w $x_0 \in X$ i $\Psi: Y \to Z$ jest ciągłe w $\Phi(x_0)$, to $\Psi \circ \Phi: X \to Z$ jest ciągłe w $X_0$.
+    \end{twier}
+
+    \begin{dow}{Dowód}
+        Korzystając np. z 4. warunku ciągłości, weźmy ciąg $x_n \to x_0$, wtedy $\Phi(x_n) \to \Phi(x_0)$ z ciągłości $\Phi$. Ponadto $\Psi(\Phi(x_n)) \to \Psi(\Phi(x_0))$ z ciągłości $\Psi$. Widzimy, więc prosto, że $\Psi \circ \Phi$ musi być ciągłe.
+    \end{dow}
+
+    \begin{twier}{Ciągłość na całej dziedzinie}
+        $\Phi: X \to Y$ jest ciągłe na całym $X$ wtedy i tylko wtedy, gdy: \begin{equation}
+            \forall_{U \subotw Y}: \Phi^{-1}(U) \subotw X.
+        \end{equation} Inaczej mówiąc, przekształcenie jest ciągłe na całej dziedzinie wtedy i tylko wtedy, gdy przeciwobrazy zbiorów otwartych są otwarte.
+    \end{twier}
+
+    \begin{dow}{Dowód}
+        \paragraph{$\implies$} Niech $U \subotw Y$ i $x \in \Phi^{-1}(U)$. Zatem $\Phi(x) \in U$. Skoro $U$ jest otwarty, to musi być otoczeniem $\Phi(x)$, i.e. $U \in \Nau(\Phi(x))$, zatem (warunek 3.): \begin{equation*}
+            \Phi^{-1}(U) \in \Nau(x) \quad \forall_{x \in \Phi^{-1}(U)},
+        \end{equation*} czyli $\Phi^{-1}(U)$ jest otwarty.
+
+        \paragraph{$\impliedby$} Udowadniamy warunek 2.:\begin{equation*}
+            \forall_{U \subotw Y}: \Phi^{-1}(U) \subotw X.
+        \end{equation*} Weźmy $x \in X$ i $U \in \Nau(\Phi(x))$. Wtedy: \begin{equation*}
+            \exists_{\tilde{U} \subotw X}: \Phi(x) \in \tilde{U} \subseteq U,
+        \end{equation*} więc $V = \Phi^{-1}(\tilde{U})$ - otwarty. Pondato $x \in V$. Zatem $V \in \Nau(x)$, oraz $\Phi(V) \subseteq \tilde{U} \subseteq U$, więc $2.$ zachodzi.
+    \end{dow}
 
 
 
