@@ -13,6 +13,7 @@
 \contentsline {paragraph}{Przykład - szeregi naprzemienne.}{15}{}%
 \contentsline {paragraph}{Grupowanie składników}{17}{}%
 \contentsline {section}{\numberline {4}Przestrzenie metryczne}{19}{}%
+\contentsline {subsection}{\numberline {4.1}Podstawowe definicje. Otwartość i domkniętość}{19}{}%
 \contentsline {paragraph}{}{19}{}%
 \contentsline {paragraph}{}{20}{}%
 \contentsline {paragraph}{Przykłady}{20}{}%
@@ -28,3 +29,7 @@
 \contentsline {paragraph}{$\subseteq $}{26}{}%
 \contentsline {paragraph}{$\DOTSB \tmspace +\thickmuskip {.2777em}\DOTSB \Leftarrow \joinrel \Relbar \tmspace +\thickmuskip {.2777em}$}{27}{}%
 \contentsline {paragraph}{$implies$}{27}{}%
+\contentsline {paragraph}{$\DOTSB \tmspace +\thickmuskip {.2777em}\DOTSB \Relbar \joinrel \Rightarrow \tmspace +\thickmuskip {.2777em}$}{28}{}%
+\contentsline {paragraph}{$\DOTSB \tmspace +\thickmuskip {.2777em}\DOTSB \Leftarrow \joinrel \Relbar \tmspace +\thickmuskip {.2777em}$}{28}{}%
+\contentsline {paragraph}{$2. \DOTSB \tmspace +\thickmuskip {.2777em}\DOTSB \Relbar \joinrel \Rightarrow \tmspace +\thickmuskip {.2777em}1.$}{28}{}%
+\contentsline {subsection}{\numberline {4.2}Przekształcenia ciągłe}{28}{}%

@@ -18,6 +18,13 @@
 \usepackage{xcolor}
 \usepackage{relsize}
 
+%%%%%%%%%%%%%%%%%%%
+%      TODO       %
+
+
+% Domknięcie domknięcia to po prostu domknięcie
+
+
 
 
 %%%%%%%%%%
@@ -840,6 +847,7 @@ Notatki do Analizy I R \\
     \end{dow}
 
 \section{Przestrzenie metryczne}
+\subsection{Podstawowe definicje. Otwartość i domkniętość}
     \paragraph{} Zmienimy teraz temat, odchodząc od analizy zbieżności w liczbach zespolonych i rozpoczniemy rozważania o temacie znacznie bardziej ogólnym, mianowicie o przestrzeniach z metrykami, będących uogólnieniem znanego pojęcia odległości w $\C$.
     \begin{defr}{Metryka}
             
@@ -1193,6 +1201,33 @@ Notatki do Analizy I R \\
     \end{dow}
 
     \paragraph*{} Twierdzenie to mówi nie mniej, nie więcej niż to, że jeśli ciąg zbiega do jakiegoś punktu, to w każdym otoczeniu tego punktu znajdą się prawie wszystkie wyrazy tego ciągu.
+
+    \begin{twier}{Twierdzenie}
+        Niech $(X, d)$ - p-ń. metryczna, niech $Y \subseteq X$ i niech $d_y = d | _{Y \times Y}$ będzie obcięciem $d$ do $Y$. Wtedy:
+        \begin{enumerate}
+            \item $A \subseteq Y$ jest otwarty w $(Y, d_y)$ $\iff$ $\exists_{U \subotw X}: A = Y \cap U$.
+            \item $A \subseteq Y$ jest domknięty w $(Y, d_y)$ $\iff$ $\exists_{F \subdomk X}: A = Y \cap F$.
+        \end{enumerate}
+    \end{twier}
+    Twierdzenie to daje nam pojęcie o tym, jak wyglądają zbiory otwarte i domknięte w jakimś zawężeniu metryki - mianowicie są to zawężenia odpowiednich zbiorów otwartych i domkniętych.
+
+    \begin{dow}{Dowód}
+        Zaczniemy od dowodu 2.
+        \paragraph{$\implies$} Niech $A$ domknięty w $Y$ i niech $F$ będzie domknięciem $A$ w $X$ (więc $F$ musi być domknięty w $X$). Wtedy: \begin{equation*}
+            F = \{ \lim_{n \to \oo} a_n \in X \, \big| \, a_n \in A \},
+        \end{equation*} za to:\begin{equation*}
+            A = \{ \lim_{n \to \oo} a_n \in Y \, \big| \, a_n \in A \},
+        \end{equation*}gdyż $A$ jest domknięty w $Y$. Widzimy z tych definicji łatwo, że $A = F \cap Y$.
+        \paragraph{$\impliedby$} W drugą stronę, niech $A = Y \cap F$ i $F$ będzie domknięty w $X$. Niech $\ciag{a}$ będzie ciągiem w $A$ (więc i w $F$), zbiegającym do $g$. Wtedy $g \in F$. Zatem jeśli $g \in Y$, to $g \in A$, z konstrukcji $A$. Pokazaliśmy więc, że każdy ciąg z $A$ zbieżny w $Y$ ma granicę w samym $A$, zatem $A$ jest domknięty.
+        \paragraph{$2. \implies 1.$} Pokażemy teraz, jak z 2. wynika 1. Mamy bowiem ciąg następujących równoważności: \\
+        $A \subseteq Y$ jest otwarty w $Y$ $\iff$ $Y \backslash A$ jest domknięty w $Y$ $\iff$ $\exists_{F \subdomk X}: Y \backslash A = Y \cap F$ $\iff$ $ \exists_{F \subdomk X}: A = Y \cap (X \backslash F)$ $\iff$ $\exists_{U \subotw X}: A = Y \cap U$.\\
+        Przedostatnia równoważność, wynika z faktu, że jeśli $Y \backslash A = Y \cap F$, to $A = Y \backslash (Y \cap F) = Y \backslash F =Y \cap (X \backslash F)$ (pamiętamy, że $Y\subseteq X)$.
+        Ostatnia równoważność jest konsekwencją tego, że dopełnienie zbioru domkniętego jest otwarte.
+    \end{dow}
+
+\subsection{Przekształcenia ciągłe}
+
+
 
 \section*{Koniec}
 \tableofcontents
