@@ -544,7 +544,7 @@ gdyż $\ciag{\alpha}$ to ciąg nierosnący oraz podobnie: \begin{equation}
 \end{defr}
 
 
-\begin{twier}{Twierdzenie o punktach skupienia ciągu}
+\begin{twier}{Twierdzenie Bolzano-Weierestrassa I}
     Niech $L$ będzie zbiorem punktów skupienia zbioru $\{a_n \, | \, n \in \N\}$, tzn. takich liczb, dla których istnieje podciąg ciągu $(\ciag{a}$ zbieżny do tej liczby: \begin{equation}
         L = \{ x \in \overline{\R} \,\, | \,\, \exists_{\text{podciąg} \, (a_{n_k})_{k \in \N}} : \, \lim_{k \to \infty} a_{n_k} = x \}.
     \end{equation}
@@ -1308,6 +1308,113 @@ Zaczniemy rozważać teraz przekształcenia (i.e. funkcje) pomiędzy przestrzeni
         \end{equation*} więc $V = \Phi^{-1}(\tilde{U})$ - otwarty. Pondato $x \in V$. Zatem $V \in \Nau(x)$, oraz $\Phi(V) \subseteq \tilde{U} \subseteq U$, więc $2.$ zachodzi.
     \end{dow}
 
+
+    \begin{defr} {Ciągłość jednostajna}
+        $\Phi: X \to Y$ nazwiemy $\textbf{jednostajnie ciągłym}$, jeśli: \begin{equation}
+            \forall_{\eps > 0} \exists_{\lambda_\eps}: \forall_{x, x' \in X}: d(x, x') \leqslant \lambda_\eps \implies \delta(\Phi(x), \Phi(x')) \leqslant \eps.
+        \end{equation}
+        Ważną częścią tejże definicji jest to, że wybór $\lambda$ zależy jedynie od $\eps$, nie zaś od samych punktów $x, x'$.
+    \end{defr} 
+
+    \begin{obs}{Obserwacja}
+        Każda funkcja jednostajnie ciągła, jest ciągła.
+    \end{obs}
+
+    \begin{defr}{Przekształcenie Lipschitzowskie}
+        Przekształcenie $\Phi: X \to Y$ nazwiemy \textbf{Lipschitzowskim} (i.e. spełniającym \textbf{warunek Lipschitza}), jeśli:\begin{equation}
+            \exists_{L > 0} \forall_{x, x' \in X}: \delta(\Phi(x), \Phi(x')) \leqslant L \cdot d(x, x').
+        \end{equation} Warunek ten mówi, że odległość między wartościami funkcji jest zawsze ograniczona przez odległość między jej argumentami (z pewną proporcjonalnością).
+    \end{defr}
+
+    \begin{obs}{Obserwacja}
+        Funkcje Lipschitzowskie są ciągłe jednostajnie.
+    \end{obs}
+    \paragraph{} Istotnie - wystarczy ustalić: $\lambda_\eps = \frac{\eps}{L}$.
+
+\subsection{Zwartość}
+
+    Powiemy teraz o bardzo ważnym pojęciu charakteryzującym zbiory w przestrzenii metrycznej - to jest o zwartości.
+
+    \begin{defr}{Pokrycie}
+        Ustalmy $(X, d)$ - p-ń. metryczną.
+        \textbf{Pokryciem} zbioru $K$ nazwiemy rodzinę zbiorów $U = \{U \}_{i \in I}$, $U_i \subseteq X$, taką że: \begin{equation}
+            K \subseteq \bigcup_{i \in I} U_i.
+        \end{equation}  Pokrycie jest otwarte, jeśli wszystkie $U_i$ są otwarte.
+        Pokrycie $V = \{ V_i \}_{i \in I'}$ nazwiemy podpokryciem $U$, jeśli $V \subseteq U$.
+    \end{defr}
+    \paragraph{Przykład} Dla $X = \R$, $K = [0, 1]$, pokryciem $K$ jest rodzina: \begin{equation*}
+        {U_n}_{n \in \N}: \quad U_n = [0, 1 + \frac{1}{n}].
+    \end{equation*} Nie jest to pokrycie otwarte.
+
+    \begin{defr}{Zwartośc (pokryciowa)}
+        Zbiór $K \subseteq X$ nazwiemy \textbf{ZWARTYM}, jeśli z każdego pokrycia otwartego tegoż zbioru, można wybrać podpokrycie skończone (tj. mające skończonę liczbę elementów). Jeśli $K$ jest zwartym podzbiorem $X$, to zapiszemy $K \subseteq \subseteq X$.
+    \end{defr}
+
+    \begin{twier}{Własności zbiorów zwartych}
+        \begin{enumerate}
+            \item Każdy zbiór zwarty jest ograniczony.
+            \item Każdy zbiór zwarty jest domknięty.
+        \end{enumerate}
+    \end{twier}
+
+    \begin{dow}{Dowód}
+        Niech $K \subseteq \subseteq X$.
+        \begin{enumerate}
+            \item Weźmy dowolny $x \in X$. Wtedy $\{ \ball{x}{}n \}_{n \in \N} \}$ niewątpliwie jest pokryciem otwartym $K$. Skoro tak, to można zeń wybrać skończone podpokrycie. Zatem istnieje $N \in \N$, będące największym z indeksów z tegoś podpokrycia, takie że: \begin{equation*}
+                K \subseteq \ball{x}{N},
+            \end{equation*} jako że kolejne z tych kul zawierają w sobie poprzednie. Widzimy więc, że $K$ jest ograniczony.
+            \item Dowód nie wprost. Przypuśćmy, że $\exists \, y$ będący punktem skupienia $K$, t.ż. $y \notin K$. Weźmy rodzinę zbiorów $\{ X \backslash \dball{y}{\frac{1}{n}} \}_{n \in \N}$. Niewątpliwie jest to pokrycie otwarte, gdyż wszystkie z tych zbiorów są otwarte i sumują się one do $X \backslash \{y\}$. Wybierzmy z niego więc skończone podpokrycie i niech $N$ będzie największym z indeksów w tym podpokryciu. Zauważmy, że wtedy sumujw się ono do $X \backslash \dball{y}{\frac{1}{N}}$, jako że kolejne z tych zbiorów zawierają w sobie poprzednie. Mamy więc, że $K \subseteq X \backslash \dball{y}{\frac{1}{N}}$. Wtedy jednak $ \ball{y}{\frac{1}{N}} \cap K \subseteq \dball{y}{\frac{1}{N}} \cap K = \emptyset$, co przeczy temu, że $y$ jest punktem skupienia $K$. Sprzeczność! Zatem $K$ rzeczywiście musi być domknięty.
+        \end{enumerate}
+    \end{dow}
+
+    \begin{defr}{Zwartość ciągowa}
+        Powiemy, że podzbiór $K \subseteq X$ jest \textbf{ciągowo zwarty}, jeśli każdy ciąg $\ciag{x}$ zawarty w $K$ ($x_n \in K$) zawiera podciąg zbieżny do granicy w $K$: \begin{equation}
+            \forall_{\ciag{x}, x_n \in K} \exists_{k \mapsto n_k}: x_{n_k} \to g \in K.
+        \end{equation}
+    \end{defr}
+
+
+    \begin{twier}{Zwartość ciągowa = zwartość pokryciowa}
+        Zbiór $K$ jest ciągowo zwarty wtedy i tylko wtedy gdy jest zwarty (pokryciowo).
+    \end{twier}
+
+
+
+    %Dowód wraz z pomocniczym lematem
+
+    \begin{dow}{Dowód}
+        \paragraph{$\implies$} Niech $K \subseteq \subseteq X$, $\ciag{x}$ będzie ciągiem elementów z $K$ i niech $Z  = \{ x_n \, | \, n \in \N \}$. Pokażemy, że zachodzi jedna z dwu możliwości: \begin{enumerate}
+            \item \begin{equation*}
+                \exists_{y \in K}: \forall_{U \in \Nau(y), \, U \subotw X}: | Z \cap U | = \oo. 
+            \end{equation*}
+            \item $Z$ jest skończony.
+        \end{enumerate}  
+        Mianowicie, niech $\neg 1.$, i.e.: \begin{equation*}
+            \forall_{y \in K}: \exists_{U_y \in \Nau(y), \, U_y \, \subotw X}: | Z \cap U_y | < \oo.
+        \end{equation*} Oczywiście $\{ U_y \}_{y \in K}$ jest pokryciem otwartym $K$ (gdyż każdy $y$ zawiera się np. w odpowiadającym mu $U_y$). Wybierzmy więc zeń skończone podpokrycie, tak, żeby: \begin{equation*}
+            K \subseteq U_{y_1} \cup U_{y_2} \cup ... \cup U_{y_N}. 
+        \end{equation*} Mamy jednak $Z \subseteq K$, zatem: \begin{equation}
+            Z = K \cap Z = (U_{y_1} \cap Z) \cup (U_{y_2} \cap Z) \cup ... \cup (U_{y_N} \cap Z).
+        \end{equation} Każdy z elementów tej sumy jest skończony, na mocy założenia, zatem $Z$ także jest skończony, jako skończona suma skończonych. \\
+        Widzimy więc, że zachodzi 1. lub 2.: \begin{enumerate}
+            \item Jeśli zachodzi pierwszy warunek, to skoro: \begin{equation*}
+                \exists_{y \in K}: \forall_{U \in \Nau(y), \, U \subotw X}: | Z \cap U | = \oo,
+            \end{equation*} to konstruujemy $k \mapsto n_k$, tak aby $\forall_k: n_{k+1} > n_k$ i $x_{n_k} \in \ball{y}{\frac{1}{k}}$. Jest to możliwe, bo każde otwarte otoczenie $y$ zawiera nieskończenie wiele elementów ciągu $x_n$, w szczególności zawiera element o indeksie większym od dowolnej liczby. Oczywiście z podanej konstrukcji mamy $x_{n_k} \to y \in K$.
+            \item Jeśli $Z$ jest skończony, to z zasady szuflatkowej istnieje wartość $x \in Z \subseteq K$, która zostanie odwiedzona nieskończenie wiele razy przez wyrazy ciągu $x_n$ - można więc wziąć podciąg stały równy $x$ i oczywiście do tej liczby zbieżny.
+        \end{enumerate} Widzimy więc, że w obu przypadkach potrafimy skonstruować podciąg zbieżny w $K$, zatem $K$ istotnie jest ciągowo zwarty.
+        \paragraph{$\impliedby$} TODO
+        
+    \end{dow}
+
+
+
+    \begin{twier}{Twierdzenie Bolzano-Weierestrassa II}
+        Każdy ograniczony i domknięty podzbiór $\R$ jest zwarty.
+    \end{twier}
+
+    \begin{dow}{Dowód}
+        Wynika on prosto z równoważności zwartości ciągowej i pokryciowej. Jeśli jakiś podzbiór $\R$ jest ograniczony, to zawiera podciąg zbieżny (Twierdzenie Bolzano-Weierestrassa II), a skoro jest domknięty, to ów podciąg zbieżny ma granicę w tymże zbiorze. Zatem podzbiór ten jest ciągowo zwarty, czyli zwarty.
+    \end{dow}
 
 
 \section*{Koniec}

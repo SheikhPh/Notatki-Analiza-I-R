@@ -39,3 +39,8 @@
 \contentsline {paragraph}{$4. \DOTSB \tmspace +\thickmuskip {.2777em}\DOTSB \Relbar \joinrel \Rightarrow \tmspace +\thickmuskip {.2777em}1.$}{29}{}%
 \contentsline {paragraph}{$\DOTSB \tmspace +\thickmuskip {.2777em}\DOTSB \Relbar \joinrel \Rightarrow \tmspace +\thickmuskip {.2777em}$}{30}{}%
 \contentsline {paragraph}{$\DOTSB \tmspace +\thickmuskip {.2777em}\DOTSB \Leftarrow \joinrel \Relbar \tmspace +\thickmuskip {.2777em}$}{30}{}%
+\contentsline {paragraph}{}{31}{}%
+\contentsline {subsection}{\numberline {4.3}Zwartość}{31}{}%
+\contentsline {paragraph}{Przykład}{31}{}%
+\contentsline {paragraph}{$\DOTSB \tmspace +\thickmuskip {.2777em}\DOTSB \Relbar \joinrel \Rightarrow \tmspace +\thickmuskip {.2777em}$}{32}{}%
+\contentsline {paragraph}{$\DOTSB \tmspace +\thickmuskip {.2777em}\DOTSB \Leftarrow \joinrel \Relbar \tmspace +\thickmuskip {.2777em}$}{33}{}%

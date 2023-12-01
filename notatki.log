@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.4.4)  30 NOV 2023 00:47
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.4.4)  1 DEC 2023 17:57
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -957,24 +957,24 @@ Overfull \hbox (2.43416pt too wide) in paragraph at lines 1105--1106
  [] \T1/jkp/m/n/10 Fakty te s¡ oczy-wi-st¡ kon-se-kwen-cj¡ wªa-sno-±ci $\OMS/jkp/m/n/10 T$ \T1/jkp/m/n/10 i prawa, które mówi, »e do-peª-nie-nie zbioru otwar- 
  []
 
-[25] [26] [27] [28] [29] (./notatki.toc [30])
+[25] [26] [27] [28] [29] [30] [31] [32] (./notatki.toc [33])
 \tf@toc=\write4
 \openout4 = `notatki.toc'.
 
- [31] (./notatki.aux) ) 
+ [34] (./notatki.aux) ) 
 Here is how much of TeX's memory you used:
- 22147 strings out of 476017
- 445453 string characters out of 5793767
- 1880660 words of memory out of 5000000
- 42219 multiletter control sequences out of 15000+600000
+ 22174 strings out of 476017
+ 445912 string characters out of 5793767
+ 1881660 words of memory out of 5000000
+ 42246 multiletter control sequences out of 15000+600000
  603237 words of font info for 119 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 101i,20n,104p,499b,1259s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 101i,20n,104p,955b,1259s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/texlive/2023/texmf-dist/fonts/type1/public/kpfonts/jkpbn8a.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/kpfonts/jkpbne.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/kpfonts/jkpex.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/kpfonts/jkpmi.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/kpfonts/jkpmia.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/kpfonts/jkpmn8a.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/kpfonts/jkpmne.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/kpfonts/jkpsy.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/kpfonts/jkpsya.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/kpfonts/jkpsyb.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/kpfonts/jkpsyc.pfb>
-Output written on notatki.pdf (31 pages, 199401 bytes).
+Output written on notatki.pdf (34 pages, 211354 bytes).
 PDF statistics:
- 165 PDF objects out of 1000 (max. 8388607)
- 108 compressed objects within 2 object streams
+ 174 PDF objects out of 1000 (max. 8388607)
+ 114 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 
