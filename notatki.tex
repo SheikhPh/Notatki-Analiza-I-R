@@ -26,7 +26,6 @@
 
 
 
-
 %%%%%%%%%%
 % KOLORY %
 %%%%%%%%%%
@@ -34,12 +33,15 @@
 \definecolor{col1}{HTML}{ffcccc}
 \definecolor{col2}{HTML}{ccccff}
 \definecolor{col3}{HTML}{00ff00}
-\definecolor{col4}{HTML}{7777bb}
+\definecolor{col4}{HTML}{8888cc}
 \definecolor{darkred}{HTML}{8B0000}
 
 %%%%%%%%%
 % RAMKI %
 %%%%%%%%%
+
+\newcounter{defi}
+\numberwithin{defi}{section}
 
 \newtcolorbox{defr}[2][]{%
   breakable, enhanced, colback=white,colframe=col1,coltitle=black,
@@ -48,7 +50,14 @@
   attach boxed title to top left={yshift=-\tcboxedtitleheight/2, xshift=10pt},
   boxed title style={tile,size=small,left=5pt,right=5pt, 
   colback=col1,before upper=\strut},
-  title=#2,#1}
+  title={Definicja \thedefi . #1 #2},
+  before title={\refstepcounter{defi}},
+}
+
+
+
+\newcounter{theo}
+\numberwithin{theo}{section}
 
 \newtcolorbox{twier}[2][]{%
   breakable, enhanced, colback=white,colframe=col2,coltitle=black,
@@ -56,8 +65,10 @@
   fonttitle=\bfseries,top=13pt,
   attach boxed title to top left={yshift=-\tcboxedtitleheight/2, xshift=10pt},
   boxed title style={tile,size=small,left=5pt,right=5pt, 
-  colback=col2,before upper=\strut},
-  title=#2,#1}
+  colback=col2,before upper=\strut},   
+  title={Twierdzenie \thetheo . #1 #2},
+  before title={\refstepcounter{theo}},
+  }
 
 \newtcolorbox{dow}[2][]{%
   breakable, enhanced, colback=white,colframe=col3,coltitle=black,
@@ -68,6 +79,10 @@
   colback=col3,before upper=\strut},
   title=#2,#1}
 
+
+\newcounter{obser}
+\numberwithin{defi}{section}
+
 \newtcolorbox{obs}[2][]{%
   breakable, enhanced, colback=white,colframe=col4,coltitle=black,
   sharp corners,boxrule=1.5pt,
@@ -75,7 +90,9 @@
   attach boxed title to top left={yshift=-\tcboxedtitleheight/2, xshift=10pt},
   boxed title style={tile,size=small,left=5pt,right=5pt, 
   colback=col4,before upper=\strut},
-  title=#2,#1}
+  title={Obserwacja \theobser . #1 #2},
+  before title={\refstepcounter{obser}},
+}
 
 %%%%%%%%%%%
 % KOMENDY %
@@ -497,7 +514,7 @@ Ciąg $\ciag{a}$ nazywamy \textbf{ograniczonym}, jeśli:
     Mówimy też o "zbieżności" do $\pm \oo$, tj. zbieżności w zbiorze $\overline{\R}$
 \end{defr}
 
-\begin{obs}{Obserwacja}
+\begin{obs}{}
     Ciąg monotoniczny, nieograniczony jest rozbieżny do $\pm \oo$.
 \end{obs}
 
@@ -506,7 +523,7 @@ Ciąg $\ciag{a}$ nazywamy \textbf{ograniczonym}, jeśli:
 \end{defr}
 
 
-\begin{obs}{Obserwacja}
+\begin{obs}{}
     Jeśli $a_n \to g$, to każdy podciąg $a_{n_k} \to g$
 \end{obs}
 
@@ -544,7 +561,7 @@ gdyż $\ciag{\alpha}$ to ciąg nierosnący oraz podobnie: \begin{equation}
 \end{defr}
 
 
-\begin{twier}{Twierdzenie Bolzano-Weierestrassa I}
+\begin{twier}{Bolzano-Weierestrassa I} \label{twier:BL I}
     Niech $L$ będzie zbiorem punktów skupienia zbioru $\{a_n \, | \, n \in \N\}$, tzn. takich liczb, dla których istnieje podciąg ciągu $(\ciag{a}$ zbieżny do tej liczby: \begin{equation}
         L = \{ x \in \overline{\R} \,\, | \,\, \exists_{\text{podciąg} \, (a_{n_k})_{k \in \N}} : \, \lim_{k \to \infty} a_{n_k} = x \}.
     \end{equation}
@@ -649,8 +666,8 @@ Sprawdzając warunek Cauchy'ego, możemy dowodzić zbieżności ciągu do granic
 
 Załóżmy, że $\sum_{n=1}^{\infty} a_n$ jest szeregiem o wyrazach dodatnich ($a_n > 0$). Ostatnio zauważyliśmy, że:
 \[\sum\limits_{n=1}^{\infty} a_n = \sup_{\substack{F \subset \N \\ |F| < +\infty}} \sum_{n \in F} a_n.\]
-Wynikają z tego następujące:
-\begin{twier}{Wnioski}
+Wynikają z tego następujące wnioski:
+\begin{twier}{}
     \begin{enumerate}
         \item \[\sum_{n = 1}^{\infty} a_n < + \infty \quad \iff \quad \exists_{C>0} \forall_{F \subset \N ,\, |F| < +\oo}  \sum_{n \in F} a_n \leqslant C\]
               (Zbiór wszystkich sum elementów o indeksach pochodzących ze SKOŃCZONEGO podzbioru $\N$ jest ograniczony)
@@ -931,7 +948,7 @@ Ponadto:
 \end{equation}
 Wystarczy więc wziąć $C_1 = 1$ i $C_2 = \nu ^\frac{1}{p}$.
 
-\begin{obs}{Fakt}
+\begin{obs}{}
     Jeśli $d$ i $\delta$ są równoważne, to $x_n \to g$ w $(X, d)$ $\iff$ $x_n \to g$ w $(X, \delta)$.
 \end{obs}
 
@@ -1008,7 +1025,7 @@ Wystarczy więc wziąć $C_1 = 1$ i $C_2 = \nu ^\frac{1}{p}$.
 
 \end{dow}
 
-\begin{twier}{Stwierdzenie}
+\begin{twier}{}
     Kula otwarta jest otwarta.
 \end{twier}
 
@@ -1044,7 +1061,7 @@ Wystarczy więc wziąć $C_1 = 1$ i $C_2 = \nu ^\frac{1}{p}$.
     \end{equation}
 \end{defr}
 
-\begin{twier}{Stwierdzenie}
+\begin{twier}{}
     Kula domknięta jest domknięta.
 \end{twier}
 
@@ -1052,9 +1069,11 @@ Wystarczy więc wziąć $C_1 = 1$ i $C_2 = \nu ^\frac{1}{p}$.
     Niech $y \notin \dball{x}{r}$. Wtedy $d(y, x) > r$. Weźmy $R = d(y, x) - r > 0$. Wtedy $\ball{y}{R} \cap \dball{x}{r} = \emptyset$. Albowiem, jeśli $z \in \ball{y}{R}$, to $d(z, y) <  d(y, x) - r $, zatem $d(x, z) \geqslant d(x, y) - d(z, y)  > r$, czyli $z \notin \dball{x}{r}$.
 \end{dow}
 
-\begin{twier}{Dopełnienie zbioru otwartego jest domknięte}
-    Niech $A \subseteq X$. $A$ jest otwarty wtedy i tylko wtedy, gdy $X \ A$ jest domknięty.
+\begin{twier}{Dopełnienie zbioru otwartego jest domknięte}{twier:dopelnienie-otwartego}
+    Niech $A \subseteq X$. $A$ jest otwarty wtedy i tylko wtedy, gdy $X \backslash A$ jest domknięty.
 \end{twier}
+
+
 
 \begin{dow}{Dowód}
     Mamy następujący ciąg równoważności:
@@ -1075,7 +1094,7 @@ Wystarczy więc wziąć $C_1 = 1$ i $C_2 = \nu ^\frac{1}{p}$.
 Zauważmy, że istnieją zbiory jednocześnie domknięte i otwarte. Na przykład w każdej przestrzenii metrycznej są to $\emptyset$ oraz cała przestrzeń. W $\R$ są to jedynie takie zbiory. Za to w przestrzenii dyskretnej, wszystkie zbiory mają te własność.
 
 
-\begin{twier}{Stwierdzenie}
+\begin{twier}{}
     Zbiór $A$ jest otwarty wtedy i tylko wtedy, gdy $A$ jest sumą kul.
 \end{twier}
 \begin{dow}{Dowód}
@@ -1092,7 +1111,7 @@ Zauważmy, że istnieją zbiory jednocześnie domknięte i otwarte. Na przykład
     \paragraph{$\impliedby$} W drugą stronę sprawa jest jasna - suma każdej rodziny kul (i.e. zbiorów otwarty) będzie otwarta.
 \end{dow}
 
-\begin{obs}{Fakty na temat $\Fau$}
+\begin{obs}{na temat $\Fau$}
     \begin{enumerate}
         \item $\emptyset, X \in \Fau.$
         \item $\Fau = \{ X \backslash A \, \big| \, A \in \Tau \}.$
@@ -1118,20 +1137,20 @@ Zauważmy, że istnieją zbiory jednocześnie domknięte i otwarte. Na przykład
     \end{equation}
 \end{defr}
 
-\begin{obs}{Obserwacja}
+\begin{obs}{}
     \begin{equation}
         B \dg \subseteq B \subseteq \overline{B}
     \end{equation}
 \end{obs}
 
-\begin{obs}{Obserwacja}
+\begin{obs}{}
     \begin{itemize}
         \item $B$ - otwarty $\iff$ $B \dg = B.$
         \item $B$ - domknięty $\iff$ $\overline{B} = B.$
     \end{itemize}
 \end{obs}
 
-\begin{twier}{Stwierdzenie}
+\begin{twier}{}
     \begin{equation}
         X \backslash \overline{B} = (X \backslash B) \dg
     \end{equation} lub \begin{equation}
@@ -1145,7 +1164,7 @@ Zauważmy, że istnieją zbiory jednocześnie domknięte i otwarte. Na przykład
 
 
 Powiemy teraz o bardzo ważnym twierdzeniu pozwalającym utożsamić punkty skupienia z granicami ciągów ze zbioru.
-\begin{twier}{Twierdzenie}
+\begin{twier}{}
     Niech $B \subseteq X$. Wtedy domknięcie $B$ to zbiór granic ciągów z $B$, tj.: \begin{equation}
         \overline{B} = \{ \lim_{n\to \oo} x_n \,  \big| \, \ciag{x} \wedge \forall_n x_n \in B \}.
     \end{equation}
@@ -1181,7 +1200,7 @@ Powiemy teraz o bardzo ważnym twierdzeniu pozwalającym utożsamić punkty skup
     \end{equation}
 \end{defr}
 
-\begin{twier}{Twierdzenie}
+\begin{twier}{}
     Niech $\ciag{x}$ będzie ciągiem elementów $X$. Wtedy:\begin{equation}
         \lim_{n \to \oo} x_n = x \iff \forall_{A \in \Nau(x)} \exists_{N_A \in \N} \forall_{n \geqslant N_A}: x_n \in A.
     \end{equation}
@@ -1202,7 +1221,7 @@ Powiemy teraz o bardzo ważnym twierdzeniu pozwalającym utożsamić punkty skup
 
 \paragraph*{} Twierdzenie to mówi nie mniej, nie więcej niż to, że jeśli ciąg zbiega do jakiegoś punktu, to w każdym otoczeniu tego punktu znajdą się prawie wszystkie wyrazy tego ciągu.
 
-\begin{twier}{Twierdzenie}
+\begin{twier}{}
     Niech $(X, d)$ - p-ń. metryczna, niech $Y \subseteq X$ i niech $d_y = d | _{Y \times Y}$ będzie obcięciem $d$ do $Y$. Wtedy:
     \begin{enumerate}
         \item $A \subseteq Y$ jest otwarty w $(Y, d_y)$ $\iff$ $\exists_{U \subotw X}: A = Y \cap U$.
@@ -1222,14 +1241,14 @@ Twierdzenie to daje nam pojęcie o tym, jak wyglądają zbiory otwarte i domkni�
     \paragraph{$2. \implies 1.$} Pokażemy teraz, jak z 2. wynika 1. Mamy bowiem ciąg następujących równoważności: \\
     $A \subseteq Y$ jest otwarty w $Y$ $\iff$ $Y \backslash A$ jest domknięty w $Y$ $\iff$ $\exists_{F \subdomk X}: Y \backslash A = Y \cap F$ $\iff$ $ \exists_{F \subdomk X}: A = Y \cap (X \backslash F)$ $\iff$ $\exists_{U \subotw X}: A = Y \cap U$.\\
     Przedostatnia równoważność, wynika z faktu, że jeśli $Y \backslash A = Y \cap F$, to $A = Y \backslash (Y \cap F) = Y \backslash F =Y \cap (X \backslash F)$ (pamiętamy, że $Y\subseteq X)$.
-    Ostatnia równoważność jest konsekwencją tego, że dopełnienie zbioru domkniętego jest otwarte.
+    Ostatnia równoważność jest konsekwencją tego, że dopełnienie zbioru domkniętego jest otwarte (Tw. \ref{twier:dopelnienie-otwartego}).
 \end{dow}
 
 \subsection{Przekształcenia ciągłe}
 
 Zaczniemy rozważać teraz przekształcenia (i.e. funkcje) pomiędzy przestrzeniami metrycznymi i wyróżnimy wśród nich szczgólnie ważną klasę funkcji ciągłych.
 
-\begin{twier}{Warunki ciągłośći}
+\begin{twier}{Warunki ciągłośći} \label{twier:warunki-ciaglosci}
     Niech $(X, d)$ i $(Y, \delta)$ będą przestrzeniami metrycznymi, a $\Phi : X \to Y$ przekształceniem między nimi. Ustalmy też $x_0 \in X$. Wtedy następujące warunki są równoważne:
     \begin{enumerate}
         \item \begin{equation}
@@ -1277,8 +1296,8 @@ Zaczniemy rozważać teraz przekształcenia (i.e. funkcje) pomiędzy przestrzeni
 \end{dow}
 
 
-    \begin{defr}{Odwzorowanie ciągłe}
-        Odwzorowanie spełniające warunki 1. - 4. poprzedniego twierdzenia dla punktu $x_0 \in X$ nazywamy \textbf{ciągłym} w $x_0$ (w p-ń. $(X, d)$). Jeśli odwzorowanie jest ciągłe w każdym punkcie przestrzenii, nazywamy je po prostu ciągłym.
+    \begin{defr}{Odwzorowanie ciągłe}\label{defr:ciaglosc}
+        Odwzorowanie spełniające warunki 1. - 4. Twierdzenia \ref{twier:warunki-ciaglosci} dla punktu $x_0 \in X$ nazywamy \textbf{ciągłym} w $x_0$ (w p-ń. $(X, d)$). Jeśli odwzorowanie jest ciągłe w każdym punkcie przestrzenii, nazywamy je po prostu ciągłym.
     \end{defr}
         Czasami, mając na myśli warunek 1., mówimy o tzw. zbieżności według Cauchy'ego, zaś o warunku 4. mówimy, jako zbieżności według Heinego.
 
@@ -1309,14 +1328,14 @@ Zaczniemy rozważać teraz przekształcenia (i.e. funkcje) pomiędzy przestrzeni
     \end{dow}
 
 
-    \begin{defr} {Ciągłość jednostajna}
+    \begin{defr} {Ciągłość jednostajna} \label{defr:ciaglosc-jednostajna}
         $\Phi: X \to Y$ nazwiemy $\textbf{jednostajnie ciągłym}$, jeśli: \begin{equation}
             \forall_{\eps > 0} \exists_{\lambda_\eps}: \forall_{x, x' \in X}: d(x, x') \leqslant \lambda_\eps \implies \delta(\Phi(x), \Phi(x')) \leqslant \eps.
         \end{equation}
         Ważną częścią tejże definicji jest to, że wybór $\lambda$ zależy jedynie od $\eps$, nie zaś od samych punktów $x, x'$.
     \end{defr} 
 
-    \begin{obs}{Obserwacja}
+    \begin{obs}{}
         Każda funkcja jednostajnie ciągła, jest ciągła.
     \end{obs}
 
@@ -1326,7 +1345,7 @@ Zaczniemy rozważać teraz przekształcenia (i.e. funkcje) pomiędzy przestrzeni
         \end{equation} Warunek ten mówi, że odległość między wartościami funkcji jest zawsze ograniczona przez odległość między jej argumentami (z pewną proporcjonalnością).
     \end{defr}
 
-    \begin{obs}{Obserwacja}
+    \begin{obs}{}
         Funkcje Lipschitzowskie są ciągłe jednostajnie.
     \end{obs}
     \paragraph{} Istotnie - wystarczy ustalić: $\lambda_\eps = \frac{\eps}{L}$.
@@ -1346,7 +1365,7 @@ Zaczniemy rozważać teraz przekształcenia (i.e. funkcje) pomiędzy przestrzeni
         {U_n}_{n \in \N}: \quad U_n = [0, 1 + \frac{1}{n}].
     \end{equation*} Nie jest to pokrycie otwarte.
 
-    \begin{defr}{Zwartośc (pokryciowa)}
+    \begin{defr}{Zwartośc (pokryciowa)}\label{defr:zwartosc-pokryciowa}
         Zbiór $K \subseteq X$ nazwiemy \textbf{ZWARTYM}, jeśli z każdego pokrycia otwartego tegoż zbioru, można wybrać podpokrycie skończone (tj. mające skończonę liczbę elementów). Jeśli $K$ jest zwartym podzbiorem $X$, to zapiszemy $K \subseteq \subseteq X$.
     \end{defr}
 
@@ -1360,20 +1379,21 @@ Zaczniemy rozważać teraz przekształcenia (i.e. funkcje) pomiędzy przestrzeni
     \begin{dow}{Dowód}
         Niech $K \subseteq \subseteq X$.
         \begin{enumerate}
-            \item Weźmy dowolny $x \in X$. Wtedy $\{ \ball{x}{}n \}_{n \in \N} \}$ niewątpliwie jest pokryciem otwartym $K$. Skoro tak, to można zeń wybrać skończone podpokrycie. Zatem istnieje $N \in \N$, będące największym z indeksów z tegoś podpokrycia, takie że: \begin{equation*}
+            \item Weźmy dowolny $x \in X$. Wtedy $\{ \ball{x}{}n \}_{n \in \N} $ niewątpliwie jest pokryciem otwartym $K$. Skoro tak, to można zeń wybrać skończone podpokrycie. Zatem istnieje $N \in \N$, będące największym z indeksów z tegoś podpokrycia, takie że: \begin{equation*}
                 K \subseteq \ball{x}{N},
             \end{equation*} jako że kolejne z tych kul zawierają w sobie poprzednie. Widzimy więc, że $K$ jest ograniczony.
+
             \item Dowód nie wprost. Przypuśćmy, że $\exists \, y$ będący punktem skupienia $K$, t.ż. $y \notin K$. Weźmy rodzinę zbiorów $\{ X \backslash \dball{y}{\frac{1}{n}} \}_{n \in \N}$. Niewątpliwie jest to pokrycie otwarte, gdyż wszystkie z tych zbiorów są otwarte i sumują się one do $X \backslash \{y\}$. Wybierzmy z niego więc skończone podpokrycie i niech $N$ będzie największym z indeksów w tym podpokryciu. Zauważmy, że wtedy sumujw się ono do $X \backslash \dball{y}{\frac{1}{N}}$, jako że kolejne z tych zbiorów zawierają w sobie poprzednie. Mamy więc, że $K \subseteq X \backslash \dball{y}{\frac{1}{N}}$. Wtedy jednak $ \ball{y}{\frac{1}{N}} \cap K \subseteq \dball{y}{\frac{1}{N}} \cap K = \emptyset$, co przeczy temu, że $y$ jest punktem skupienia $K$. Sprzeczność! Zatem $K$ rzeczywiście musi być domknięty.
         \end{enumerate}
     \end{dow}
 
-    \begin{defr}{Zwartość ciągowa}
+    \begin{defr}{Zwartość ciągowa} \label{defr:zwartosc-ciagowa}
         Powiemy, że podzbiór $K \subseteq X$ jest \textbf{ciągowo zwarty}, jeśli każdy ciąg $\ciag{x}$ zawarty w $K$ ($x_n \in K$) zawiera podciąg zbieżny do granicy w $K$: \begin{equation}
             \forall_{\ciag{x}, x_n \in K} \exists_{k \mapsto n_k}: x_{n_k} \to g \in K.
         \end{equation}
     \end{defr}
 
-    \begin{defr}{$\eps$ - sieć}
+    \begin{defr}{$\eps$ - sieć} \label{defr:eps-siec}
         Niech $K \subseteq X$ i $\eps > 0$. Wtedy $S \subseteq X$ nazwiemy \textbf{$\eps$ - siecią dla} $K$ jeśli: \begin{equation}
             \forall_{z \in K} \exists_{s \in S}: z \in \ball{s}{\eps}.
         \end{equation} $S$ jest $\eps$ - siecią \textbf{w} jeśli jest $\eps$ - siecią dla $K$ i $S \subseteq$.
@@ -1411,19 +1431,27 @@ Zaczniemy rozważać teraz przekształcenia (i.e. funkcje) pomiędzy przestrzeni
             \end{equation*} to konstruujemy $k \mapsto n_k$, tak aby $\forall_k: n_{k+1} > n_k$ i $x_{n_k} \in \ball{y}{\frac{1}{k}}$. Jest to możliwe, bo każde otwarte otoczenie $y$ zawiera nieskończenie wiele elementów ciągu $x_n$, w szczególności zawiera element o indeksie większym od dowolnej liczby. Oczywiście z podanej konstrukcji mamy $x_{n_k} \to y \in K$.
             \item Jeśli $Z$ jest skończony, to z zasady szuflatkowej istnieje wartość $x \in Z \subseteq K$, która zostanie odwiedzona nieskończenie wiele razy przez wyrazy ciągu $x_n$ - można więc wziąć podciąg stały równy $x$ i oczywiście do tej liczby zbieżny.
         \end{enumerate} Widzimy więc, że w obu przypadkach potrafimy skonstruować podciąg zbieżny w $K$, zatem $K$ istotnie jest ciągowo zwarty.
+        
         \paragraph{$\impliedby$} TODO
         
     \end{dow}
 
 
 
-    \begin{twier}{Twierdzenie Bolzano-Weierestrassa II}
+    \begin{twier}{Bolzano-Weierestrassa II} \label{twier:BL II}
         Każdy ograniczony i domknięty podzbiór $\R$ jest zwarty.
     \end{twier}
 
     \begin{dow}{Dowód}
-        Wynika on prosto z równoważności zwartości ciągowej i pokryciowej. Jeśli jakiś podzbiór $\R$ jest ograniczony, to zawiera podciąg zbieżny (Twierdzenie Bolzano-Weierestrassa II), a skoro jest domknięty, to ów podciąg zbieżny ma granicę w tymże zbiorze. Zatem podzbiór ten jest ciągowo zwarty, czyli zwarty.
+        Wynika on prosto z równoważności zwartości ciągowej i pokryciowej. Jeśli jakiś podzbiór $\R$ jest ograniczony, to zawiera podciąg zbieżny (Twierdzenie \ref{twier:BL I}), a skoro jest domknięty, to ów podciąg zbieżny ma granicę w tymże zbiorze. Zatem podzbiór ten jest ciągowo zwarty, czyli zwarty.
     \end{dow}
+
+
+
+
+
+
+
 
 
 \section*{Koniec}

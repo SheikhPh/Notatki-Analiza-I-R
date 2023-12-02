@@ -1,0 +1,146 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[draft]{graphicx}
+\usepackage[usenames,dvipsnames,svgnames]{xcolor}
+\usepackage{mathrsfs}
+\usepackage[shortlabels]{enumitem}
+\usepackage{mathtools}
+\usepackage{microtype}
+\usepackage{hyperref}
+
+%% If you use Asymptote, uncomment the following lines
+%\usepackage{asymptote}
+%\begin{asydef}
+%	defaultpen(fontsize(10pt));
+%	size(8cm); // set a reasonable default
+%	usepackage("amsmath");
+%	usepackage("amssymb");
+%	settings.tex="pdflatex";
+%	settings.outformat="pdf";
+%	// Replacement for olympiad+cse5 which is not standard
+%	import geometry;
+%	// recalibrate fill and filldraw for conics
+%	void filldraw(picture pic = currentpicture, conic g, pen fillpen=defaultpen, pen drawpen=defaultpen)
+%		{ filldraw(pic, (path) g, fillpen, drawpen); }
+%	void fill(picture pic = currentpicture, conic g, pen p=defaultpen)
+%		{ filldraw(pic, (path) g, p); }
+%	// some geometry
+%	pair foot(pair P, pair A, pair B) { return foot(triangle(A,B,P).VC); }
+%	pair orthocenter(pair A, pair B, pair C) { return orthocentercenter(A,B,C); }
+%	pair centroid(pair A, pair B, pair C) { return (A+B+C)/3; }
+%	// cse5 abbrevations
+%	path CP(pair P, pair A) { return circle(P, abs(A-P)); }
+%	path CR(pair P, real r) { return circle(P, r); }
+%	pair IP(path p, path q) { return intersectionpoints(p,q)[0]; }
+%	pair OP(path p, path q) { return intersectionpoints(p,q)[1]; }
+%	path Line(pair A, pair B, real a=0.6, real b=a) { return (a*(A-B)+A)--(b*(B-A)+B); }
+%	// cse5 more useful functions
+%	picture CC() {
+%		picture p=rotate(0)*currentpicture;
+%		currentpicture.erase();
+%		return p;
+%	}
+%	pair MP(Label s, pair A, pair B = plain.S, pen p = defaultpen) {
+%		Label L = s;
+%		L.s = "$"+s.s+"$";
+%		label(L, A, B, p);
+%		return A;
+%	}
+%	pair Drawing(Label s = "", pair A, pair B = plain.S, pen p = defaultpen) {
+%		dot(MP(s, A, B, p), p);
+%		return A;
+%	}
+%	path Drawing(path g, pen p = defaultpen, arrowbar ar = None) {
+%		draw(g, p, ar);
+%		return g;
+%	}
+%\end{asydef}
+
+%% Macros
+\providecommand{\ol}{\overline}
+\providecommand{\ul}{\underline}
+\providecommand{\wt}{\widetilde}
+\providecommand{\wh}{\widehat}
+\providecommand{\eps}{\varepsilon}
+\providecommand{\half}{\frac{1}{2}}
+\providecommand{\inv}{^{-1}}
+\newcommand{\dang}{\measuredangle} %% Directed angle
+\providecommand{\CC}{\mathbb C}
+\providecommand{\FF}{\mathbb F}
+\providecommand{\NN}{\mathbb N}
+\providecommand{\QQ}{\mathbb Q}
+\providecommand{\RR}{\mathbb R}
+\providecommand{\ZZ}{\mathbb Z}
+\providecommand{\ts}{\textsuperscript}
+\providecommand{\dg}{^\circ}
+\providecommand{\ii}{\item}
+\DeclareMathOperator*{\lcm}{lcm}
+\DeclareMathOperator*{\argmin}{arg min}
+\DeclareMathOperator*{\argmax}{arg max}
+
+% theorem environments
+% starred versions are not numbered, unstarred versions have a number
+\theoremstyle{definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem*{theorem*}{Theorem}
+\newtheorem*{lemma*}{Lemma}
+\newtheorem*{claim*}{Claim}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem*{remark*}{Remark}
+
+\begin{document}
+
+%% Insert problem statement here
+This is an example of a problem statement
+to show the template submission format.
+Prove that the sky is green.
+
+\newpage %% Places solution on a new page
+
+\paragraph{First solution}
+Our solution is based off the following lemma.
+
+%% This lemma will be numbered because there is no star
+\begin{lemma}
+	If this lemma is true, then the sky is green.
+\end{lemma}
+\begin{proof}
+	By hypothesis, we are given the truth of the lemma.
+	And indeed, certainly \emph{if} the lemma is true,
+	then we may apply it and obtain the conclusion.
+	This completes the proof.
+\end{proof}
+
+Having proven the lemma, we now apply it to conclude that the sky is green.
+
+\paragraph{Second solution}
+This approach eliminates any concern of natural language
+by working with the following set:
+\[ X \coloneqq \left\{ x \mid x \in x \to Y \right\} \]
+where $Y$ denotes the desired conclusion.
+One may proceed as follows:
+\begin{align*}
+	X &\coloneqq \left\{ x \mid x \in X \to Y \right\} & \text{Definition} \\
+	x=X &\to \left( x \in x \leftrightarrow X \in X \right) & \text{Substitution} \\
+	x=X &\to \left( (x \in x \to Y) \leftrightarrow (X \in X \to Y) \right) & \text{Add consequent} \\
+	X \in X &\leftrightarrow (X \in X \to Y) & \text{Concretion} \\
+	X \in X &\to (X \in X \to Y) & \\
+	X \in X &\to Y & \text{Contraction} \\
+	(X \in X \to Y) &\to (X \in X) & \\
+	X &\in X & \text{modus ponus}
+\end{align*}
+and hence $Y$ follows.
+
+%% Author remarks on the problem
+%% This remark will not be numbered, because the environment is starred
+\begin{remark*}
+	In the literature, this result is sometimes known as \emph{Curry's paradox}.
+	It may also be called \emph{L\"{o}b's paradox}
+	due to its relationship to L\"{o}b's theorem.
+	See \url{https://en.wikipedia.org/wiki/Curry's\_paradox} for details.
+\end{remark*}
+
+\end{document}

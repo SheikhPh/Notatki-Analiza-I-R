@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1701456266 "c:/Users/fbaci/Documents/Notatki Analiza/Notatki-ANALiza/notatki.tex" "notatki.pdf" "notatki" 1701456273 0
-  "c:/Users/fbaci/Documents/Notatki Analiza/Notatki-ANALiza/notatki.tex" 1701456256 79129 31a1de6a4eb508855ee2b4f470082220 ""
+["pdflatex"] 1701527470 "c:/Users/fbaci/Documents/Notatki Analiza/Notatki-ANALiza/notatki.tex" "notatki.pdf" "notatki" 1701527476 0
+  "c:/Users/fbaci/Documents/Notatki Analiza/Notatki-ANALiza/notatki.tex" 1701527469 79567 428b48cea132d8fca395e2cb05b6ab68 ""
   "c:/texlive/2023/texmf-dist/fonts/enc/dvips/base/8r.enc" 1680560375 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "c:/texlive/2023/texmf-dist/fonts/enc/dvips/kpfonts/kpfonts-expert.enc" 1680563875 2639 b7bbeb66c016cde6fdcad9263fe54a4a ""
   "c:/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map" 1680561504 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -174,9 +174,9 @@
   "c:/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1680573324 4662201 6a1520b5c5c935088be65b26dee0a7ec ""
   "c:/texlive/2023/texmf-var/web2c/pdftex/pdflatex.fmt" 1680573588 7885541 d5c4c3b8e0341597f7cd8c9a7b255c3d ""
   "c:/texlive/2023/texmf.cnf" 1680573298 713 e69b156964470283e0530f5060668171 ""
-  "notatki.aux" 1701456273 5735 c151a85e34b367faca3aba6bbc7f73fb "pdflatex"
-  "notatki.tex" 1701456256 79129 31a1de6a4eb508855ee2b4f470082220 ""
-  "notatki.toc" 1701456273 3759 3e729e3a66349df6f6ff5a963f1faefc "pdflatex"
+  "notatki.aux" 1701527476 6058 82329e38b553fe77ae55d5883c26c85c "pdflatex"
+  "notatki.tex" 1701527469 79567 428b48cea132d8fca395e2cb05b6ab68 ""
+  "notatki.toc" 1701527476 3759 3e729e3a66349df6f6ff5a963f1faefc "pdflatex"
   (generated)
   "notatki.aux"
   "notatki.log"
