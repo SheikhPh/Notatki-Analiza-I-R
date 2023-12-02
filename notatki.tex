@@ -23,8 +23,9 @@
 
 
 % Domknięcie domknięcia to po prostu domknięcie
-
-
+% Monotoniczność domknięcia
+% Szeregi o wyrazach dodatnich cz. I
+% Inna deginicja punktu skupienia
 
 %%%%%%%%%%
 % KOLORY %
@@ -105,7 +106,6 @@
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\C}{\mathbb{C}}
 \newcommand{\oo}{\infty}
-\newcommand{\eps}{\varepsilon}
 \newcommand{\ifff}{\Leftrightarrow}
 \newcommand{\imp}{\Rightarrow}
 \newcommand{\Tau}{\mathcal{T}}
@@ -114,6 +114,32 @@
 \newcommand{\subotw}{\underset{\clap{\scriptsize otw.}}{\subseteq}}
 \newcommand{\subdomk}{\underset{\clap{\scriptsize domk.}}{\subseteq}}
 \newcommand{\dg}{^{\circ}}
+
+\providecommand{\ol}{\overline}
+\providecommand{\ul}{\underline}
+\providecommand{\wt}{\widetilde}
+\providecommand{\wh}{\widehat}
+\providecommand{\eps}{\varepsilon}
+\providecommand{\half}{\frac{1}{2}}
+\providecommand{\inv}{^{-1}}
+\newcommand{\dang}{\measuredangle} %% Directed angle
+\providecommand{\CC}{\mathbb C}
+\providecommand{\FF}{\mathbb F}
+\providecommand{\NN}{\mathbb N}
+\providecommand{\QQ}{\mathbb Q}
+\providecommand{\RR}{\mathbb R}
+\providecommand{\ZZ}{\mathbb Z}
+\providecommand{\ts}{\textsuperscript}
+\providecommand{\dg}{^\circ}
+\providecommand{\ii}{\item}
+
+
+
+
+
+
+
+
 
 \newcommand{\ilorazowy}[1]{#1/\!{_R}}
 \newcommand{\ciag}[1]{(#1_{n})_{n \in \N}}
@@ -1069,7 +1095,7 @@ Wystarczy więc wziąć $C_1 = 1$ i $C_2 = \nu ^\frac{1}{p}$.
     Niech $y \notin \dball{x}{r}$. Wtedy $d(y, x) > r$. Weźmy $R = d(y, x) - r > 0$. Wtedy $\ball{y}{R} \cap \dball{x}{r} = \emptyset$. Albowiem, jeśli $z \in \ball{y}{R}$, to $d(z, y) <  d(y, x) - r $, zatem $d(x, z) \geqslant d(x, y) - d(z, y)  > r$, czyli $z \notin \dball{x}{r}$.
 \end{dow}
 
-\begin{twier}{Dopełnienie zbioru otwartego jest domknięte}{twier:dopelnienie-otwartego}
+\begin{twier}{Dopełnienie zbioru otwartego jest domknięte}\label{twier:dopelnienie-otwartego}
     Niech $A \subseteq X$. $A$ jest otwarty wtedy i tylko wtedy, gdy $X \backslash A$ jest domknięty.
 \end{twier}
 
@@ -1393,13 +1419,62 @@ Zaczniemy rozważać teraz przekształcenia (i.e. funkcje) pomiędzy przestrzeni
         \end{equation}
     \end{defr}
 
+    \begin{twier}{}\label{twier:ciag-zwarty-domk}
+        Zbiór $K$ ciągowo zwarty jest także domknięty.
+    \end{twier}
+
+    \begin{dow}{Dowód}
+        Istotnie, jeśli ciąg $\ciag{x}$ elementów z $K$ jest zbieżny, to każdy jego podciąg jest zbieżny do tej samej granicy. Ale skoro $K$ jest ciągowo zwarty, to $\ciag{x}$ ma podciąg zbieżny do elementu z $K$, który będzie wspólną granicą wszystkich podciągów. Zatem i granica $\ciag{x}$ musi leżeć w $K$. 
+    \end{dow}
+
+
     \begin{defr}{$\eps$ - sieć} \label{defr:eps-siec}
         Niech $K \subseteq X$ i $\eps > 0$. Wtedy $S \subseteq X$ nazwiemy \textbf{$\eps$ - siecią dla} $K$ jeśli: \begin{equation}
             \forall_{z \in K} \exists_{s \in S}: z \in \ball{s}{\eps}.
-        \end{equation} $S$ jest $\eps$ - siecią \textbf{w} jeśli jest $\eps$ - siecią dla $K$ i $S \subseteq$.
+        \end{equation} $S$ jest $\eps$ - siecią \textbf{w} jeśli jest $\eps$ - siecią dla $K$ i $S \subseteq K$.
     \end{defr}
 
 
+    \begin{twier}{}\label{twier:sk-eps-siec}
+        Jeśli $K$ jest ciągowo zwarty, to dla każdego $\eps > 0$ istnieje skończona $\eps$ - sieć w $K$.
+    \end{twier}
+
+    \begin{dow}{Dowód}
+        \paragraph{Dowód nie wprost.} Przypuśćmy, że istnieje $\eps > 0$, t.ż. w $K$ nie ma skończonej $\eps$ - sieci. Skonstruujmy wtedy następująco ciąg $\ciag{x}$ i rodzinę zbiorów $\ciag{U}$:\\
+         Niech $x_1 \in K$ będzie dowolne i $U_1 = \ball{x_1}{\eps}$. Oczywiście $U_1$ nie pokrywa $K$ (z założenia): $K \backslash U_1 \neq \emptyset$. Za $x_2$ bierzemy więc dowolny element w $K \backslash U_1$, a $U_2 = U_1 \cup \ball{x_2}{\eps}$. Ogólnie $x_n \in K \backslash U_{n-1}$ i$U_n = U_{n-1} \cup \ball{x_{n}}{\eps}$. Oczywiście $K \backslash U_{n-1} \neq \emptyset$, gdyż gdyby było inaczej, to z konstrukcji mielibyśmy wbrew założeniu skończoną $\eps$ - sieć pokrywającą $K$. \\
+         Otrzymaliśmy ciąg $\ciag{x}$, który jednak nie może mieć podciągu zbieżnego, gdyż nie spełnia warunku Cauchy'ego - z konstrukcji jasno widać, że $\forall_{i < j}: d(x_i, x_j) \geqslant \eps$, jako że $x_j \in K \backslash U_{j-1} \subseteq K \backslash U_i$. Przeczy to założeniu, że $K$ jest ciągowo zwarty.
+    \end{dow}
+
+
+    \begin{twier}{} \label{twier:przel-gest}
+        Jeśli $K$ jest ciągowo zwarty, to istnieje przeliczalny $D \subseteq K$, t.ż. $\overline{D} = K$ i.e. $D$ jest gęsty w $K$.
+    \end{twier}
+
+    \begin{dow}{Dowód}
+        Weźmy \begin{equation*}
+            D = \bigcup_{n = 1}^{\oo} S_{\frac{1}{n}} \subseteq K,
+        \end{equation*} gdzie jako $S_\eps$ oznaczyliśmy skończoną $\eps$ - sieć w $K$, która na mocy Tw. \ref{twier:sk-eps-siec} istnieje. Jasno widać, że $D$ jest przeliczalny. Wtedy $\overline{D} \subseteq K$, gdyż dla każdego $y \in K$ tworzymy ciąg $\ciag{x}$ elementów, takich że $x_n \in S_{\frac{1}{n}}$ i $y \in \ball{x_n}{\frac{1}{n}}$, co zawsze możemy zrobić, bo $S_\frac{1}{n}$ są $\eps$ - sieciami w $K$. Wtedy $d(x_n, y) < \frac{1}{n} \to 0$, więc $x_n \to y$, czyli $y 
+        \in \overline{D}$. Odwrotnie mamy $\overline{D} \supseteq K$, bo $D \subseteq K \implies \overline{D} \subseteq \overline{K}$ (domknięcie jest monotoniczne, a $K$ jest domknięty por. Tw. \ref{twier:ciag-zwarty-domk}). Z tych dwu inkluzji mamy tezę. 
+    \end{dow}
+
+
+
+    \begin{twier}{}
+        Jeśl $K$ jest ciągowo zwarty, do każde jego pokrycie otwarte ma przeliczalne podpokrycie. 
+    \end{twier}
+
+    \begin{dow}{Dowód}
+        Niech $U$ - pokrycie otwarte $K$. Dla dowolnego $y \in K$ zdefiniujmy:\begin{equation*}
+            n_y = \min\{ n \in \N \, | \, \exists_{U_y \in U}: \ball{y}{\frac{1}{n}} \subseteq U_y \}.
+        \end{equation*}  Taka liczba będzie bez wątpienia istniała, gdyż $U$ pokrywa $K$ i składa się z samych zbiorów otwartych. Niech $U_y$ będzie zbiorem spełniającym powyższy warunek dla $y \in K$. Niech $V = \{ U_y \, | \, y \in D \}$, gdzie $D$ to przeliczalny podzbiór gęsty w $K$ (istnieje on na mocy Tw. \ref{twier:przel-gest}). Jasne, że $V \subseteq U$ i że $V$ jest przeliczalny. Pokażemy, że jest to podpokrycie. \\ 
+        Niech $x \in K$. Wiemy, że $\exists_{U_x \in U, \, N \in \N}: \ball{x}{\frac{1}{N}} \subseteq U_x$. Ponadto, jako że $D$ jest gęsty w $K$, to $\exists_{y \in D}: d(y, x) < \frac{1}{2N}$. Wtedy: \begin{equation*}
+            x \in \ball{y}{\frac{1}{2N}} \implies \ball{y}{\frac{1}{2N}} \subseteq \ball{x}{\frac{1}{N}} \subseteq U_x \in U.
+        \end{equation*} Więc $2N \geqslant n_y$ z konstrukcji $n_y$. Zatem: \begin{equation*}
+            x \in \ball{y}{\frac{1}{2N}} \subseteq \ball{y}{\frac{1}{n_y}} \subseteq U_y \in V.
+        \end{equation*} Czyli $V$ pokrywa $K$.
+    \end{dow}
+
+    Jesteśmy już gotowi, żeby udowodnić najważniejsze twierdzenie w tej sekcji.
 
     \begin{twier}{Zwartość ciągowa = zwartość pokryciowa}
         Zbiór $K$ jest ciągowo zwarty wtedy i tylko wtedy gdy jest zwarty (pokryciowo).
@@ -1409,7 +1484,6 @@ Zaczniemy rozważać teraz przekształcenia (i.e. funkcje) pomiędzy przestrzeni
 
 
 
-    %Dowód wraz z pomocniczym lematem
 
     \begin{dow}{Dowód}
         \paragraph{$\implies$} Niech $K \subseteq \subseteq X$, $\ciag{x}$ będzie ciągiem elementów z $K$ i niech $Z  = \{ x_n \, | \, n \in \N \}$. Pokażemy, że zachodzi jedna z dwu możliwości: \begin{enumerate}
@@ -1432,7 +1506,7 @@ Zaczniemy rozważać teraz przekształcenia (i.e. funkcje) pomiędzy przestrzeni
             \item Jeśli $Z$ jest skończony, to z zasady szuflatkowej istnieje wartość $x \in Z \subseteq K$, która zostanie odwiedzona nieskończenie wiele razy przez wyrazy ciągu $x_n$ - można więc wziąć podciąg stały równy $x$ i oczywiście do tej liczby zbieżny.
         \end{enumerate} Widzimy więc, że w obu przypadkach potrafimy skonstruować podciąg zbieżny w $K$, zatem $K$ istotnie jest ciągowo zwarty.
         
-        \paragraph{$\impliedby$} TODO
+        \paragraph{$\impliedby$} Dowód składać się będzie z 
         
     \end{dow}
 
