@@ -1459,7 +1459,7 @@ Zaczniemy rozważać teraz przekształcenia (i.e. funkcje) pomiędzy przestrzeni
 
 
 
-    \begin{twier}{}
+    \begin{twier}{} \label{twier:przel_podpokr}
         Jeśl $K$ jest ciągowo zwarty, do każde jego pokrycie otwarte ma przeliczalne podpokrycie. 
     \end{twier}
 
@@ -1506,11 +1506,16 @@ Zaczniemy rozważać teraz przekształcenia (i.e. funkcje) pomiędzy przestrzeni
             \item Jeśli $Z$ jest skończony, to z zasady szuflatkowej istnieje wartość $x \in Z \subseteq K$, która zostanie odwiedzona nieskończenie wiele razy przez wyrazy ciągu $x_n$ - można więc wziąć podciąg stały równy $x$ i oczywiście do tej liczby zbieżny.
         \end{enumerate} Widzimy więc, że w obu przypadkach potrafimy skonstruować podciąg zbieżny w $K$, zatem $K$ istotnie jest ciągowo zwarty.
         
-        \paragraph{$\impliedby$} Dowód składać się będzie z 
-        
+        \paragraph{$\impliedby$} Dowód przeprowadzimy nie wprost. Niech $K$ będzie ciągowo zwartym, $U$ pewnym jego pokryciem otwartym, a $V = {V_i}_{i \in \N}$ jego przeliczalnym podpokryciem, które na mocy Tw. \ref*{twier:przel-podpokr} istnieje. Przypuśćmy, że żadna skończona podrodzina $V$ nie jest pokryciem $K$. Wtedy dla $n \in \N$ wybieramy $x_n \in K \backslash (\bigcup_{i=1}^{n}V_i)$. Oczywiście zbiór z którego wybieramy $x_n$ będzie niepusty na mocy założenia, że żadna skończona podrodzina $V$ nie pokrywa $K$. Otrzymujemy ciąg $\ciag{x}$ elementów z $K$, więc ma on podciąg zbieżny do $y \in K$. Ale $\exists_{N}: y \in V_N$. Skoro jednak $V_N$ jest otwarty (gdyż wyjściowe pokrycie $U$ było otwarte), to prawie wszystkie wyrazy podciągu $\ciag{x}$ zbieżnego do $y$ powinny leżeć w $V_N$. Jednakże tylko skończona liczba wyrazów $x_n$ leży w $V_N$, gdyż dla $n \geqslant N$: $x_n \in K \backslash V_N$. Sprzeczność! Musi więc istnieć skończone podpokrycie $V$, zatem $K$ jest zwarty pokryciowo.  
+
+
     \end{dow}
 
-
+    \begin{obs}
+        Domknięty podzbiór zbioru zwartego jest zwarty.
+    \end{obs}
+    %% TODO proper dowód
+    \paragraph*{} Istotnie $K \subseteq \subseteq X$ $wedge$ $C \subseteq K$ $wedge$ $C = \ol{C}$ $\implies$ $C \subseteq \subseteq X$.
 
     \begin{twier}{Bolzano-Weierestrassa II} \label{twier:BL II}
         Każdy ograniczony i domknięty podzbiór $\R$ jest zwarty.
@@ -1519,6 +1524,16 @@ Zaczniemy rozważać teraz przekształcenia (i.e. funkcje) pomiędzy przestrzeni
     \begin{dow}{Dowód}
         Wynika on prosto z równoważności zwartości ciągowej i pokryciowej. Jeśli jakiś podzbiór $\R$ jest ograniczony, to zawiera podciąg zbieżny (Twierdzenie \ref{twier:BL I}), a skoro jest domknięty, to ów podciąg zbieżny ma granicę w tymże zbiorze. Zatem podzbiór ten jest ciągowo zwarty, czyli zwarty.
     \end{dow}
+
+
+    \begin{defr}{Metryka na iloczynie kartezjańskim}
+        Rozważmy dwie p-ń metryczne $(X, d_1)$ i $(Y, d_2)$. Można wtedy wprowadzić na ich iloczynie kartezjańskim nową metrykę $D$, tworząc p-ń. $(X \times Y, D)$. Standardowo robi się to w ramach jednej z równoważnych metryk $d_p$ ($p \in [1, \oo]$) - tak, że $D((x_1, y_1), (x_2, y_2)) = d_p(d_1(x_1, x_2), d_2(y_1, y_2))$. Wszystkie te metryki zadają tę samą topologię. Metrykę na iloczynie kartezjańskim większej liczby zbiorów definiuje się indukcyjnie.
+    \end{defr}
+    \begin{obs}{}
+        \begin{equation}
+            (x_n, y_n) \xrightarrow[]{D} (x, y) \iff x_n \to x \wedge y_n \to y.
+        \end{equation} Widzimy, że zbieżność na iloczynie kartezjańskim jest "po współrzędnych".
+    \end{obs}
 
 
 
