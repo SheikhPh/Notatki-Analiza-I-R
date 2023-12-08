@@ -1,12 +1,12 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.4.4)  3 DEC 2023 00:17
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.5.20)  6 DEC 2023 22:37
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**"c:/Users/fbaci/Documents/Notatki Analiza/Notatki-ANALiza/notatki.tex"
-(c:/Users/fbaci/Documents/Notatki Analiza/Notatki-ANALiza/notatki.tex
+**"c:/Users/fbaci/Documents/Notatki ANALiza/notatki.tex"
+(c:/Users/fbaci/Documents/Notatki ANALiza/notatki.tex
 LaTeX2e <2022-11-01> patch level 1
-L3 programming layer <2023-03-30> (c:/texlive/2023/texmf-dist/tex/latex/base/article.cls
+L3 programming layer <2023-05-15> (c:/texlive/2023/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2022/07/02 v1.4n Standard LaTeX document class
 (c:/texlive/2023/texmf-dist/tex/latex/base/size10.clo
 File: size10.clo 2022/07/02 v1.4n Standard LaTeX file (size option)
@@ -49,10 +49,10 @@ Package: iftex 2022/02/03 v1.0f TeX engine tests
 \Gm@layoutvoffset=\dimen148
 \Gm@dimlist=\toks19
 ) (c:/texlive/2023/texmf-dist/tex/generic/babel/babel.sty
-Package: babel 2023/03/28 3.87 The Babel package
+Package: babel 2023/05/11 v3.89 The Babel package
 \babel@savecnt=\count196
 \U@D=\dimen149
-\l@unhyphenated=\language87
+\l@unhyphenated=\language15
  (c:/texlive/2023/texmf-dist/tex/generic/babel/txtbabel.def)
 \bbl@readstream=\read2
 \bbl@dirlevel=\count197
@@ -107,7 +107,7 @@ LaTeX Font Info:    Overwriting symbol font `letters' in version `bold'
 LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
 (Font)                  OMS/cmsy/b/n --> OMS/plsy/b/n on input line 362.
 ) (c:/texlive/2023/texmf-dist/tex/latex/ragged2e/ragged2e.sty
-Package: ragged2e 2023/02/25 v3.4 ragged2e Package
+Package: ragged2e 2023/04/04 v3.5 ragged2e Package
  (c:/texlive/2023/texmf-dist/tex/latex/footmisc/footmisc.sty
 Package: footmisc 2022/03/08 v6.0d a miscellany of footnote facilities
 \FN@temptoken=\toks20
@@ -266,7 +266,7 @@ Package: enumitem 2019/06/20 v3.9 Customized lists
 \enit@count@id=\count280
 \enitdp@description=\count281
 ) (c:/texlive/2023/texmf-dist/tex/latex/tcolorbox/tcolorbox.sty
-Package: tcolorbox 2023/03/17 version 6.0.3 text color boxes
+Package: tcolorbox 2023/09/26 version 6.1.0 text color boxes
  (c:/texlive/2023/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty (c:/texlive/2023/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty (c:/texlive/2023/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
 \pgfutil@everybye=\toks33
 \pgfutil@tempdima=\dimen172
@@ -462,7 +462,7 @@ Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
 \tcb@temp=\box68
 \tcb@temp=\box69
  (c:/texlive/2023/texmf-dist/tex/latex/tcolorbox/tcbbreakable.code.tex
-Library (tcolorbox): 'tcbbreakable.code.tex' version '6.0.3'
+Library (tcolorbox): 'tcbbreakable.code.tex' version '6.1.0'
 (c:/texlive/2023/texmf-dist/tex/latex/pdfcol/pdfcol.sty
 Package: pdfcol 2022-09-21 v1.7 Handle new color stacks for pdfTeX (HO)
  (c:/texlive/2023/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
@@ -475,7 +475,7 @@ Package pdfcol Info: New color stack `tcb@breakable' = 1 on input line 23.
 \tcb@totalupperbox=\box71
 \tcb@totallowerbox=\box72
 ) (c:/texlive/2023/texmf-dist/tex/latex/tcolorbox/tcbskins.code.tex
-Library (tcolorbox): 'tcbskins.code.tex' version '6.0.3'
+Library (tcolorbox): 'tcbskins.code.tex' version '6.1.0'
 (c:/texlive/2023/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty (c:/texlive/2023/texmf-dist/tex/latex/pgf/utilities/pgffor.sty (c:/texlive/2023/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty (c:/texlive/2023/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex)) (c:/texlive/2023/texmf-dist/tex/latex/pgf/math/pgfmath.sty (c:/texlive/2023/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex)) (c:/texlive/2023/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
 Package: pgffor 2023-01-15 v3.1.10 (3.1.10)
 \pgffor@iter=\dimen269
@@ -522,7 +522,7 @@ Package: tikzfill-common 2022/07/20 v1.0.0 Auxiliary code for tikzfill
 File: tikzlibraryfill.image.code.tex 2022/07/20 v1.0.0 Image filling library
 \l__tikzfill_img_box=\box77
 )) (c:/texlive/2023/texmf-dist/tex/latex/tcolorbox/tcbskinsjigsaw.code.tex
-Library (tcolorbox): 'tcbskinsjigsaw.code.tex' version '6.0.3'
+Library (tcolorbox): 'tcbskinsjigsaw.code.tex' version '6.1.0'
 ))) (c:/texlive/2023/texmf-dist/tex/latex/kpfonts/kpfonts.sty
 Package: kpfonts  2023/01/18 v3.35
 \c@mv@rm=\count307
@@ -831,7 +831,7 @@ Package: relsize 2013/03/29 ver 4.1
 \c@theo=\count312
 \c@obser=\count313
  (c:/texlive/2023/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
-File: l3backend-pdftex.def 2023-03-30 L3 backend support: PDF output (pdfTeX)
+File: l3backend-pdftex.def 2023-04-19 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count314
 \l__pdf_internal_box=\box78
 ) (./notatki.aux)
@@ -967,13 +967,13 @@ Overfull \hbox (2.43416pt too wide) in paragraph at lines 1150--1151
 
  [35] (./notatki.aux) ) 
 Here is how much of TeX's memory you used:
- 22232 strings out of 476017
- 446598 string characters out of 5793767
- 1884660 words of memory out of 5000000
- 42304 multiletter control sequences out of 15000+600000
+ 22347 strings out of 477870
+ 449413 string characters out of 5834796
+ 1885845 words of memory out of 5000000
+ 42117 multiletter control sequences out of 15000+600000
  603237 words of font info for 119 fonts, out of 8000000 for 9000
- 1141 hyphenation exceptions out of 8191
- 101i,20n,104p,955b,1261s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 82 hyphenation exceptions out of 8191
+ 101i,20n,104p,939b,1261s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/texlive/2023/texmf-dist/fonts/type1/public/kpfonts/jkpbn8a.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/kpfonts/jkpbne.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/kpfonts/jkpex.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/kpfonts/jkpmi.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/kpfonts/jkpmia.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/kpfonts/jkpmn8a.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/kpfonts/jkpmne.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/kpfonts/jkpsy.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/kpfonts/jkpsya.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/kpfonts/jkpsyb.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/kpfonts/jkpsyc.pfb>
 Output written on notatki.pdf (35 pages, 220421 bytes).
 PDF statistics:
