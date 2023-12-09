@@ -114,6 +114,7 @@
 \newcommand{\subotw}{\underset{\clap{\scriptsize otw.}}{\subseteq}}
 \newcommand{\subdomk}{\underset{\clap{\scriptsize domk.}}{\subseteq}}
 \newcommand{\dg}{^{\circ}}
+\newcommand{\se}{\subseteq}
 
 \providecommand{\ol}{\overline}
 \providecommand{\ul}{\underline}
@@ -1517,11 +1518,12 @@ Zaczniemy rozważać teraz przekształcenia (i.e. funkcje) pomiędzy przestrzeni
         {U_n}_{n \in \N}: \quad U_n = [0, 1 + \frac{1}{n}].
     \end{equation*} Nie jest to pokrycie otwarte.
 
-    \begin{defr}{Zwartośc (pokryciowa)}\label{defr:zwartosc-pokryciowa}
+    \begin{defr}{Zwartość (pokryciowa)}\label{defr:zwartosc-pokryciowa}
         Zbiór $K \subseteq X$ nazwiemy \textbf{ZWARTYM}, jeśli z każdego pokrycia otwartego tegoż zbioru, można wybrać podpokrycie skończone (tj. mające skończonę liczbę elementów). Jeśli $K$ jest zwartym podzbiorem $X$, to zapiszemy $K \subseteq \subseteq X$.
     \end{defr}
 
-    \begin{twier}{Własności zbiorów zwartych}
+
+    \begin{twier}{Własności zbiorów zwartych} \label{twier:zwar-domk}
         \begin{enumerate}
             \item Każdy zbiór zwarty jest ograniczony.
             \item Każdy zbiór zwarty jest domknięty.
@@ -1637,7 +1639,7 @@ Zaczniemy rozważać teraz przekształcenia (i.e. funkcje) pomiędzy przestrzeni
 
     \end{dow}
 
-    \begin{obs}
+    \begin{obs}{} \label{obs:domk-podzb-zwar}
         Domknięty podzbiór zbioru zwartego jest zwarty.
     \end{obs}
     %% TODO proper dowód
@@ -1661,12 +1663,73 @@ Zaczniemy rozważać teraz przekształcenia (i.e. funkcje) pomiędzy przestrzeni
         \end{equation} Widzimy, że zbieżność na iloczynie kartezjańskim jest "po współrzędnych".
     \end{obs}
 
+    \begin{twier}{} \label{twier:il-kart-zwar}
+        Iloczyn kartezjańskich dwu zbiorów zwartych jest zwarty.
+    \end{twier}
 
+    \begin{dow}{Dowód}
+        %TODO
+        TODO
+    \end{dow}
+
+
+    \begin{obs}{} \label{obs:zwar-kres}
+        Niech $K \subseteq \subseteq \R$. Wtedy $K$ zawiera swoje kresy. 
+    \end{obs}
+    \paragraph{} Rzeczywiście, skoro $K$ jest zwarty, to i ograniczony: $\inf K \in \R$ i $\sup K \in \R$. Ponadto $\inf K$ i $\sup K$ są granicami ciągów z $K$, więc do $K$ należą, skoro $K$ jest domknięty.
+
+    \begin{twier}{}
+        Niech $(X, d)$ to p-ń. metryczna zupełna. Niech $K \subdomk X$. Wtedy, zbiór $K$ jest zwarty jeżeli: $\forall_{\eps >0}$ można go pokryć skończoną $\eps$ - siecią.
+    \end{twier}
+%TODO
+    \begin{dow}{Dowód}
+        TODO
+    \end{dow}
+
+
+\begin{twier}{Obraz zbioru zwartego jest zwarty} \label{twier:ob-zwar-zwar}
+    Niech $(X, d)$, $(Y, \delta)$ będą p-ń. metrycznymi, a $\phi: X \to Y$ będzie odwzorowaniem ciągłym. Ponadto niech $K \subseteq \subseteq X$. Wtedy zbiór $\phi(K)$ jest zwarty.
+\end{twier}
+
+
+\begin{dow}{Dowód}
+    Niech $U = \{ U_i \}_{i \in I}$ - rodzina zbiorów otwartych pokrywająca $\phi(K)$: $\phi(K) \se \bigcup_{i \in I} U_i $. Skonstruujmy rodzinę $V = \{ V_i = \phi^{-1}(U_i) \}$. Skoro $\phi$ jest ciągłe, to $V$ jest rodziną otwartą. Podnadto z włąsciwości przeciwobrazów: $K \se \bigcup_{i \in I}V_i$. Zatem $V$ jest pokryciem otwartym. Możemy więc zeń wybraż skończone podpokrycie otwarte: \begin{equation*}
+        K \se V_{i_1} \cup .. \cup V_{i_n} = \phi^{-1}(U_{i_1}) \cup .. \cup \phi^{-1}(U_{i_n}).
+    \end{equation*} Wtedy: \begin{equation*}
+        \phi(K) \se \phi(\phi^{-1}(U_{i_1}) \cup .. \cup \phi^{-1}(U_{i_n})) = \phi(\phi^{-1}(U_{i_1})) \cup .. \cup \phi(\phi^{-1}(U_{i_n})) \se U_{i_1} \cup ... \cup U_{i_n}.
+    \end{equation*} Zatem dla każdego pokrycia $\phi(K)$ wybraliśmy zeń skończone podpokrycie - zatem $\phi(K)$ jest zwarty.
+\end{dow}
+
+\begin{obs}{Odwzorowanie ciągłe na zbiorze zwartym osiąga swoje kresy}
+    Niech $(X, d)$ - p-ń. metryczna i niech $f: X \to \R$ będzie ciągłą funkcją oraz niech $K \se \se X$. Wtedy: \begin{equation}
+        \sup_(x \in K) f = \sup f(K) \in f(K) 
+    \end{equation} oraz\begin{equation}
+        \inf_(x \in K) f = \inf f(K) \in f(K).
+    \end{equation}
+\end{obs}
+    Wynika to od razu z Twierdzenia \ref{twier:ob-zwar-zwar} oraz Obserwacji \ref{obs:zwar-kres}.
     
+    
+\begin{twier}{Heinego - Borela}
+    Podzbiór $K \se \R ^n $ jest zwarty wtedy i tylko wtedy, gdy jest domknięty i ograniczony.
+\end{twier}
+\begin{dow}{Dowód}
+    \paragraph{$\implies$} Por. Tw. \ref{twier:zwar-domk}.
+    \paragraph{$\impliedby$} Skoro $K$ jest ograniczony, to istnieje kostka postaci:\begin{equation}
+        C = [a_1, b_1] \times ... \times [a_n, b_n],
+    \end{equation} t.ż $K \se C$. Ponadto, $C$ musi być zwarta, jako iloczyn kartezjański dwu zbiorów zwartych (por. Tw. \ref{twier:il-kart-zwar}). Zauważyliśmy jednak, żę domknięty podzbiór zbioru zwartego jest zwarty, zatem i $K$ jest zwarty (Obs. \ref{obs:domk-podzb-zwar}).
+\end{dow}
+
+\begin{twier}{Lemat Lebesgue'a}
+    Niech $(X, d)$ - p-ń. metryczna, $K \se \se X$. Niech $U$ będzie pokryciem otwartym $K$. Wówczas: \begin{equation}
+        \exists_{\lambda > 0} \forall_{x \in K} \exists_{U_i \in U}: \ball{x}{\lambda} \subseteq U_i.
+    \end{equation}
+\end{twier}
 
 
-
-
+\begin{dow}{Dowód}
+    
+\end{dow}
 
 
 \section*{Koniec}

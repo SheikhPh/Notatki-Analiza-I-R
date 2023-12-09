@@ -49,3 +49,6 @@
 \contentsline {paragraph}{Dowód nie wprost.}{37}{}%
 \contentsline {paragraph}{$\DOTSB \tmspace +\thickmuskip {.2777em}\DOTSB \Relbar \joinrel \Rightarrow \tmspace +\thickmuskip {.2777em}$}{39}{}%
 \contentsline {paragraph}{$\DOTSB \tmspace +\thickmuskip {.2777em}\DOTSB \Leftarrow \joinrel \Relbar \tmspace +\thickmuskip {.2777em}$}{39}{}%
+\contentsline {paragraph}{}{40}{}%
+\contentsline {paragraph}{$\DOTSB \tmspace +\thickmuskip {.2777em}\DOTSB \Relbar \joinrel \Rightarrow \tmspace +\thickmuskip {.2777em}$}{42}{}%
+\contentsline {paragraph}{$\DOTSB \tmspace +\thickmuskip {.2777em}\DOTSB \Leftarrow \joinrel \Relbar \tmspace +\thickmuskip {.2777em}$}{42}{}%
