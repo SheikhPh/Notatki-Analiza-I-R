@@ -133,6 +133,8 @@
 \providecommand{\dg}{^\circ}
 \providecommand{\ii}{\item}
 
+\providecommand{\geq}{\geqslant}
+\providecommand{\leq}{\leqslant}
 
 
 
@@ -140,14 +142,14 @@
 
 
 
-
+\newcommand{\bsum}[2]{\mathlarger{\sum_{#1}^{#2}}}
+\newcommand{\szerI}[1]{\bsum{n=1}{\oo} #1_n}
 \newcommand{\ilorazowy}[1]{#1/\!{_R}}
 \newcommand{\ciag}[1]{(#1_{n})_{n \in \N}}
 \newcommand{\gras}[2]{\lim_{#1 \to \oo} #2_{#1}}
 \newcommand{\lgras}[2]{\mathlarger{\lim}_{#1 \to \oo} #2_{#1}}
 \newcommand{\ball}[2]{\text{Ball}(#1, \, #2)}
 \newcommand{\dball}[2]{\overline{\text{Ball}}(#1, \, #2)}
-\newcommand*{\fakebreak}{\par\vspace{\textheight minus \textheight}\pagebreak}
 
 
 \DeclarePairedDelimiter\set\{\}
@@ -687,8 +689,131 @@ Sprawdzając warunek Cauchy'ego, możemy dowodzić zbieżności ciągu do granic
 
 
 \section{Szeregi liczbowe}
+\begin{defr}{Szereg liczbowy}
+    Niech $\ciag{a}$ będzie ciągiem liczb zespolonych ($a_n \in \C$). \textbf{Szeregiem} o wyrazach $\ciag{a}$ nazwiemy napis: \begin{equation}
+        \bsum{n=1}{\oo} a_n.
+    \end{equation} \textbf{$N$-tą sumą częściową} szeregu $\szerI{a}$ nazwiemy sumę: \begin{equation}
+        S_N = \bsum{n=1}{N} a_n.
+    \end{equation} Powiemy, że szereg $\szerI{a}$ jest \textbf{zbieżny} do $S$, jeśli: \begin{equation}
+        \gras{N}{S} = S \in \C.
+    \end{equation} Napiszemy wtedy, że $\szerI{a} = S$, a liczbę $S$ nazwiemy sumą szeregu. Jeśli $S_N$ nie ma granicy, to szereg nazwiemy \textbf{rozbieżnym}.
+\end{defr}
+
+\paragraph*{Przykład 1.} Jeśli $a_n = (-1)^n$, to szereg $\szerI{a}$ jest rozbieżny.
+\paragraph*{Przykład 2.} Jeśli $a_n = q^{n-1}$, dla $|q| < 1$, to $S_N = \frac{1 - q^n}{1 - q}$ i $\szerI{q^{n-1}} = \frac{1}{1-q}$.
+
+
+\begin{twier}{} \label{twier:ogon-szer}
+    Szereg $\szerI{a}$ jest zbieżny wtedy i tylko wtedy, gdy: \begin{equation}
+        \forall_\eps \exists_{N_\eps} \forall_{N \geqslant M \geqslant N_\eps} | \bsum{n= M+1}{N} a_n | \leqslant \eps.
+    \end{equation} 
+\end{twier}
+\begin{dow}{Dowód}
+    Twierdzenie wynika prosto z zastosowania warunku Cauchy'ego do ciągu $S_N$. Bowiem $S_N$ jest zbieżny wtedy i tylko wtedy, gdy:\begin{equation}
+        \forall_\eps \exists_{N_\eps} \forall_{N \geqslant M \geqslant N_\eps} |S_N - S_m| \leqslant \eps,
+    \end{equation} co po rozpisaniu $S_N$ i $S_M$ jest równoważne twierdzeniu.
+\end{dow}
+\paragraph*{} $\bsum{n= M+1}{N} a_n$ nazywa się czasami \textbf{ogonem szeregu}. 
+\begin{obs}{Warunek konieczny zbieżności}
+    Warunkiem koniecznym zbieżności szeregu $\szerI{a}$ jest, aby $\gras{n}{a} = 0$.
+\end{obs}
+\paragraph{} Istotnie, wystarczy podstawić $M = N-1$ w twierdzeniu \ref{twier:ogon-szer}, żeby otrzymać definicję zbieżności $a_n$ do 0.
+\paragraph{} Warto pamiętać, że nie jest to warunek wystarczający - kontrprzykładem jest np. rozbieżny szereg $\szerI{\frac{1}{n}}$. Wtedy\begin{equation}
+    S_{2^k} = 1 + \bsum{l = 1}{k} \bsum{j = 2^{l-1} +1}{2^{l}} \frac{1}{j} \geqslant1 +  \bsum{l = 1}{k} \frac{2^{l-1}}{2^l} = 1 + \half k \to \oo. 
+\end{equation} Zatem i $S_N \to \oo$, bo jest to ciąg monotoniczny.
+
 \subsection{Szeregi o wyrazach dodatnich}
 %%%17 X 2023%%%
+
+\paragraph{} W tej sekcji zajmiemy się jedynie szeregami o wyrazach dodatnich, to jest takimi, dla których $\R \ni a_n \geqslant 0$. 
+\begin{obs}{} \label{obs:szer-dod}
+    Dla szeregów o wyrazach dodatnich, ciąg sum częściowych jest niemalejącym ciągiem rzeczywistym. Oznacza to, że szereg jest zbieżny wtedy i tylko wtedy, gdy ciąg sum częściowych jest ograniczony. W przeciwnym wypadku $\gras{N}{S} = + \oo$ i wtedy mówimy, że $\szerI{a}$ jest rozbieżny do $+\oo$. 
+\end{obs}
+
+\begin{twier}{Kryterium porównawcze} \label{twier:kryt-por}
+    Niech $\szerI{a}$ ,$\szerI{b}$ będą szeregami o wyrazach dodatnich. Wtedy: \begin{enumerate}
+        \item Jeśli $\exists_{C > 0}: a_n \leqslant C b_n$ DDD$n$, to: \begin{equation}
+            \szerI{b} < \oo \implies \szerI{a} < \oo.
+        \end{equation}
+        \item Jeśli $\exists_{C > 0}: a_n \geqslant C b_n$ DDD$n$, to: \begin{equation}
+            \szerI{b} = +\oo \implies \szerI{a} = +\oo.
+        \end{equation}
+    \end{enumerate}
+\end{twier}
+
+\begin{dow}{Dowód}
+    Niech $N_0$ będzie oznaczał indeks, od którego podane nierówności zachodzą.
+    \begin{enumerate}
+        \item Dla $N > N_0$ mamy: \begin{equation*}
+            S_N^{(a)} = S_{N_0}^{(a)} + \bsum{n = N_0 +1}{N}a_n \leqslant S_{N_0}^{(a)} + \bsum{n = N_0 +1}{N}C b_n = S_{N_0}^{(a)} - C S_{N_0}^{(b)} + C S_N^{(b)} \leqslant S_{N_0}^{(a)} - C S_{N_0}^{(b)} + C \szerI{b} < \oo. 
+        \end{equation*} Zatem skoro $S_N^{(a)}$ jest ograniczony, to (por. Obs. \ref{obs:szer-dod}) jest i zbieżny.
+        \item Podobnie jak poprzednio, dla $N > N_0$ mamy: \begin{equation*}
+            S_N^{(a)} = S_{N_0}^{(a)} + \bsum{n = N_0 +1}{N}a_n \geqslant S_{N_0}^{(a)} + \bsum{n = N_0 +1}{N}C b_n = S_{N_0}^{(a)} - C S_{N_0}^{(b)} + C S_N^{(b)} \xrightarrow[]{N \to \oo} \oo,
+        \end{equation*} więc i $S_N^{(a)}$ jest rozbieżny do nieskończoności.
+    \end{enumerate}
+\end{dow}
+
+
+\begin{twier}{Kryterium porównawcze (wersja graniczna)}
+    Niech $\szerI{a}$ ,$\szerI{b}$ będą szeregami o wyrazach dodatnich i niech $\mathlarger{\lim}_{n \to \oo} \frac{a_n}{b_n} = L$. Wtedy: \begin{enumerate}
+        \item Jeśli $L < \oo$, to: \begin{equation}
+            szerI{b} < \oo \implies \szerI{a} < \oo.
+        \end{equation}
+        \item Jeśli $ L > 0$, to: \begin{equation}
+            \szerI{b} = +\oo \implies \szerI{a} = +\oo.
+        \end{equation}
+    \end{enumerate}
+\end{twier}
+
+
+\begin{dow}{Dowód}
+    \begin{enumerate}
+        \item Jeśli $L < \oo$, to $a_n \leqslant  (L + L) * b_n$ dla dostatecznie dużyn $n$ i stosujemy  Tw. \ref{twier:kryt-por}.1.
+        \item Jeśli $L > 0$, to $a_n \leqslant \half L b_n$ DDD$n$ (ew. $a_n \leqslant 2 b_n$, jeśli $L = \oo$) i stosujemy Tw. \ref{twier:kryt-por}.2.
+    \end{enumerate}
+\end{dow}
+
+
+\begin{twier}{Kryterium D'Alemberta}
+    Niech $\forall_n a_n > 0$ i niech $d_n = \frac{a_{n+1}}{a_n}$. Wtedy: \begin{enumerate}
+        \item \begin{equation}
+            \limsup d_n < 1 \implies \szerI{a} < \oo
+        \end{equation}
+        \item \begin{equation}
+            (\limsup d_n > 1 \vee \exists_k \forall_{n \geqslant k}: d_n \geqslant 1) \implies \szerI{a} = \oo.
+        \end{equation} Ponadto, jeśli zachodzi poprzecznik implikacji, to $a_n \not \to 0$.
+    \end{enumerate}
+\end{twier} 
+\begin{dow}{Dowód}
+    \begin{enumerate}
+        \item Skoro $\limsup d_n < 1$, to $d_n$ musi być ograniczony. Niech $\lambda$ będzie taką liczbą, że $1 > \lambda > \limsup d_n$. Zauważmy, że może istnieć tylko skończona liczba wyrazów $d_n$ większych lub równych $\lambda$, gdyż inaczej wybralibyśmy z nich podciąg zbieżny do granicy $\geq \lambda$, co przeczy założeniu, że $\lambda < \limsup d_n$. Zatem: \begin{equation*}
+            \exists_{N} \forall_{n \geq N}: d_n < \lambda.
+        \end{equation*} Czyli: \begin{equation*}
+            \exists_{N} \forall_{n \geq N}: a_{n+1} < \lambda a_n.
+        \end{equation*} Stąd, dla $n > N$: $a_{n} < \frac{a_N}{\lambda^N} \lambda^n$. Tak więc na mocy kryterium porównawczego ze zbieżnym szeregiem $\bsum{n=1}{\oo}\lambda^n$ ($\lambda < 1$) szereg $\szerI{a}$ jest zbieżny.
+
+        \item Jeśli $\limsup d_n > 1$, to (używając podobnego rozumowania, jak poprzednio) istnieje $\rho > 1$ t.ż. $d_n > \rho$. Skoro tak, to DDD$n$: $a_{n+1} > \rho a_n > a_n$ i $a_n$, jako rosnący ciąg o wyrazach dodatnich, nie może dążyć do 0. Podobnie, jeśli DDD$n$ mamy $d_n \geq 1$, to $a_{n+1} \geq a_n$ i znowuż $a_n$ nie może dążyć do $0$.
+    \end{enumerate}
+\end{dow}
+
+\paragraph{Uwagi.} \begin{enumerate}
+    \item Może być tak, że $d_n \geq 1$ dla nieskończenie wielu $n$, a szereg $\szerI{a}$ jest zbieżny. Przykład: \begin{equation*}
+        a_n \begin{cases}
+            \frac{1}{(\frac{n}{2})^2} & n  = 2k \\
+            \frac{1}{(\frac{n-1}{2})^2} & n = 2k+ 1
+        \end{cases}
+    \end{equation*}
+    \item Może być tak, że szereg $\szerI{a}$ jest zbieżny, ale $\limsup d_n > 1$. 
+\end{enumerate}
+
+
+Następne kryterium jest rozszerzeniem kryterium D'Alemberta: 
+%TODO
+\begin{twier}{Kryterium Cauchy'ego}
+TODO
+    
+\end{twier}
+
 
 Załóżmy, że $\sum_{n=1}^{\infty} a_n$ jest szeregiem o wyrazach dodatnich ($a_n > 0$). Ostatnio zauważyliśmy, że:
 \[\sum\limits_{n=1}^{\infty} a_n = \sup_{\substack{F \subset \N \\ |F| < +\infty}} \sum_{n \in F} a_n.\]
@@ -792,6 +917,7 @@ Dla szeregów o wyrazach dowolnych obowiązują inne kryteria zbieżności niż 
     \end{itemize}
     Wtedy szereg $\mathlarger{\sum}_{n=1}^{\oo} a_n b_n$ jest zbieżny.
 \end{twier}
+\paragraph*{Uwaga!} W kryterium tym wystarczy, żeby $b_n$ był nierosnący (i.e. nie trzeba, by był on ściśle malejący).
 \paragraph{Przykład - szeregi naprzemienne.} Weźmy szereg postaci:
 \[\sum_{n=1}^{\oo} (-1)^n b_n,\]
 gdzie $b_n \searrow 0$ (dąży monotonicznie z góry do 0). Szereg taki nazywamy szeregiem naprzemiennym. Z kryterium Dirichleta wynika, że każdy szereg takiej postaci jest zbieżny (co nazywa się czasem kryterium Leibnitza). W szczególności:
@@ -1506,7 +1632,7 @@ Zaczniemy rozważać teraz przekształcenia (i.e. funkcje) pomiędzy przestrzeni
             \item Jeśli $Z$ jest skończony, to z zasady szuflatkowej istnieje wartość $x \in Z \subseteq K$, która zostanie odwiedzona nieskończenie wiele razy przez wyrazy ciągu $x_n$ - można więc wziąć podciąg stały równy $x$ i oczywiście do tej liczby zbieżny.
         \end{enumerate} Widzimy więc, że w obu przypadkach potrafimy skonstruować podciąg zbieżny w $K$, zatem $K$ istotnie jest ciągowo zwarty.
         
-        \paragraph{$\impliedby$} Dowód przeprowadzimy nie wprost. Niech $K$ będzie ciągowo zwartym, $U$ pewnym jego pokryciem otwartym, a $V = {V_i}_{i \in \N}$ jego przeliczalnym podpokryciem, które na mocy Tw. \ref*{twier:przel-podpokr} istnieje. Przypuśćmy, że żadna skończona podrodzina $V$ nie jest pokryciem $K$. Wtedy dla $n \in \N$ wybieramy $x_n \in K \backslash (\bigcup_{i=1}^{n}V_i)$. Oczywiście zbiór z którego wybieramy $x_n$ będzie niepusty na mocy założenia, że żadna skończona podrodzina $V$ nie pokrywa $K$. Otrzymujemy ciąg $\ciag{x}$ elementów z $K$, więc ma on podciąg zbieżny do $y \in K$. Ale $\exists_{N}: y \in V_N$. Skoro jednak $V_N$ jest otwarty (gdyż wyjściowe pokrycie $U$ było otwarte), to prawie wszystkie wyrazy podciągu $\ciag{x}$ zbieżnego do $y$ powinny leżeć w $V_N$. Jednakże tylko skończona liczba wyrazów $x_n$ leży w $V_N$, gdyż dla $n \geqslant N$: $x_n \in K \backslash V_N$. Sprzeczność! Musi więc istnieć skończone podpokrycie $V$, zatem $K$ jest zwarty pokryciowo.  
+        \paragraph{$\impliedby$} Dowód przeprowadzimy nie wprost. Niech $K$ będzie ciągowo zwartym, $U$ pewnym jego pokryciem otwartym, a $V = {V_i}_{i \in \N}$ jego przeliczalnym podpokryciem, które na mocy Tw. \ref{twier:przel_podpokr} istnieje. Przypuśćmy, że żadna skończona podrodzina $V$ nie jest pokryciem $K$. Wtedy dla $n \in \N$ wybieramy $x_n \in K \backslash (\bigcup_{i=1}^{n}V_i)$. Oczywiście zbiór z którego wybieramy $x_n$ będzie niepusty na mocy założenia, że żadna skończona podrodzina $V$ nie pokrywa $K$. Otrzymujemy ciąg $\ciag{x}$ elementów z $K$, więc ma on podciąg zbieżny do $y \in K$. Ale $\exists_{N}: y \in V_N$. Skoro jednak $V_N$ jest otwarty (gdyż wyjściowe pokrycie $U$ było otwarte), to prawie wszystkie wyrazy podciągu $\ciag{x}$ zbieżnego do $y$ powinny leżeć w $V_N$. Jednakże tylko skończona liczba wyrazów $x_n$ leży w $V_N$, gdyż dla $n \geqslant N$: $x_n \in K \backslash V_N$. Sprzeczność! Musi więc istnieć skończone podpokrycie $V$, zatem $K$ jest zwarty pokryciowo.  
 
 
     \end{dow}
@@ -1536,7 +1662,7 @@ Zaczniemy rozważać teraz przekształcenia (i.e. funkcje) pomiędzy przestrzeni
     \end{obs}
 
 
-
+    
 
 
 
