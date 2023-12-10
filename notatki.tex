@@ -134,8 +134,8 @@
 \providecommand{\dg}{^\circ}
 \providecommand{\ii}{\item}
 
-\providecommand{\geq}{\geqslant}
-\providecommand{\leq}{\leqslant}
+\renewcommand{\geq}{\geqslant}
+\renewcommand{\leq}{\leqslant}
 
 
 
@@ -180,6 +180,8 @@ Notatki do Analizy I R \\
 \begin{document}
 
 \maketitle
+
+\newpage
 
 %%pierwszy wyklad - 3 X 2023
 \section{Wstęp}
@@ -758,7 +760,7 @@ Sprawdzając warunek Cauchy'ego, możemy dowodzić zbieżności ciągu do granic
 \begin{twier}{Kryterium porównawcze (wersja graniczna)}
     Niech $\szerI{a}$ ,$\szerI{b}$ będą szeregami o wyrazach dodatnich i niech $\mathlarger{\lim}_{n \to \oo} \frac{a_n}{b_n} = L$. Wtedy: \begin{enumerate}
         \item Jeśli $L < \oo$, to: \begin{equation}
-            szerI{b} < \oo \implies \szerI{a} < \oo.
+            \szerI{b} < \oo \implies \szerI{a} < \oo.
         \end{equation}
         \item Jeśli $ L > 0$, to: \begin{equation}
             \szerI{b} = +\oo \implies \szerI{a} = +\oo.
@@ -781,7 +783,7 @@ Sprawdzając warunek Cauchy'ego, możemy dowodzić zbieżności ciągu do granic
             \limsup d_n < 1 \implies \szerI{a} < \oo
         \end{equation}
         \item \begin{equation}
-            (\limsup d_n > 1 \vee \exists_k \forall_{n \geqslant k}: d_n \geqslant 1) \implies \szerI{a} = \oo.
+            (\liminf d_n > 1 \vee \exists_k \forall_{n \geqslant k}: d_n \geqslant 1) \implies \szerI{a} = \oo.
         \end{equation} Ponadto, jeśli zachodzi poprzecznik implikacji, to $a_n \not \to 0$.
     \end{enumerate}
 \end{twier} 
@@ -793,15 +795,15 @@ Sprawdzając warunek Cauchy'ego, możemy dowodzić zbieżności ciągu do granic
             \exists_{N} \forall_{n \geq N}: a_{n+1} < \lambda a_n.
         \end{equation*} Stąd, dla $n > N$: $a_{n} < \frac{a_N}{\lambda^N} \lambda^n$. Tak więc na mocy kryterium porównawczego ze zbieżnym szeregiem $\bsum{n=1}{\oo}\lambda^n$ ($\lambda < 1$) szereg $\szerI{a}$ jest zbieżny.
 
-        \item Jeśli $\limsup d_n > 1$, to (używając podobnego rozumowania, jak poprzednio) istnieje $\rho > 1$ t.ż. $d_n > \rho$. Skoro tak, to DDD$n$: $a_{n+1} > \rho a_n > a_n$ i $a_n$, jako rosnący ciąg o wyrazach dodatnich, nie może dążyć do 0. Podobnie, jeśli DDD$n$ mamy $d_n \geq 1$, to $a_{n+1} \geq a_n$ i znowuż $a_n$ nie może dążyć do $0$.
+        \item Jeśli $\liminf d_n > 1$, to (używając podobnego rozumowania, jak poprzednio) istnieje $\rho > 1$ t.ż. $d_n > \rho$. Skoro tak, to DDD$n$: $a_{n+1} > \rho a_n > a_n$ i $a_n$, jako rosnący ciąg o wyrazach dodatnich, nie może dążyć do 0. Podobnie, jeśli DDD$n$ mamy $d_n \geq 1$, to $a_{n+1} \geq a_n$ i znowuż $a_n$ nie może dążyć do $0$.
     \end{enumerate}
 \end{dow}
 
 \paragraph{Uwagi.} \begin{enumerate}
     \item Może być tak, że $d_n \geq 1$ dla nieskończenie wielu $n$, a szereg $\szerI{a}$ jest zbieżny. Przykład: \begin{equation*}
-        a_n \begin{cases}
-            \frac{1}{(\frac{n}{2})^2} & n  = 2k \\
-            \frac{1}{(\frac{n-1}{2})^2} & n = 2k+ 1
+        a_n = \begin{cases}
+            \frac{1}{(\frac{n}{2})^2}, & \text{gdy } n  = 2k \\
+            \frac{1}{(\frac{n-1}{2})^2}, &\text{gdy } n = 2k+ 1
         \end{cases}
     \end{equation*}
     \item Może być tak, że szereg $\szerI{a}$ jest zbieżny, ale $\limsup d_n > 1$. 
@@ -816,9 +818,20 @@ TODO
 \end{twier}
 
 
-Załóżmy, że $\sum_{n=1}^{\infty} a_n$ jest szeregiem o wyrazach dodatnich ($a_n > 0$). Ostatnio zauważyliśmy, że:
-\[\sum\limits_{n=1}^{\infty} a_n = \sup_{\substack{F \subset \N \\ |F| < +\infty}} \sum_{n \in F} a_n.\]
-Wynikają z tego następujące wnioski:
+\begin{twier}{}
+    Załóżmy, że $\sum_{n=1}^{\infty} a_n$ jest szeregiem o wyrazach dodatnich ($a_n > 0$). Wtedy:
+    \begin{equation}
+        \sum\limits_{n=1}^{\infty} a_n = \sup_{\substack{F \subset \N \\ |F| < +\infty}} \sum_{n \in F} a_n.
+    \end{equation}
+\end{twier}
+
+\begin{dow}{Dowód}
+    Oczywiście, skoro $S_N$ jest rosnący, to $\szerI{a} = \gras{N}{S} = \sup_{N \in \N} S_N$. Łatwo widać też, że $\sup_{N \in \N} S_N \leq \sup_{\substack{F \subset \N \\ |F| < +\infty}} \sum_{n \in F} a_n$ (ponieważ $S_N$ to suma tego samego typu, co po prawej stronie z $F = \{1, ..., N\}$). Dodatkowo, dla każdego skończonego $F \se \N$, istnieje takie $N$, że $\forall_{n \in F} x \leq N$, zatem $\sum_{n \in F} a_n \leq S_N$. Ostatecznie mamy $ \sup_{\substack{F \subset \N \\ |F| < +\infty}} \sum_{n \in F} a_n \leq \sup_{N \in \N} S_N$, stąd te dwie wielkości są sobie równe i mamy tezę.
+\end{dow}
+
+
+
+\paragraph{} Wynikają z tego następujące wnioski:
 \begin{twier}{}
     \begin{enumerate}
         \item \[\sum_{n = 1}^{\infty} a_n < + \infty \quad \iff \quad \exists_{C>0} \forall_{F \subset \N ,\, |F| < +\oo}  \sum_{n \in F} a_n \leqslant C\]
@@ -1679,7 +1692,7 @@ Zaczniemy rozważać teraz przekształcenia (i.e. funkcje) pomiędzy przestrzeni
     \paragraph{} Rzeczywiście, skoro $K$ jest zwarty, to i ograniczony: $\inf K \in \R$ i $\sup K \in \R$. Ponadto $\inf K$ i $\sup K$ są granicami ciągów z $K$, więc do $K$ należą, skoro $K$ jest domknięty.
 
     \begin{twier}{}
-        Niech $(X, d)$ to p-ń. metryczna zupełna. Niech $K \subdomk X$. Wtedy, zbiór $K$ jest zwarty jeżeli: $\forall_{\eps >0}$ można go pokryć skończoną $\eps$ - siecią.
+        Niech $(X, d)$ to p-ń. metryczna zupełna. Niech $K \subdomk X$. Wtedy, zbiór $K$ jest zwarty jeżeli $\forall_{\eps >0}$ można go pokryć skończoną $\eps$ - siecią.
     \end{twier}
 %TODO
     \begin{dow}{Dowód}
@@ -1702,9 +1715,9 @@ Zaczniemy rozważać teraz przekształcenia (i.e. funkcje) pomiędzy przestrzeni
 
 \begin{obs}{Odwzorowanie ciągłe na zbiorze zwartym osiąga swoje kresy}
     Niech $(X, d)$ - p-ń. metryczna i niech $f: X \to \R$ będzie ciągłą funkcją oraz niech $K \se \se X$. Wtedy: \begin{equation}
-        \sup_(x \in K) f = \sup f(K) \in f(K) 
+        \sup_{x \in K} f = \sup f(K) \in f(K) 
     \end{equation} oraz\begin{equation}
-        \inf_(x \in K) f = \inf f(K) \in f(K).
+        \inf_{x \in K} f = \inf f(K) \in f(K).
     \end{equation}
 \end{obs}
     Wynika to od razu z Twierdzenia \ref{twier:ob-zwar-zwar} oraz Obserwacji \ref{obs:zwar-kres}.
@@ -1721,17 +1734,55 @@ Zaczniemy rozważać teraz przekształcenia (i.e. funkcje) pomiędzy przestrzeni
 \end{dow}
 
 \begin{twier}{Lemat Lebesgue'a}
-    Niech $(X, d)$ - p-ń. metryczna, $K \se \se X$. Niech $U$ będzie pokryciem otwartym $K$. Wówczas: \begin{equation}
-        \exists_{\lambda > 0} \forall_{x \in K} \exists_{U_i \in U}: \ball{x}{\lambda} \subseteq U_i.
+    Niech $(X, d)$ - p-ń. metryczna, $K \se \se X$ ($K$ jest zwartym podzbiorem $X$). Niech $U$ będzie pokryciem otwartym $K$. Wówczas: \begin{equation}
+        \exists_{\lambda > 0} \forall_{x \in K} \exists_{U_x \in U}: \ball{x}{\lambda} \subseteq U_x.
     \end{equation}
 \end{twier}
 
 
 \begin{dow}{Dowód}
-    
+    Skoro $K$ - zwarty, to wybierzmy z $U$ skończone podpokrycie: $\{U_i\}_{1 \leq i \leq N}$. 
+    \begin{itemize}
+        \item Jeżeli $\exists_{i\leq N}: X = U_i$, to sytuacja nie przedstawia żadnego problemu - za $\lambda$ bierzemy dowolną liczbę, zaś za $U_x = X$. Teza jest trywialnie spełniona.
+
+
+        % \item Jeżeli $\exists_{i\leq N}: K \se U_i$ (bez straty ogólności przyjmijmy, że to $U_1$), to skoro $U_1$ jest otwarty, mamy: \begin{equation*}
+        %     \forall_{x \in K} \exists_{\delta(x, i) >0}: \ball{x}{\delta(x)} \se U_1.
+        % \end{equation*} 
+        % Niech $f(x) = \min\{ \sup \delta(x), 1\}$, gdzie $\sup \delta(x)$ oznacza supremum delt spełniających podany warunek dla danego $x$. Oczywiście $f(x)$ jest ciągła - mamy bowiem nierówność $|\delta(x) - \delta(x_0)| \leq d(x, x_0)$. Zatem $f$ osiąga na $K$ swoje kresy. Widzimy więc, skoro tak, to $\inf f(x) > 0$, zatem teza lematu zachodzi dla $U_x = U_1$ i $\lambda = \inf f(x)$.
+        
+        
+        \item Jeżeli $\forall_{i \leq N}: X \not \se U_i$, to definiujemy rodzinę $F_i = X \backslash U_i$ oraz funkcję: \begin{equation*}
+            f(x) = \frac{1}{N} \bsum{i = 1}{N}d(x, F_i),
+        \end{equation*} gdzie \begin{equation*}
+            d(x, F_i) = \inf_{v \in F_i}\{d(x, v)\}
+        \end{equation*} jest dobrze określoną funkcją dla niepustego $F_i$.\\
+        Oczywiście $f$ jest ciągła, bo mamy: \begin{equation*}
+            \big| f(x) - f(x_0)\big| = \frac{1}{N} \big|\bsum{i = 1}{N} d(x, F_i) - d(x_0, F_i) \big| \leq \frac{1}{N} \bsum{i = 1}{N} \big| \inf_{v \in F_i}\{d(x, v)\} - \inf_{v \in F_i}\{d(x_0, v) \}\big|.
+        \end{equation*} Zauważmy, że skoro: \begin{equation*}
+            d(x, v)  \leq d(x_0, v) + d(x, x_0) 
+        \end{equation*} oraz: \begin{equation*}
+            d(x_0, v) \leq d(x, v) + d(x, x_0),
+        \end{equation*} to: \begin{equation*}
+            \inf_{v \in F_i}\{d(x, v)\} \leq \inf_{v \in F_i}\{d(x_0, v) \} + d(x, x_0)
+        \end{equation*} i: \begin{equation*}
+            \inf_{v \in F_i}\{d(x_0, v)\} \leq \inf_{v \in F_i}\{d(x, v) \} + d(x, x_0),
+        \end{equation*} zatem: \begin{equation*}
+            |\inf_{v \in F_i}\{d(x, v)\} - \inf_{v \in F_i}\{d(x_0, v) \}| \leq d(x, x_0).
+        \end{equation*} Widzimy, więc że \begin{equation*}
+            |f(x) - f(x_0)| \leq d(x, x_0),
+        \end{equation*} czyli $f$ musi być ciągła. \\
+        Skoro $f$ jest ciągła na zbiorze zwartym $K$ i $\forall_{x \in K}: f(x) > 0$ (bo inaczej -- gdyby $f(x) = 0$, to $x$ nie nalezałby do żadego pokrycia $U_i$), to $\exists_{x_0}: f(x_0) = \inf f(x) >0$. Funkcja ciągła na zbiorze zwartym osiąga swoje kresy. Weźmy $\lambda = \inf f(x) > 0$. Skoro mamy $\forall_{x \in K}: f(x) \geq \lambda$, a $f(x)$ jest średnią odległością $x$ od $F_i$, to w szczególności istnieje takie $F_j$, że $\lambda \leq d(x, F_j) = \mathlarger{\inf}_{v \not \in U_j}d(x, v)  \implies \forall_{v \not \in U_j}: d(x, v) \geq \lambda$.  Zatem dla tego $U_j$:\begin{equation*}
+            \ball{x}{\lambda} \se U_j.
+        \end{equation*} Znaleźliśmy więc szukaną $\lambda$ i szukane $U_x = U_j$. Dowód został zakończony.
+    \end{itemize}
 \end{dow}
 
 
+
+
+
 \section*{Koniec}
+\newpage
 \tableofcontents
 \end{document}

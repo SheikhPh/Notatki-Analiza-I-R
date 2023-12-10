@@ -1,54 +1,55 @@
 \babel@toc {polish}{}\relax 
-\contentsline {section}{\numberline {1}Wstęp}{1}{}%
-\contentsline {subsection}{\numberline {1.1}Relacje}{1}{}%
+\contentsline {section}{\numberline {1}Wstęp}{2}{}%
+\contentsline {subsection}{\numberline {1.1}Relacje}{2}{}%
 \contentsline {subsection}{\numberline {1.2}Liczby rzeczywiste}{3}{}%
 \contentsline {section}{\numberline {2}Ciagi rzeczywiste}{5}{}%
 \contentsline {subsection}{\numberline {2.1}Pojęcie ciągu i ogólne rezulataty}{5}{}%
-\contentsline {paragraph}{}{7}{}%
-\contentsline {subsection}{\numberline {2.2}$\limsup $ i $\liminf $}{8}{}%
 \contentsline {paragraph}{}{8}{}%
-\contentsline {section}{\numberline {3}Szeregi liczbowe}{11}{}%
+\contentsline {subsection}{\numberline {2.2}$\limsup $ i $\liminf $}{9}{}%
+\contentsline {paragraph}{}{9}{}%
+\contentsline {section}{\numberline {3}Szeregi liczbowe}{12}{}%
 \contentsline {paragraph}{}{13}{}%
 \contentsline {paragraph}{}{13}{}%
 \contentsline {subsection}{\numberline {3.1}Szeregi o wyrazach dodatnich}{13}{}%
 \contentsline {paragraph}{}{13}{}%
-\contentsline {paragraph}{Uwagi.}{15}{}%
-\contentsline {subsection}{\numberline {3.2}Szeregi o wyrazach dowolnych}{18}{}%
-\contentsline {paragraph}{Przykład - szeregi naprzemienne.}{19}{}%
-\contentsline {paragraph}{Grupowanie składników}{21}{}%
-\contentsline {section}{\numberline {4}Przestrzenie metryczne}{24}{}%
-\contentsline {subsection}{\numberline {4.1}Podstawowe definicje. Otwartość i domkniętość}{24}{}%
-\contentsline {paragraph}{}{24}{}%
-\contentsline {paragraph}{}{24}{}%
-\contentsline {paragraph}{Przykłady}{24}{}%
+\contentsline {paragraph}{Uwagi.}{16}{}%
+\contentsline {paragraph}{}{16}{}%
+\contentsline {subsection}{\numberline {3.2}Szeregi o wyrazach dowolnych}{19}{}%
+\contentsline {paragraph}{Przykład - szeregi naprzemienne.}{20}{}%
+\contentsline {paragraph}{Grupowanie składników}{22}{}%
+\contentsline {section}{\numberline {4}Przestrzenie metryczne}{25}{}%
+\contentsline {subsection}{\numberline {4.1}Podstawowe definicje. Otwartość i domkniętość}{25}{}%
 \contentsline {paragraph}{}{25}{}%
-\contentsline {paragraph}{Przykład}{26}{}%
+\contentsline {paragraph}{}{25}{}%
+\contentsline {paragraph}{Przykłady}{25}{}%
 \contentsline {paragraph}{}{26}{}%
+\contentsline {paragraph}{Przykład}{27}{}%
 \contentsline {paragraph}{}{27}{}%
-\contentsline {paragraph}{$\DOTSB \tmspace +\thickmuskip {.2777em}\DOTSB \Relbar \joinrel \Rightarrow \tmspace +\thickmuskip {.2777em}$}{29}{}%
-\contentsline {paragraph}{$\DOTSB \tmspace +\thickmuskip {.2777em}\DOTSB \Leftarrow \joinrel \Relbar \tmspace +\thickmuskip {.2777em}$}{29}{}%
-\contentsline {paragraph}{}{30}{}%
-\contentsline {paragraph}{}{30}{}%
-\contentsline {paragraph}{$\supseteq $}{31}{}%
-\contentsline {paragraph}{$\subseteq $}{31}{}%
-\contentsline {paragraph}{$\DOTSB \tmspace +\thickmuskip {.2777em}\DOTSB \Leftarrow \joinrel \Relbar \tmspace +\thickmuskip {.2777em}$}{31}{}%
-\contentsline {paragraph}{$implies$}{32}{}%
-\contentsline {paragraph}{$\DOTSB \tmspace +\thickmuskip {.2777em}\DOTSB \Relbar \joinrel \Rightarrow \tmspace +\thickmuskip {.2777em}$}{32}{}%
+\contentsline {paragraph}{}{28}{}%
+\contentsline {paragraph}{$\DOTSB \tmspace +\thickmuskip {.2777em}\DOTSB \Relbar \joinrel \Rightarrow \tmspace +\thickmuskip {.2777em}$}{30}{}%
+\contentsline {paragraph}{$\DOTSB \tmspace +\thickmuskip {.2777em}\DOTSB \Leftarrow \joinrel \Relbar \tmspace +\thickmuskip {.2777em}$}{30}{}%
+\contentsline {paragraph}{}{31}{}%
+\contentsline {paragraph}{}{31}{}%
+\contentsline {paragraph}{$\supseteq $}{32}{}%
+\contentsline {paragraph}{$\subseteq $}{32}{}%
 \contentsline {paragraph}{$\DOTSB \tmspace +\thickmuskip {.2777em}\DOTSB \Leftarrow \joinrel \Relbar \tmspace +\thickmuskip {.2777em}$}{32}{}%
-\contentsline {paragraph}{$2. \DOTSB \tmspace +\thickmuskip {.2777em}\DOTSB \Relbar \joinrel \Rightarrow \tmspace +\thickmuskip {.2777em}1.$}{32}{}%
-\contentsline {subsection}{\numberline {4.2}Przekształcenia ciągłe}{33}{}%
-\contentsline {paragraph}{$1. \DOTSB \tmspace +\thickmuskip {.2777em}\DOTSB \Relbar \joinrel \Rightarrow \tmspace +\thickmuskip {.2777em}2.$}{33}{}%
-\contentsline {paragraph}{$2. \DOTSB \tmspace +\thickmuskip {.2777em}\DOTSB \Relbar \joinrel \Rightarrow \tmspace +\thickmuskip {.2777em}3.$}{33}{}%
-\contentsline {paragraph}{$3. \DOTSB \tmspace +\thickmuskip {.2777em}\DOTSB \Relbar \joinrel \Rightarrow \tmspace +\thickmuskip {.2777em}4.$}{33}{}%
-\contentsline {paragraph}{$4. \DOTSB \tmspace +\thickmuskip {.2777em}\DOTSB \Relbar \joinrel \Rightarrow \tmspace +\thickmuskip {.2777em}1.$}{34}{}%
-\contentsline {paragraph}{$\DOTSB \tmspace +\thickmuskip {.2777em}\DOTSB \Relbar \joinrel \Rightarrow \tmspace +\thickmuskip {.2777em}$}{34}{}%
-\contentsline {paragraph}{$\DOTSB \tmspace +\thickmuskip {.2777em}\DOTSB \Leftarrow \joinrel \Relbar \tmspace +\thickmuskip {.2777em}$}{35}{}%
-\contentsline {paragraph}{}{35}{}%
-\contentsline {subsection}{\numberline {4.3}Zwartość}{35}{}%
-\contentsline {paragraph}{Przykład}{36}{}%
-\contentsline {paragraph}{Dowód nie wprost.}{37}{}%
-\contentsline {paragraph}{$\DOTSB \tmspace +\thickmuskip {.2777em}\DOTSB \Relbar \joinrel \Rightarrow \tmspace +\thickmuskip {.2777em}$}{39}{}%
-\contentsline {paragraph}{$\DOTSB \tmspace +\thickmuskip {.2777em}\DOTSB \Leftarrow \joinrel \Relbar \tmspace +\thickmuskip {.2777em}$}{39}{}%
-\contentsline {paragraph}{}{40}{}%
+\contentsline {paragraph}{$implies$}{33}{}%
+\contentsline {paragraph}{$\DOTSB \tmspace +\thickmuskip {.2777em}\DOTSB \Relbar \joinrel \Rightarrow \tmspace +\thickmuskip {.2777em}$}{33}{}%
+\contentsline {paragraph}{$\DOTSB \tmspace +\thickmuskip {.2777em}\DOTSB \Leftarrow \joinrel \Relbar \tmspace +\thickmuskip {.2777em}$}{33}{}%
+\contentsline {paragraph}{$2. \DOTSB \tmspace +\thickmuskip {.2777em}\DOTSB \Relbar \joinrel \Rightarrow \tmspace +\thickmuskip {.2777em}1.$}{33}{}%
+\contentsline {subsection}{\numberline {4.2}Przekształcenia ciągłe}{34}{}%
+\contentsline {paragraph}{$1. \DOTSB \tmspace +\thickmuskip {.2777em}\DOTSB \Relbar \joinrel \Rightarrow \tmspace +\thickmuskip {.2777em}2.$}{34}{}%
+\contentsline {paragraph}{$2. \DOTSB \tmspace +\thickmuskip {.2777em}\DOTSB \Relbar \joinrel \Rightarrow \tmspace +\thickmuskip {.2777em}3.$}{34}{}%
+\contentsline {paragraph}{$3. \DOTSB \tmspace +\thickmuskip {.2777em}\DOTSB \Relbar \joinrel \Rightarrow \tmspace +\thickmuskip {.2777em}4.$}{34}{}%
+\contentsline {paragraph}{$4. \DOTSB \tmspace +\thickmuskip {.2777em}\DOTSB \Relbar \joinrel \Rightarrow \tmspace +\thickmuskip {.2777em}1.$}{35}{}%
+\contentsline {paragraph}{$\DOTSB \tmspace +\thickmuskip {.2777em}\DOTSB \Relbar \joinrel \Rightarrow \tmspace +\thickmuskip {.2777em}$}{35}{}%
+\contentsline {paragraph}{$\DOTSB \tmspace +\thickmuskip {.2777em}\DOTSB \Leftarrow \joinrel \Relbar \tmspace +\thickmuskip {.2777em}$}{36}{}%
+\contentsline {paragraph}{}{36}{}%
+\contentsline {subsection}{\numberline {4.3}Zwartość}{36}{}%
+\contentsline {paragraph}{Przykład}{37}{}%
+\contentsline {paragraph}{Dowód nie wprost.}{38}{}%
+\contentsline {paragraph}{$\DOTSB \tmspace +\thickmuskip {.2777em}\DOTSB \Relbar \joinrel \Rightarrow \tmspace +\thickmuskip {.2777em}$}{40}{}%
+\contentsline {paragraph}{$\DOTSB \tmspace +\thickmuskip {.2777em}\DOTSB \Leftarrow \joinrel \Relbar \tmspace +\thickmuskip {.2777em}$}{40}{}%
+\contentsline {paragraph}{}{41}{}%
 \contentsline {paragraph}{$\DOTSB \tmspace +\thickmuskip {.2777em}\DOTSB \Relbar \joinrel \Rightarrow \tmspace +\thickmuskip {.2777em}$}{42}{}%
-\contentsline {paragraph}{$\DOTSB \tmspace +\thickmuskip {.2777em}\DOTSB \Leftarrow \joinrel \Relbar \tmspace +\thickmuskip {.2777em}$}{42}{}%
+\contentsline {paragraph}{$\DOTSB \tmspace +\thickmuskip {.2777em}\DOTSB \Leftarrow \joinrel \Relbar \tmspace +\thickmuskip {.2777em}$}{43}{}%

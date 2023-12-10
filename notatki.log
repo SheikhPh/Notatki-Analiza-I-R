@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.5.20)  9 DEC 2023 21:03
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.5.20)  10 DEC 2023 18:56
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -943,47 +943,40 @@ File: ujkpmia.fd 2006/08/15 v1.0
 LaTeX Font Info:    Trying to load font information for U+jkpsyc on input line 182.
  (c:/texlive/2023/texmf-dist/tex/latex/kpfonts/ujkpsyc.fd
 File: ujkpsyc.fd 2006/08/15 v1.0
-)
-LaTeX Font Info:    Trying to load font information for TS1+jkp on input line 197.
- (c:/texlive/2023/texmf-dist/tex/latex/kpfonts/ts1jkp.fd
-File: ts1jkp.fd 2007/08/30 Fontinst v1.928 font definitions for TS1/jkp.
 ) [1
 
-{c:/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{c:/texlive/2023/texmf-dist/fonts/enc/dvips/base/8r.enc}{c:/texlive/2023/texmf-dist/fonts/enc/dvips/kpfonts/kpfonts-expert.enc}] [2] [3] [4] [5] [6] [7] [8] [9] [10] [11] [12] [13] [14]
-Missing character: There is no ­ in font jkpsy!
-Missing character: There is no ­ in font jkpsy!
-Missing character: There is no ­ in font jkpsy!
-Missing character: There is no ­ in font jkpsy!
-Missing character: There is no ­ in font jkpsy!
-Missing character: There is no ­ in font jkpsy!
-[15] [16] [17] [18] [19] [20] [21] [22] [23]
-Overfull \hbox (25.4441pt too wide) in paragraph at lines 1034--1037
+{c:/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{c:/texlive/2023/texmf-dist/fonts/enc/dvips/base/8r.enc}]
+LaTeX Font Info:    Trying to load font information for TS1+jkp on input line 199.
+ (c:/texlive/2023/texmf-dist/tex/latex/kpfonts/ts1jkp.fd
+File: ts1jkp.fd 2007/08/30 Fontinst v1.928 font definitions for TS1/jkp.
+) [2{c:/texlive/2023/texmf-dist/fonts/enc/dvips/kpfonts/kpfonts-expert.enc}] [3] [4] [5] [6] [7] [8] [9] [10] [11] [12] [13] [14] [15] [16] [17] [18] [19] [20] [21] [22] [23] [24]
+Overfull \hbox (25.4441pt too wide) in paragraph at lines 1047--1050
 \T1/jkp/m/n/10 zbio-rze $\OML/jkp/m/it/10 X$\T1/jkp/m/n/10 . Po-dane ak-sjo-maty za-pew-niaj¡, »e na-sza me-tryka speª-nia¢ b¦-dzie "zdro-wo-roz-s¡d-kowe"wªasno±ci 
  []
 
-[24] [25] [26] [27] [28]
-Overfull \hbox (2.43416pt too wide) in paragraph at lines 1277--1278
+[25] [26] [27] [28] [29]
+Overfull \hbox (2.43416pt too wide) in paragraph at lines 1290--1291
  [] \T1/jkp/m/n/10 Fakty te s¡ oczy-wi-st¡ kon-se-kwen-cj¡ wªa-sno-±ci $\OMS/jkp/m/n/10 T$ \T1/jkp/m/n/10 i prawa, które mówi, »e do-peª-nie-nie zbioru otwar- 
  []
 
-[29] [30] [31] [32] [33] [34] [35] [36] [37] [38] [39] [40] [41] (./notatki.toc)
+[30] [31] [32] [33] [34] [35] [36] [37] [38] [39] [40] [41] [42] [43] [44] (./notatki.toc)
 \tf@toc=\write4
 \openout4 = `notatki.toc'.
 
- [42] (./notatki.aux) ) 
+ [45] (./notatki.aux) ) 
 Here is how much of TeX's memory you used:
- 22416 strings out of 477870
- 450537 string characters out of 5834796
- 1884845 words of memory out of 5000000
- 42184 multiletter control sequences out of 15000+600000
+ 22422 strings out of 477870
+ 450637 string characters out of 5834796
+ 1886845 words of memory out of 5000000
+ 42190 multiletter control sequences out of 15000+600000
  604008 words of font info for 121 fonts, out of 8000000 for 9000
  82 hyphenation exceptions out of 8191
  101i,20n,104p,1134b,1261s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/texlive/2023/texmf-dist/fonts/type1/public/kpfonts/jkpbn8a.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/kpfonts/jkpbne.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/kpfonts/jkpex.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/kpfonts/jkpmi.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/kpfonts/jkpmia.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/kpfonts/jkpmn8a.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/kpfonts/jkpmne.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/kpfonts/jkpsy.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/kpfonts/jkpsya.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/kpfonts/jkpsyb.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/kpfonts/jkpsyc.pfb>
-Output written on notatki.pdf (42 pages, 244993 bytes).
+Output written on notatki.pdf (45 pages, 248974 bytes).
 PDF statistics:
- 201 PDF objects out of 1000 (max. 8388607)
- 133 compressed objects within 2 object streams
+ 211 PDF objects out of 1000 (max. 8388607)
+ 140 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 
