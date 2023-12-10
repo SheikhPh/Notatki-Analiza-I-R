@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.5.20)  10 DEC 2023 19:50
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.5.20)  10 DEC 2023 22:11
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -828,7 +828,7 @@ File: t1jkp.fd 2007/01/24 Fontinst v1.928 font definitions for T1/jkp.
 Package: relsize 2013/03/29 ver 4.1
 )
 \c@defi=\count311
-\c@theo=\count312
+\c@tcb@cnt@twier=\count312
 \c@obser=\count313
  (c:/texlive/2023/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2023-04-19 L3 backend support: PDF output (pdfTeX)
@@ -837,38 +837,38 @@ File: l3backend-pdftex.def 2023-04-19 L3 backend support: PDF output (pdfTeX)
 ) (./notatki.aux)
 \openout1 = `notatki.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/jkp/m/it on input line 180.
-LaTeX Font Info:    Trying to load font information for OML+jkp on input line 180.
+LaTeX Font Info:    Checking defaults for OML/jkp/m/it on input line 181.
+LaTeX Font Info:    Trying to load font information for OML+jkp on input line 181.
  (c:/texlive/2023/texmf-dist/tex/latex/kpfonts/omljkp.fd
 File: omljkp.fd 2006/08/15 v1.0
 )
-LaTeX Font Info:    ... okay on input line 180.
-LaTeX Font Info:    Checking defaults for OMS/jkp/m/n on input line 180.
-LaTeX Font Info:    Trying to load font information for OMS+jkp on input line 180.
+LaTeX Font Info:    ... okay on input line 181.
+LaTeX Font Info:    Checking defaults for OMS/jkp/m/n on input line 181.
+LaTeX Font Info:    Trying to load font information for OMS+jkp on input line 181.
  (c:/texlive/2023/texmf-dist/tex/latex/kpfonts/omsjkp.fd
 File: omsjkp.fd 2006/08/15 v1.0
 )
-LaTeX Font Info:    ... okay on input line 180.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 180.
-LaTeX Font Info:    ... okay on input line 180.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 180.
-LaTeX Font Info:    ... okay on input line 180.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 180.
-LaTeX Font Info:    ... okay on input line 180.
-LaTeX Font Info:    Checking defaults for OMX/jkp/m/n on input line 180.
-LaTeX Font Info:    Trying to load font information for OMX+jkp on input line 180.
+LaTeX Font Info:    ... okay on input line 181.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 181.
+LaTeX Font Info:    ... okay on input line 181.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 181.
+LaTeX Font Info:    ... okay on input line 181.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 181.
+LaTeX Font Info:    ... okay on input line 181.
+LaTeX Font Info:    Checking defaults for OMX/jkp/m/n on input line 181.
+LaTeX Font Info:    Trying to load font information for OMX+jkp on input line 181.
  (c:/texlive/2023/texmf-dist/tex/latex/kpfonts/omxjkp.fd
 File: omxjkp.fd 2006/08/15 v1.0
 )
-LaTeX Font Info:    ... okay on input line 180.
-LaTeX Font Info:    Checking defaults for U/jkpexa/m/n on input line 180.
-LaTeX Font Info:    Trying to load font information for U+jkpexa on input line 180.
+LaTeX Font Info:    ... okay on input line 181.
+LaTeX Font Info:    Checking defaults for U/jkpexa/m/n on input line 181.
+LaTeX Font Info:    Trying to load font information for U+jkpexa on input line 181.
  (c:/texlive/2023/texmf-dist/tex/latex/kpfonts/ujkpexa.fd
 File: ujkpexa.fd 2006/08/15 v1.0
 )
-LaTeX Font Info:    ... okay on input line 180.
-LaTeX Font Info:    Checking defaults for OT4/cmr/m/n on input line 180.
-LaTeX Font Info:    ... okay on input line 180.
+LaTeX Font Info:    ... okay on input line 181.
+LaTeX Font Info:    Checking defaults for OT4/cmr/m/n on input line 181.
+LaTeX Font Info:    ... okay on input line 181.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -904,7 +904,7 @@ LaTeX Font Info:    ... okay on input line 180.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-Package ragged2e Info: ABD: executing \RaggedRight on input line 180.
+Package ragged2e Info: ABD: executing \RaggedRight on input line 181.
 (c:/texlive/2023/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count315
@@ -924,38 +924,38 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 48
  (c:/texlive/2023/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
-LaTeX Font Info:    Trying to load font information for OT1+jkp on input line 182.
+LaTeX Font Info:    Trying to load font information for OT1+jkp on input line 183.
  (c:/texlive/2023/texmf-dist/tex/latex/kpfonts/ot1jkp.fd
 File: ot1jkp.fd 2007/08/30 Fontinst v1.928 font definitions for OT1/jkp.
 )
-LaTeX Font Info:    Trying to load font information for U+jkpsya on input line 182.
+LaTeX Font Info:    Trying to load font information for U+jkpsya on input line 183.
  (c:/texlive/2023/texmf-dist/tex/latex/kpfonts/ujkpsya.fd
 File: ujkpsya.fd 2006/08/15 v1.0
 )
-LaTeX Font Info:    Trying to load font information for U+jkpsyb on input line 182.
+LaTeX Font Info:    Trying to load font information for U+jkpsyb on input line 183.
  (c:/texlive/2023/texmf-dist/tex/latex/kpfonts/ujkpsyb.fd
 File: ujkpsyb.fd 2006/08/15 v1.0
 )
-LaTeX Font Info:    Trying to load font information for U+jkpmia on input line 182.
+LaTeX Font Info:    Trying to load font information for U+jkpmia on input line 183.
  (c:/texlive/2023/texmf-dist/tex/latex/kpfonts/ujkpmia.fd
 File: ujkpmia.fd 2006/08/15 v1.0
 )
-LaTeX Font Info:    Trying to load font information for U+jkpsyc on input line 182.
+LaTeX Font Info:    Trying to load font information for U+jkpsyc on input line 183.
  (c:/texlive/2023/texmf-dist/tex/latex/kpfonts/ujkpsyc.fd
 File: ujkpsyc.fd 2006/08/15 v1.0
 ) [1
 
 {c:/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{c:/texlive/2023/texmf-dist/fonts/enc/dvips/base/8r.enc}]
-LaTeX Font Info:    Trying to load font information for TS1+jkp on input line 199.
+LaTeX Font Info:    Trying to load font information for TS1+jkp on input line 200.
  (c:/texlive/2023/texmf-dist/tex/latex/kpfonts/ts1jkp.fd
 File: ts1jkp.fd 2007/08/30 Fontinst v1.928 font definitions for TS1/jkp.
 ) [2{c:/texlive/2023/texmf-dist/fonts/enc/dvips/kpfonts/kpfonts-expert.enc}] [3] [4] [5] [6] [7] [8] [9] [10] [11] [12] [13] [14] [15] [16] [17] [18] [19] [20] [21] [22] [23] [24]
-Overfull \hbox (25.4441pt too wide) in paragraph at lines 1047--1050
+Overfull \hbox (25.4441pt too wide) in paragraph at lines 1048--1051
 \T1/jkp/m/n/10 zbio-rze $\OML/jkp/m/it/10 X$\T1/jkp/m/n/10 . Po-dane ak-sjo-maty za-pew-niaj¡, »e na-sza me-tryka speª-nia¢ b¦-dzie "zdro-wo-roz-s¡d-kowe"wªasno±ci 
  []
 
 [25] [26] [27] [28] [29]
-Overfull \hbox (2.43416pt too wide) in paragraph at lines 1290--1291
+Overfull \hbox (2.43416pt too wide) in paragraph at lines 1291--1292
  [] \T1/jkp/m/n/10 Fakty te s¡ oczy-wi-st¡ kon-se-kwen-cj¡ wªa-sno-±ci $\OMS/jkp/m/n/10 T$ \T1/jkp/m/n/10 i prawa, które mówi, »e do-peª-nie-nie zbioru otwar- 
  []
 
@@ -965,15 +965,15 @@ Overfull \hbox (2.43416pt too wide) in paragraph at lines 1290--1291
 
  [45] (./notatki.aux) ) 
 Here is how much of TeX's memory you used:
- 22422 strings out of 477870
- 450637 string characters out of 5834796
+ 22436 strings out of 477870
+ 451059 string characters out of 5834796
  1886845 words of memory out of 5000000
- 42190 multiletter control sequences out of 15000+600000
+ 42204 multiletter control sequences out of 15000+600000
  604008 words of font info for 121 fonts, out of 8000000 for 9000
  82 hyphenation exceptions out of 8191
- 101i,20n,104p,1134b,1261s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 101i,20n,104p,1134b,1264s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/texlive/2023/texmf-dist/fonts/type1/public/kpfonts/jkpbn8a.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/kpfonts/jkpbne.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/kpfonts/jkpex.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/kpfonts/jkpmi.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/kpfonts/jkpmia.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/kpfonts/jkpmn8a.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/kpfonts/jkpmne.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/kpfonts/jkpsy.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/kpfonts/jkpsya.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/kpfonts/jkpsyb.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/kpfonts/jkpsyc.pfb>
-Output written on notatki.pdf (45 pages, 249218 bytes).
+Output written on notatki.pdf (45 pages, 249661 bytes).
 PDF statistics:
  211 PDF objects out of 1000 (max. 8388607)
  140 compressed objects within 2 object streams

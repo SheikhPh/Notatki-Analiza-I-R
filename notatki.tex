@@ -57,18 +57,19 @@
 
 
 
-\newcounter{theo}
-\numberwithin{theo}{section}
+% \newcounter{twier}
+% \numberwithin{twier}{section}
 
-\newtcolorbox{twier}[2][]{%
+\newtcolorbox[auto counter,number within= section]{twier}[2][]{%
   breakable, enhanced, colback=white,colframe=col2,coltitle=black,
   sharp corners,boxrule=1.5pt,
   fonttitle=\bfseries,top=13pt,
   attach boxed title to top left={yshift=-\tcboxedtitleheight/2, xshift=10pt},
   boxed title style={tile,size=small,left=5pt,right=5pt, 
   colback=col2,before upper=\strut},   
-  title={Twierdzenie \thetheo . #1 #2},
-  before title={\refstepcounter{theo}},
+  title={Twierdzenie \thetcbcounter . #2},
+  #1,
+%   before title={\refstepcounter{twier}},
   }
 
 \newtcolorbox{dow}[2][]{%
@@ -1656,7 +1657,7 @@ Zaczniemy rozważać teraz przekształcenia (i.e. funkcje) pomiędzy przestrzeni
         Domknięty podzbiór zbioru zwartego jest zwarty.
     \end{obs}
     %% TODO proper dowód
-    \paragraph*{} Istotnie $K \subseteq \subseteq X$ $wedge$ $C \subseteq K$ $wedge$ $C = \ol{C}$ $\implies$ $C \subseteq \subseteq X$.
+    \paragraph*{} Istotnie $K \subseteq \subseteq X$ $\wedge$ $C \subseteq K$ $\wedge$ $C = \ol{C}$ $\implies$ $C \subseteq \subseteq X$.
 
     \begin{twier}{Bolzano-Weierestrassa II} \label{twier:BL II}
         Każdy ograniczony i domknięty podzbiór $\R$ jest zwarty.
@@ -1700,7 +1701,7 @@ Zaczniemy rozważać teraz przekształcenia (i.e. funkcje) pomiędzy przestrzeni
     \end{dow}
 
 
-\begin{twier}{Obraz zbioru zwartego jest zwarty} \label{twier:ob-zwar-zwar}
+\begin{twier}[label=twier:ob-zwar-zwar]{Obraz zbioru zwartego jest zwarty}
     Niech $(X, d)$, $(Y, \delta)$ będą p-ń. metrycznymi, a $\phi: X \to Y$ będzie odwzorowaniem ciągłym. Ponadto niech $K \subseteq \subseteq X$. Wtedy zbiór $\phi(K)$ jest zwarty.
 \end{twier}
 
