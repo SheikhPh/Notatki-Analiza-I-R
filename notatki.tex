@@ -1746,13 +1746,6 @@ Zaczniemy rozważać teraz przekształcenia (i.e. funkcje) pomiędzy przestrzeni
     \begin{itemize}
         \item Jeżeli $\exists_{i\leq N}: X = U_i$, to sytuacja nie przedstawia żadnego problemu - za $\lambda$ bierzemy dowolną liczbę, zaś za $U_x = X$. Teza jest trywialnie spełniona.
 
-
-        % \item Jeżeli $\exists_{i\leq N}: K \se U_i$ (bez straty ogólności przyjmijmy, że to $U_1$), to skoro $U_1$ jest otwarty, mamy: \begin{equation*}
-        %     \forall_{x \in K} \exists_{\delta(x, i) >0}: \ball{x}{\delta(x)} \se U_1.
-        % \end{equation*} 
-        % Niech $f(x) = \min\{ \sup \delta(x), 1\}$, gdzie $\sup \delta(x)$ oznacza supremum delt spełniających podany warunek dla danego $x$. Oczywiście $f(x)$ jest ciągła - mamy bowiem nierówność $|\delta(x) - \delta(x_0)| \leq d(x, x_0)$. Zatem $f$ osiąga na $K$ swoje kresy. Widzimy więc, skoro tak, to $\inf f(x) > 0$, zatem teza lematu zachodzi dla $U_x = U_1$ i $\lambda = \inf f(x)$.
-        
-        
         \item Jeżeli $\forall_{i \leq N}: X \not \se U_i$, to definiujemy rodzinę $F_i = X \backslash U_i$ oraz funkcję: \begin{equation*}
             f(x) = \frac{1}{N} \bsum{i = 1}{N}d(x, F_i),
         \end{equation*} gdzie \begin{equation*}
@@ -1780,8 +1773,93 @@ Zaczniemy rozważać teraz przekształcenia (i.e. funkcje) pomiędzy przestrzeni
 \end{dow}
 
 
+\subsection{Spójność}
+
+\begin{defr}{Spójność}
+    Powiemy, że zbiór $Z$ w pewnej metryce jest \textbf{niespójny}, jeśli:\begin{equation}
+        \exists_{Z_1, Z_2 \neq \emptyset}: Z_1 \cup Z_2 = Z \quad \wedge \quad  Z_1 \cap \ol{Z_2} = \emptyset.
+    \end{equation} W przeciwnym razie, zbiór nazwiemy \textbf{spójnym}. Dla zbiorów spójnych, mamy: \begin{equation*}
+        Z_1, Z_2 \neq \emptyset \wedge Z_1 \cup Z_2 = Z \implies Z_1 \cap \ol{Z_2} \neq \emptyset \vee \ol{Z_1} \cap Z_2.
+    \end{equation*}
+\end{defr}
+
+\begin{obs}{}
+    Podzbiór $\R$ jest spójny wtedy i tylko wtedy, gdy jest przedziałem.
+\end{obs}
 
 
+%TODO dowód
+
+\begin{twier}{Obraz zbioru spójnego jest spójny}
+    Jeśli $Z$ jest zbiorem spójnym, a $\Phi: X \to Y$ odzworowaniem ciągłym, to $\Phi(Z)$ jest spójny.
+\end{twier}
+
+\begin{dow}{Dowód}
+    Dowód nie wprost. Załóżmy, że $\Phi(Z)$ jest niespójny, tj. istnieją takie niepuste $W_1, W_2 \se Y$, że $W_1 \cap \ol{W_2} = \emptyset$ i $W_1 \cup W_2 = \Phi(Z)$. Niech $Z_1 = \Phi^{-1}(W_1) \cap Z$ i $Z_2 = \Phi^{-1}(W_1) \cap Z$. Mamy: \begin{equation*}
+        Z \se \Phi^{-1}(\Phi(Z)) = \Phi(W_1) \cup \Phi(W_2).
+    \end{equation*} Zatem $Z = Z_1 \cup Z_2$. Skoro $Z$ jest spójny, to $\ol{Z_1} \cap Z_2 \neq \emptyset$ lub $Z_1 \cap \ol{Z_2} \neq \emptyset$. Bez straty ogólności, załóżmy ten pierwszy przypadek. Wtedy istnieje $\ciag{x}$, t.ż. $x_n \in Z_1$ i $x_n \to x \in Z_2$. Ale wtedy -- z ciągłości $\Phi$ -- $W_1 \ni \Phi(x_n) \to \Phi(x) \in W_2$, zatem $\ol{W_1} \cap W_2 \neq \emptyset$, wbrew założeniu. Powstała sprzeczność dowodzi tezy.
+\end{dow}
+
+\begin{obs}{Łukowa spójność}
+    Zbiór spójny łukowo jest spójny.
+\end{obs}
+
+
+%TODO wiecej na ten temat
+
+
+
+\section{Rachunek różniczkowy}
+
+    \begin{defr}{Różniczkowalność}
+        Niech $f: I \to \R$, gdzie $I$ jest przedziałem w $\R$ (otwartym lub domkniętym). Powiemy, że $f$ jest różniczkowalna w punkcie $x_0 \in I$, jeśli istnieje granica: \begin{equation}
+            \lim_{I \ni x \to x_0} \frac{f(x) - f(x_0)}{x - x_0}.
+        \end{equation} W szczególności, jeśli $I = [a, b]$, to $f$ jest różniczkowalna w $a$, jeśli istnieje granica: \begin{equation}
+            \lim_{I \ni x \to a^+} \frac{f(x) - f(a)}{x - a}.
+        \end{equation} Wartość tychże granic nazywamy pochodną funkcji $f$ w punkcie $x_0$ i oznaczamy $f'(x_0)$. 
+    \end{defr}
+
+    \begin{defr}{Pochodna}
+        Jeśli w każdym punkcie funkcji $f$ istnieje skończona pochodna, to funkcje $f': I \to \R$, $f': x \mapsto f'(x)$ nazywamy \textbf{pochodną} funkcji $f$. Mówimy wtedy o $f$, że jest \textbf{różniczkowalna}.
+    \end{defr}
+
+    \begin{twier}
+        Niech $x \in I \deg$. Wtedy:\begin{equation}
+            \exists_{f'(x_0)} \iff \exists_{y}: \lim_{h \to 0} \frac{f(x_0+h) - f(x_0) - y h}{h} = 0.
+        \end{equation} Wtedy oczywiście $y = f'(x)$.
+    \end{twier}
+
+    \begin{dow}{Dowód}
+        \paragraph{$\implies$} Jeśli $\lim_{x \to x_0} \frac{f(x) - f(x_0)}{x - x_0} = f'(x_0)$, to $\lim_{h \to 0} \frac{f(x_0 + h) - f(x_0)}{h} = f'(x_0)$ i: \begin{equation*}
+            \lim_{h \to 0} \frac{f(x_0 + h) - f(x_0) - h f'(x_0)}{h} = 0.            
+        \end{equation*}
+
+        \paragraph{$\impliedby$} Jeśli: \begin{equation*}
+            \lim_{h \to 0} \frac{f(x_0 + h) - f(x_0) - h  y}{h} = 0,
+        \end{equation*} to: \begin{equation*}
+            \lim_{x \to x_0} \frac{f(x) - f(x_0)}{h} = y = f'(x_0).
+        \end{equation*}
+    \end{dow}
+
+
+    \begin{obs}{Podstawowe własności pochodnych}
+        Niech $f, g: I \to \R$ będą funkcjami różniczkowalnymi. Wtedy:\begin{itemize}
+            \item $(f + g)'$ istnieje i: \begin{equation}
+                (f + g)' = f' + g'.
+            \end{equation}
+            \item Jeśli $a \in R$, to $(a f)'$ istnieje i: \begin{equation}
+                (a f)' = a f'.
+            \end{equation}
+            \item $(fg)'$ istnieje i: \begin{equation}
+                (fg)' = f' \cdot g + f \cdot g'.
+            \end{equation}
+            \item Jeśli $g(x) \neq 0$ i $g'(x) \neq 0$ dla wszyskich $x \in I$, to $(\frac{f}{g})'$ istnieje i: \begin{equation}
+                (\frac{f}{g})' = \frac{f' g - f g'}{(g)^2}.
+            \end{equation}
+        \end{itemize}
+    \end{obs}
+
+    \paragraph{} Dowód jest bardzo prosty i pozostawiamy go jako ćwiczenie.
 
 \section*{Koniec}
 \newpage
