@@ -1823,7 +1823,7 @@ Zaczniemy rozważać teraz przekształcenia (i.e. funkcje) pomiędzy przestrzeni
         Jeśli w każdym punkcie funkcji $f$ istnieje skończona pochodna, to funkcje $f': I \to \R$, $f': x \mapsto f'(x)$ nazywamy \textbf{pochodną} funkcji $f$. Mówimy wtedy o $f$, że jest \textbf{różniczkowalna}.
     \end{defr}
 
-    \begin{twier}
+    \begin{twier}[label=twier:poch-do-0]{}
         Niech $x \in I \deg$. Wtedy:\begin{equation}
             \exists_{f'(x_0)} \iff \exists_{y}: \lim_{h \to 0} \frac{f(x_0+h) - f(x_0) - y h}{h} = 0.
         \end{equation} Wtedy oczywiście $y = f'(x)$.
@@ -1841,6 +1841,14 @@ Zaczniemy rozważać teraz przekształcenia (i.e. funkcje) pomiędzy przestrzeni
         \end{equation*}
     \end{dow}
 
+    \begin{twier}{Funkcja różniczkowalna jest ciągła}
+        Jeśli funkcja $f$ jest różniczkowalna w pewnym punkcie $x_0$, to jest w tym punkcie ciągła.
+    \end{twier}
+
+    \begin{dow}{Dowód}
+        Skoro $\lim_{x \to x_0} \frac{f(x) - f(x_0)}{x - x_0} = f'(x_0)$, to $\lim_{x \to x_0} f(x) - f(x_0)= lim_{x \to x_0} f'(x_0) (x - x_0) 0$, zatem funkcja jest ciągła.
+
+    \end{dow}
 
     \begin{obs}{Podstawowe własności pochodnych}
         Niech $f, g: I \to \R$ będą funkcjami różniczkowalnymi. Wtedy:\begin{itemize}
@@ -1852,15 +1860,51 @@ Zaczniemy rozważać teraz przekształcenia (i.e. funkcje) pomiędzy przestrzeni
             \end{equation}
             \item $(fg)'$ istnieje i: \begin{equation}
                 (fg)' = f' \cdot g + f \cdot g'.
-            \end{equation}
+            \end{equation} Jest to tzw. wzór Leibnitza.
             \item Jeśli $g(x) \neq 0$ i $g'(x) \neq 0$ dla wszyskich $x \in I$, to $(\frac{f}{g})'$ istnieje i: \begin{equation}
                 (\frac{f}{g})' = \frac{f' g - f g'}{(g)^2}.
             \end{equation}
         \end{itemize}
     \end{obs}
 
-    \paragraph{} Dowód jest bardzo prosty i pozostawiamy go jako ćwiczenie.
+    %TODO dowód w wolnym czasie (chociaż jest oczywisty)
 
+    \paragraph{} Dowód jest bardzo prosty i pozostawiamy go jako ćwiczenie.
+    Nieco ciekawsze (i dużo ważniejsze) jest następujące: 
+    \begin{twier}{Pochodna funkcji złożonej}
+        Niech $g: I_1 \to I_2$, $f: I_2 \to \R$ będą funkcjami różniczkowalnymi odpowiednio w punktach $x_0 \in I_1 \deg$ i $g(x_0) \in I_2 \deg$. Wtedy $f \circ g$ także jest różniczkowalna i w $x_0$: \begin{equation}
+            (f \circ g)' (x_0) = f'(g(x_0)) \cdot g'(x_0).
+        \end{equation} Reguła ta nazywa się czasem \textbf{regułą łańuchową}.
+    \end{twier}
+
+    \begin{dow}{Dowód}
+        Niech  $r(h) = g(x_0 + h) - g(x_0) - g'(x_0)h$. Wtedy (por. Tw. \ref{twier:poch-do-0}): \begin{equation}
+            \lim_{h \to 0} \frac{r(h)}{h} = 0.
+        \end{equation} Niech $y_0 = g(x_0)$ i $R(k)= f(y_0 + h) - f(y_0) - f'(y_0) h.$ Znowuż: \begin{equation}
+            \lim_{k \to 0}\frac{R(k)}{k} =0.
+        \end{equation} Wtedy: \begin{equation}
+            f(g(x_0 + h)) - f(g(x_0)) = f(g(x_0) + g'(x_0) h + r(h)) - f(g(x_0)) = f(g(x_0) + k(h)) - f(g(x_0)),
+        \end{equation} gdzie oznaczyliśmy $k(h) =  g'(x_0) h + r(h)$. Oczywiście $\lim_{h \to 0} k(h) = 0$. Licząc dalej: \begin{equation}
+            f(g(x_0 + h)) - f(g(x_0)) =  f(g(x_0) + k(h)) - f(g(x_0)) = R(k(h)) + f'(y_0)k(h).
+        \end{equation} Zatem: \begin{equation*}
+            \lim_{h\ to 0} \frac{f(g(x_0 + h)) - f(g(x_0))}{h} = f'(y_0) \lim_{h \to 0} \frac{k(h)}{h} + \lim_{h \to 0} \frac{R(k(h))}{h}.
+        \end{equation*} Zauważmy, że:\begin{equation*}
+            \lim_{h \to 0} \frac{k(h)}{h} = \lim_{h \to 0} \frac{g'(x_0) h + r(h)}{h} = g'(x_0).
+        \end{equation*} Stąd mamy: \begin{equation*}
+            \lim_{h \to 0} \frac{R(k(h))}{h} = \lim_{h \to 0} \frac{R(k(h))}{k(h)} \frac{k(h)}{h} = 0.
+        \end{equation*} Ostatecznie więc: \begin{equation*}
+            \lim_{h\ to 0} \frac{f(g(x_0 + h)) - f(g(x_0))}{h} =  f'(y_0) g'(x_0).
+        \end{equation*} 
+    \end{dow}
+
+
+    \begin{defr}{Inna definicja pochodnej}
+        Niech $f: \R^n \to \R^m$. Niech $\vec{x_0} \in \R^n$. Jeśli istnieje taka macierz $A \in M(\R)_{m \times n}$, że: \begin{equation}
+            \lim_{|| \vec{h} || \to 0} \frac{f(\vec{x_0} + \vec{h}) - f(\vec{x_0}) - A \vec{h}}{|| \vec{h} ||} = 0,
+        \end{equation} dla $ \vec{h} \in \R^n$, to macierz $A$ nazwiemy pochodną $f$ w punkcie $\vec{x_0}$. Łatwo widać, że $A$ jest wyznaczone jednoznacznie.
+    \end{defr}
+
+    
 \section*{Koniec}
 \newpage
 \tableofcontents
