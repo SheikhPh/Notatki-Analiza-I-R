@@ -1914,19 +1914,19 @@ Zaczniemy rozważać teraz przekształcenia (i.e. funkcje) pomiędzy przestrzeni
     \begin{defr}{Ekstrema}
         Niech $(X, d)$ - p-ń. metryczna oraz $f: X \to \R$. Wtedy $x_0 \in X$ nazwiemy: \begin{itemize}
             \item \textbf{Lokalnym minimum}, jeśli: \begin{equation}
-                \exists_{U \in \Nau(x_0)}: \forall_{x \in U}: f(x) \geq f(x_0).
+                \exists_{U \in \Nau(x_0)} \forall_{x \in U}: f(x) \geq f(x_0).
             \end{equation}
 
             \item \textbf{Lokalnym minimum ścisłym}, jeśli: \begin{equation}
-                \exists_{U \in \Nau(x_0)}: \forall_{x \in U}: f(x) > f(x_0).
+                \exists_{U \in \Nau(x_0)} \forall_{x \in U}: f(x) > f(x_0).
             \end{equation}
 
             \item \textbf{Lokalnym maksimum}, jeśli: \begin{equation}
-                \exists_{U \in \Nau(x_0)}: \forall_{x \in U}: f(x) \leq f(x_0).
+                \exists_{U \in \Nau(x_0)} \forall_{x \in U}: f(x) \leq f(x_0).
             \end{equation}
 
             \item \textbf{Lokalnym maksimum ścisłym}, jeśli: \begin{equation}
-                \exists_{U \in \Nau(x_0)}: \forall_{x \in U}: f(x) < f(x_0).
+                \exists_{U \in \Nau(x_0)} \forall_{x \in U}: f(x) < f(x_0).
             \end{equation}
 
         \end{itemize} Wpólna nazwa, na którąś z tych sytuacji, to wystąpienie lokalnego \textbf{ekstremum} (ściłego ekstremum). 
@@ -1961,7 +1961,7 @@ Zaczniemy rozważać teraz przekształcenia (i.e. funkcje) pomiędzy przestrzeni
     \end{twier}
 
     \begin{dow}{Dowód}
-        $f$ jest ciągła na zwartej dziedzinie ($[a, b]$), także osiąga swoje kresy. Jeśli $\sup f = \inf f = f(a) = f(b)$, to $f$ jest funkcją stałą: $f := f(a)$ i jej pochodna we wszystkich punktach pomiędzy $a$ i $b$ jest równa 0. W przeciwnym wypadku, (i.e. $\sup f \neq f(a)$ lub $\inf f \neq f(a)$) istnieje $\xi \in ]a, b[$ osiągające ów kres różny od wartości w $a$. Oczywiście $\xi$ będzie ektremum, zatem z poprzedniego twierdzenia $f'(\xi) = 0$. 
+        $f$ jest ciągła na zwartej dziedzinie $[a, b]$, także osiąga swoje kresy. Jeśli $\sup f = \inf f = f(a) = f(b)$, to $f$ jest funkcją stałą: $f := f(a)$ i jej pochodna we wszystkich punktach pomiędzy $a$ i $b$ jest równa 0. W przeciwnym wypadku, (i.e. $\sup f \neq f(a)$ lub $\inf f \neq f(a)$) istnieje $\xi \in ]a, b[$ osiągające ów kres różny od wartości w $a$. Oczywiście $\xi$ będzie ektremum, zatem z poprzedniego twierdzenia $f'(\xi) = 0$. 
     \end{dow}
 
     Uogólnieniami tych twierdzeń są następujące dwa rezultaty:
@@ -1993,7 +1993,7 @@ Zaczniemy rozważać teraz przekształcenia (i.e. funkcje) pomiędzy przestrzeni
 
     \begin{dow}{Dowód}
         Bierzemy $g = x$ w Tw. Cauchy'ego. Oczywiście $g$ spełnia wszystkie założenia. Stąd: \begin{equation}
-            \exists_{\xi \in ]a, b[ }:  (f(b) - f(a)) = f'(\xi) (b - a).
+            \exists_{\xi \in ]a, b[ }:  f(b) - f(a) = f'(\xi) (b - a).
         \end{equation} Wystarczy podzielić teraz przez $(b - a)$.
     \end{dow}
 
