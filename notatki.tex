@@ -72,14 +72,15 @@
 %   before title={\refstepcounter{twier}},
   }
 
-\newtcolorbox{dow}[2][]{%
+\newtcolorbox{dow}[1][Dowód.]{% 
   breakable, enhanced, colback=white,colframe=col3,coltitle=black,
   sharp corners,boxrule=1.5pt,
   fonttitle=\bfseries,top=13pt,
   attach boxed title to top left={yshift=-\tcboxedtitleheight/2, xshift=10pt},
   boxed title style={tile,size=small,left=5pt,right=5pt, 
   colback=col3,before upper=\strut},
-  title=#2,#1}
+  title={#1},
+}
 
 
 \newcounter{obser}
@@ -116,6 +117,11 @@
 \newcommand{\subdomk}{\underset{\clap{\scriptsize domk.}}{\subseteq}}
 \newcommand{\dg}{^{\circ}}
 \newcommand{\se}{\subseteq}
+\newcommand{\Sd}{\underline{S}}
+\newcommand{\Sg}{\overline{S}}
+\newcommand{\Cd}{\underline{\int}}
+\newcommand{\Cg}{\overline{\int}}
+\newcommand{\przedz}[2]{[#1 _ {#2}, #1_{#2 - 1}]}
 
 \providecommand{\ol}{\overline}
 \providecommand{\ul}{\underline}
@@ -143,7 +149,7 @@
 
 
 
-
+\newcommand{\tb}[1]{\textbf{1}}
 \newcommand{\bsum}[2]{\mathlarger{\sum_{#1}^{#2}}}
 \newcommand{\szerI}[1]{\bsum{n=1}{\oo} #1_n}
 \newcommand{\ilorazowy}[1]{#1/\!{_R}}
@@ -361,7 +367,7 @@ Zauważmy, że w ogólności zbiór nie musi mieć kresu górnego lub dolnego, a
     \end{enumerate}
 \end{defr}
 
-Można podać konstrukcję ciała o podanych własnościach (np. kontrukcja Dedekina, kontrukcja Riemana) i dowieść, że z dokładnością do izomorfizmu istnieje tylko jedno takie ciało.
+Można podać konstrukcję ciała o podanych własnościach (np. kontrukcja Dedekina, kontrukcja Riemanna) i dowieść, że z dokładnością do izomorfizmu istnieje tylko jedno takie ciało.
 
 \begin{twier}{Własność Archimedesa}
     \begin{equation}
@@ -370,7 +376,7 @@ Można podać konstrukcję ciała o podanych własnościach (np. kontrukcja Dede
 \end{twier}
 
 
-\begin{dow}{Dowód}
+\begin{dow}
     Twiedzenia dowiedziemy nie wprost:\\
     Niech $X = {nx | n \in \N}$ i załóżmy, że X jest ograniczony z góry przez $y$. Zatem posiada supremum: $\alpha = \sup X$. Wiemy, że $\alpha - x < \alpha$, więc nie może to być ograniczenie górne. Zatem:
     \[ \exists_{n_0 \in \N}: n_0 x > \alpha - x. \]
@@ -384,7 +390,7 @@ Można podać konstrukcję ciała o podanych własnościach (np. kontrukcja Dede
         \forall_{x, y \in \R, \, x < y} \exists_{r \in \Q}: x < r < y.
     \end{equation}
 \end{twier}
-\begin{dow}{Dowód}
+\begin{dow}
     Skoro $y - x > 0$, to $\exists{n \in \N}: n(y - x) > 1$. Ponadto, skoro $1 > 0$, to $\exists_{m_1, m_2 \in \N}: m_1 > n x \land m_2 > -nx$. Zatem $-m_2 < nx < m_1$, tzn. $nx$ leży pomiędzy dwiema liczami całkowitymi. Istnieje więc takie $m \in \Z$, takie że:
     \[ m-1 \leqslant nx < m. \]
     Stąd już prosto:
@@ -443,7 +449,7 @@ Ciąg $\ciag{a}$ nazywamy \textbf{ograniczonym}, jeśli:
     \end{enumerate}
 \end{twier}
 
-\begin{dow}{Dowód}
+\begin{dow}
     W dowodach wszystkich tych twierdzeń chcemy dla dowolnego $\eps$ skonstruować takie $N$, że dla wszystkich $n \geqslant N$  różnica między wyrazami ciągu po lewej a granicą po prawej stronie jest mniejsza od $\eps$. Pamiętamy tutaj, że:
     \begin{equation}
         \forall_{\eps > 0} \exists_{M_{\eps} \in \N} \forall{n \geqslant M_{\eps}}: |a_n - a| \leqslant \eps,
@@ -506,7 +512,7 @@ Ciąg $\ciag{a}$ nazywamy \textbf{ograniczonym}, jeśli:
     Uwaga - dla ciągu $\ciag{a}$ supremum jego wyrazów - tj. $\sup \{ a_n \, | \, n \in \N \}$ - oznaczamy $\mathlarger{\sup}_{n \in \N} \, a_n$. Analogicznie piszemy $\mathlarger{\inf}_{n \in \N} \, a_n$ dla infimum jego wyrazów.
 \end{twier}
 
-\begin{dow}{Dowód}
+\begin{dow}
     Załóżmy, że $\ciag{a}$ jest niemalejący. Zbiór $\{ a_n \, | \, n \in \N \}$ jest ograniczony, zatem posiada supremum. Oznaczmy je $g$. Zatem dla każdego $\eps > 0$ liczba $g - \eps$ nie jest ograniczeniem górnym: \begin{equation}
         \exists_m: g - \eps \leqslant a_m \leqslant g.
     \end{equation}
@@ -528,7 +534,7 @@ Ciąg $\ciag{a}$ nazywamy \textbf{ograniczonym}, jeśli:
     to $\lgras{n}{b} = g$.
 \end{twier}
 
-\begin{dow}{Dowód}
+\begin{dow}
     Dowód jest bardzo krótki. Dla dowolnego $\eps$ bierzemy takie $M_{\eps}$, że $\forall_{n \geqslant M_{\eps}}: |a_n - g| \leqslant \eps $ i takie $K_{\eps}$, że: $\forall_{n \geqslant K_{\eps}}: |c_n - g| \leqslant \eps $. Wtedy dla $n \geqslant \max\{N, M_\eps, K_\eps \}$: \begin{equation}
         g - \eps \leqslant a_n \leqslant b_n \leqslant c_n \leqslant g - \eps,
     \end{equation}
@@ -612,7 +618,7 @@ gdyż $\ciag{\alpha}$ to ciąg nierosnący oraz podobnie: \begin{equation}
     \end{enumerate}
 \end{twier}
 
-\begin{dow}{Dowód}
+\begin{dow}
     TODO
 \end{dow}
 
@@ -623,7 +629,7 @@ Nietrudnym wnioskiem z tego twierdzenia jest następujące:
     \end{equation}
 \end{twier}
 
-\begin{dow}{Dowód}
+\begin{dow}
     \paragraph*{$\implies$} Jeśli $\gras{n}{a} = a$, to także każdy podciąg $\ciag{a}$ dąży do $a$, więc $L = \{ a \}$. Ale $\liminf a_n \in L$ i $\limsup a_n \in L$, więc: \begin{equation}
         \liminf a_n = a = \limsup a_n.
     \end{equation}
@@ -653,7 +659,7 @@ Nietrudnym wnioskiem z tego twierdzenia jest następujące:
 
 Sprawdzając warunek Cauchy'ego, możemy dowodzić zbieżności ciągu do granicy rzeczywistej bez wyznaczania tej granicy.
 
-\begin{dow}{Dowód}
+\begin{dow}
     \paragraph*{1. $\implies$ 2.} Skoro $\ciag{a}$ zbieżny do $a \in R$, to dla dowolnego $\eps >0$ istnieje takie $N_{\frac{\eps}{2}}$, że: \begin{equation}
         \forall_{n, m \geqslant N_{\frac{\eps}{2}}}: \,|a_n - a| \leqslant \frac{\eps}{2} \,\, \land\,\, |a_m - a| \leqslant \frac{\eps}{2},
     \end{equation}
@@ -714,7 +720,7 @@ Sprawdzając warunek Cauchy'ego, możemy dowodzić zbieżności ciągu do granic
         \forall_\eps \exists_{N_\eps} \forall_{N \geqslant M \geqslant N_\eps} | \bsum{n= M+1}{N} a_n | \leqslant \eps.
     \end{equation} 
 \end{twier}
-\begin{dow}{Dowód}
+\begin{dow}
     Twierdzenie wynika prosto z zastosowania warunku Cauchy'ego do ciągu $S_N$. Bowiem $S_N$ jest zbieżny wtedy i tylko wtedy, gdy:\begin{equation}
         \forall_\eps \exists_{N_\eps} \forall_{N \geqslant M \geqslant N_\eps} |S_N - S_m| \leqslant \eps,
     \end{equation} co po rozpisaniu $S_N$ i $S_M$ jest równoważne twierdzeniu.
@@ -747,7 +753,7 @@ Sprawdzając warunek Cauchy'ego, możemy dowodzić zbieżności ciągu do granic
     \end{enumerate}
 \end{twier}
 
-\begin{dow}{Dowód}
+\begin{dow}
     Niech $N_0$ będzie oznaczał indeks, od którego podane nierówności zachodzą.
     \begin{enumerate}
         \item Dla $N > N_0$ mamy: \begin{equation*}
@@ -772,7 +778,7 @@ Sprawdzając warunek Cauchy'ego, możemy dowodzić zbieżności ciągu do granic
 \end{twier}
 
 
-\begin{dow}{Dowód}
+\begin{dow}
     \begin{enumerate}
         \item Jeśli $L < \oo$, to $a_n \leqslant  (L + L) * b_n$ dla dostatecznie dużyn $n$ i stosujemy  Tw. \ref{twier:kryt-por}.1.
         \item Jeśli $L > 0$, to $a_n \leqslant \half L b_n$ DDD$n$ (ew. $a_n \leqslant 2 b_n$, jeśli $L = \oo$) i stosujemy Tw. \ref{twier:kryt-por}.2.
@@ -790,7 +796,7 @@ Sprawdzając warunek Cauchy'ego, możemy dowodzić zbieżności ciągu do granic
         \end{equation} Ponadto, jeśli zachodzi poprzecznik implikacji, to $a_n \not \to 0$.
     \end{enumerate}
 \end{twier} 
-\begin{dow}{Dowód}
+\begin{dow}
     \begin{enumerate}
         \item Skoro $\limsup d_n < 1$, to $d_n$ musi być ograniczony. Niech $\lambda$ będzie taką liczbą, że $1 > \lambda > \limsup d_n$. Zauważmy, że może istnieć tylko skończona liczba wyrazów $d_n$ większych lub równych $\lambda$, gdyż inaczej wybralibyśmy z nich podciąg zbieżny do granicy $\geq \lambda$, co przeczy założeniu, że $\lambda < \limsup d_n$. Zatem: \begin{equation*}
             \exists_{N} \forall_{n \geq N}: d_n < \lambda.
@@ -828,7 +834,7 @@ TODO
     \end{equation}
 \end{twier}
 
-\begin{dow}{Dowód}
+\begin{dow}
     Oczywiście, skoro $S_N$ jest rosnący, to $\szerI{a} = \gras{N}{S} = \sup_{N \in \N} S_N$. Łatwo widać też, że $\sup_{N \in \N} S_N \leq \sup_{\substack{F \subset \N \\ |F| < +\infty}} \sum_{n \in F} a_n$ (ponieważ $S_N$ to suma tego samego typu, co po prawej stronie z $F = \{1, ..., N\}$). Dodatkowo, dla każdego skończonego $F \se \N$, istnieje takie $N$, że $\forall_{n \in F} x \leq N$, zatem $\sum_{n \in F} a_n \leq S_N$. Ostatecznie mamy $ \sup_{\substack{F \subset \N \\ |F| < +\infty}} \sum_{n \in F} a_n \leq \sup_{N \in \N} S_N$, stąd te dwie wielkości są sobie równe i mamy tezę.
 \end{dow}
 
@@ -851,7 +857,7 @@ TODO
               Jest to grupowania (łączności i przemienności) dla szeregu.
     \end{enumerate}
 \end{twier}
-\begin{dow}{Dowód wniosków}
+\begin{dow}
     \begin{enumerate}
         \item Ograniczoność sum po prawej jest oczywiście równoważne istnieniu skończonego ich supremum, co równe jest sumie po lewej.
         \item $\sigma$ zachowuje klasę skończonych podzbiorów i wyznacza bijekcję:
@@ -905,7 +911,7 @@ W tej podsekcji rozważamy szeregi o dowolnych wyrazach zespolonych:
     jest zbieżny.
 
 \end{twier}
-\begin{dow}{Dowód}
+\begin{dow}
     Korzystamy z warunku Cauchy'ego dla szeregu modułów:
     \[\forall_{\varepsilon}\exists_{N_{\varepsilon}}\forall_{n > m\geqslant N_{\varepsilon}}:\, |\sum_{k=m+1}^{n} |z_k|| \leqslant \varepsilon,\]
     ale:
@@ -939,7 +945,8 @@ Dla szeregów o wyrazach dowolnych obowiązują inne kryteria zbieżności niż 
 \[\sum_{n=1}^{\oo} (-1)^n b_n,\]
 gdzie $b_n \searrow 0$ (dąży monotonicznie z góry do 0). Szereg taki nazywamy szeregiem naprzemiennym. Z kryterium Dirichleta wynika, że każdy szereg takiej postaci jest zbieżny (co nazywa się czasem kryterium Leibnitza). W szczególności:
 \[\sum_{n=1}^{\oo} \frac{(-1)^n}{n} = \ln 2.\]
-\begin{dow}{Dowód kryterium Dirichleta}
+
+\begin{dow}[Dowód kryterium Dirichleta.]
     Niech $\sum_{n=1}^{N} a_n = z_N$. Zauważmy, że $(z_N)$ jest ciągiem ograniczonym. Zapiszmy sumy częściowe docelowego szerego:
     \[\sum_{n=1}^{N} a_n b_n = a_1 b_1 + a_2 b_2 + \, ... \, + a_N b_N = z_1 b_1 + (z_2 - z_1) b_2 + \, ... \, +  (z_N - z_{N-1}) b_N = \]
     \[ = z_1 (b_1 - b_2) + z_2 (b_2 - b_3) + \, ... \, + z_{N-1} (b_{N-1} - b_N) + z_N b_N.\]
@@ -964,7 +971,7 @@ Kolejnym kryterium zbieżności dla szeregów o wyrazach dowolnych jest prosto w
     \end{itemize}
     Wtedy szereg $\mathlarger{\sum}_{n=1}^{\oo} a_n b_n$ jest zbieżny.
 \end{twier}
-\begin{dow}{Dowód}
+\begin{dow}
     Oczywiście $b = \lim _{n \to \oo} b_n$ istnieje. Wtedy:
     \[\sum_{n=1}^{N} a_n b_n =  \sum_{n=1}^{N} a_n (b_n - b) + b \sum_{n=1}^{N} a_n.\]
     Szereg $b \sum_{n=1}^{\oo} a_n$ jest oczywiście zbieżny na mocy założenia. Za to $\sum_{n=1}^{\oo} a_n (b_n - b)$ jest zbieżne na mocy kryterium Dirichleta, zauważmy bowiem, że:
@@ -1010,7 +1017,7 @@ Z tego wynika następujący wniosek:
     \end{enumerate}
     Są to prawa grupowania dla szeregów o wyrazach dowolnych, analogiczne do tych, które zachodzą dla szeregów o wyrazach dodatnich.
 \end{twier}
-\begin{dow}{Dowód}
+\begin{dow}
     \begin{enumerate}
         \item Mamy następujące równości:
               \[\sum_{n=1}^{\oo} z_{\sigma(n)} =  \sum_{n=1}^{\oo} a_{\sigma(n)}^+ - \sum_{n=1}^{\oo} a_{\sigma(n)}^- + i\sum_{n=1}^{\oo} b_{\sigma(n)}^+ -i\sum_{n=1}^{\oo}b_{\sigma(n)}^- =\]
@@ -1176,7 +1183,7 @@ Wystarczy więc wziąć $C_1 = 1$ i $C_2 = \nu ^\frac{1}{p}$.
     \end{enumerate}
 \end{twier}
 
-\begin{dow}{Dowód}
+\begin{dow}
     \begin{enumerate}
         \item Prawdziwym jest zdanie, że dla każego elementu należącego do $\emptyset$ jest on punktem wewnętrzym. Ponadto: \begin{equation}
                   \forall_{x \in X,\, r > 0} \ball{x}{r} \subseteq X,
@@ -1199,7 +1206,7 @@ Wystarczy więc wziąć $C_1 = 1$ i $C_2 = \nu ^\frac{1}{p}$.
     Kula otwarta jest otwarta.
 \end{twier}
 
-\begin{dow}{dowód}
+\begin{dow}
     Istotnie, jeśli niech $y \in \ball{x}{r}$. Wtedy $d(x, y) < r$. Zauważmy, że $\ball{y}{r - d(x, y)} \subseteq \ball{x}{r}$, bowiem jeśli $z \in \ball{y}{r - d(x, y)}$, to $d(z, y) < r - d(x, y)$, zatem: \begin{equation*}
         d(z, x) < d(z, y) + d(y, z) < r,
     \end{equation*} czyli $z \in \ball{x}{r}$.
@@ -1235,7 +1242,7 @@ Wystarczy więc wziąć $C_1 = 1$ i $C_2 = \nu ^\frac{1}{p}$.
     Kula domknięta jest domknięta.
 \end{twier}
 
-\begin{dow}{Dowód}
+\begin{dow}
     Niech $y \notin \dball{x}{r}$. Wtedy $d(y, x) > r$. Weźmy $R = d(y, x) - r > 0$. Wtedy $\ball{y}{R} \cap \dball{x}{r} = \emptyset$. Albowiem, jeśli $z \in \ball{y}{R}$, to $d(z, y) <  d(y, x) - r $, zatem $d(x, z) \geqslant d(x, y) - d(z, y)  > r$, czyli $z \notin \dball{x}{r}$.
 \end{dow}
 
@@ -1245,7 +1252,7 @@ Wystarczy więc wziąć $C_1 = 1$ i $C_2 = \nu ^\frac{1}{p}$.
 
 
 
-\begin{dow}{Dowód}
+\begin{dow}
     Mamy następujący ciąg równoważności:
     \begin{equation}
         (X \backslash A) \text{ - domknięty} \iff
@@ -1267,7 +1274,7 @@ Zauważmy, że istnieją zbiory jednocześnie domknięte i otwarte. Na przykład
 \begin{twier}{}
     Zbiór $A$ jest otwarty wtedy i tylko wtedy, gdy $A$ jest sumą kul.
 \end{twier}
-\begin{dow}{Dowód}
+\begin{dow}
     \paragraph{$\implies$} Możemy wybrać sumę rodziny generowanej w tej sposób, że każdemu elementowi przypisujemy kulę mu odpowiadającą, która należy do $A$: \begin{equation}
         \forall_{y \in A} \exists_{r(y) >0}: \ball{y}{r(y)} \subseteq A.
     \end{equation} Zatem: \begin{equation}
@@ -1328,7 +1335,7 @@ Zauważmy, że istnieją zbiory jednocześnie domknięte i otwarte. Na przykład
     \end{equation}
 \end{twier}
 
-\begin{dow}{Dowód}
+\begin{dow}
     $x \in X \backslash \overline{B} \iff x$ nie jest punktem skupienia $B \iff \exists_r \ball{x}{r} \cap B = \emptyset \iff \exists_r \ball{x}{r} \cap B \subseteq X \backslash B \iff x \in (X \backslash B) \dg$.
 \end{dow}
 
@@ -1340,7 +1347,7 @@ Powiemy teraz o bardzo ważnym twierdzeniu pozwalającym utożsamić punkty skup
     \end{equation}
 \end{twier}
 
-\begin{dow}{Dowód}
+\begin{dow}
     \paragraph{$\supseteq$} Dla każdego $x \in \overline{B}$ zdefiniujmy ciąg $\ciag{x}$ następująco - niech $x_n$ to dowolny element należący do $\ball{x}{\frac{1}{n}} \cap B$ (jest to zbiór zawsze niepusty na mocy tego, że $x$ jest punktem skupienia $B$). Oczywiście $ x_n \to x$, gdyż $d(x_n, x) < \frac{1}{n} \to 0$.
     \paragraph{$\subseteq$} Odwrotnie, jeśli $x_n \to x$ i $\forall_n : x_n \in B$, to: \begin{equation}
         \forall_{\eps > 0} \exists_{N_\eps} \forall_{n \geqslant N_\eps}: B \ni x_n \in \ball{x}{\eps} \implies \forall{\eps >0} \ball{x}{\eps} \cap B \neq \emptyset,
@@ -1376,7 +1383,7 @@ Powiemy teraz o bardzo ważnym twierdzeniu pozwalającym utożsamić punkty skup
     \end{equation}
 \end{twier}
 
-\begin{dow}{Dowód}
+\begin{dow}
     \paragraph{$\impliedby$} Weźmy $A_\eps  \ball{x}{\eps}$. Wtedy:\begin{equation}
         \forall_{\eps >0} \exists_{N_\eps} \forall_{n \geqslant N_\eps}: x_n \in \ball{x}{\eps} \implies d(x_n, x) < \eps.
     \end{equation}
@@ -1400,7 +1407,7 @@ Powiemy teraz o bardzo ważnym twierdzeniu pozwalającym utożsamić punkty skup
 \end{twier}
 Twierdzenie to daje nam pojęcie o tym, jak wyglądają zbiory otwarte i domknięte w jakimś zawężeniu metryki - mianowicie są to zawężenia odpowiednich zbiorów otwartych i domkniętych.
 
-\begin{dow}{Dowód}
+\begin{dow}
     Zaczniemy od dowodu 2.
     \paragraph{$\implies$} Niech $A$ domknięty w $Y$ i niech $F$ będzie domknięciem $A$ w $X$ (więc $F$ musi być domknięty w $X$). Wtedy: \begin{equation*}
         F = \{ \lim_{n \to \oo} a_n \in X \, \big| \, a_n \in A \},
@@ -1434,7 +1441,7 @@ Zaczniemy rozważać teraz przekształcenia (i.e. funkcje) pomiędzy przestrzeni
     \end{enumerate}
 \end{twier}
 
-\begin{dow}{Dowód}
+\begin{dow}
     \paragraph{$1. \implies 2.$}
     Dla dowolnego $U \in \Nau(\Phi(x_0))$ istnieje $\eps > 0$: \begin{equation*}
         \ball{\Phi(x_0)}{\eps} \subseteq U.
@@ -1475,7 +1482,7 @@ Zaczniemy rozważać teraz przekształcenia (i.e. funkcje) pomiędzy przestrzeni
         Jeśli $\Phi: X \to Y$ jest ciągłe w $x_0 \in X$ i $\Psi: Y \to Z$ jest ciągłe w $\Phi(x_0)$, to $\Psi \circ \Phi: X \to Z$ jest ciągłe w $X_0$.
     \end{twier}
 
-    \begin{dow}{Dowód}
+    \begin{dow}
         Korzystając np. z 4. warunku ciągłości, weźmy ciąg $x_n \to x_0$, wtedy $\Phi(x_n) \to \Phi(x_0)$ z ciągłości $\Phi$. Ponadto $\Psi(\Phi(x_n)) \to \Psi(\Phi(x_0))$ z ciągłości $\Psi$. Widzimy, więc prosto, że $\Psi \circ \Phi$ musi być ciągłe.
     \end{dow}
 
@@ -1485,7 +1492,7 @@ Zaczniemy rozważać teraz przekształcenia (i.e. funkcje) pomiędzy przestrzeni
         \end{equation} Inaczej mówiąc, przekształcenie jest ciągłe na całej dziedzinie wtedy i tylko wtedy, gdy przeciwobrazy zbiorów otwartych są otwarte.
     \end{twier}
 
-    \begin{dow}{Dowód}
+    \begin{dow}
         \paragraph{$\implies$} Niech $U \subotw Y$ i $x \in \Phi^{-1}(U)$. Zatem $\Phi(x) \in U$. Skoro $U$ jest otwarty, to musi być otoczeniem $\Phi(x)$, i.e. $U \in \Nau(\Phi(x))$, zatem (warunek 3.): \begin{equation*}
             \Phi^{-1}(U) \in \Nau(x) \quad \forall_{x \in \Phi^{-1}(U)},
         \end{equation*} czyli $\Phi^{-1}(U)$ jest otwarty.
@@ -1547,7 +1554,7 @@ Zaczniemy rozważać teraz przekształcenia (i.e. funkcje) pomiędzy przestrzeni
         \end{enumerate}
     \end{twier}
 
-    \begin{dow}{Dowód}
+    \begin{dow}
         Niech $K \subseteq \subseteq X$.
         \begin{enumerate}
             \item Weźmy dowolny $x \in X$. Wtedy $\{ \ball{x}{}n \}_{n \in \N} $ niewątpliwie jest pokryciem otwartym $K$. Skoro tak, to można zeń wybrać skończone podpokrycie. Zatem istnieje $N \in \N$, będące największym z indeksów z tegoś podpokrycia, takie że: \begin{equation*}
@@ -1568,7 +1575,7 @@ Zaczniemy rozważać teraz przekształcenia (i.e. funkcje) pomiędzy przestrzeni
         Zbiór $K$ ciągowo zwarty jest także domknięty.
     \end{twier}
 
-    \begin{dow}{Dowód}
+    \begin{dow}
         Istotnie, jeśli ciąg $\ciag{x}$ elementów z $K$ jest zbieżny, to każdy jego podciąg jest zbieżny do tej samej granicy. Ale skoro $K$ jest ciągowo zwarty, to $\ciag{x}$ ma podciąg zbieżny do elementu z $K$, który będzie wspólną granicą wszystkich podciągów. Zatem i granica $\ciag{x}$ musi leżeć w $K$. 
     \end{dow}
 
@@ -1584,7 +1591,7 @@ Zaczniemy rozważać teraz przekształcenia (i.e. funkcje) pomiędzy przestrzeni
         Jeśli $K$ jest ciągowo zwarty, to dla każdego $\eps > 0$ istnieje skończona $\eps$ - sieć w $K$.
     \end{twier}
 
-    \begin{dow}{Dowód}
+    \begin{dow}
         \paragraph{Dowód nie wprost.} Przypuśćmy, że istnieje $\eps > 0$, t.ż. w $K$ nie ma skończonej $\eps$ - sieci. Skonstruujmy wtedy następująco ciąg $\ciag{x}$ i rodzinę zbiorów $\ciag{U}$:\\
          Niech $x_1 \in K$ będzie dowolne i $U_1 = \ball{x_1}{\eps}$. Oczywiście $U_1$ nie pokrywa $K$ (z założenia): $K \backslash U_1 \neq \emptyset$. Za $x_2$ bierzemy więc dowolny element w $K \backslash U_1$, a $U_2 = U_1 \cup \ball{x_2}{\eps}$. Ogólnie $x_n \in K \backslash U_{n-1}$ i$U_n = U_{n-1} \cup \ball{x_{n}}{\eps}$. Oczywiście $K \backslash U_{n-1} \neq \emptyset$, gdyż gdyby było inaczej, to z konstrukcji mielibyśmy wbrew założeniu skończoną $\eps$ - sieć pokrywającą $K$. \\
          Otrzymaliśmy ciąg $\ciag{x}$, który jednak nie może mieć podciągu zbieżnego, gdyż nie spełnia warunku Cauchy'ego - z konstrukcji jasno widać, że $\forall_{i < j}: d(x_i, x_j) \geqslant \eps$, jako że $x_j \in K \backslash U_{j-1} \subseteq K \backslash U_i$. Przeczy to założeniu, że $K$ jest ciągowo zwarty.
@@ -1595,7 +1602,7 @@ Zaczniemy rozważać teraz przekształcenia (i.e. funkcje) pomiędzy przestrzeni
         Jeśli $K$ jest ciągowo zwarty, to istnieje przeliczalny $D \subseteq K$, t.ż. $\overline{D} = K$ i.e. $D$ jest gęsty w $K$.
     \end{twier}
 
-    \begin{dow}{Dowód}
+    \begin{dow}
         Weźmy \begin{equation*}
             D = \bigcup_{n = 1}^{\oo} S_{\frac{1}{n}} \subseteq K,
         \end{equation*} gdzie jako $S_\eps$ oznaczyliśmy skończoną $\eps$ - sieć w $K$, która na mocy Tw. \ref{twier:sk-eps-siec} istnieje. Jasno widać, że $D$ jest przeliczalny. Wtedy $\overline{D} \subseteq K$, gdyż dla każdego $y \in K$ tworzymy ciąg $\ciag{x}$ elementów, takich że $x_n \in S_{\frac{1}{n}}$ i $y \in \ball{x_n}{\frac{1}{n}}$, co zawsze możemy zrobić, bo $S_\frac{1}{n}$ są $\eps$ - sieciami w $K$. Wtedy $d(x_n, y) < \frac{1}{n} \to 0$, więc $x_n \to y$, czyli $y 
@@ -1608,7 +1615,7 @@ Zaczniemy rozważać teraz przekształcenia (i.e. funkcje) pomiędzy przestrzeni
         Jeśl $K$ jest ciągowo zwarty, do każde jego pokrycie otwarte ma przeliczalne podpokrycie. 
     \end{twier}
 
-    \begin{dow}{Dowód}
+    \begin{dow}
         Niech $U$ - pokrycie otwarte $K$. Dla dowolnego $y \in K$ zdefiniujmy:\begin{equation*}
             n_y = \min\{ n \in \N \, | \, \exists_{U_y \in U}: \ball{y}{\frac{1}{n}} \subseteq U_y \}.
         \end{equation*}  Taka liczba będzie bez wątpienia istniała, gdyż $U$ pokrywa $K$ i składa się z samych zbiorów otwartych. Niech $U_y$ będzie zbiorem spełniającym powyższy warunek dla $y \in K$. Niech $V = \{ U_y \, | \, y \in D \}$, gdzie $D$ to przeliczalny podzbiór gęsty w $K$ (istnieje on na mocy Tw. \ref{twier:przel-gest}). Jasne, że $V \subseteq U$ i że $V$ jest przeliczalny. Pokażemy, że jest to podpokrycie. \\ 
@@ -1630,7 +1637,7 @@ Zaczniemy rozważać teraz przekształcenia (i.e. funkcje) pomiędzy przestrzeni
 
 
 
-    \begin{dow}{Dowód}
+    \begin{dow}
         \paragraph{$\implies$} Niech $K \subseteq \subseteq X$, $\ciag{x}$ będzie ciągiem elementów z $K$ i niech $Z  = \{ x_n \, | \, n \in \N \}$. Pokażemy, że zachodzi jedna z dwu możliwości: \begin{enumerate}
             \item \begin{equation*}
                 \exists_{y \in K}: \forall_{U \in \Nau(y), \, U \subotw X}: | Z \cap U | = \oo. 
@@ -1666,7 +1673,7 @@ Zaczniemy rozważać teraz przekształcenia (i.e. funkcje) pomiędzy przestrzeni
         Każdy ograniczony i domknięty podzbiór $\R$ jest zwarty.
     \end{twier}
 
-    \begin{dow}{Dowód}
+    \begin{dow}
         Wynika on prosto z równoważności zwartości ciągowej i pokryciowej. Jeśli jakiś podzbiór $\R$ jest ograniczony, to zawiera podciąg zbieżny (Twierdzenie \ref{twier:BL I}), a skoro jest domknięty, to ów podciąg zbieżny ma granicę w tymże zbiorze. Zatem podzbiór ten jest ciągowo zwarty, czyli zwarty.
     \end{dow}
 
@@ -1684,7 +1691,7 @@ Zaczniemy rozważać teraz przekształcenia (i.e. funkcje) pomiędzy przestrzeni
         Iloczyn kartezjańskich dwu zbiorów zwartych jest zwarty.
     \end{twier}
 
-    \begin{dow}{Dowód}
+    \begin{dow}
         %TODO
         TODO
     \end{dow}
@@ -1699,7 +1706,7 @@ Zaczniemy rozważać teraz przekształcenia (i.e. funkcje) pomiędzy przestrzeni
         Niech $(X, d)$ to p-ń. metryczna zupełna. Niech $K \subdomk X$. Wtedy, zbiór $K$ jest zwarty jeżeli $\forall_{\eps >0}$ można go pokryć skończoną $\eps$ - siecią.
     \end{twier}
 %TODO
-    \begin{dow}{Dowód}
+    \begin{dow}
         TODO
     \end{dow}
 
@@ -1709,7 +1716,7 @@ Zaczniemy rozważać teraz przekształcenia (i.e. funkcje) pomiędzy przestrzeni
 \end{twier}
 
 
-\begin{dow}{Dowód}
+\begin{dow}
     Niech $U = \{ U_i \}_{i \in I}$ - rodzina zbiorów otwartych pokrywająca $\phi(K)$: $\phi(K) \se \bigcup_{i \in I} U_i $. Skonstruujmy rodzinę $V = \{ V_i = \phi^{-1}(U_i) \}$. Skoro $\phi$ jest ciągłe, to $V$ jest rodziną otwartą. Podnadto z włąsciwości przeciwobrazów: $K \se \bigcup_{i \in I}V_i$. Zatem $V$ jest pokryciem otwartym. Możemy więc zeń wybraż skończone podpokrycie otwarte: \begin{equation*}
         K \se V_{i_1} \cup .. \cup V_{i_n} = \phi^{-1}(U_{i_1}) \cup .. \cup \phi^{-1}(U_{i_n}).
     \end{equation*} Wtedy: \begin{equation*}
@@ -1730,7 +1737,7 @@ Zaczniemy rozważać teraz przekształcenia (i.e. funkcje) pomiędzy przestrzeni
 \begin{twier}{Heinego - Borela}
     Podzbiór $K \se \R ^n $ jest zwarty wtedy i tylko wtedy, gdy jest domknięty i ograniczony.
 \end{twier}
-\begin{dow}{Dowód}
+\begin{dow}
     \paragraph{$\implies$} Por. Tw. \ref{twier:zwar-domk}.
     \paragraph{$\impliedby$} Skoro $K$ jest ograniczony, to istnieje kostka postaci:\begin{equation}
         C = [a_1, b_1] \times ... \times [a_n, b_n],
@@ -1744,7 +1751,7 @@ Zaczniemy rozważać teraz przekształcenia (i.e. funkcje) pomiędzy przestrzeni
 \end{twier}
     \paragraph{Uwaga!} Liczbę $\lambda$ podaną w twierdzeniu nazywa się \textbf{liczbą Lebesgue'a}.
 
-\begin{dow}{Dowód}
+\begin{dow}
     Skoro $K$ - zwarty, to wybierzmy z $U$ skończone podpokrycie: $\{U_i\}_{1 \leq i \leq N}$. 
     \begin{itemize}
         \item Jeżeli $\exists_{i\leq N}: X = U_i$, to sytuacja nie przedstawia żadnego problemu - za $\lambda$ bierzemy dowolną liczbę, zaś za $U_x = X$. Teza jest trywialnie spełniona.
@@ -1797,7 +1804,7 @@ Zaczniemy rozważać teraz przekształcenia (i.e. funkcje) pomiędzy przestrzeni
     Jeśli $Z$ jest zbiorem spójnym, a $\Phi: X \to Y$ odzworowaniem ciągłym, to $\Phi(Z)$ jest spójny.
 \end{twier}
 
-\begin{dow}{Dowód}
+\begin{dow}
     Dowód nie wprost. Załóżmy, że $\Phi(Z)$ jest niespójny, tj. istnieją takie niepuste $W_1, W_2 \se Y$, że $W_1 \cap \ol{W_2} = \emptyset$ i $W_1 \cup W_2 = \Phi(Z)$. Niech $Z_1 = \Phi^{-1}(W_1) \cap Z$ i $Z_2 = \Phi^{-1}(W_1) \cap Z$. Mamy: \begin{equation*}
         Z \se \Phi^{-1}(\Phi(Z)) = \Phi(W_1) \cup \Phi(W_2).
     \end{equation*} Zatem $Z = Z_1 \cup Z_2$. Skoro $Z$ jest spójny, to $\ol{Z_1} \cap Z_2 \neq \emptyset$ lub $Z_1 \cap \ol{Z_2} \neq \emptyset$. Bez straty ogólności, załóżmy ten pierwszy przypadek. Wtedy istnieje $\ciag{x}$, t.ż. $x_n \in Z_1$ i $x_n \to x \in Z_2$. Ale wtedy -- z ciągłości $\Phi$ -- $W_1 \ni \Phi(x_n) \to \Phi(x) \in W_2$, zatem $\ol{W_1} \cap W_2 \neq \emptyset$, wbrew założeniu. Powstała sprzeczność dowodzi tezy.
@@ -1833,7 +1840,7 @@ Zaczniemy rozważać teraz przekształcenia (i.e. funkcje) pomiędzy przestrzeni
         \end{equation} Wtedy oczywiście $y = f'(x)$.
     \end{twier}
 
-    \begin{dow}{Dowód}
+    \begin{dow}
         \paragraph{$\implies$} Jeśli $\lim_{x \to x_0} \frac{f(x) - f(x_0)}{x - x_0} = f'(x_0)$, to $\lim_{h \to 0} \frac{f(x_0 + h) - f(x_0)}{h} = f'(x_0)$ i: \begin{equation*}
             \lim_{h \to 0} \frac{f(x_0 + h) - f(x_0) - h f'(x_0)}{h} = 0.            
         \end{equation*}
@@ -1849,7 +1856,7 @@ Zaczniemy rozważać teraz przekształcenia (i.e. funkcje) pomiędzy przestrzeni
         Jeśli funkcja $f$ jest różniczkowalna w pewnym punkcie $x_0$, to jest w tym punkcie ciągła.
     \end{twier}
 
-    \begin{dow}{Dowód}
+    \begin{dow}
         Skoro $\lim_{x \to x_0} \frac{f(x) - f(x_0)}{x - x_0} = f'(x_0)$, to $\lim_{x \to x_0} f(x) - f(x_0)= lim_{x \to x_0} f'(x_0) (x - x_0) 0$, zatem funkcja jest ciągła.
 
     \end{dow}
@@ -1881,7 +1888,7 @@ Zaczniemy rozważać teraz przekształcenia (i.e. funkcje) pomiędzy przestrzeni
         \end{equation} Reguła ta nazywa się czasem \textbf{regułą łańuchową}.
     \end{twier}
 
-    \begin{dow}{Dowód}
+    \begin{dow}
         Niech  $r(h) = g(x_0 + h) - g(x_0) - g'(x_0)h$. Wtedy (por. Tw. \ref{twier:poch-do-0}): \begin{equation}
             \lim_{h \to 0} \frac{r(h)}{h} = 0.
         \end{equation} Niech $y_0 = g(x_0)$ i $R(k)= f(y_0 + h) - f(y_0) - f'(y_0) h.$ Znowuż: \begin{equation}
@@ -1938,7 +1945,7 @@ Zaczniemy rozważać teraz przekształcenia (i.e. funkcje) pomiędzy przestrzeni
         \end{equation}
     \end{twier}
 
-    \begin{dow}{Dowód}
+    \begin{dow}
         Założmy, że $f$ ma w $x_0$ minimum. Wtedy oczywiście: \begin{equation*}
             f(x) - f(x_0) \geq 0. 
         \end{equation*} Zatem: \begin{equation*}
@@ -1960,7 +1967,7 @@ Zaczniemy rozważać teraz przekształcenia (i.e. funkcje) pomiędzy przestrzeni
         \end{equation*}
     \end{twier}
 
-    \begin{dow}{Dowód}
+    \begin{dow}
         $f$ jest ciągła na zwartej dziedzinie $[a, b]$, także osiąga swoje kresy. Jeśli $\sup f = \inf f = f(a) = f(b)$, to $f$ jest funkcją stałą: $f := f(a)$ i jej pochodna we wszystkich punktach pomiędzy $a$ i $b$ jest równa 0. W przeciwnym wypadku, (i.e. $\sup f \neq f(a)$ lub $\inf f \neq f(a)$) istnieje $\xi \in ]a, b[$ osiągające ów kres różny od wartości w $a$. Oczywiście $\xi$ będzie ektremum, zatem z poprzedniego twierdzenia $f'(\xi) = 0$. 
     \end{dow}
 
@@ -1973,7 +1980,7 @@ Zaczniemy rozważać teraz przekształcenia (i.e. funkcje) pomiędzy przestrzeni
     \end{twier}
 
 
-    \begin{dow}{Dowód}
+    \begin{dow}
         Konstruujemy funkcję: \begin{equation*}
             h(x) = g(x) (f(b) - f(a)) - f(x) (g(b) - g(a)).
         \end{equation*} Łatwo widzieć, że: \begin{equation*}
@@ -1991,11 +1998,98 @@ Zaczniemy rozważać teraz przekształcenia (i.e. funkcje) pomiędzy przestrzeni
         \end{equation} 
     \end{twier}
 
-    \begin{dow}{Dowód}
+    \begin{dow}
         Bierzemy $g = x$ w Tw. Cauchy'ego. Oczywiście $g$ spełnia wszystkie założenia. Stąd: \begin{equation}
             \exists_{\xi \in ]a, b[ }:  f(b) - f(a) = f'(\xi) (b - a).
         \end{equation} Wystarczy podzielić teraz przez $(b - a)$.
     \end{dow}
+
+    %TODO reszta rachunku różniczkowego
+
+
+\newpage
+\section{Rachunek całkowy}
+\subsection{Całka Riemanna}
+W toku tego podrozdziału zajmować się będziemy jedynie funkcjami ograniczonymi na zwartych przedziałach - gdyż dla takich właśnie definiuje się całkę Riemanna.
+\begin{defr}{Podział przedziału}
+    \textbf{Podziałem} przedziału $[a, b]$  o długości $n$ nazywamy ciąg skończony $\pi = (t_0, ..., t_n)$, t.ż. $a = t_0 < t_1 < ... < t_n = b$. Powiemy też, że $\pi' = (t_0, ..., t_n)$ jest drobniejszy niż $\pi = (s_0, ..., s_m)$ ($\pi' \preceq \pi$ ) jeśli $\{t_0, .., t_n\} \se \{ s_0, ..., s_m\}$.
+\end{defr} 
+\begin{defr}{Suma górna i dolna}
+    Niech $f:[a, b] \to \R$ będzie funkcją ograniczoną. Wtedy definiujemy dla niej i pewnego podziału $\pi$ przedziału $[a, b]$: \begin{itemize}
+        \item \textbf{Sumę dolną}: \begin{equation}
+            \Sd (f, \pi) = \sum_{i = 1}^{n} (t_i - t_{i - 1})\inf_{\przedz{t}{i}} f  
+        \end{equation} oraz \tb{Sumę górną}: \begin{equation}
+            \Sg (f, \pi) = \sum_{i = 1}^{n} (t_i - t_{i - 1})\sup_{\przedz{t}{i}} f  
+        \end{equation}
+    \end{itemize}
+\end{defr}
+
+\begin{twier}{}
+    Ustalmy przedział $[a, b]$.
+    \begin{enumerate}
+        \item Jeśli $\pi_1 \preceq \pi_2$ to: \begin{equation}
+            \Sg (f, \pi_1) \leq \Sg(f, \pi_2) 
+        \end{equation} oraz: \begin{equation}
+            \Sd (f, \pi_1) \geq \Sd(f, \pi_2).
+        \end{equation}
+        \item Dla każdych dwu podziałów $\pi_1, \pi_2$ istnieje podział $\pi'$ t.ż. $\pi' \preceq \pi_1, \pi_2$.
+        \item Dla każdych dwu podziałów $\pi_1, \pi_2$: \begin{equation}
+            (b - a) \inf_{[a, b]} f \leq \Sd(f, \pi_1) \leq \Sg(f, \pi_2) \leq (b - a) \sup){[b, a]} f.
+        \end{equation}
+    \end{enumerate}
+\end{twier}
+
+\begin{dow}
+    \begin{itemize}
+        \item Jest to prosta konsekwencja faktu, że jeśli $c \in [a, b]$ to:\begin{equation*}
+            (c - a) \sup_{[a, c]} f + (b -c) \sup_{[c, b]} f \leq (b - a) \sup_{[a, b]} f 
+        \end{equation*} i analogicznej własności dla inf.
+        \item Za $\pi'$ wystarczy wziąć sumę teoriomnogościową punktów z $\pi_1$ i $\pi_2$.
+        \item Stosujemy punkt 1. do $\pi'$ drobniejszego od obu podziałów.
+    \end{itemize}
+\end{dow}
+
+
+\begin{defr}{Całka dolna i górna}
+    \tb{Całką dolną} funkcji ograniczonej $f$ na przedziale $[a, b]$ nazywamy liczbę:\begin{equation}
+        \Cd_{a}^{b} f = \sup_{\pi \preceq [a, b]} \Sd(f, \pi), 
+    \end{equation} to jest supremum sum dolnych po wszyskich podziałach $[a, b]$. Analogicznie definiujemy całkę górną: \begin{equation}
+        \Cg_{a}^{b} f = \inf_{\pi \preceq [a, b]} \Sd(f, \pi).
+    \end{equation}
+\end{defr}
+
+\begin{defr}{Całkowalność w sensie Riemanna}
+    Powiemy, że funkcja ograniczona $f$ na przedziale $[a, b]$ jest \tb{całkowalna w sensie Riemanna}, jeśli jej całka dolna jest równa całce górnej. Ich wspólną wartość nazwiemy po prostu całką z $f$ po przedziale $[a, b]$: \begin{equation}
+        \int_{a}^{b} f  = \int_{a}^{b} f(x) \, dx = \Cd_{a}^{b} f = \Cg_{a}^{b} f.
+    \end{equation}
+\end{defr}
+
+\begin{twier}{Kryterium całkowalności}
+    $f: [a, b] \to \R$ jest całkowalna wtedy i tylko wtedy, gdy: \begin{equation}
+        \forall_{\eps > 0} \exists_{\pi \preceq [a, b]}: \Sg(f, \pi) - \Sd(f, \pi) \leq \eps.
+    \end{equation}
+\end{twier}
+
+\begin{dow}
+    \paragraph{$\impliedby$} Jeśli spełniony jest warunek: \begin{equation*}
+        \forall_{\eps > 0} \exists_{\pi \preceq [a, b]}: \Sg(f, \pi) - \Sd(f, \pi) \leq \eps,
+    \end{equation*} to skoro: \begin{equation*}
+        \Sd(f, \pi) \leq \Cd_{a}^{b} f \leq \Cg_{a}^{b} f \leq Sg(f, \pi),
+    \end{equation*} gdyż skoro: dla każdych $\pi_1, \pi_2$: \begin{equation*}
+        \Sd(f, \pi_1) \leq S(f, \pi_2), 
+    \end{equation*} to na pewno: \begin{equation}
+        \Cd_{a}^{b} f = \sup_{\pi_1}  \Sd(f, \pi_1) \leq \inf_{\pi_1}  S(f, \pi_2) = \Cg_{a}^{b}f.
+    \end{equation} Dostajemy, więc: \begin{equation*}
+        \Cg_{a}^{b} f - \Cd_{a}^{b} f \leq Sg(f, \pi) - Sd(f, \pi) \leq \eps \forall_{\eps > 0}.
+    \end{equation*} Jasne, że zachodzić to może tylko wtedy, gdy całka dolna jest równa całce górnej - $f$ jest więc całkowalna.
+
+    \paragraph{$\implies$} Mamy:  $\Cg_{a}^{b} f = \Cd_{a}^{b} f$. Z deficji supremum i infunimum wynika, że %TODO$
+\end{dow}
+
+\begin{dow}
+    
+\end{dow}
+
 
 \newpage
 \section*{Koniec}
