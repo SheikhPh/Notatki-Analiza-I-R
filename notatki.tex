@@ -18,6 +18,7 @@
 \usepackage{xcolor}
 \usepackage{relsize}
 
+
 %%%%%%%%%%%%%%%%%%%
 %      TODO       %
 
@@ -117,10 +118,21 @@
 \newcommand{\subdomk}{\underset{\clap{\scriptsize domk.}}{\subseteq}}
 \newcommand{\dg}{^{\circ}}
 \newcommand{\se}{\subseteq}
+\newcommand{\id}{\text{id}}
+\renewcommand{\inf}{\mathop{\mathrm{inf}\vphantom{\mathrm{sup}}}}
+
 \newcommand{\Sd}{\underline{S}}
 \newcommand{\Sg}{\overline{S}}
-\newcommand{\Cd}{\underline{\int}}
-\newcommand{\Cg}{\overline{\int}}
+
+
+\newcommand{\Cd}{\mkern3mu\underline{\vphantom{\intop}\mkern7mu}\mkern-10mu\int}
+\def\Cg{\mathchoice%
+{\mkern13mu\overline{\vphantom{\intop}\mkern7mu}\mkern-20mu}%
+{\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+{\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+{\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+\int}
+
 \newcommand{\przedz}[2]{[#1 _ {#2}, #1_{#2 - 1}]}
 
 \providecommand{\ol}{\overline}
@@ -2083,13 +2095,101 @@ W toku tego podrozdziału zajmować się będziemy jedynie funkcjami ograniczony
         \Cg_{a}^{b} f - \Cd_{a}^{b} f \leq Sg(f, \pi) - Sd(f, \pi) \leq \eps \forall_{\eps > 0}.
     \end{equation*} Jasne, że zachodzić to może tylko wtedy, gdy całka dolna jest równa całce górnej - $f$ jest więc całkowalna.
 
-    \paragraph{$\implies$} Mamy:  $\Cg_{a}^{b} f = \Cd_{a}^{b} f$. Z deficji supremum i infunimum wynika, że %TODO$
+    \paragraph{$\implies$} Mamy:  $\Cg_{a}^{b} f = \Cd_{a}^{b} f$. Z deficji supremum i infimum wynika, że: \begin{equation*}
+        \exists_{\pi_1}: \Sg(f, \pi_1) - \Cg_{a}^{b} f \leq \half \eps
+    \end{equation*} oraz: \begin{equation*}
+        \exists_{\pi_2}:  \Cd_{a}^{b} f - \Sd(f, \pi_2)\leq \half \eps.
+    \end{equation*} Niech $\pi \preceq \pi_1, \pi_2$. Dla tego podziału zachodzić będą oczywiście obie z tych nierówności ($\Sg (f, \pi) \leq \Sg(f, \pi_1)$ i $\Sd (f, \pi) \geq \Sd(f, \pi_2)$). Zatem, dodawszy je: \begin{equation*}
+        \Sg(f, \pi) - \Cg_{a}^{b} f + \Cd_{a}^{b} f - \Sd(f, \pi) = \Sg(f, \pi)  - \Sd(f, \pi) \leq \eps.
+    \end{equation*}
 \end{dow}
 
-\begin{dow}
+
+\begin{twier}{Złożenie funkcji ciągłej z funkcją całkowalną jest całkowalne}
+    Niech $F: [a, b] \to \R$ będzie funkcją całkowalną (więc i ograniczoną). Niech $F: \ol{f([a, b])} \to \R$ jest ciągła (dziedzina $F$ to domknięcie obrazu $f$). \\
+    Wtedy $F \circ f: [a, b] \to \R$ jest całkowalna.
+\end{twier}
+
+
+
+\begin{dow}{}
+    Zbiór $X = \ol{f([a, b])}$ jest domknięty i ograniczony w $\R$, więc jest zwarty. Zatem $F$, jako ciągła na zbiorze zwartym, jest jednostajnie ciągła: \begin{equation*}
+        \forall_{\eps} \exists_{\delta_\eps >0 } | s - t| \leq \eps \implies | F(s) - F(t) | \leq \frac{\eps}{b - a + 2 \sup_{X} |F|}  = \eps'. 
+    \end{equation*}  Wyrażenie po prawej ma sens, gdyż $F$ jest ograniczona. Przyjmijmy w tym warunku, że $\delta_\eps < \eps'$, co zawsze możemy zrobić. Ponadto, skoro $f$ - całkowalna, to: \begin{equation*}
+        \exists_\pi: \Sg(f, \pi) - \Sd(f, \pi) \leq \delta_\eps^2.
+    \end{equation*} Niech $\pi = (t_0, ..., t_n)$. Ponadto niech $\sup_{[t_{i-1}, t_{i} ]} f = M_i$, $\inf_{[t_{i-1}, t_{i} ]} f = m_i$,  $\sup_{[t_{i-1}, t_{i} ]} F \circ f = M_i'$, $\inf_{[t_{i-1}, t_{i} ]} F \circ f = m_i'$. Z właności $f$ i $F$ wiemy, że są to wszystko liczby rzeczywiste. Zatem: \begin{equation*}
+        \Sg(f, \pi) - \Sd(f, \pi)  = \sum_{i = 1}^{n} (M_i - m_i) (t_i - t_{i-1}).
+    \end{equation*} Rozbijmy indeksy $\{1, ..., n\} = A \sqcup B$, gdzie $A = \{i \, | \, M_i - m_i \leqslant \delta_\eps \}$, $B = \{i \, | \, M_i - m_i > \delta_\eps \}$. Zatem: \begin{equation*}
+        \Sg(F \circ f, \pi) - \Sd(F \circ f, \pi)  = \sum_{i \in A} (M_i' - m_i') (t_i - t_{i-1}) + \sum_{i \in B} (M_i' - m_i') (t_i - t_{i-1})
+    \end{equation*} Jeśli $i \in A$ i $x, y \in [t_{i -1}, t_i]$, to $m_i \leq f(x), f(y) \leq M_i$, więc $|f(x) - f(y)| \leq M_i - m_i \leq \delta_\eps$. Zatem z jednostajnej ciągłości $F$: $|F(f(x)) - F(f(y))|  \leq \eps'$. W szczególności więc $|M_i' - m_i'| \leq \eps$, gdyż przy przejściu do supremum i infimum nierówność się zachowuje. Tak więc: \begin{equation*}
+        \sum_{i \in A} (M_i' - m_i') (t_i - t_{i-1}) \leq \sum_{i \in A} \eps' (t_i - t_{i-1}) \leq \eps' (b- a).
+    \end{equation*} Co do drugiej sumy, mamy: \begin{equation*}
+        \delta_\eps \sum_{i \in B} (t_i - t_{i-1}) < \sum_{i \in B} (M_i - m_i)  (t_i - t_{i-1}) \leq \sum_{i = 1}^{n} (M_i - m_i)  (t_i - t_{i-1}) = \Sg(f, \pi) - \Sd(f, \pi) \leq \delta_\eps^2.
+    \end{equation*} Stąd: \begin{equation*}
+        \sum_{i \in B} (t_i - t_{i-1}) < \delta_\eps \leq \eps'
+    \end{equation*} Zatem: \begin{equation*}
+        \sum_{i \in B} (M_i' - m_i') (t_i - t_{i-1}) \leq (\sup_{X} F - \inf_{X} F) \sum_{i \in B} (t_i - t_{i-1}) \leq 2 \sup_{X} |F| \eps' < \oo,
+    \end{equation*} bo $F$ jest ograniczona. Ostatecznie: \begin{equation*}
+        \Sg(F \circ f, \pi) - \Sd(F \circ f, \pi)  =  \sum_{i \in A} (M_i' - m_i') (t_i - t_{i-1}) + \sum_{i \in B} (M_i' - m_i') (t_i - t_{i-1}) \leq \eps'( b- a + 2 \sup_X |F|) = \eps.
+    \end{equation*} Konstrukcje przeprowadziliśmy dla dowolnego $\eps$, zatem $F \circ f$ spełnia kryterium całkowalności, więc jest całkowalna.
+\end{dow}
+
+\paragraph{Przykład} Zbadajmy funckję $\id: [a, b] \to \R$, t.ż. $\id(x) = x$. Jest to funkcja całkowalna na dowolnym przedziale. Rzeczywiście, niech $\pi = (a + \frac{1}{n}(b - a) \, | \, 0 \leq i \leq n)$. Wtedy $\sup_{\przedz{t}{i}} \id = (b - a) \frac{i +1}{n} + a$ i $\inf_{\przedz{t}{i}} \id = (b - a) \frac{i}{n} + a$. Zatem: \begin{equation}
+    \Sg(\id, \pi) - \Sd(\id, \pi) = \sum_{i = 1}^{n} \left(\frac{b- a}{n}\right)^2 = \frac{(b - a)^2}{n}.
+\end{equation} Wielkość tę można uczynić dowolnie małą dla dużych $n$, więc $\id$ spełnia kryterium całkowalności.
+
+\begin{obs}{Funkcje ciągłe są całkowalne}
+    Niech $f: [a, b] \to \R$. Wtedy $f$ jest całkowalna jako złożenie funkcji ciągłej z funkcją całkowalną: $f = f \circ \id$.
+\end{obs}
+
+
+\begin{twier}{Liniowość całki}
+    Niech $f, g: [a, b] \to \R$ - całkowalne i $\alpha, \beta \in \R$. Wtedy $\alpha f + \beta g: [a, b] \to \R$ jest całkowalna i: \begin{equation}
+        \int_{a}^{b} \alpha f + \beta g = \alpha \int_{a}^{b} f + \beta \int_{a}^{b} g.
+    \end{equation} Inaczej mówiąc - przestrzeń funkcji całkowalnych na $[a, b]$ jest przestrzenią liniową, a wzięcie całki jest na tej przestrzenii formą liniową.
+\end{twier}
+
+\begin{dow}{}
+    \paragraph{Jednorodność} Niech $\alpha \in \R$ i $f$ - całkowalna. Wtedy, gdy $\alpha > 0$: \begin{equation*}
+        \Sg( \alpha f, \pi) = \alpha \Sg(  f, \pi)
+    \end{equation*} oraz: \begin{equation*}
+        \Sd( \alpha f, \pi) = \alpha \Sd(  f, \pi)
+    \end{equation*} z jednorodności $\sup$ i $\inf$ dla skalarów dodatnich. Zatem, z całkowalności $f$: \begin{equation}
+        \exists_{\pi}:  \Sg( f, \pi) - \Sd( f, \pi) \leq \frac{\eps}{\alpha} \implies \exists_{\pi}:  \Sg( \alpha f, \pi) - \Sd( \alpha f, \pi) \leq \eps,
+    \end{equation} czyli spełniony jest warunek całkowalności dla $\alpha f$. \\
+    Gdy $\alpha = 0$, to $\alpha f := 0$, a funckcja zerowa jest trywialnie całkowalna. \\
+    Gdy $\alpha < 0$ mamy: \begin{equation*}
+        \Sg( \alpha f, \pi) = \alpha \Sd(  f, \pi)
+    \end{equation*} oraz: \begin{equation*}
+        \Sd( \alpha f, \pi) = \alpha \Sg(  f, \pi),
+    \end{equation*} z tego, że $\sup -f = - \inf f$ i vice versa. Dalej dowód przeprowadza się analogicznie.
     
-\end{dow}
+    \paragraph{Addytywność} Z całkowalności $f, g$ wynika, że dla dowolnego $\eps$: \begin{equation*}
+        \exists_{\pi_1}: \Sg(f, \pi_1) - \Sd(f, \pi_1) \leq \half \eps
+    \end{equation*} i podobnie: \begin{equation*}
+        \exists_{\pi_2}: \Sg(g, \pi_2) - \Sd(g, \pi_2) \leq \half \eps
+    \end{equation*} Weźmy $\pi = (t_0, ..., t_n) \preceq \pi_1, \pi_2$. Wtedy powyższe nierówności tym bardziej są spełnione dla podziału $\pi$: \begin{equation*}
+        \Sg(f, \pi) - \Sd(f, \pi) + \Sg(g, \pi) - \Sd(g, \pi) \leq \eps.
+    \end{equation*} Mamy też: \begin{equation*}
+        \Sg(f + g, \pi) = \sum_{i = 1}^{n} \sup_{\przedz{t}{i}} (f + g) \leq  \sum_{i = 1}^{n} \sup_{\przedz{t}{i}} f + \sup_{\przedz{t}{i}} g = \Sg(f, \pi) + \Sg(g, \pi).
+    \end{equation*} Identycznie: \begin{equation*}
+        \Sd(f + g, \pi) \geq \Sd(f, \pi) + \Sd(g, \pi).
+    \end{equation*} Zatem: \begin{equation}
+        \Sg(f + g, \pi) - \Sd(f + g, \pi) \leq \Sg(f, \pi) - \Sd(f, \pi) + \Sg(g, \pi) - \Sd(g, \pi) \leq \eps.
+    \end{equation} Widzimy więc, żę $f +g$ spełnia kryterium całkowalności, więc jest całkowalna.\\
+    Z tego wynika, że $\sup_{\pi} \Sd(f + g, \pi) = \inf_{\pi} \Sg(f + g, \pi) = \int_{a}^{b} (f + g).$ Z całkowalności $f, g$ wynika też, że dla dowolnego $\eps$: \begin{equation*}
+        \exists_{\pi}: \Sg(f, \pi) \leq \int_{a}^{b} f + \half \eps \, \wedge \, \Sg(g, \pi) \leq \int_{a}^{b} g + \half \eps.
+    \end{equation*} Tutaj podobnie wybieramy osobno podziały dla $f$ i $g$ a następnie znajdujemy podział drobniejszy od ich obu. Wtedy: \begin{equation*}
+        \int_{a}^{b} f + g \leq \Sg(f + g, \pi) \leq \Sg(f , \pi) + \Sg(g, \pi) \leq  \int_{a}^{b} f +  \int_{a}^{b} g + \eps.
+    \end{equation*} Skoro nierówność ta zachodzi dla wszystkich $\eps > 0$, to musi też być: \begin{equation*}
+        \int_{a}^{b} f + g \leq \int_{a}^{b} f +  \int_{a}^{b} g.
+    \end{equation*} Zastosujmy teraz powyższą nierówność do pary $(-f, -g)$ i skorzystajmy z jednorodności całki: \begin{equation}
+        -\int_{a}^{b} f + g = \int_{a}^{b} -f - g \leq \int_{a}^{b} -f   + \int_{a}^{b} -g =-(\int_{a}^{b} f   + \int_{a}^{b} g).
+    \end{equation} Łącząc otrzymae nierówności, mamy: \begin{equation*}
+        \int_{a}^{b} f + g = \int_{a}^{b} f   + \int_{a}^{b} g
+    \end{equation*}
 
+\end{dow}
 
 \newpage
 \section*{Koniec}
