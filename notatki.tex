@@ -2185,11 +2185,49 @@ W toku tego podrozdziału zajmować się będziemy jedynie funkcjami ograniczony
         \int_{a}^{b} f + g \leq \int_{a}^{b} f +  \int_{a}^{b} g.
     \end{equation*} Zastosujmy teraz powyższą nierówność do pary $(-f, -g)$ i skorzystajmy z jednorodności całki: \begin{equation}
         -\int_{a}^{b} f + g = \int_{a}^{b} -f - g \leq \int_{a}^{b} -f   + \int_{a}^{b} -g =-(\int_{a}^{b} f   + \int_{a}^{b} g).
-    \end{equation} Łącząc otrzymae nierówności, mamy: \begin{equation*}
+    \end{equation} Łącząc otrzymane nierówności, mamy: \begin{equation*}
         \int_{a}^{b} f + g = \int_{a}^{b} f   + \int_{a}^{b} g
     \end{equation*}
 
 \end{dow}
+
+
+
+\begin{twier}{}
+    Niech $f, g: [a, b] \to \R$ będą funkcjami całkowalnymi. Wtedy $f \cdot g: [a, b] \to \R$ także jest całkowalna.
+\end{twier}
+
+\begin{dow}{}
+    Niech $F: [a, n] \ni x \mapsto x^2$. Jest to funkcja ciągła. Wtedy $ f \cdot g = \frac{1}{4}( F \circ (f + g) - F \circ (f - g))$ jest całkowalna na podstawie udowodnionych już własności. 
+\end{dow}
+
+
+\paragraph{Przykład - funkcja Dirichleta}
+    Niech \begin{equation}
+        Z (x) = \begin{cases}
+            1 & x \in \Q \\
+            0 & x \notin \Q
+        \end{cases}.
+    \end{equation} Funkcja ta nie jest całkowalna na żadnym przedziale, gdyż dla każdego podziału $\pi \preceq [a, b]$, mamy: \begin{equation}
+        \Sg(Z, \pi ) = b - a \neq 0 = \Sd(Z, \pi),
+    \end{equation} gdyż w każdym przedziale o niezerowej długości znajdują się zarówno liczby wymierne jak i niewymierne.
+
+\begin{twier}{}
+    Niech $f, g: [a, b]  \to \R$ - całkowalne i $\forall_{x \in [a, b]} f(x) \leq g(x)$ - lub pisząc prościej: $f \leq g$. Wtedy: \begin{equation}
+        \int_{a}^{b} f \leq \int_{a}^{b} g.
+    \end{equation}
+\end{twier}
+
+\begin{dow}{}
+    Dowodzik niesamowicie prosty - skoro $f \leq g$, to $\Sg(f, \pi) \leq \Sg(g, \pi)$ dla każdego podziału $\pi$. %TODO
+\end{dow}
+
+
+
+
+
+
+
 
 \newpage
 \section*{Koniec}
