@@ -2213,20 +2213,114 @@ W toku tego podrozdziału zajmować się będziemy jedynie funkcjami ograniczony
     \end{equation} gdyż w każdym przedziale o niezerowej długości znajdują się zarówno liczby wymierne jak i niewymierne.
 
 \begin{twier}{}
-    Niech $f, g: [a, b]  \to \R$ - całkowalne i $\forall_{x \in [a, b]} f(x) \leq g(x)$ - lub pisząc prościej: $f \leq g$. Wtedy: \begin{equation}
+    Niech $f, g: [a, b]  \to \R$ - całkowalne i $\forall_{x \in [a, b]}: f(x) \leq g(x)$ - lub pisząc prościej: $f \leq g$. Wtedy: \begin{equation}
         \int_{a}^{b} f \leq \int_{a}^{b} g.
     \end{equation}
 \end{twier}
 
 \begin{dow}{}
-    Dowodzik niesamowicie prosty - skoro $f \leq g$, to $\Sg(f, \pi) \leq \Sg(g, \pi)$ dla każdego podziału $\pi$. %TODO
+    Dowód niesamowicie prosty - skoro $f \leq g$, to $\Sg(f, \pi) \leq \Sg(g, \pi)$ dla każdego podziału $\pi$. Zatem oczywiście: \begin{equation*}
+        \int_{a}^{b} f = \inf_{\pi} \Sg(f, \pi) \leq \inf_{\pi} \Sg(g, \pi) = \int_{a}^{b} g.
+    \end{equation*}
 \end{dow}
 
 
+\begin{twier}{}
+    Niech $f: [a, b]  \to \R$ - całkowalna. Wtedy $|f|$ jest także całkowalna i: \begin{equation}
+        \big| \int_{a}^{b} f \big| \leq \int_{a}^{b} \big| f \big|.
+    \end{equation}
+\end{twier}
+
+
+\begin{dow}{}
+    $|f|$ musi być całkowalna, jako złożenie funkcji ciągłej $F(x) = |x|$ i funkcji całkowalnej $f$. Ponadto istnieje taka liczba $\sigma = \pm 1$: \begin{equation*}
+        \sigma \int_{a}^{b} f = \big| \int_{a}^{b} f \big|.
+    \end{equation*} Ale, korzystając z poprzedniego rezultatu:\begin{equation*}
+        \big| \int_{a}^{b} f \big| = \sigma \int_{a}^{b} f =  \int_{a}^{b} \sigma f \leq \int_{a}^{b} \big| \sigma f \big| = \int_{a}^{b} \big| f \big|,
+    \end{equation*} gdyż $\sigma f \leq |f|$.
+\end{dow}
+
+\begin{obs}{}
+    \begin{itemize}
+        \item Niech $f, g: [a, b]  \to \R$. Ponadto, niech $f = g$ na $[a, b] \backslash S$, gdzie $|S| < \oo$ - tj. $f$ i $g$ zgadzają się z sobą na całym przedziale poza skończoną  liczbą punktów. \\
+        Wtedy $f$ jest całkowalna wtedy i tylko wtedy, gdy $g$ jest całkowalna i jeśli to zachodzi, to: \begin{equation*}
+            \int_{a}^{b} f = \int_{a}^{b} g.
+        \end{equation*}
+        \item Niech $f: [a, b] \to \R$ - całkowalna i niech $[c, d] \se [a, b]$. Wtedy $f \big|_{[c, d]}$ także jest całkowalna.
+        \item Zdefiniujmy funkcję charakterystyczną zbioru $A$: \begin{equation}
+            \chi_A(x) = \begin{cases}
+                1 & x \in A \\
+                0 & x \notin A
+            \end{cases}.
+        \end{equation} 
+        Wtedy, jeśli $f: [a, b] \to \R$ jest całkowalna, to dla $[c, d] \se [a, b]$ mamy: \begin{equation}
+            \int_{a}^{b} \chi_{[c, d]}\cdot  f = \int_{c}^{d} f \big|_{[c, d]} = \int_{c}^{d} f.
+        \end{equation} Ostatnie wyrażenie jest wygodniejszym zapisem tejże wielkości.
+    \end{itemize}
+\end{obs}
+
+
+\begin{twier}{}
+    Niech $f: [a, b] \to \R$ - całkowalna i $c \in ]a, b[$. Wtedy: \begin{equation}
+        \int_{a}^{b} f = \int_{a}^{c} f + \int_{c}^{b} f.
+    \end{equation}
+\end{twier}
+
+\begin{dow}{}
+    \begin{equation}
+        \int_{a}^{b} f = \int_{a}^{b} (\chi_{[a, c] } f + \chi_{[c, b]}  f) =  \int_{a}^{b} \chi_{[a, c] } f + \int_{a}^{b} \chi_{[c, b]}  f = \int_{a}^{c} f  + \int_{c}^{d} f,
+    \end{equation} bo $f$ i $\chi_{[a, c] } f + \chi_{[c, b]}  f$ różnią się tylko w jednym punkcie ($x = c$). 
+\end{dow}
+
+
+\begin{defr}{Wypunktowanie}
+    Niech $\pi = (t_0, ..., t_n)$ będzie podziałem $[a, b]$. Wtedy \tb{wypunktowaniem} $\pi$ nazywamy ciąg skończony: \begin{equation}
+        \Xi = (\xi_1, ..., \xi_n),
+    \end{equation} t.ż. $\xi_i \in \przedz{t}{i}$. \\
+    Ponadto, jeśli $f: [a, b] \to \R$, to \tb{sumą wypunkowaną} podziału $\pi$ i wypunktowania $\Xi$ nazywamy: \begin{equation}
+        S(f, \pi, \Xi) = \sum_{i = 1}^{n} (t_i - t_{i- 1}) f(\xi_i).
+    \end{equation} Średnicą podziału $\pi$ nazwiemy liczbę: \begin{equation}
+        \text{Diam}(\pi) = \max_{1 \leq i \leq n} (t_i - t_{i-1}).
+    \end{equation}
+\end{defr}
 
 
 
+\begin{twier}{}
+    Niech $f \in C([a, b])$ (funkcje ciągłe na $[a, b]$) i $\ciag{\pi}$ będzie ciągiem podziałów $[a, b]$, t.ż.:\begin{equation}
+        \text{Diam}(\pi_n) \to 0.
+    \end{equation} Niech $\ciag{\Xi}$ będzie ciągiem wypunktowań $\pi_n$. \\
+    Wtedy: \begin{equation}
+        S(f, \pi_n, \Xi_n) \xrightarrow[]{n \to \oo} \int_{a}^{b} f
+    \end{equation}
+\end{twier}
 
+\begin{dow}{}
+    Zacznijmy od tego, że $f$ jako funkcja ciągła jest całkowalna. Ponadto, $f$ jako ciągła na zwartym przedziale jest jednostajnie ciągła: \begin{equation}
+        \forall_{\eps > 0} \exists_{\delta_\eps}: |s - t| \leq \delta_\eps \implies |f(s) - f(t)| \leq \eps.
+    \end{equation} Niech $\pi$ będzie takim podziałem, że $\text{Diam}(\pi) \leq \delta_{\frac{\eps}{b - a}}$. Wtedy: \begin{equation}
+        \Sg(f, \pi) - \Sd(f, pi) = \sum_{i = 1}^{n} (\sup_{\przedz{t}{i}} f - \inf_{\przedz{t}{i}} f) (t_i - t_{i -1}) \leq \sum_{i = 1}^{n} \frac{\eps}{b - a}(t_i - t_{i -1}) = \eps,
+    \end{equation} co wynika z tego, że skoro $(t_i - t_{i -1}) \leq \delta_{\frac{\eps}{b - a}}$, to wartości $f$ na tym przedziale są nie dalej niż $\frac{\eps}{b - a}$, więc także jest tak dla supremum i infimum $f$ na tym przedziale. \\
+    Ponadto, dla dowolnego wypunktowania $\Xi$ podziału $\pi$: \begin{equation}
+        \Sd(f, \pi) =  \sum_{i = 1}^{n} \inf_{\przedz{t}{i}} f (t_i - t_{i -1}) \leq \sum_{i = 1}^{n} f(\xi_i) (t_i - t_{i -1})  = S(f, \pi, \Xi)
+    \end{equation} oraz: \begin{equation}
+        S(f, \pi, \Xi) = \sum_{i = 1}^{n} f(\xi_i) (t_i - t_{i -1}) \leq \sum_{i = 1}^{n} \sup_{\przedz{t}{i}} f (t_i - t_{i -1}) =  \Sg(f, \pi),
+    \end{equation} czyli: \begin{equation}
+        \Sd(f, \pi) \leq  S(f, \pi, \Xi)  \leq \Sg(f, \pi).
+    \end{equation} Jednak zachodzi też: \begin{equation}
+        \Sd(f, \pi) \leq  \int_{a}^{b} f \leq \Sg(f, \pi),
+    \end{equation} Zatem: \begin{equation}
+        \big| S(f, \pi, \Xi)  - \int_{a}^{b} f \big| \leq \Sg(f, \pi) - \Sd(f, \pi) \leq \eps.
+    \end{equation} Jśli dla ustalonego $\eps > 0$ w naszym ciągu $\ciag{\pi}$, wybierzemy takie $N$, że dla $n \geq N$: \begin{equation}
+        \text{Diam}(\pi_n) \leq \delta_{\frac{\eps}{b- a}},
+    \end{equation} to: \begin{equation}
+        \Sg(f, \pi_n) - \Sd(f, \pi_n) \leq \eps 
+    \end{equation} i: \begin{equation}
+        \big| S(f, \pi_n, \Xi_n)  - \int_{a}^{b} f \big| \leq \eps
+    \end{equation} dla $n \geq N$. Zatem rzeczywiście: \begin{equation}
+        S(f, \pi_n, \Xi_n) \to  \int_{a}^{b} f.
+    \end{equation}
+\end{dow}
 
 
 \newpage
