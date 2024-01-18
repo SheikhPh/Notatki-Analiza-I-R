@@ -2286,7 +2286,7 @@ W toku tego podrozdziału zajmować się będziemy jedynie funkcjami ograniczony
 
 
 
-\begin{twier}{}
+\begin{twier}[label=twier:rozbicie-calki]{}
     Niech $f \in C([a, b])$ (funkcje ciągłe na $[a, b]$) i $\ciag{\pi}$ będzie ciągiem podziałów $[a, b]$, t.ż.:\begin{equation}
         \text{Diam}(\pi_n) \to 0.
     \end{equation} Niech $\ciag{\Xi}$ będzie ciągiem wypunktowań $\pi_n$. \\
@@ -2321,6 +2321,107 @@ W toku tego podrozdziału zajmować się będziemy jedynie funkcjami ograniczony
         S(f, \pi_n, \Xi_n) \to  \int_{a}^{b} f.
     \end{equation}
 \end{dow}
+
+
+
+
+\begin{defr}{}
+    Dla $a > b$ definiujemy: \begin{equation}
+        \int_{a}^{b} f := -\int_{b}^{a} f.
+    \end{equation} Ponadto: \begin{equation}
+        \int_{a}^{a} f := 0.
+    \end{equation} Zauważmy, że wtedy Twierdzenie \ref*{twier:rozbicie-calki} zachodzi dla dowolnego ułożenia $a, b, c$. 
+\end{defr}
+
+\begin{twier}{Zasadnicze Twierdzenie Rachunku Całkowego I}
+    Niech $f: [a, b] \to \R$ -  całkowalna. Ponadto zdefiniujmy $F: [a, b] \to \R$: \begin{equation}
+        F(x) = \int_{a}^{x} f.
+    \end{equation} Wiemy, że powyższe wyrażenie ma sens dla $x \in [a, b]$.\\
+    Wtedy: \begin{itemize}
+        \item $F$ jest ciągła,
+        \item jeśli $f$ jest ciągła w $x_0$, to $F$ jest różniczkowalna tamże i: \begin{equation}
+            F'(x_0) = f(x_0).
+        \end{equation}
+    \end{itemize} 
+\end{twier}
+
+
+
+\begin{dow}{Dowód}
+    \begin{itemize}
+        \item     Skoro $f$ jest całkowalna, to musi być ograniczona: \begin{equation*}
+            \exists_M \forall_x: |f(x)| \leq M.
+        \end{equation*} Zatem dla $ x > y$: \begin{equation}
+            |F(x) - F(y)| = \big|\int_{a}^{x} f - \int_{a}^{y} f\big| = \big| \int_{x}^{y} f\big|\leq \int_{x}^{y} |f| \leq M |x - y|,
+        \end{equation} czyli $F$ jest Lipschitzowska, a więc i ciągła.
+
+        \item Niech $f$ będzie ciągła w $x_0$. Obliczmy iloraz różniczowy $F$:\begin{equation}
+            \frac{F(x_0 + h) - F(x_0)}{h} = \frac{1}{h} \int_{x_0}^{x_0 + h} f = \frac{1}{|h|} \int_{c}^{d} f,
+        \end{equation} gdzie: \begin{equation}
+            [c, d] = \begin{cases}
+                [x_0, x_0 + h] & h > 0 \\
+                [x_0 + h, x_0] & h < 0
+            \end{cases}.
+        \end{equation}
+        Skoro $f$ jest ciągła w $x_0$, to: \begin{equation}
+            \forall_{\eps > 0} \exists_{\delta_\eps}: | t - x_0| \leq \delta_\eps \implies |f(t) - f(x_0)| \leq \eps. 
+        \end{equation} Wtedy dla $|h| \leq \delta_\eps$ i $t \in [c, d]$: \begin{equation}
+            f(x_0) - \eps \leq f(t) \leq f(x_0) + \eps.
+        \end{equation} Zatem, całkując obustronnie: \begin{equation}
+            |h| (f(x_0) - \eps) \leq  \int_{c}^{d} f \leq |h| (f(x_0) + \eps),
+        \end{equation} i dalej: \begin{equation}
+            f(x_0) - \eps \leq \frac{F(x_0 + h) - F(x_0)}{h} \leq f(x_0) + \eps,
+        \end{equation} dla $|h| \leq \delta_\eps$. Zatem: \begin{equation}
+            \forall_{\eps > 0} \exists_{\delta_\eps}: |h| \leq \delta_\eps \implies \big|  \frac{F(x_0 + h) - F(x_0)}{h} - f(x_0) \big| \leq \eps.
+        \end{equation} Jest to inne wyrażenie równości: \begin{equation}
+            F'(x_0) = \lim_{h \to 0} \frac{F(x_0 + h) - F(x_0)}{h} = f(x_0).
+        \end{equation}
+    \end{itemize}
+
+\end{dow}
+
+\paragraph{} Zauważmy, że skoro: \begin{equation}
+    \int_{x_0}^{x} f = -\int_{a}^{x_0} f + \int_{a}^{x}f,
+\end{equation} gdzie $\int_{a}^{x_0} f = $ const., to zdefiniowanie $F$ jako całki od $a$ lub od $x_0$ przesuwa ją jedynie i stałą i nie zmienia jej własności.
+
+\begin{defr}{Funkcja pierwotna}
+    Niech $f$ będzie daną funkcją. Jeśli $F$ jest taką funkcją, że $F' = f$, to $F$ nazywamy \tb{funkcją pierwotną} do $f$.
+\end{defr}
+
+\begin{obs}{}
+    Dla każdej funkcji ciągłej $f$ na $[a, b]$ istnieje funkcja do niej pierwotna: \begin{equation}
+        F(x) = \int_{a}^{x} f.
+    \end{equation}
+\end{obs}
+
+\begin{twier}{Zasadnicze Twierdzenie Rachunku Całkowego II}
+    Jeśli $f: [a, b] \to \R$ jest całkowalna, a $F: [a, b] \to \R$ jest ciągła na $[a, b]$ i różniczkowalna na $]a, b[$ oraz ponadto: \begin{equation}
+        \forall_{x \in ]a, b[ }: F'(x) = f(x),
+    \end{equation} to wtedy: \begin{equation}
+        \int_{a}^{b} f = F(b) - F(a).
+    \end{equation}
+\end{twier}
+
+\begin{dow}{}
+    Weźmy $\eps > 0$. Niech $\pi$ będzie takim podziałem $[a, b]$, że: \begin{equation}
+        \Sg(f, \pi) - \Sd(f, \pi) \leq \eps.
+    \end{equation} Niech $\pi = (t_0, ..., t_n)$. Niech $\Xi = (\xi_1, ..., \xi_n)$ będzie wypunktowaniem $\pi$ t.ż.:\begin{equation}
+        \frac{F(t_i) - F(t_{i - 1})}{ t_i - t_{i -1} } = F'(\xi_i) = f(\xi_i).
+    \end{equation} $\xi_i \in ]t_i, t_{i-1}[$ spełniające powyższy warunek będzie istnieć na mocy Twierdzenia Lagrange'a. Skoro: \begin{equation}
+        \Sg(f, \pi) \leq S(f, \pi, \Xi) \leq \Sd(f, \pi)
+    \end{equation} oraz: \begin{equation}
+        \Sg(f, \pi) \leq \int_{a}^{b} f \leq \Sd(f, \pi),
+    \end{equation} to: \begin{equation}
+        \big| \int_{a}^{b} f - S(f, \pi, \Xi) \big| \leq \eps.
+    \end{equation} Mamy też: \begin{equation}
+        S(f, \pi, \Xi) = \sum_{i = 1}^{n} f(\xi_i) ( t_i - t_{i -1}) = \sum_{i = 1}^{n} F'(\xi_i) ( t_i - t_{i -1}) =  \sum_{i = 1}^{n} F(t_i) - F(t_{i - 1}) = F(b) - F(a).
+    \end{equation} Zatem: \begin{equation}
+        \forall_{\eps > 0}: \big| \int_{a}^{b} f - (F(b) - F(a)) \big| \leq \eps.
+    \end{equation} Wielkości te muszą więc być równe sobie: \begin{equation}
+        \int_{a}^{b} f  = F(b) - F(a).
+    \end{equation}
+\end{dow}
+
 
 
 \newpage
