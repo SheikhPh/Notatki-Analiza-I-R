@@ -87,15 +87,15 @@
 \newcounter{obser}
 \numberwithin{defi}{section}
 
-\newtcolorbox{obs}[2][]{%
+\newtcolorbox[auto counter,number within= section]{obs}[2][]{%
   breakable, enhanced, colback=white,colframe=col4,coltitle=black,
   sharp corners,boxrule=1.5pt,
   fonttitle=\bfseries,top=13pt,
   attach boxed title to top left={yshift=-\tcboxedtitleheight/2, xshift=10pt},
   boxed title style={tile,size=small,left=5pt,right=5pt, 
   colback=col4,before upper=\strut},
-  title={Obserwacja \theobser . #1 #2},
-  before title={\refstepcounter{obser}},
+  title={Obserwacja \thetcbcounter . #2},
+  #1
 }
 
 %%%%%%%%%%%
@@ -1438,49 +1438,49 @@ Twierdzenie to daje nam pojęcie o tym, jak wyglądają zbiory otwarte i domkni�
 Zaczniemy rozważać teraz przekształcenia (i.e. funkcje) pomiędzy przestrzeniami metrycznymi i wyróżnimy wśród nich szczgólnie ważną klasę funkcji ciągłych.
 
 \begin{twier}{Warunki ciągłośći} \label{twier:warunki-ciaglosci}
-    Niech $(X, d)$ i $(Y, \delta)$ będą przestrzeniami metrycznymi, a $\Phi : X \to Y$ przekształceniem między nimi. Ustalmy też $x_0 \in X$. Wtedy następujące warunki są równoważne:
+    Niech $(X, d)$ i $(Y, \delta)$ będą przestrzeniami metrycznymi, a $\varphi : X \to Y$ przekształceniem między nimi. Ustalmy też $x_0 \in X$. Wtedy następujące warunki są równoważne:
     \begin{enumerate}
         \item \begin{equation}
-                  \forall_{\eps > 0} \exists_{\lambda_\eps >0} \forall_{x \in X}: d(x, x_0) < \lambda_\eps \implies \delta(\Phi(x), \Phi(x_0)) < \eps.
+                  \forall_{\eps > 0} \exists_{\lambda_\eps >0} \forall_{x \in X}: d(x, x_0) < \lambda_\eps \implies \delta(\varphi(x), \varphi(x_0)) < \eps.
               \end{equation}
         \item \begin{equation}
-                  \forall_{U \in \Nau(\Phi(x_0))} \exists_{V \in \Nau(x_0)}: \Phi(V) \subseteq U.
+                  \forall_{U \in \Nau(\varphi(x_0))} \exists_{V \in \Nau(x_0)}: \varphi(V) \subseteq U.
               \end{equation}
         \item \begin{equation}
-                  \forall_{U \in \Nau(\Phi(x_0))}: \Phi^{-1}(U) \in \Nau(x_0).
-              \end{equation} (Przypominamy, że $\Phi^{-1}(U)$ to w przeciwobraz $U$).
-        \item Jeśli $x_n \to x_0$ w $(X, d)$, to $\Phi(x_n) \to \Phi(x_0)$ w $(Y, \delta)$.
+                  \forall_{U \in \Nau(\varphi(x_0))}: \varphi^{-1}(U) \in \Nau(x_0).
+              \end{equation} (Przypominamy, że $\varphi^{-1}(U)$ to w przeciwobraz $U$).
+        \item Jeśli $x_n \to x_0$ w $(X, d)$, to $\varphi(x_n) \to \varphi(x_0)$ w $(Y, \delta)$.
     \end{enumerate}
 \end{twier}
 
 \begin{dow}
     \paragraph{$1. \implies 2.$}
-    Dla dowolnego $U \in \Nau(\Phi(x_0))$ istnieje $\eps > 0$: \begin{equation*}
-        \ball{\Phi(x_0)}{\eps} \subseteq U.
+    Dla dowolnego $U \in \Nau(\varphi(x_0))$ istnieje $\eps > 0$: \begin{equation*}
+        \ball{\varphi(x_0)}{\eps} \subseteq U.
     \end{equation*} Z 1. weźmy więc $\lambda_\eps$ spełniające podaną implikację i $V = \ball{x_0}{\lambda_\eps}$. Wtedy: \begin{equation*}
-        \Phi( x \in V) \in \ball{\Phi(x_0)}{\eps},
+        \varphi( x \in V) \in \ball{\varphi(x_0)}{\eps},
     \end{equation*} zatem: \begin{equation*}
-        \Phi(V) \subseteq \ball{\Phi(x_0)}{\eps} \subseteq U.
+        \varphi(V) \subseteq \ball{\varphi(x_0)}{\eps} \subseteq U.
     \end{equation*}
 
     \paragraph{$2. \implies 3.$}
-    Weźmy dowolne $U \in \Nau(\Phi(x_0))$. Wtedy: \begin{equation*}
-        \exists_{V \in \Nau(x_0)}: \Phi(V) \subseteq U,
-    \end{equation*} i.e. $V \subseteq \Phi^{-1}(U)$. Ale skoro $V \in \Nau(x_0)$, to tym bardziej $\Phi^{-1}(U) \in \Nau(x_0)$, jako rozszerzenie $V$.
+    Weźmy dowolne $U \in \Nau(\varphi(x_0))$. Wtedy: \begin{equation*}
+        \exists_{V \in \Nau(x_0)}: \varphi(V) \subseteq U,
+    \end{equation*} i.e. $V \subseteq \varphi^{-1}(U)$. Ale skoro $V \in \Nau(x_0)$, to tym bardziej $\varphi^{-1}(U) \in \Nau(x_0)$, jako rozszerzenie $V$.
 
     \paragraph{$3. \implies 4.$}
-    Weźmy ciąg $\ciag{x}$ zbieżny do $x_0$. Niech $U \in \Nau(\Phi(x_0))$, skąd $\Phi^{-1}(U) \in \Nau(x_0)$. Zatem: \begin{equation*}
-        \exists_{N_U} \forall_{n \geqslant N_U}: x_n \in \Phi^{-1}(U),
+    Weźmy ciąg $\ciag{x}$ zbieżny do $x_0$. Niech $U \in \Nau(\varphi(x_0))$, skąd $\varphi^{-1}(U) \in \Nau(x_0)$. Zatem: \begin{equation*}
+        \exists_{N_U} \forall_{n \geqslant N_U}: x_n \in \varphi^{-1}(U),
     \end{equation*} z twierdzenia udowodnionego wcześniej. %NR%
     Ergo: \begin{equation*}
-        \forall_{U \in \Nau(\Phi(x_0))} \exists_{N_U} \forall_{n \geqslant N_U}: \Phi(x_n) \in U.
+        \forall_{U \in \Nau(\varphi(x_0))} \exists_{N_U} \forall_{n \geqslant N_U}: \varphi(x_n) \in U.
     \end{equation*} Zatem, z tego samego twierdzenia: \begin{equation*}
-        \Phi(x_n) \to \Phi(x_0).
+        \varphi(x_n) \to \varphi(x_0).
     \end{equation*}
 
     \paragraph{$4. \implies 1.$} Dowodzimy nie wprost, że $\neg 1. \implies \neg 4.$. Zaprzeczeniem $1.$ jest: \begin{equation*}
-        \exists_{\eps > 0} \forall_\lambda \exists_{x_\lambda \in X}: d(x_\lambda, x_0) < \lambda \wedge \delta( \Phi(x_\lambda, x_0)) \geqslant \eps.
-    \end{equation*} Weźmy $\lambda_n = \frac{1}{n}$ i na tej podstawie skonstruujmy ciąg $x_n$ odpowiadjących $x_\lambda$ w powyższym stwierdzeniu dla odpowiednich $\lambda$. Wtedy musi być, że $x_n \to x_0$, gdyż $d(x_n, x_0) < \frac{1}{n}$, ale $\Phi(x_n) \nrightarrow \Phi(x_0)$, gdyż $\delta( \Phi(x_n), \Phi(x_0)) \geqslant \eps \, \forall_n$. Zatem zachodzi $\neg 4.$.
+        \exists_{\eps > 0} \forall_\lambda \exists_{x_\lambda \in X}: d(x_\lambda, x_0) < \lambda \wedge \delta( \varphi(x_\lambda, x_0)) \geqslant \eps.
+    \end{equation*} Weźmy $\lambda_n = \frac{1}{n}$ i na tej podstawie skonstruujmy ciąg $x_n$ odpowiadjących $x_\lambda$ w powyższym stwierdzeniu dla odpowiednich $\lambda$. Wtedy musi być, że $x_n \to x_0$, gdyż $d(x_n, x_0) < \frac{1}{n}$, ale $\varphi(x_n) \nrightarrow \varphi(x_0)$, gdyż $\delta( \varphi(x_n), \varphi(x_0)) \geqslant \eps \, \forall_n$. Zatem zachodzi $\neg 4.$.
 
 \end{dow}
 
@@ -1491,35 +1491,35 @@ Zaczniemy rozważać teraz przekształcenia (i.e. funkcje) pomiędzy przestrzeni
         Czasami, mając na myśli warunek 1., mówimy o tzw. zbieżności według Cauchy'ego, zaś o warunku 4. mówimy, jako zbieżności według Heinego.
 
     \begin{twier}{Złożenie odwzorowań ciągłych jest ciągłe}
-        Jeśli $\Phi: X \to Y$ jest ciągłe w $x_0 \in X$ i $\Psi: Y \to Z$ jest ciągłe w $\Phi(x_0)$, to $\Psi \circ \Phi: X \to Z$ jest ciągłe w $X_0$.
+        Jeśli $\varphi: X \to Y$ jest ciągłe w $x_0 \in X$ i $\Psi: Y \to Z$ jest ciągłe w $\varphi(x_0)$, to $\Psi \circ \varphi: X \to Z$ jest ciągłe w $X_0$.
     \end{twier}
 
     \begin{dow}
-        Korzystając np. z 4. warunku ciągłości, weźmy ciąg $x_n \to x_0$, wtedy $\Phi(x_n) \to \Phi(x_0)$ z ciągłości $\Phi$. Ponadto $\Psi(\Phi(x_n)) \to \Psi(\Phi(x_0))$ z ciągłości $\Psi$. Widzimy, więc prosto, że $\Psi \circ \Phi$ musi być ciągłe.
+        Korzystając np. z 4. warunku ciągłości, weźmy ciąg $x_n \to x_0$, wtedy $\varphi(x_n) \to \varphi(x_0)$ z ciągłości $\varphi$. Ponadto $\Psi(\varphi(x_n)) \to \Psi(\varphi(x_0))$ z ciągłości $\Psi$. Widzimy, więc prosto, że $\Psi \circ \varphi$ musi być ciągłe.
     \end{dow}
 
     \begin{twier}{Ciągłość na całej dziedzinie}
-        $\Phi: X \to Y$ jest ciągłe na całym $X$ wtedy i tylko wtedy, gdy: \begin{equation}
-            \forall_{U \subotw Y}: \Phi^{-1}(U) \subotw X.
+        $\varphi: X \to Y$ jest ciągłe na całym $X$ wtedy i tylko wtedy, gdy: \begin{equation}
+            \forall_{U \subotw Y}: \varphi^{-1}(U) \subotw X.
         \end{equation} Inaczej mówiąc, przekształcenie jest ciągłe na całej dziedzinie wtedy i tylko wtedy, gdy przeciwobrazy zbiorów otwartych są otwarte.
     \end{twier}
 
     \begin{dow}
-        \paragraph{$\implies$} Niech $U \subotw Y$ i $x \in \Phi^{-1}(U)$. Zatem $\Phi(x) \in U$. Skoro $U$ jest otwarty, to musi być otoczeniem $\Phi(x)$, i.e. $U \in \Nau(\Phi(x))$, zatem (warunek 3.): \begin{equation*}
-            \Phi^{-1}(U) \in \Nau(x) \quad \forall_{x \in \Phi^{-1}(U)},
-        \end{equation*} czyli $\Phi^{-1}(U)$ jest otwarty.
+        \paragraph{$\implies$} Niech $U \subotw Y$ i $x \in \varphi^{-1}(U)$. Zatem $\varphi(x) \in U$. Skoro $U$ jest otwarty, to musi być otoczeniem $\varphi(x)$, i.e. $U \in \Nau(\varphi(x))$, zatem (warunek 3.): \begin{equation*}
+            \varphi^{-1}(U) \in \Nau(x) \quad \forall_{x \in \varphi^{-1}(U)},
+        \end{equation*} czyli $\varphi^{-1}(U)$ jest otwarty.
 
         \paragraph{$\impliedby$} Udowadniamy warunek 2.:\begin{equation*}
-            \forall_{U \subotw Y}: \Phi^{-1}(U) \subotw X.
-        \end{equation*} Weźmy $x \in X$ i $U \in \Nau(\Phi(x))$. Wtedy: \begin{equation*}
-            \exists_{\tilde{U} \subotw X}: \Phi(x) \in \tilde{U} \subseteq U,
-        \end{equation*} więc $V = \Phi^{-1}(\tilde{U})$ - otwarty. Pondato $x \in V$. Zatem $V \in \Nau(x)$, oraz $\Phi(V) \subseteq \tilde{U} \subseteq U$, więc $2.$ zachodzi.
+            \forall_{U \subotw Y}: \varphi^{-1}(U) \subotw X.
+        \end{equation*} Weźmy $x \in X$ i $U \in \Nau(\varphi(x))$. Wtedy: \begin{equation*}
+            \exists_{\tilde{U} \subotw X}: \varphi(x) \in \tilde{U} \subseteq U,
+        \end{equation*} więc $V = \varphi^{-1}(\tilde{U})$ - otwarty. Pondato $x \in V$. Zatem $V \in \Nau(x)$, oraz $\varphi(V) \subseteq \tilde{U} \subseteq U$, więc $2.$ zachodzi.
     \end{dow}
 
 
     \begin{defr} {Ciągłość jednostajna} \label{defr:ciaglosc-jednostajna}
-        $\Phi: X \to Y$ nazwiemy $\textbf{jednostajnie ciągłym}$, jeśli: \begin{equation}
-            \forall_{\eps > 0} \exists_{\lambda_\eps}: \forall_{x, x' \in X}: d(x, x') \leqslant \lambda_\eps \implies \delta(\Phi(x), \Phi(x')) \leqslant \eps.
+        $\varphi: X \to Y$ nazwiemy $\textbf{jednostajnie ciągłym}$, jeśli: \begin{equation}
+            \forall_{\eps > 0} \exists_{\lambda_\eps}: \forall_{x, x' \in X}: d(x, x') \leqslant \lambda_\eps \implies \delta(\varphi(x), \varphi(x')) \leqslant \eps.
         \end{equation}
         Ważną częścią tejże definicji jest to, że wybór $\lambda$ zależy jedynie od $\eps$, nie zaś od samych punktów $x, x'$.
     \end{defr} 
@@ -1529,8 +1529,8 @@ Zaczniemy rozważać teraz przekształcenia (i.e. funkcje) pomiędzy przestrzeni
     \end{obs}
 
     \begin{defr}{Przekształcenie Lipschitzowskie}
-        Przekształcenie $\Phi: X \to Y$ nazwiemy \textbf{Lipschitzowskim} (i.e. spełniającym \textbf{warunek Lipschitza}), jeśli:\begin{equation}
-            \exists_{L > 0} \forall_{x, x' \in X}: \delta(\Phi(x), \Phi(x')) \leqslant L \cdot d(x, x').
+        Przekształcenie $\varphi: X \to Y$ nazwiemy \textbf{Lipschitzowskim} (i.e. spełniającym \textbf{warunek Lipschitza}), jeśli:\begin{equation}
+            \exists_{L > 0} \forall_{x, x' \in X}: \delta(\varphi(x), \varphi(x')) \leqslant L \cdot d(x, x').
         \end{equation} Warunek ten mówi, że odległość między wartościami funkcji jest zawsze ograniczona przez odległość między jej argumentami (z pewną proporcjonalnością).
     \end{defr}
 
@@ -1724,16 +1724,16 @@ Zaczniemy rozważać teraz przekształcenia (i.e. funkcje) pomiędzy przestrzeni
 
 
 \begin{twier}[label=twier:ob-zwar-zwar]{Obraz zbioru zwartego jest zwarty}
-    Niech $(X, d)$, $(Y, \delta)$ będą p-ń. metrycznymi, a $\phi: X \to Y$ będzie odwzorowaniem ciągłym. Ponadto niech $K \subseteq \subseteq X$. Wtedy zbiór $\phi(K)$ jest zwarty.
+    Niech $(X, d)$, $(Y, \delta)$ będą p-ń. metrycznymi, a $\varphi: X \to Y$ będzie odwzorowaniem ciągłym. Ponadto niech $K \subseteq \subseteq X$. Wtedy zbiór $\varphi(K)$ jest zwarty.
 \end{twier}
 
 
 \begin{dow}
-    Niech $U = \{ U_i \}_{i \in I}$ - rodzina zbiorów otwartych pokrywająca $\phi(K)$: $\phi(K) \se \bigcup_{i \in I} U_i $. Skonstruujmy rodzinę $V = \{ V_i = \phi^{-1}(U_i) \}$. Skoro $\phi$ jest ciągłe, to $V$ jest rodziną otwartą. Podnadto z włąsciwości przeciwobrazów: $K \se \bigcup_{i \in I}V_i$. Zatem $V$ jest pokryciem otwartym. Możemy więc zeń wybraż skończone podpokrycie otwarte: \begin{equation*}
-        K \se V_{i_1} \cup .. \cup V_{i_n} = \phi^{-1}(U_{i_1}) \cup .. \cup \phi^{-1}(U_{i_n}).
+    Niech $U = \{ U_i \}_{i \in I}$ - rodzina zbiorów otwartych pokrywająca $\varphi(K)$: $\varphi(K) \se \bigcup_{i \in I} U_i $. Skonstruujmy rodzinę $V = \{ V_i = \varphi^{-1}(U_i) \}$. Skoro $\varphi$ jest ciągłe, to $V$ jest rodziną otwartą. Podnadto z włąsciwości przeciwobrazów: $K \se \bigcup_{i \in I}V_i$. Zatem $V$ jest pokryciem otwartym. Możemy więc zeń wybraż skończone podpokrycie otwarte: \begin{equation*}
+        K \se V_{i_1} \cup .. \cup V_{i_n} = \varphi^{-1}(U_{i_1}) \cup .. \cup \varphi^{-1}(U_{i_n}).
     \end{equation*} Wtedy: \begin{equation*}
-        \phi(K) \se \phi(\phi^{-1}(U_{i_1}) \cup .. \cup \phi^{-1}(U_{i_n})) = \phi(\phi^{-1}(U_{i_1})) \cup .. \cup \phi(\phi^{-1}(U_{i_n})) \se U_{i_1} \cup ... \cup U_{i_n}.
-    \end{equation*} Zatem dla każdego pokrycia $\phi(K)$ wybraliśmy zeń skończone podpokrycie - zatem $\phi(K)$ jest zwarty.
+        \varphi(K) \se \varphi(\varphi^{-1}(U_{i_1}) \cup .. \cup \varphi^{-1}(U_{i_n})) = \varphi(\varphi^{-1}(U_{i_1})) \cup .. \cup \varphi(\varphi^{-1}(U_{i_n})) \se U_{i_1} \cup ... \cup U_{i_n}.
+    \end{equation*} Zatem dla każdego pokrycia $\varphi(K)$ wybraliśmy zeń skończone podpokrycie - zatem $\varphi(K)$ jest zwarty.
 \end{dow}
 
 \begin{obs}{Odwzorowanie ciągłe na zbiorze zwartym osiąga swoje kresy}
@@ -1813,13 +1813,13 @@ Zaczniemy rozważać teraz przekształcenia (i.e. funkcje) pomiędzy przestrzeni
 %TODO dowód
 
 \begin{twier}{Obraz zbioru spójnego jest spójny}
-    Jeśli $Z$ jest zbiorem spójnym, a $\Phi: X \to Y$ odzworowaniem ciągłym, to $\Phi(Z)$ jest spójny.
+    Jeśli $Z$ jest zbiorem spójnym, a $\varphi: X \to Y$ odzworowaniem ciągłym, to $\varphi(Z)$ jest spójny.
 \end{twier}
 
 \begin{dow}
-    Dowód nie wprost. Załóżmy, że $\Phi(Z)$ jest niespójny, tj. istnieją takie niepuste $W_1, W_2 \se Y$, że $W_1 \cap \ol{W_2} = \emptyset$ i $W_1 \cup W_2 = \Phi(Z)$. Niech $Z_1 = \Phi^{-1}(W_1) \cap Z$ i $Z_2 = \Phi^{-1}(W_1) \cap Z$. Mamy: \begin{equation*}
-        Z \se \Phi^{-1}(\Phi(Z)) = \Phi(W_1) \cup \Phi(W_2).
-    \end{equation*} Zatem $Z = Z_1 \cup Z_2$. Skoro $Z$ jest spójny, to $\ol{Z_1} \cap Z_2 \neq \emptyset$ lub $Z_1 \cap \ol{Z_2} \neq \emptyset$. Bez straty ogólności, załóżmy ten pierwszy przypadek. Wtedy istnieje $\ciag{x}$, t.ż. $x_n \in Z_1$ i $x_n \to x \in Z_2$. Ale wtedy -- z ciągłości $\Phi$ -- $W_1 \ni \Phi(x_n) \to \Phi(x) \in W_2$, zatem $\ol{W_1} \cap W_2 \neq \emptyset$, wbrew założeniu. Powstała sprzeczność dowodzi tezy.
+    Dowód nie wprost. Załóżmy, że $\varphi(Z)$ jest niespójny, tj. istnieją takie niepuste $W_1, W_2 \se Y$, że $W_1 \cap \ol{W_2} = \emptyset$ i $W_1 \cup W_2 = \varphi(Z)$. Niech $Z_1 = \varphi^{-1}(W_1) \cap Z$ i $Z_2 = \varphi^{-1}(W_1) \cap Z$. Mamy: \begin{equation*}
+        Z \se \varphi^{-1}(\varphi(Z)) = \varphi(W_1) \cup \varphi(W_2).
+    \end{equation*} Zatem $Z = Z_1 \cup Z_2$. Skoro $Z$ jest spójny, to $\ol{Z_1} \cap Z_2 \neq \emptyset$ lub $Z_1 \cap \ol{Z_2} \neq \emptyset$. Bez straty ogólności, załóżmy ten pierwszy przypadek. Wtedy istnieje $\ciag{x}$, t.ż. $x_n \in Z_1$ i $x_n \to x \in Z_2$. Ale wtedy -- z ciągłości $\varphi$ -- $W_1 \ni \varphi(x_n) \to \varphi(x) \in W_2$, zatem $\ol{W_1} \cap W_2 \neq \emptyset$, wbrew założeniu. Powstała sprzeczność dowodzi tezy.
 \end{dow}
 
 \begin{obs}{Łukowa spójność}
@@ -2240,7 +2240,7 @@ W toku tego podrozdziału zajmować się będziemy jedynie funkcjami ograniczony
     \end{equation*} gdyż $\sigma f \leq |f|$.
 \end{dow}
 
-\begin{obs}{}
+\begin{obs}[label=obs:punkt-roznica-calek]{} 
     \begin{itemize}
         \item Niech $f, g: [a, b]  \to \R$. Ponadto, niech $f = g$ na $[a, b] \backslash S$, gdzie $|S| < \oo$ - tj. $f$ i $g$ zgadzają się z sobą na całym przedziale poza skończoną  liczbą punktów. \\
         Wtedy $f$ jest całkowalna wtedy i tylko wtedy, gdy $g$ jest całkowalna i jeśli to zachodzi, to: \begin{equation*}
@@ -2333,7 +2333,7 @@ W toku tego podrozdziału zajmować się będziemy jedynie funkcjami ograniczony
     \end{equation} Zauważmy, że wtedy Twierdzenie \ref*{twier:rozbicie-calki} zachodzi dla dowolnego ułożenia $a, b, c$. 
 \end{defr}
 
-\begin{twier}{Zasadnicze Twierdzenie Rachunku Całkowego I}
+\begin{twier}[label=twier:ZTRCI]{Zasadnicze Twierdzenie Rachunku Całkowego I}
     Niech $f: [a, b] \to \R$ -  całkowalna. Ponadto zdefiniujmy $F: [a, b] \to \R$: \begin{equation}
         F(x) = \int_{a}^{x} f.
     \end{equation} Wiemy, że powyższe wyrażenie ma sens dla $x \in [a, b]$.\\
@@ -2394,7 +2394,7 @@ W toku tego podrozdziału zajmować się będziemy jedynie funkcjami ograniczony
     \end{equation}
 \end{obs}
 
-\begin{twier}{Zasadnicze Twierdzenie Rachunku Całkowego II}
+\begin{twier}[label=twier:ZTRCII]{Zasadnicze Twierdzenie Rachunku Całkowego II}
     Jeśli $f: [a, b] \to \R$ jest całkowalna, a $F: [a, b] \to \R$ jest ciągła na $[a, b]$ i różniczkowalna na $]a, b[$ oraz ponadto: \begin{equation}
         \forall_{x \in ]a, b[ }: F'(x) = f(x),
     \end{equation} to wtedy: \begin{equation}
@@ -2422,7 +2422,71 @@ W toku tego podrozdziału zajmować się będziemy jedynie funkcjami ograniczony
     \end{equation}
 \end{dow}
 
+\begin{twier}{Całkowanie przez części}
+    Niech $F,G \in C([a, b])$ - różniczkowalne na $]a, b[$. Niech ponadto $f = F'$ i $g = G'$ - całkowalne na $[a, b]$ (zauważmy, że całkowalność $f, g$ nie zależy od ich wartości w $a$ i $b$, por. Obs. \ref*{obs:punkt-roznica-calek}). \\
+    Wtedy: \begin{equation}
+        \int_{a}^{b} f G = G \cdot F \big|_{a}^{b} - \int_{a}^{b} F g.
+    \end{equation}
+\end{twier}
 
+\begin{dow}{}
+    $F \cdot G$ jest funkcją pierwotną do $Fg + fG$. Zatem $Fg + fG$ jest całkowalna (jako suma i iloczyn f. całkowalnych) i: \begin{equation}
+        \int_{a}^{b} (Fg + f G) = G \cdot F \big|_{a}^{b},
+    \end{equation} co wynika z Tw. \ref*{twier:ZTRCII}. Korzystając z liniowości całki i z tego, że każda az funkcji $Fg$ i $fG$ jest całkowalna, dostajemy tezę.
+\end{dow}
+
+
+\begin{twier}{Całkowanie przez podstawienie}
+    Niech $\varphi \in C([a, b])$ będzie ściśle rosnącą funkcją różniczkowalną na przedziale $]a, b[$. Niech $[c, d] = \varphi([a, b])$ (wiemy że obrazem zwartego przedziału przy funkcji ciągłej będzie zwarty przedział). Niech $f \in C([c, d])$. \\
+    Wtedy funkcja $(f \circ \varphi) \varphi'$ t.ż.: \begin{equation}
+        [a, b] \ni x \mapsto f(\varphi(x)) \varphi'(x) \in R, 
+    \end{equation} jest całkowalna i :\begin{equation}
+        \int_{a}^{b} (f \circ \varphi) \varphi' dx = \int_{c}^{d} f(y) dy.
+    \end{equation} Zauważmy, że w punktach $a, b$ funkcja $(f \circ \varphi) \varphi'$ nie jest dobrze określona, jednak możemy przyjąć tam dowolne wartości, co nie zmieni całkowalności.\\
+    Uwaga! W twierdzeniu tym zamiast ciągłości $f$ przyjąć możemy słabsze założenia: \begin{itemize}
+        \item $f$ ma funkcję pierwotną,
+        \item $(f \circ \varphi) \varphi '$ jest całkowalna.
+    \end{itemize}
+\end{twier}
+
+\begin{dow}{}
+    $f \circ \varphi$ jest całkowalna jako złożenie dwu funkcji ciągłych. Po pomnożeniu przez $\varphi'$, całkowalną na mocy założeń, otrzymamy funkcję całkowalną $(f\circ \varphi) \cdot \varphi'$. Niech: \begin{equation*}
+        F(y) = \int_{c}^{y} f dy,
+    \end{equation*}  dla $y \in [c, d]$. $F$ jest różniczkowalna i $F' = f$. Jeśli przyjmujemy ogólniejsze założenia, to $F$ jest funkcją pierwotną do $f$ taką, że $F(c)$. Taka zawsze istnieje, gdyż jeśli $G$ jest dowolną f. pierwotną do $f$, to $F = G - G(c)$ także nią jest. Wtedy także $F \circ \varphi$ jest różniczkowalna na na $]a, b[$ i:\begin{equation*}
+        (F \circ \varphi)' = (F' \circ \varphi) \cdot \varphi' = (f \circ \varphi) \cdot \varphi'.
+    \end{equation*} Zatem $F \circ \varphi$ jest funkcją pierwotną do $(f \circ \varphi) \varphi'$ na $]a, b[$. Zatem, zgodnie z \ref*{twier:ZTRCII}: \begin{equation*}
+        \int_{a}^{b} f(\varphi(x)) \varphi'(x) dx = (F \circ \varphi)(b) - (F \circ \varphi)(a),
+    \end{equation*} ale, skoro $\varphi$ jest ściśle rosnąca, to $\varphi(a) = c$ i $\varphi(b) =d$, więc:\begin{equation*}
+        \int_{a}^{b} f(\varphi(x)) \varphi'(x) dx = F(d) - F(c).
+    \end{equation*} Ale $F$ jest funkcją pierwotną do $f$, więc: \begin{equation*}
+        \int_{c}^{d} f(y) dy  = F(d) - F(c).
+    \end{equation*} Porównując dwa poprzednie równania, mamy tezę: \begin{equation*}
+        \int_{a}^{b} f(\varphi(x)) \varphi'(x) dx =  \int_{c}^{d} f(y) dy.
+    \end{equation*}
+\end{dow}
+% TODO UWAGA! na f. malejace
+
+\begin{defr}{Logarytm naturalny}
+    Dla $x > 0$ zdefiniujmy funkcję $\log x: ]0, \oo[ \to \R$: \begin{equation}
+        \log x = \int_{1}^{x} \frac{1}{t} dt.
+    \end{equation} Na mocy Tw. \ref*{twier:ZTRCI}, $\log$ jest ciągły i różniczkowalny na całej dziedzinie oraz: \begin{equation}
+        (\log x )' = \frac{1}{x}.
+    \end{equation} Z tego widać też, że $\log$ jest funkcją ściśle rosnącą.
+\end{defr}
+
+\begin{twier}{}
+    Niech $x, y \in ]0, \oo[$. Wtedy: \begin{equation*}
+        \log(xy) = \log x + \log y.
+    \end{equation*}
+\end{twier}
+
+\begin{dow}{}
+    \begin{equation*}
+        \log (xy) = \int_{1}^{xy} \frac{1}{t} dt = \int_{1}^{y} \frac{1}{t} dt + \int_{y}^{xy} \frac{1}{t} dt = \log y + \int_{y}^{xy} \frac{1}{t} dt.
+    \end{equation*} Weźmy pod lupę tę ostatnią całkę i użyjmy tu podstawienia: $\varphi(t) = yt$, $\varphi'(t) = y > 0$. Wtedy: \begin{equation*}
+        \int_{y}^{yt} \frac{1}{t} dt = \int_{\varphi^{-1}(y)}^{\varphi^{-1}(xy)} \frac{1}{\varphi(t)} \varphi'(t) dt = \int_{1}^{x} \frac{1}{t} dt = \log x.
+    \end{equation*} Podstawiając powyższą wartość do wyjściowego równania otrzymujemy tezę.
+\end{dow}
 
 \newpage
 \section*{Koniec}
