@@ -2466,6 +2466,9 @@ W toku tego podrozdziału zajmować się będziemy jedynie funkcjami ograniczony
 \end{dow}
 % TODO UWAGA! na f. malejace
 
+
+\subsection{Funkcje logarytmiczna i wykładnicza}
+
 \begin{defr}{Logarytm naturalny}
     Dla $x > 0$ zdefiniujmy funkcję $\log x: ]0, \oo[ \to \R$: \begin{equation}
         \log x = \int_{1}^{x} \frac{1}{t} dt.
@@ -2487,6 +2490,122 @@ W toku tego podrozdziału zajmować się będziemy jedynie funkcjami ograniczony
         \int_{y}^{yt} \frac{1}{t} dt = \int_{\varphi^{-1}(y)}^{\varphi^{-1}(xy)} \frac{1}{\varphi(t)} \varphi'(t) dt = \int_{1}^{x} \frac{1}{t} dt = \log x.
     \end{equation*} Podstawiając powyższą wartość do wyjściowego równania otrzymujemy tezę.
 \end{dow}
+
+\begin{twier}[label=twier:log-potega]{}
+    Niech $r \in \Q$, $x \in ]0, \oo[$. Wtedy: \begin{equation*}
+        \log (x ^ r) = r \log x.
+    \end{equation*}
+\end{twier}
+
+\begin{dow}{}
+    Ponownie, używając łatwego podstawienia: \begin{equation*}
+        \log(x^r) = \int_{1}^{x^r} \frac{1}{t} dt = \int_{1}^{x} \frac{r t^{r-1}}{t^r} dt = r \log x.
+    \end{equation*} Użyliśmy tu podstawienia: $\varphi (x) = x ^r$.
+\end{dow}
+
+\paragraph{} Zauważmy, że $\log$ jest ciągły na przedziale spójnym, jego obrazem więc będzie przedział. Zeby wyznaczyć jego postać, zauważmy, że: \begin{equation}
+    \log 2 = \int_{1}^{2} \frac{1}{t} dt \geq \frac{1}{2} > 0
+\end{equation} i ogólnie $\log x \geq \frac{x - 1}{x}$, dla $x \geq 1$. Stąd: \begin{equation}
+    \log (2 ^ n) = n \log 2 \geq \half n \xrightarrow[]{n \to \oo} \oo.
+\end{equation} Stąd z monotoniczności $\log$: \begin{equation}
+    \lim_{x \to \oo} \log x = \oo.
+\end{equation} Podobnież: \begin{equation}
+    \log (2 ^ {-n}) = -n \log 2 \leq -\half n \xrightarrow[]{n \to \oo} -\oo,
+\end{equation} czyli: \begin{equation}
+    \lim_{x \to 0} \log x = -\oo.
+\end{equation}
+Zatem przeciwobrazem $\log$ jest $\R$. Stąd i z monotoniczności (implikującej różnowartościowość) i ciągłośći (pociągającej suriektywność) mamy:
+
+\begin{obs}{}
+    $\log: ]0, \oo[ \to \R$ jest różniczkowalną bijekcją $]0, \oo[$ na $\R$.
+\end{obs}
+
+
+Wynika stąd, że istnieje funkcja odwrotna do $\log$ i ona także będzie różniczkowalną bijekcją.
+
+\begin{defr}{Funkcja wykładnicza}
+    Funkcję: \begin{equation}
+        \exp(x): \R \to ]0, \oo[,
+    \end{equation} będącą funkcją odwrotną do $\log$ nazywamy \tb{funkcją wykładniczą}. Jest to różniczkowalna bijekcja.
+\end{defr}
+
+\begin{twier}{Pochodna funkcji wykładniczej}
+    \begin{equation}
+        (\exp)' = \exp.
+    \end{equation}
+    Wynika stąd, że $\exp$ jest klasy $C^\oo (\R)$.
+\end{twier}
+
+\begin{dow}{}
+    Niech $t \in R$ t.ż. $t = \log x$. Wtedy z właności pochodnej funkcji odwrotnej: \begin{equation}
+        \exp'(t) = \exp'(\log x) = \frac{1}{\log' x} = x = exp(t).
+    \end{equation}
+\end{dow}
+
+
+\paragraph{} Zauważmy, że skoro $\log(1) = 0$, to $\exp(0) = \exp^{(n)}(0) = 1 \forall_{n\in \N}$. Możemy więc rozpisać wzór Taylora dla $\exp$ wokół zera: \begin{equation}
+    \exp(x) = \sum_{n = 0}^{N - 1} \frac{1}{n!} x^n + \frac{1}{N!} \exp(\xi) x^N,
+\end{equation} dla $\xi$ pomiędzy 0 i $x$. Zauważmy jednak, że wyraz resztowy dąży do zera wraz z $N$: \begin{equation}
+    \frac{1}{N!} \exp(\xi) x^N \leq \frac{1}{N!} \exp(|x|) t^N \xrightarrow{N \to \oo} 0.
+\end{equation} Zatem $\exp$ jest granicą (punktową! - zob. następna sekcja) swoich rozwinięć Taylora.
+
+\begin{obs}{}
+    \begin{equation}
+        \exp(x) = \sum_{n = 0}^{\oo} \frac{x ^ n}{n!}.
+    \end{equation}
+\end{obs}
+
+\begin{defr}{Liczba e}
+    Liczbą $e$ Eulera nazywamy wielkość: \begin{equation}
+        e = \exp (1) = \sum_{n = 0}^{\oo} \frac{1}{n!}.
+    \end{equation}
+\end{defr}
+
+\begin{defr}{Potęgowanie}
+    Niech $a > 0$ i $t \in \R$. Definiujemy: \begin{equation}
+        a ^ t = \exp(t \log x).
+    \end{equation}
+\end{defr}
+\paragraph{} Zauważmy, że definicja ta, dla $t \in \Q$ pokrywa się ze standardową definicją potęgi (na mocy Tw. \ref*{twier:log-potega}). Podadto, z ciągłości $\exp$ i $\log$ wynika, że $a^t$ jest ciągłą funkcją zarówno podstawy jak i wykładnika. 
+\paragraph{} Zgodnie z powyższą definicją mamy: \begin{equation}
+    e ^ x = \exp x
+\end{equation} i zapisów tych używać będziemy zamiennie.
+
+\paragraph{} Powiemy teraz trochę o rozszerzeniu $\exp$ na całą przestrzeń liczb całkowitych.
+
+\begin{defr}{Zespolona funkcja wykładnicza}
+    Funckję $\exp: \C \to \C$: \begin{equation}
+        \exp(z) = \sum_{n = 0}^{\oo} \frac{z ^ n}{n!},
+    \end{equation} będącą rozszerzeń poprzednio zdefiniowanej funkcji $\exp$ na dziedzinę liczb zespolnych, dalej nazywać będziemy funkcją wykładniczą.
+\end{defr}
+\paragraph{} Zauważmy, że z kryterium D'Alemberta wynika, że jest to szereg zbieżny bezwzględnie. Rozszerzając dziedzinę $\exp$, tracimy właności bijekcji.
+
+\begin{twier}{}
+    Dla zespolonej funkcji wykładniczej zachodzi wzór: \begin{equation}
+        exp(z) \exp(w) \ = \exp(w + z),
+    \end{equation} gdzie $w, z \in \C$.
+\end{twier}
+
+%TODO Tw. Martensa
+
+\begin{dow}{}
+    \begin{equation}
+        exp(z) \exp(w) = (\sum_{n = 0}^{\oo} \frac{z ^ n}{n!}) ( \sum_{n = 0}^{\oo} \frac{w ^ n}{n!}) = \sum_{n = 0}^{\oo} \sum_{k = 0}^{n} \frac{z^k}{ k!} \frac{w ^{n - k}}{(n - k)!} = \sum_{n = 0}^{\oo} \sum_{k = 0}^{n} \binom{n}{k}\frac{z^k w ^ (n - k)}{n!} = \sum_{n = 0}^{\oo} \frac{(z + w) ^ n}{ n!} = \exp( z + w).
+    \end{equation} Skorzystaliśmy tu z tzw. Twierdzenia Mertensa (nie załączonego w tym skrypcie), które mówi, że jeśli oba szeregi są zbieżne bewzględnie, to ich iloczyn jest równy ich iloczynowi Cauchy'ego.
+\end{dow}
+
+
+\begin{twier}{}
+    Zespolona funkcja wykładnicza jest: \begin{itemize}
+        \item ciągła,
+        \item różniczkowalna w sęsie zespolonym i jej pochodna jest równa $\exp$. Oznacza to, że: \begin{equation}
+            \exp'(z) = \lim_{\C \ni w \to 0} \frac{\exp(z + w) - \exp(z)}{w} = \exp(z).
+        \end{equation} Powyższa granica, to po wszykich ciągach liczb zespolonych dążących do $z$.
+    \end{itemize}
+\end{twier}
+
+%TODO DOWÓD
+
 
 \newpage
 \section*{Koniec}
