@@ -2514,7 +2514,7 @@ W toku tego podrozdziału zajmować się będziemy jedynie funkcjami ograniczony
 \end{equation} czyli: \begin{equation}
     \lim_{x \to 0} \log x = -\oo.
 \end{equation}
-Zatem przeciwobrazem $\log$ jest $\R$. Stąd i z monotoniczności (implikującej różnowartościowość) i ciągłośći (pociągającej suriektywność) mamy:
+Zatem przeciwobrazem $\log$ jest $\R$. Stąd i z monotoniczności (implikującej różnowartościowość) i ciągłości (pociągającej suriektywność) mamy:
 
 \begin{obs}{}
     $\log: ]0, \oo[ \to \R$ jest różniczkowalną bijekcją $]0, \oo[$ na $\R$.
@@ -2538,12 +2538,12 @@ Wynika stąd, że istnieje funkcja odwrotna do $\log$ i ona także będzie róż
 
 \begin{dow}{}
     Niech $t \in R$ t.ż. $t = \log x$. Wtedy z właności pochodnej funkcji odwrotnej: \begin{equation}
-        \exp'(t) = \exp'(\log x) = \frac{1}{\log' x} = x = exp(t).
+        \exp'(t) = \exp'(\log x) = \frac{1}{\log' x} = x = \exp(t).
     \end{equation}
 \end{dow}
 
 
-\paragraph{} Zauważmy, że skoro $\log(1) = 0$, to $\exp(0) = \exp^{(n)}(0) = 1 \forall_{n\in \N}$. Możemy więc rozpisać wzór Taylora dla $\exp$ wokół zera: \begin{equation}
+\paragraph{} Zauważmy, że skoro $\log(1) = 0$, to $\exp(0) = \exp^{(n)}(0) = 1$ dla każdego $n\in \N$. Możemy więc rozpisać wzór Taylora dla $\exp$ wokół zera: \begin{equation}
     \exp(x) = \sum_{n = 0}^{N - 1} \frac{1}{n!} x^n + \frac{1}{N!} \exp(\xi) x^N,
 \end{equation} dla $\xi$ pomiędzy 0 i $x$. Zauważmy jednak, że wyraz resztowy dąży do zera wraz z $N$: \begin{equation}
     \frac{1}{N!} \exp(\xi) x^N \leq \frac{1}{N!} \exp(|x|) t^N \xrightarrow{N \to \oo} 0.
@@ -2582,7 +2582,7 @@ Wynika stąd, że istnieje funkcja odwrotna do $\log$ i ona także będzie róż
 
 \begin{twier}{}
     Dla zespolonej funkcji wykładniczej zachodzi wzór: \begin{equation}
-        exp(z) \exp(w) \ = \exp(w + z),
+        \exp(z) \exp(w) \ = \exp(w + z),
     \end{equation} gdzie $w, z \in \C$.
 \end{twier}
 
@@ -2590,8 +2590,11 @@ Wynika stąd, że istnieje funkcja odwrotna do $\log$ i ona także będzie róż
 
 \begin{dow}{}
     \begin{equation}
-        exp(z) \exp(w) = (\sum_{n = 0}^{\oo} \frac{z ^ n}{n!}) ( \sum_{n = 0}^{\oo} \frac{w ^ n}{n!}) = \sum_{n = 0}^{\oo} \sum_{k = 0}^{n} \frac{z^k}{ k!} \frac{w ^{n - k}}{(n - k)!} = \sum_{n = 0}^{\oo} \sum_{k = 0}^{n} \binom{n}{k}\frac{z^k w ^ (n - k)}{n!} = \sum_{n = 0}^{\oo} \frac{(z + w) ^ n}{ n!} = \exp( z + w).
-    \end{equation} Skorzystaliśmy tu z tzw. Twierdzenia Mertensa (nie załączonego w tym skrypcie), które mówi, że jeśli oba szeregi są zbieżne bewzględnie, to ich iloczyn jest równy ich iloczynowi Cauchy'ego.
+        \exp(z) \exp(w) = (\sum_{n = 0}^{\oo} \frac{z ^ n}{n!}) ( \sum_{n = 0}^{\oo} \frac{w ^ n}{n!}) = \sum_{n = 0}^{\oo} \sum_{k = 0}^{n} \frac{z^k}{ k!} \frac{w ^{n - k}}{(n - k)!} =
+    \end{equation} \begin{equation}
+        = \sum_{n = 0}^{\oo} \sum_{k = 0}^{n} \binom{n}{k}\frac{z^k w ^ (n - k)}{n!} = \sum_{n = 0}^{\oo} \frac{(z + w) ^ n}{ n!} = \exp( z + w).
+    \end{equation}
+    Skorzystaliśmy tu z tzw. Twierdzenia Mertensa (nie załączonego w tym skrypcie), które mówi, że jeśli oba szeregi są zbieżne bewzględnie, to ich iloczyn jest równy ich iloczynowi Cauchy'ego.
 \end{dow}
 
 
