@@ -2607,8 +2607,90 @@ Wynika stąd, że istnieje funkcja odwrotna do $\log$ i ona także będzie róż
     \end{itemize}
 \end{twier}
 
-%TODO DOWÓD
+\begin{dow}{}
+    Mamy następującą równość: \begin{equation*}
+        \exp(z + w) - \exp(z) = \exp(z) (\exp(w) - 1)  = \exp(z) \sum_{n = 1}^{\oo} \frac{w^n}{n!} = \exp(z) w \sum_{n  = 0}^{\oo} \frac{w^n}{(n + 1)!}.
+    \end{equation*} Gdy $w \to 0$, to prawa część równości dąży do zera, więc funkcja jest ciągła. Policzmy teraz iloraz różnicowy: \begin{equation*}
+        \frac{\exp(z + w) - \exp(z)}{w} = \exp(z) \sum_{n  = 0}^{\oo} \frac{w^n}{(n + 1)!} \xrightarrow{w \to 0} \exp(z),
+    \end{equation*} jest tak, gdyż, gdy $|w| < c$: \begin{equation*}
+        \big| \sum_{n = 1}^{\oo} \frac{w^n}{(n+1)!} \big| \leq  \big| w \big| \big| \sum_{n = 1}^{\oo} \frac{w^{n-1}}{(n+1)!} \big| \leq \big| w \big| \big| \sum_{n = 1}^{\oo} \frac{c^{n-1}}{(n+1)!} \big| \to 0.
+    \end{equation*}
+\end{dow}
 
+
+\begin{defr}{Funkcje trygonometryczne}
+    Używając zespolonej funkcji wykładniczej, definiujemy funkcje trygonometryczne zespolonego argumentu. \\
+    Funkcją \tb{sinus} nazywamy funkcję: \begin{equation}
+        \sin z = \frac{\exp(iz) - \exp(-iz)}{2 i}.
+    \end{equation}
+    Funkcją \tb{cosinus} nazywamy funkcję: \begin{equation}
+        \cos z = \frac{\exp(iz) + \exp(-iz)}{2}.
+    \end{equation}
+\end{defr}
+
+
+\begin{obs}{}
+    Łatwo widać, że funkcje sinus i cosinus rozwijają się w szereg następująco: \begin{equation}
+        \sin z = \sum_{n = 0}^{\oo} (-1)^n \frac{z ^ {2n + 1}}{(2n+1)!},
+    \end{equation} \begin{equation}
+        \cos z = \sum_{n = 0}^{\oo} (-1)^n \frac{z ^ {2n}}{(2n)!}.
+    \end{equation} Ze wzorów tych bespośrednio widać, że jeśli zawęzimy $\sin$ i $\cos$ do dziedziny rzeczywistej, to ich wartości także będą rzeczywiste. \\
+    Pondato różniczkując wzory definiujące $\sin$ i $\cos$ widzimy, że: \begin{equation}
+        \sin ' = \cos
+    \end{equation} i: \begin{equation}
+        \cos' = -\sin.
+    \end{equation} Skorzystaliśmy tutaj z liniowości zespolonej pochodnej, którą dowodzi się identycznie jak w przypadku rzeczywistym.
+\end{obs}
+\paragraph{} 
+Z bezpośredniego rachunku widać, że: \begin{equation}
+    \cos 0 = 1
+\end{equation} i: \begin{equation}
+    \cos 2 = 1 - 2 +  \frac{4}{45} + \sum_{n = 2}^{\oo} (-1)^n \frac{2^{2n}}{(2n)!} < 0.
+\end{equation}. Ostatni składnik jest szeregiem naprzemiennym o malejących modułach, na pewno więc będzie ujemny.
+Ponadto, gdy $x \in ]0, 2]$: \begin{equation}
+    \sin x =  x - \frac{x^3}{6}+ \sum_{n = 2}^{\oo} (-1)^n \frac{z ^ {2n + 1}}{(2n+1)!} > 0.
+\end{equation} Podobnie, czynnik z prawej jest szergiem naprzemiennym o malejących modułąch, a wyrazy z lewej na badanym przedziale są dodatnie. Wynika stąd, że $\cos$ na przedziale $]0, 2]$ jest ściśle malejący i przeto, jako że zmienia znak na końcach tego przedziału i jest ciągły, ma weń dokładnie jedno zero.
+
+\begin{defr}{Liczba pi}
+    Jedyną liczbę $\pi$, taką że: \begin{itemize}
+        \item \begin{equation}
+            \half \pi \in ]0, 2],
+        \end{equation}
+        \item \begin{equation}
+            \cos (\half \pi) = 0
+        \end{equation}
+    \end{itemize}
+    nazywamy \tb{liczbą pi}.
+\end{defr}
+\paragraph{} Zauważmy też, że bezpośrednio z rozwinięcia $\exp$ w szereg, wynika że: \begin{equation}
+    \ol{\exp(it)} = \exp{\ol{it}} = \exp{-it} = \frac{1}{\exp(it)},
+\end{equation} stąd: \begin{equation}
+    | \exp(it) | = 1.
+\end{equation}
+
+
+
+
+\begin{obs}{Wzór Eulera}
+    Bespośrednio z definicji wynika następujący wzór: \begin{equation}
+        \exp(it) = \cos t + i \sin t.
+    \end{equation}
+    Ponadto, gdy $t \in \R$: \begin{equation}
+        \Re(\exp(it)) = \cos t \quad \Im(\exp(it)) = \sin t.
+    \end{equation}
+\end{obs}
+
+
+
+
+\section{Ciągi funkcyjne}
+
+
+\begin{defr}{Zbieżność funktowa}
+    Niech $X$ będzie zbiorem a $Y$ - p-ń. metryczną. Niech $\ciag{f}$ będzie ciągiem funkcji: $f_n: X \to Y$. Mówimy, że $\ciag{f}$ \tb{zbiega punktowo} do funkcji $f: X \to Y$, jeśli: \begin{equation}
+        \forall_{x \in X} \lim_{n \to \oo} f_n(x) = f(x).
+    \end{equation} Zapiszemy wtedy: 
+\end{defr}
 
 \newpage
 \section*{Koniec}
