@@ -2702,7 +2702,7 @@ Ponadto, gdy $x \in ]0, 2]$: \begin{equation}
     \end{equation} Zapiszemy wtedy: \begin{equation}
         f_n \tojedn f.
     \end{equation} Jeśli $f_n$ dążą do $f$ jednostajnie na każdym zwartym podziobiorze $X$: \begin{equation}
-        \forall_{K \se \se X} f_n \big|_{K} \tojedn f \big|_K,
+        \forall_{K \se \se X}: f_n \big|_{K} \tojedn f \big|_K,
     \end{equation} to powiemy, że $f_n$ zbiegają do $f$ \tb{niemal jednostanie}.
 \end{defr}
 
@@ -2721,13 +2721,13 @@ Jest to oczywista konsekwencja podanych definicji.
     \end{cases}.
 \end{equation}
 $f_n$ nie zbiegają jednostajnie do $f$, bo: \begin{equation}
-    \forall_{\eps \in ]0, 1[, n \in \N} \exists_{x = \eps ^ \frac{1}{n}}: |f(x) - f_n(x)| = \eps \leq \eps.
+    \forall_{\eps \in ]0, 1[, n \in \N} \exists_{x = \sqrt[n]{\eps}}: |f(x) - f_n(x)| = \eps \leq \eps.
 \end{equation}
 Zatem: \begin{equation}
     \forall_{\eps, n}: \sup| f(x) - f_n(x)| \leq \eps.
 \end{equation}
 
-\paragraph{Przykład 2.} Weźmy ciąg funkcji $\ciag{f}$, $f_n: \R to \R$ określonych następująco: 
+\paragraph{Przykład 2.} Weźmy ciąg funkcji $\ciag{f}$, $f_n: \R \to \R$ określonych następująco: 
 \begin{equation}
     f_n  = \begin{cases}
         0 & x \in ]-\oo, n-1] \cup [n+1, \oo[ \\
@@ -2750,7 +2750,7 @@ Wykresem $f_n$ jest "ząbek" o środku w $n$, wysokości $n$ i szerokości 2. Oc
     Niech $X$ będzie zbiorem. Roważmy ciąg funkcyjny $\ciag{f}$ i szereg funkcyjny $\ciag{g}$: \begin{equation}
         g_n(x)  = \sum_{k = 1}^{n} f_k(x) \quad (x \in X).
     \end{equation} Załóżmy, że istnieje szereg skalarny $\szerI{b}$, zbieżny bezwzględnie, o tej własności, że: \begin{equation}
-        \forall_{x \in X, n}: | f_n(x) | \leq b_n.
+        \forall_{x \in X, \, n}: | f_n(x) | \leq b_n.
     \end{equation}
     To szereg: \begin{equation}
         g = \sum_{n  = 1}^{\oo} f_n
@@ -2777,7 +2777,7 @@ Wykresem $f_n$ jest "ząbek" o środku w $n$, wysokości $n$ i szerokości 2. Oc
 
 \begin{defr}{Przestrzeń jednostajna}
     Niech $X$ to zbiór a $Y$ - p-ń. metryczna. Wtedy na zbiorze $\B(X, Y)$ wprowadzamy metrykę $\rho$ wzorem: \begin{equation*}
-        \rho(f, g) = \sup_{x \in X} d(f(x), g(x)), \quad (f, g \in \B(X, Y)).
+        \rho(f, g) = \sup_{x \in X} d(f(x), g(x)) \quad (f, g \in \B(X, Y)).
     \end{equation*} Metrykę tę nazywamy \tb{metryką jednostajną} a $(\B(X, Y), \rho)$ - \tb{przestrzenią jednostajną}.
 \end{defr}
 
@@ -2792,7 +2792,114 @@ Ponadto łatwo widać, że $\rho$ spełnia wszystkie inne warunki metryki. Zarys
      \leq \sup(d(f(x), h(x)) + \sup d(g(x), h(x))) = \rho(f, h) + \rho(g, h).
 \end{equation}
 
+\begin{obs}{}
+    Niech $\ciag{f}$ będzię ciągiem funkcji z przestrzeni $\B(X, Y)$ i niech $f \in \B(X, Y)$. Wtedy: \begin{equation}
+        f_n \tojedn f \iff f_n \to f \quad \text{(w $\B(X, Y)$).}
+    \end{equation}
+\end{obs}
+\paragraph{} Jest to prosta konsekwencja przyjętych przez nas pojęć.
 
+
+\begin{twier}[label=twier:zb-jedn-zb]{}
+    Jeśli $Y$ - to p-ń. metryczna zupełna, to i $(B(X, Y), \rho)$ jest zupełna.
+\end{twier}
+
+\begin{dow}{}
+    Niech $\ciag{f}$ będzie ciągiem Cauchy'ego w $\B(X, Y)$: \begin{equation*}
+        \forall_{\eps} \exists_{N_\eps \in \N} \forall_{n, m \geq N_\eps}: \rho(f_n, f) \leq \eps.
+    \end{equation*} Stąd w szczególności $(f_n(x))_{n \in \N}$ jest ciągiem Cauchy'ego dla każdego ustalonego $x$ - skoro powyższe równanie spełnione jest przez supremum odległości między $f_n$ i $f$, to musi być spełnione przez każdy $x$ z osobna. Definiujemy więc:\begin{equation*}
+        f(x) = \lim_{n \to \oo} f_n(x),
+    \end{equation*} która to definicja jest poprawna, jako że przestrzeń $Y$ jest zupełna, więc ciąg $f_n(x)$ ma granicę. Oczywiście $f_n \topunk f$. Ponadto $f \in \B(X, Y)$, co wynika z faktu, że dla $m, n \geq N_\eps$ i dla każdego $x$: \begin{equation*}
+        d(f_m(x), f_n(x) ) \leq \eps,
+    \end{equation*} czyli, po przejściu z $m \to \oo$, skorzystawszy z ciągłości metryki: \begin{equation*}
+        d(f(x), f_n(x) ) \leq \eps,
+    \end{equation*} zatem, gdy $f_n \in \ball{g}{r}$, to $f \in \ball{g}{r + \eps}$, czyli jest ograniczona. Używając powyższej nierówności jeszcze raz: \begin{equation}
+        \forall_{\eps > 0} \forall_{x}: d(f, f_n(x)) \leq \eps \quad (n \geq N_\eps),
+    \end{equation} dostajemy: \begin{equation}
+        \sup_{x \in X} d(f(x), f_n(x)) \xrightarrow[]{n \to \oo} 0,
+    \end{equation} wiec $f_n \to f$. Zatem $\B(X, Y)$ istotnie jest zupełna, gdyż każdy ciąg Cauchy'ego ma w przestrzeni tej granicę.
+\end{dow}
+
+
+\begin{twier}{Granica jednostajna funkcji ciągłych jest ciągła}
+    Niech $X, Y$ - p-ń. metryczne, $\ciag{f}$ - ciąg funkcji t.ż. $f_n, f: X \to Y$ i $f_n \tojedn f$. Niech ponadto $\forall_n: f_n \in C(X, Y)$. \\
+    Wtedy: \begin{equation}
+        f \in C(X, Y),
+    \end{equation} czyli $f$ także jest ciągła.
+\end{twier}
+
+\begin{dow}{}
+    Wyjdźmy od nierówności: \begin{equation}
+        d(f(x), f(y)) \leq d(f(x), f_n(x)) + d(f_n(x), f_n(y)) + d(f_n(y), f(y)).
+    \end{equation} Z jednostajnej zbieżności $f_n$ wynika, że: \begin{equation*}
+        \exists_{N} \forall_{ n \geq N}: \sup_{z \in X} d(f_n(z), f(z)) \leq \frac{\eps}{3}.
+    \end{equation*} Ponadto, z ciąglości $f_N$, wynika, że istnieje $\lambda > 0$, t.ż.: \begin{equation*}
+        d(x, y) \leq \lambda \implies d(f_N(x), f_N(x)) \leq \frac{\eps}{3}.
+    \end{equation*} Wtedy: \begin{equation*}
+        d(f(x), f(y)) \leq d(f(x), f_N(x)) + d(f_N(x), f_N(y)) + d(f_N(y), f(y)) \leq \frac{\eps}{3} + \frac{\eps}{3} + \frac{\eps}{3} = \eps,
+    \end{equation*} dla $d(x, y) \leq \lambda$. Przeto $f$ jest ciągła.
+\end{dow}
+
+\begin{obs}{}
+    Z poprzedniego twierdzenia wynika, że zbiór: \begin{equation*}
+        C_b(X, Y) = \B(X, Y) \cap C(X, Y),
+    \end{equation*} funkcji ciągłych i ograniczonych z $X$ do $Y$ jest domknięty w $\B(X, Y)$. Ponadto, jeśli $X$ jest przestrzenią zwartą, to każda funkcja ciągła jest na niej ograniczona i: \begin{equation*}
+        C_b(X, Y) = C(X, Y).
+    \end{equation*} Wtedy zbiór ten jest domknięty.
+\end{obs}
+
+\begin{twier}{}
+    Niech $\ciag{f}$ będzie ciągiem funkcji różniczkowalnych $f_n: [a, b] \to \R$, t.ż.: \begin{itemize}
+        \item \begin{equation}
+            f_n' \tojedn g \quad (g: [a, b] \to \R).
+        \end{equation}
+        \item \begin{equation}
+            \exists_{x_0 \in [a, b]}: (f_n(x_0))_{n \in \N} \text{ - ciąg zbieżny.}
+        \end{equation}
+    \end{itemize}
+    Wtedy $\ciag{f}$ jest zbieżny jednostajnie do funkcji $f$, która jest różniczkowalna i: \begin{equation}
+        f' = g.
+    \end{equation}
+\end{twier}
+\paragraph{Uwaga!} Operator różniczkowania $\frac{d}{dx}$ nie jest ciągły w $(\B, \rho)$, ale ma on domknięty wykres, i.e. zbiór $\{(f, f') | f \in \B \}$.
+
+\begin{dow}
+    Ustalmy $\eps > 0$. Niech $N_\eps$ będzie takie, że: \begin{equation}
+        \forall_{n, m \geq N_\eps}: | f_n(x_0) - f_m(x_0) | \leq \frac{\eps}{2} \wedge \sup_{x \in [a, b]} |f_n' (x) - f_m(x) | \leq \frac{\eps}{2(b-a)}.
+    \end{equation} Jest to możliwe odpowiednio z powodu zbieżności $(f_n(x_0))_{n \in \N}$ i jednostajnej zbieżności $f_n'$ - która pociąga za sobą warunek Cauchy'ego. Zastosujmy teraz wierdzenie Lagrange'a do różniczkowalnej funkcji $f_n - f_m$: \begin{equation*}
+        | f_n(y) - f_m(y) - f_n(x) + f_m(x)| = |y - x| | f_n'(\xi) - f_m'(\xi)|,
+    \end{equation*} dla $x, y \in [a,b]$ i $\xi$ pomiędzy $x, y$. Zatem dla $n, m \geq N_\eps$: \begin{equation*}
+        | f_n(y) - f_m(y) - f_n(x) + f_m(y)| \leq | y - x| \frac{\eps}{2(b-a)} \leq \half \eps.
+    \end{equation*} Dalej: \begin{equation}
+        |f_n(x) - f_m(x)| \leq |f_n(x) - f_m(x) - f_n(x_0) + f_m(x_0)| + |f_n(x_0) - f_m(x_0)| \leq \half \eps + \half \eps = \eps, 
+    \end{equation} dla $n, m \geq N_\eps$. Stąd: \begin{equation*}
+        \sup_{x \in [a, b]} |f_n(x) - f_m(x)| \leq \eps
+    \end{equation*} i $\ciag{f}$ spełnia warunek Cauchy'ego, więc na mocy zupełności $\R$ i Tw. \ref*{twier:zb-jedn-zb} ciąg ten ma granicę $f \in \B([a, b], \R)$ i $f_n \tojedn f$. Ponadto $f$ jest ciągła, co wynika z ciągłości $f_n$, będącej konsekwencją różniczkowalności. \\
+    Ustalmy dowolny $x \in [a, b]$. Niech: \begin{equation*}
+        \phi(y) = \frac{f(y) - f(x)}{y - x}
+    \end{equation*} oraz: \begin{equation*}
+        \phi_n(y) = \frac{f_n(y) - f_n(x)}{y - x},
+    \end{equation*} zdefiniowane dla $y \neq x$. Wtedy oczywiście $\phi_n \topunk \phi$ i: \begin{equation*}
+        \forall_n: \lim_{y \to x} \phi_n(x) = f_n'(x).
+    \end{equation*} Przypomnijmy, że: \begin{equation*}
+        \forall_{\eps > 0} \exists_{N_\eps} \forall_{n, m \geq N_\eps}: | f_n(y) - f_m(y) - f_n(x) + f_m(y)| \leq | y - x| \frac{\eps}{2(b-a)},
+    \end{equation*} przeto: \begin{equation*}
+        \forall_{\eps > 0} \exists_{N_\eps} \forall_{n, m \geq N_\eps}:  | \phi_n(y) - \phi_m(y) | \leq \frac{\eps}{2(b-a)}
+    \end{equation*} po podzieleniu przez $|y - x|$. Zatem $\ciag{\phi}$ jest ciągiem Cauchy'go w zupełnej przestrzeni, czyli: \begin{equation*}
+        \phi_n \tojedn \psi
+    \end{equation*} na $[a, b] \backslash \{x\}$. Ale $\phi_n \topunk \phi$, więc $\phi = \psi$ i $\phi_n \tojedn \phi$. \\
+    Dalej, prowadzimy następujący rachunek: \begin{equation*}
+        | \phi(y) - g(x) | = | \phi(y) - \lim_{k \to \oo} f_k'(x)| \leq |\phi(y) - \phi_n(y)| + | \phi_n(y) - f_n'(y) | + |f_n'(x) - \lim_{k \to \oo} f_k'(x)|.
+    \end{equation*} Ustalmy $\mu >0 $ i zajmijmy się każdym z tych wyrazów z osobna. Znajdźmy $N_A$ t.ż. dla $n \geq N_A$: \begin{equation*}
+        \sup_{y \in [a, b] \{x\}} | \phi(y) - \phi_n(y)| \leq \frac{\mu}{3}.
+    \end{equation*} Jest to możliwe z jednostajnej zbieżności $\phi_n$. Znajdźmy też $N_C$ t.ż dla $n \geq N_C$: \begin{equation*}
+        |f_n'(x) - \lim_{k \to \oo} f_k'(x)|,
+    \end{equation*} co wynika ze zbieżności punktowej $f_n'$. Ponadto, skoro $\lim_{y \to x} \phi_n(y) = f_n'$, to istnieje $\lambda > 0$, t.ż.: \begin{equation*}
+        | x - y| \leq \lambda \implies | \phi_n(y) - f_n'(y) | \leq \frac{\mu}{3}.
+    \end{equation*} Łącząc trzy otrzymane nierówności dla $n \geq N_A, N_C$ i $|x - y| \leq \lambda$, otrzymujemy nierównośc niezależną od $n$: \begin{equation*}
+        | \phi(y) - g(x) | \leq \mu
+    \end{equation*} dla każdego $\mu > 0$. Zatem, jeśli $y \to x$, to $\phi(y)$ ma granicę równą dokładnie $g(x)$. Przeto $f$ jest różniczkowalna i $f' = g$.
+\end{dow} 
 
 
 \newpage
