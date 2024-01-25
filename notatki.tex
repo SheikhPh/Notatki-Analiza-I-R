@@ -108,6 +108,7 @@
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\C}{\mathbb{C}}
+\newcommand{\B}{\mathbb{B}}
 \newcommand{\oo}{\infty}
 \newcommand{\ifff}{\Leftrightarrow}
 \newcommand{\imp}{\Rightarrow}
@@ -170,7 +171,8 @@
 \newcommand{\lgras}[2]{\mathlarger{\lim}_{#1 \to \oo} #2_{#1}}
 \newcommand{\ball}[2]{\text{Ball}(#1, \, #2)}
 \newcommand{\dball}[2]{\overline{\text{Ball}}(#1, \, #2)}
-
+\newcommand{\topunk}{\xrightarrow{\text{punk.}}}
+\newcommand{\tojedn}{\xrightarrow{\text{jedn.}}}
 
 \DeclarePairedDelimiter\set\{\}
 \ExplSyntaxOn
@@ -2603,7 +2605,7 @@ Wynika stąd, że istnieje funkcja odwrotna do $\log$ i ona także będzie róż
         \item ciągła,
         \item różniczkowalna w sęsie zespolonym i jej pochodna jest równa $\exp$. Oznacza to, że: \begin{equation}
             \exp'(z) = \lim_{\C \ni w \to 0} \frac{\exp(z + w) - \exp(z)}{w} = \exp(z).
-        \end{equation} Powyższa granica, to po wszykich ciągach liczb zespolonych dążących do $z$.
+        \end{equation} Powyższa granicę bierzemy po wszystkich ciągach liczb zespolonych dążących do $z$.
     \end{itemize}
 \end{twier}
 
@@ -2663,7 +2665,7 @@ Ponadto, gdy $x \in ]0, 2]$: \begin{equation}
     nazywamy \tb{liczbą pi}.
 \end{defr}
 \paragraph{} Zauważmy też, że bezpośrednio z rozwinięcia $\exp$ w szereg, wynika że: \begin{equation}
-    \ol{\exp(it)} = \exp{\ol{it}} = \exp{-it} = \frac{1}{\exp(it)},
+    \ol{\exp(it)} = \exp{\ol{it}} = \exp(-it) = \frac{1}{\exp(it)},
 \end{equation} stąd: \begin{equation}
     | \exp(it) | = 1.
 \end{equation}
@@ -2682,15 +2684,116 @@ Ponadto, gdy $x \in ]0, 2]$: \begin{equation}
 
 
 
-
+\newpage
 \section{Ciągi funkcyjne}
 
 
 \begin{defr}{Zbieżność funktowa}
     Niech $X$ będzie zbiorem a $Y$ - p-ń. metryczną. Niech $\ciag{f}$ będzie ciągiem funkcji: $f_n: X \to Y$. Mówimy, że $\ciag{f}$ \tb{zbiega punktowo} do funkcji $f: X \to Y$, jeśli: \begin{equation}
         \forall_{x \in X} \lim_{n \to \oo} f_n(x) = f(x).
-    \end{equation} Zapiszemy wtedy: 
+    \end{equation} Zapiszemy wtedy: \begin{equation}
+        f_n \topunk f.
+    \end{equation}
 \end{defr}
+
+\begin{defr}{Zbieżność jednostajna}
+    Mówimy, że ciąg $\ciag{f}$ funckcji $f_n: X \to Y$ wbiega jednostajnie do funkcji $f$, gdzie $(Y,d)$ to p-ń metryczna, jeśli: \begin{equation}
+        \sup_{x \in X} d(f_n(x), f(x)) \xrightarrow{n \to \oo} 0.
+    \end{equation} Zapiszemy wtedy: \begin{equation}
+        f_n \tojedn f.
+    \end{equation} Jeśli $f_n$ dążą do $f$ jednostajnie na każdym zwartym podziobiorze $X$: \begin{equation}
+        \forall_{K \se \se X} f_n \big|_{K} \tojedn f \big|_K,
+    \end{equation} to powiemy, że $f_n$ zbiegają do $f$ \tb{niemal jednostanie}.
+\end{defr}
+
+\begin{obs}{}
+    Jeśli $\ciag{f}$ jest zbieżny do $f$ jednostajnie lub niemal jednostajnie, to zbiega $f$ także punktowo.
+\end{obs}
+
+Jest to oczywista konsekwencja podanych definicji.
+
+\paragraph{Przykład 1.} Niech $\ciag{f}$ będzie ciągiem funkcji postaci: \begin{equation}
+    [0, 1] \ni x \mapsto f_n(x) = x^n \in \R.
+\end{equation} Wtedy, jak łatwo widać: \begin{equation}
+    f_n \topunk f = \begin{cases}
+        1 & x = 1 \\
+        0 & 0 \leq x < 1
+    \end{cases}.
+\end{equation}
+$f_n$ nie zbiegają jednostajnie do $f$, bo: \begin{equation}
+    \forall_{\eps \in ]0, 1[, n \in \N} \exists_{x = \eps ^ \frac{1}{n}}: |f(x) - f_n(x)| = \eps \leq \eps.
+\end{equation}
+Zatem: \begin{equation}
+    \forall_{\eps, n}: \sup| f(x) - f_n(x)| \leq \eps.
+\end{equation}
+
+\paragraph{Przykład 2.} Weźmy ciąg funkcji $\ciag{f}$, $f_n: \R to \R$ określonych następująco: 
+\begin{equation}
+    f_n  = \begin{cases}
+        0 & x \in ]-\oo, n-1] \cup [n+1, \oo[ \\
+        n(x - n - 1) & x \in ]n-1, n] \\
+        n(n+1 - x) & x \in ]n, n+1[
+    \end{cases}.
+\end{equation}
+Wykresem $f_n$ jest "ząbek" o środku w $n$, wysokości $n$ i szerokości 2. Oczywiście $f_n \topunk f := 0$, bo "ząbek" idąc w prawo, w końcu minie każdą liczbę. Jednakże $\sup_{x \in \R} |f_n(x) - f| = n$ i rozbiega ono do nieskończoności wraz z $n$. Tutaj $f_n$ zbiegają do $f$ niemal jednostajnie.
+
+\begin{defr}{}
+    Niech $\ciag{f}$ będzie ciągiem funkcji t.ż. $f_n: X \to \R$. Wtedy ciąg funkcji $\ciag{g}$ t.ż.: \begin{equation}
+        g_n(x)  = \sum_{k = 1}^{n} f_k(x) \quad (x \in X)
+    \end{equation} nazywamy \tb{szeregiem funkcyjnym}. Jeśli $\ciag{g}$ jest zbieżny do $g$ (jakkolwiek), to piszemy: \begin{equation}
+        g(x) = \sum_{n = 1}^{\oo} f_n(x).
+    \end{equation}
+\end{defr}
+
+
+\begin{twier}{Kryterium Weierestrassa}
+    Niech $X$ będzie zbiorem. Roważmy ciąg funkcyjny $\ciag{f}$ i szereg funkcyjny $\ciag{g}$: \begin{equation}
+        g_n(x)  = \sum_{k = 1}^{n} f_k(x) \quad (x \in X).
+    \end{equation} Załóżmy, że istnieje szereg skalarny $\szerI{b}$, zbieżny bezwzględnie, o tej własności, że: \begin{equation}
+        \forall_{x \in X, n}: | f_n(x) | \leq b_n.
+    \end{equation}
+    To szereg: \begin{equation}
+        g = \sum_{n  = 1}^{\oo} f_n
+    \end{equation} jest zbieżny jednostajnie.
+\end{twier}
+
+\begin{dow}
+    Jeśli ustalimy $x \in X$, to $\bsum{n = 1}{\oo} f_n(x)$ jest zbieżny bezwzględnie, z kryterium porównawczego z $\bsum{n = 1}{\oo} b_n$. Bierzemy: \begin{equation*}
+        g(x) = \sum_{n = 1}^{\oo} f_n(x) \quad (x \in X).
+    \end{equation*} Oczywiscie $g_n \topunk g$. Ponadto: \begin{equation*}
+        \big| g(x) - g_N(x) \big| = \big| \sum_{n = 1}^{\oo} f_n(x) - \sum_{n =1 }^{N} f(x) \big| = \big| \sum_{n = N + 1}^{\oo} f_n(x) \big| \leq \sum_{n = N+1}^{\oo} b_n.
+    \end{equation*}
+    Zatem: \begin{equation*}
+        \sup_{x \in X} |g(x) - g_n(x)| \leq \sum_{n = N+1}^{\oo} b_n \xrightarrow{N \to \oo} 0,
+    \end{equation*} co wynika z warunku Cauchy'ego dla zbieżnego szeregu $\bsum{n = 1}{\oo} b_n$. Zatem: \begin{equation*}
+        g_n \tojedn g.
+    \end{equation*}
+\end{dow}
+
+\begin{defr}{Funkcja ograniczona}
+    Funkcję $f: X \to Y$, gdzie $Y$ to p-ń. metryczna, nazywamy \tb{ograniczoną}, jeśli zbiór $f(X)$ jest ograniczony. \\
+    Symbolem $\B(X, Y)$ oznaczamy zbiór wszystkich funkcji ograniczonych z $X$ do $Y$.
+\end{defr}
+
+\begin{defr}{Przestrzeń jednostajna}
+    Niech $X$ to zbiór a $Y$ - p-ń. metryczna. Wtedy na zbiorze $\B(X, Y)$ wprowadzamy metrykę $\rho$ wzorem: \begin{equation*}
+        \rho(f, g) = \sup_{x \in X} d(f(x), g(x)), \quad (f, g \in \B(X, Y)).
+    \end{equation*} Metrykę tę nazywamy \tb{metryką jednostajną} a $(\B(X, Y), \rho)$ - \tb{przestrzenią jednostajną}.
+\end{defr}
+
+\paragraph{} Zauważmy, że rzeczywiście jest to dobrze określona funkcja, gdyż skoro $f$ i $g$ są ograniczone, to: \begin{equation*}
+    f(X) \se \ball{y_1}{r_1}, \quad g(X) \se \ball{y_2}{r_2}.
+\end{equation*} Zatem: \begin{equation*}
+    \sup_{x \in X} d(f(x), g(x)) \leq r_1 + r_2 + d(y_1, y_2) < \oo.
+\end{equation*}
+Ponadto łatwo widać, że $\rho$ spełnia wszystkie inne warunki metryki. Zarysujmy np. dowód nierówności trójkąta: \begin{equation*}
+   \rho(f, g) =  \sup d(f(x), g(x)) \leq \sup(d(f(x), h(x)) + d(g(x), h(x))) \leq
+\end{equation*} \begin{equation}
+     \leq \sup(d(f(x), h(x)) + \sup d(g(x), h(x))) = \rho(f, h) + \rho(g, h).
+\end{equation}
+
+
+
 
 \newpage
 \section*{Koniec}
