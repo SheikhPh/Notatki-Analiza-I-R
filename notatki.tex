@@ -2901,6 +2901,35 @@ Ponadto łatwo widać, że $\rho$ spełnia wszystkie inne warunki metryki. Zarys
     \end{equation*} dla każdego $\mu > 0$. Zatem, jeśli $y \to x$, to $\phi(y)$ ma granicę równą dokładnie $g(x)$. Przeto $f$ jest różniczkowalna i $f' = g$.
 \end{dow} 
 
+\begin{twier}{Granica jednostajna funkcji całkowalnych jest całkowalna}
+    Niech $\ciag{f}$ będzie ciągiem funkcji całkowalnych $f_n: [a, b] \to \R$, takim że $f_n \tojedn f$. \\ 
+    Wtedy $f$ także jest całkowalna i: \begin{equation}
+        \int_{a}^{b} f(x) dx = \lim_{n \to \oo} \int_{a}^{b} f_n(x) dx. 
+    \end{equation} 
+\end{twier}
+
+
+\begin{dow}{}
+    Weźmy $\eps > 0$. Skoro $f_n \tojedn f$, to: \begin{equation*}
+        \exists_{N_\eps} \forall_{n \geq N_\eps} \forall_{x}: |f(x) - f_n(x)| \leq \frac{\eps}{3(b -a )}.
+    \end{equation*} Ponadto $f_{N_\eps}$ jest całkowalna, więc istnieje podział $\pi$ odcinka $[a, b]$: \begin{equation*}
+        \pi = (t_0, t_1, ..., t_m),
+    \end{equation*} t.ż.: \begin{equation*}
+        \Sg(f_{N_\eps}, \pi) - \Sd(f_{N_\eps}, \pi) \leq \frac{\eps}{3}.
+    \end{equation*} A więc : \begin{equation*}
+        \Sg(f, \pi) = \sum_{i = 1}^{m} \sup_{\przedz{t}{i}} (f) (t_i - t_{i-1}) \leq  \sum_{i = 1}^{m} \sup_{\przedz{t}{i}} (f_{N_\eps} + \frac{\eps}{3(b -a )}) (t_i - t_{i-1}) = \Sg(f_{N_\eps}, \pi) + \frac{\eps}{3}.
+    \end{equation*}Podobnymi rachunkami otrzymamy: \begin{equation*}
+        \Sd(f, \pi) \geq \Sd(f_{N_\eps}, \pi) - \frac{\eps}{3}.
+    \end{equation*} Zatem: \begin{equation*}
+        \Sg(f, \pi) - \Sd(f, \pi) \leq \frac{\eps}{3} + \frac{\eps}{3} + \Sg(f_{N_\eps}, \pi) - \Sd(f_{N_\eps}, \pi) \leq \frac{\eps}{3} + \frac{\eps}{3} + \frac{\eps}{3} = \eps.
+    \end{equation*} Więc z kryterium całkowalności, $f$ jest całkowalna.\\
+    Ponadto wiemy, że: \begin{equation*}
+        \big| \int_{a}^{b} f - \int_{a}^{b} f_n \big| \leq  \int_{a}^{b} |f - f_n| \leq (b - a) \rho(f, f_n) \xrightarrow{n \to \oo} 0,
+    \end{equation*} z powodu jednostajnej zbieżności $f_n$. Zatem istotnie: \begin{equation*}
+        \int_{a}^{b} f(x) dx = \lim_{n \to \oo} \int_{a}^{b} f_n(x) dx. 
+    \end{equation*}
+\end{dow}
+
 
 \newpage
 \section*{Koniec}
