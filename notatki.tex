@@ -125,7 +125,6 @@
 \newcommand{\Sd}{\underline{S}}
 \newcommand{\Sg}{\overline{S}}
 
-
 \newcommand{\Cd}{\mkern3mu\underline{\vphantom{\intop}\mkern7mu}\mkern-10mu\int}
 \def\Cg{\mathchoice%
 {\mkern13mu\overline{\vphantom{\intop}\mkern7mu}\mkern-20mu}%
@@ -164,6 +163,7 @@
 
 \newcommand{\tb}[1]{\textbf{#1}}
 \newcommand{\bsum}[2]{\mathlarger{\sum_{#1}^{#2}}}
+\newcommand{\bsumoo}[1]{\mathlarger{\sum_{#1 = 0}^{\oo}}}
 \newcommand{\szerI}[1]{\bsum{n=1}{\oo} #1_n}
 \newcommand{\ilorazowy}[1]{#1/\!{_R}}
 \newcommand{\ciag}[1]{(#1_{n})_{n \in \N}}
@@ -835,7 +835,7 @@ Sprawdzając warunek Cauchy'ego, możemy dowodzić zbieżności ciągu do granic
 
 Następne kryterium jest rozszerzeniem kryterium D'Alemberta: 
 %TODO
-\begin{twier}{Kryterium Cauchy'ego}
+\begin{twier}[label=twier:kryt-Cauchy]{Kryterium Cauchy'ego}
 TODO
     
 \end{twier}
@@ -2746,8 +2746,8 @@ Wykresem $f_n$ jest "ząbek" o środku w $n$, wysokości $n$ i szerokości 2. Oc
 \end{defr}
 
 
-\begin{twier}{Kryterium Weierestrassa}
-    Niech $X$ będzie zbiorem. Roważmy ciąg funkcyjny $\ciag{f}$ i szereg funkcyjny $\ciag{g}$: \begin{equation}
+\begin{twier}[label=twier:kryt-Weierestrassa]{Kryterium Weierestrassa}
+    Niech $X$ będzie zbiorem. Roważmy ciąg funkcyjny $\ciag{f}$ ($f: X \to \C$) i szereg funkcyjny $\ciag{g}$: \begin{equation}
         g_n(x)  = \sum_{k = 1}^{n} f_k(x) \quad (x \in X).
     \end{equation} Załóżmy, że istnieje szereg skalarny $\szerI{b}$, zbieżny bezwzględnie, o tej własności, że: \begin{equation}
         \forall_{x \in X, \, n}: | f_n(x) | \leq b_n.
@@ -2929,6 +2929,127 @@ Ponadto łatwo widać, że $\rho$ spełnia wszystkie inne warunki metryki. Zarys
         \int_{a}^{b} f(x) dx = \lim_{n \to \oo} \int_{a}^{b} f_n(x) dx. 
     \end{equation*}
 \end{dow}
+
+
+\begin{obs}{Całka jest ciągłym funkcjonałem liniownym}
+    Niech $\Phi: C([a, b]) \to \R$, t.ż.: \begin{equation}
+        \Phi(f) = \int_{a}^{b} f (x) dx.
+    \end{equation} Wtedy $\Phi$ jest ciągłym funkcjonałem liniownym (według metryki jednostajnej).\\
+    Zatem jeśli $f_n \tojedn f$, to $\Phi(f_n) \to \Phi(f)$.
+\end{obs}
+
+\begin{twier}[label=twier:cal-par1]{O całce z parametrem}
+    Niech $X$ - p-ń. metryczna i $F: X \times [a, b] \to \R$ będzię jednostajnie ciągła w jednej ze standardowych, równoważnych metryk na iloczynie kartezjańskim. Niech ponadto: \begin{equation}
+        f(x) = \int_{a}^{b} F(x, y) dy, \quad (x \in X).
+    \end{equation} Powyższa całka jest możliwa, gdyż $F(x, \cdot)$ - to jest $F$ z ustalonym pierwszym argumentem - jest ciągła. \\
+    Wtedy także $f$ jest ciągła.
+\end{twier}
+
+
+\begin{dow}{}
+    Wiemy, że funkcja $F(x, \cdot) \mapsto \int_{a}^{b} F(x, y) dy$ jest ciągła, bo $F(x, \cdot)$ jest f. ciągłą, zatem wystarczy pokazać, że odwozrowanie: \begin{equation*}
+        X \ni x \mapsto F(x, \cdot) \in C([a, b])
+    \end{equation*} jest ciągła. Niech $D$ będzie metryką na $X \times [a, b]$, np. \begin{equation*}
+        D((x, y), (x', y')) = d(x, x') + |y - y'|,
+    \end{equation*} gesi $d$ - metryka na $X$. Skoro $F$ jest jednostajnie ciągła, to: \begin{equation*}
+        \forall_{\eps} \exists_{\delta_\eps}: D((x, y), (x', y')) \leq \delta_\eps \implies |F(x, y) - F(x', y')| \leq \eps.
+    \end{equation*} W szeczególności, jeśli $d(x, x') \leq \delta_\eps$, to $D((x, y), (x', y)) \leq \delta_\eps$, a więc: \begin{equation*}
+        \forall){y}: |F(x, y) - F(x', y)| \leq \eps.
+    \end{equation*} Zatem $\rho(F(x, \cdot), F(x', \cdot)) \leq \eps$. Czyli $x \mapsto F(x, \cdot)$ jest ciągłe. \\
+    Ostatecznie $x \mapsto F(x, \cdot) \mapsto \int_{a}^{b} F(x, y) dy$ jest ciągłe, jako złożenie dwu ciągłym odwzorowań.
+\end{dow}
+
+
+\begin{defr}{Zwartosć lokalna}
+    Przestrzeń metryczna $X$ jest \tb{lokalnie zwarta}, jeśli każdy $x \in X$ ma zwarte otoczenie.
+\end{defr}
+
+\paragraph{Przykład} $\R^n$, $\C^n$ są zwarte lokalnie.
+
+
+\begin{obs}{}
+    Jeśli $F: X \times [a, b] \to \R$ jest ciągła, a $X$ jest zwarta lokalnie, to: \begin{equation}
+        f: X \ni x \mapsto \int_{a}^{b} F(x, y) dy \in \R
+    \end{equation} jest ciągła.
+\end{obs}
+
+\paragraph{} Rzeczywiście, bowiem dla każdego $x \in X$ istnieje jego zwarte otoczenie, więc na otoczeniu tym $F(x, y)$ jest ciągła jednostajnie, zatem zastosować możemy Twierdzenie \ref*{twier:cal-par1}.
+
+\begin{defr}{Szereg potęgowy}
+    \tb{Szeregiem potęgowym} nazywamy wyrażenie postaci: \begin{equation*}
+       \bsumoo{n} a_n z^n,
+    \end{equation*} gdzie $a_n$ to wyrazy ciągu współczynników zespolonych ($a_n \in \C$), a $z$ to zmienna formalna. Jeśli dla jakiejś liczby zespolonej, podstawienie tejże w miejsce $z$ spowoduje powstanie zbieżnego szeregu skalarnego, to mówimy że szereg $\bsumoo{n} a_n z^n$ jest zbieżny dla danego $z$.
+\end{defr}
+
+\begin{twier}{}
+    Niech $\bsumoo{n} a_n z^n$ będzie szeregiem potęgowym i niech: \begin{equation}
+        R = (\limsup_{n \to \oo} \sqrt[n]{|a_n|}) ^{-1}.
+    \end{equation} Przyjemujemy konwencję, żę $0 \inv = \oo$ i $\oo \inv - 0$. \\
+    Wtedy: \begin{enumerate}
+        \item Jeśli $|z| < R$, to szereg skalarny: \begin{equation}
+            \bsumoo{n} a_n z^n 
+        \end{equation} jest zbieżny bezwzględnie.
+        \item Jeśli $|z| > R$, to ten sam szereg skalarny jest rozbieżny.
+    \end{enumerate}
+\end{twier}
+
+\begin{dow}{}
+    Dowód przeprowadzamy w analogii do dowodu kryterium Cauchy'ego. \begin{enumerate}
+        \item Jeśli $|z| < (\limsup_{n \to \oo} \sqrt[n]{|a_n|}) ^{-1}$ to: \begin{equation*}
+            \limsup_{n \to \oo} \sqrt[n]{|a_n z^n|} < 1,
+        \end{equation*} zatem szereg jest bezwzglednie zbieżny na mocy kryterium Cauchy'ego.
+        \item Jeśli  $|z| > (\limsup_{n \to \oo} \sqrt[n]{|a_n|}) ^{-1}$ to: \begin{equation*}
+            \limsup_{n \to \oo} \sqrt[n]{|a_n z^n|} > 1,
+        \end{equation*} a więc $|a_n z^n| \not\to 0$ (por. dowód kryterium Cauchyego, Tw. \ref{twier:kryt-Cauchy}), zatem szereg nie może być zbieżny.
+    \end{enumerate}
+\end{dow}
+
+
+\begin{defr}{Promień zbieżności}
+    Dla danego szeregu potęgowego $\bsumoo{n} a_n z^n$ liczbę $R = (\limsup_{n \to \oo} \sqrt[n]{|a_n|}) ^{-1}$ nazywamy \tb{promieniem zbieżności} szeregu, a zbiór $\{ z\in C \big| |z| < R \}$ - \tb{kołem zbieżności}.
+\end{defr}
+
+\paragraph{Uwaga!} Na brzegu koła zbieżności ($|z| = R$) sytuacja jest nierozstrzygnięta i szereg może zachowywać się różnie.
+
+\begin{twier}{}
+    Szereg $\bsumoo{n} a_n z^n$ jest zbieżny (pomyślany jako szereg funkcyjny) niemal jednostajnie na swym kole zbieżności.
+\end{twier}
+
+\begin{dow}{}
+    Niech $K \se \se \{ z\in C \big| |z| < R \}$ i niech $\rho = \sup{|z| \big| z \in K}$. Wtedy oczywiście $\rho < R$, bo $|z|$ jest funkcją ciągłą na zbiorze zwartym, więc osiąga tam swój kres, który naturalnie musi być mniejszy niż $R$. Zatem szereg skalarny: \begin{equation*}
+        \bsumoo{n} |a_n \rho^n| 
+    \end{equation*} jest zbieżny (kryt. Cauchy'ego). Ponadto: \begin{equation*}
+        \forall_n \forall_{z \in K} |a_n z^n| \leq |a_n \rho ^n|.
+    \end{equation*} Możemy więc zastosować kryterium Weierestrassa (Tw. \ref*{twier:kryt-Weierestrassa}), by stwierdzić, że $\bsumoo{n} a_n z^n$ jest zbieżny jednostajnie na $K$, co dowodzi tezy, jako że $K$ był dowolny.
+\end{dow}
+
+\begin{obs}{}
+    Funkcja $f: z \mapsto \bsumoo{n} a_n z^n$ określona na kole zbieżności szeregu jest ciągła.
+\end{obs}
+
+\paragraph{} Rzeczywiście, jest to granica (niemal) jednostajna funkcji ciągłych (szeregów częściowych, i.e. wielomianów), więc jest to funkcja ciągła. Wynika to z tego, że dla każdego punktu na kole zbieżności, istnieje dlań zwarte otoczenie, na którym $f$ jest granicą jednostajną funkcji ciągłych, więc jest w tym punkcie ciągła.
+
+\begin{twier}{}
+    Niech $\bsumoo{n} a_n z^n$ ma promień zbieżności $R$. Jeśli $R \neq 0$, to szeregi: \begin{equation}
+        \bsumoo{n} {n+1} a_{n+1} z^n
+    \end{equation} mają taki sam promień zbieżności.
+\end{twier}
+
+\begin{dow}{}
+    Chcemy właściwie dowieźć twierdzenia, żę: \begin{equation*}
+        \limsup \sqrt[n]{|a_n|} = \limsup \sqrt[n]{|n a_n|} = \limsup \sqrt[n]{|(n+1) a_n|},
+    \end{equation*} jeśli wielkość po lewej nie równa się zeru. \\
+    Zauważmy, że jeśli mamy ciąg liczb nieujemnych $\ciag{x}$ i ciąg $\ciag{y}$, t.ż. $y_n = x_n ^{\frac{n+1}{n}}$ to jeśli $x \to \tilde{x}$, to i $y \to \tilde{x}$. Rzeczywiście, jest tak, gdyż odzorowanie $(a, t) \mapsto a ^ t$ jest ciągłe, zatem: \begin{equation*}
+        (x_n, \frac{n + 1}{n}) \xrightarrow{n \to \oo} (\tilde{x}, 1) = \tilde{x}.
+    \end{equation*} Podobnież, jeśli $x_n \to \oo$, to $y_n \to \oo$, bo $y \leq x ^ \half$. \\
+    Identyczny argument powtórzyć można dla $y_n = x^{\frac{n}{n + 1}}$. Łącząc to, widzimy, że jeśli mamy jakiś podciąg ciągu $x_n$ zbieżny do pewnej granicy, to odpowiadamu podciag $y_n = x_n^{\frac{n}{n+1}}$ zbieżny do tej samej granicy i vice versa. Zatem $\limsup x_n = \limsup y_n$. \\
+    Zauważmy teraz, że jeśli $\rho_n = \sqrt[n]{|a_n|}$ i $\tilde{\rho}_n = \sqrt[n]{n |a_n|}$, to znowuż, jeśli $\rho_{n_k} \xrightarrow{n_k \to \oo} r$, to i $\tilde{\rho}_{n_k} \xrightarrow{n_k \to \oo} r$ i vice versa. Oznacza to, że $\limsup \sqrt[n]{|a_n|} = \limsup \sqrt[n]{|n a_n|}$. \\
+    Teraz widzimy, że szeregi $\bsumoo{n} a_n z^n$ i $\bsumoo{n} (n + 1) a_{n+1} z^n$ mają ten sam promień zbieżności na podstawie naszych wcześniejszych rozważań: \begin{equation*}
+        \sqrt[n]{(n+1) |a_{n+1}|} = \sqrt[n+1]{(n+1) |a_{n+1}|} ^ \frac{n + 1}{n}.
+    \end{equation*}
+\end{dow}
+
+
 
 
 \newpage
